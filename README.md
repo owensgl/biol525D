@@ -1,4 +1,4 @@
-Bio525D
+Biol525D
 =======
 
 Topics in Systematics and Evolution:
@@ -29,7 +29,7 @@ All example data used in the class will be found on your Amazon AWS server. It c
 
 ##OBTAINING ALL THE FILES ON THIS SITE##
 
-The following is an up-to-date zip archive: https://github.com/UBCBio525/Bio525D/archive/master.zip
+The following is an up-to-date zip archive: https://github.com/owensgl/biol525D/archive/master.zip
 
 This method dosesn't require `git`, however, you'll have to manually update the files this way (by downloading the whole repo again).
 
@@ -37,7 +37,7 @@ A better method is to use `git`. To obtain to all the files, type:
 
     git clone https://github.com/owensgl/biol525D.git
 
-To update the all the files at any point in the future, change to the **Bio525D** directory that was created by the previous command and type:
+To update the all the files at any point in the future, change to the **biol525D** directory that was created by the previous command and type:
 
     git pull
 
