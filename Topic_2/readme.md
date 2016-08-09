@@ -1,1 +1,2 @@
-# Topic 2: Introduction to commandline and R
+# Topic 2: Introduction to unix command line and R
+
