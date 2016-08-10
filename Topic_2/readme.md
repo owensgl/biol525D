@@ -169,7 +169,8 @@ ctrl-c to cancel
  ```
 </details>
 
-
+### Introduction to R 
+R is an incredibly powerful language for statistical analysis. We are going to use the software carpentry tutorial to go over the R basics. [Tutorial](http://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro/). [Other tutorials](http://software-carpentry.org/lessons/).[
 
 
 
