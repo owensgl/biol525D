@@ -32,9 +32,9 @@ cats
     > mkdir exercise_1
     > mkdir exercise_1/inside_1
     > cd exercise_1/inside_1
-    ```
+```
 </details>
-
+More text
 
 
 
