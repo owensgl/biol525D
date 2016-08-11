@@ -7,6 +7,7 @@ The first step is to install several programs we will be using. These should be 
 * htslib
 * NextGenMap
 * BWA
+* Picard tools
 
 ```bash
 screen -r
@@ -41,10 +42,13 @@ cmake ..
 make
 cd ../../
 
+#Download Picardtools
+wget https://github.com/broadinstitute/picard/releases/download/2.6.0/picard.jar
+
 #Index the reference for both programs
 cd /home/ubuntu/ref/
 /home/ubuntu/bin/NextGenMap-0.5.0/bin/ngm-0.5.0/ngm -r HanXRQr1.0-20151230.fa
-/home/ubuntu/bin/bwa/bwa index HanXRQr1.0-20151230.fa
+#/home/ubuntu/bin/bwa/bwa index HanXRQr1.0-20151230.fa #NOTE: This is already done because it takes an hour.
 cd ..
 
 #Test alignment on NGM
@@ -71,13 +75,31 @@ samtools flagstat P1-1.bwa.bam > P1-1.bwa.stats.txt
 
 #Compare the two alignment programs.
 #We'll choose NGM for this exercise.
+#We then have to process the bam file for future use using picardtools
+
+/home/ubuntu/bin/jdk1.8.0_102/jre/bin/java -jar /home/ubuntu/bin/picard.jar AddOrReplaceReadGroups I=/home/ubuntu/bam/P1-1.ngm.bam O=/home/ubuntu/bam/P1-1.ngm.rg.bam RGID=P1-1 RGLB=biol525D RGPL=ILLUMINA RGPU=biol525D RGSM=P1-1 SORT_ORDER=coordinate VALIDATION_STRINGENCY=LENIENT COMPRESSION_LEVEL=0
+/home/ubuntu/bin/jdk1.8.0_102/jre/bin/java -jar /home/ubuntu/bin/picard.jar CleanSam I=/home/ubuntu/bam/P1-1.ngm.rg.bam O=/home/ubuntu/bam/P1-1.ngm.rg.clean.bam VALIDATION_STRINGENCY=LENIENT
+
 ```
-We now need to write a script to 
+We now need to write a script to put these parts together and run them in one go. 
+HINTS:
+* Use variables for directory paths "bwa=/home/ubuntu/bin/bwa/bwa"
+* Use a loop.
 
 <details> 
   <summary>**Answer 1**  </summary>
    ```bash
-    > seq 2 2 100 | grep -v 0 | sed "s/2$/2\!/g" | grep '\!\|3' > exercise_3.txt
+   #First set up variable names
+   bam=/home/ubuntu/bam
+   java=/home/ubuntu/bin/jdk1.8.0_102/jre/bin/java
+   ngm=/home/ubuntu/bin/NextGenMap-0.5.0/bin/ngm-0.5.0/ngm
+   bin=/home/ubuntu/bin
+   ref=/home/ubuntu/ref/HanXRQr1.0-20151230.fa
+   #Then get a list of sample names, without suffixes
+   ls $bam | grep ngm.rg.clean.bam | sed s/.ngm.rg.clean.bam//g > $bam/samplelist.txt
+   while read name
+   do
+   $ngm -r $ref -1 ${name}_R1.fastq.gz -2 ${name}_R2.fastq.gz
 ```
 </details>
 
