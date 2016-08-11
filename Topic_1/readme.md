@@ -21,4 +21,7 @@ sudo apt-get -y install zip
 sudo apt-get -y install zlib1g-dev
 sudo apt-get -y install libncurses5-dev
 sudo apt-get -y install git
+cd bin
+wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz
+
 
