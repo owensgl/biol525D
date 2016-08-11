@@ -98,15 +98,15 @@ HINTS:
    bin=/home/ubuntu/bin
    ref=/home/ubuntu/ref/HA412.v1.1.bronze.20141015.fasta
    #Then get a list of sample names, without suffixes
-   ls $bam | grep ngm.rg.clean.bam | sed s/.ngm.rg.clean.bam//g > $bam/samplelist.txt
+   ls $fastq | grep R1.fastq | sed s/_R1.fastq.gz//g > $bam/samplelist.txt
    #Then loop through the samples
    while read name
    do
-   	$ngm -r $ref -1 $fastq/${name}_R1.fastq.gz -2 $fastq/${name}_R2.fastq.gz -o $bam/${name}.ngm.sam -t 2
-   	samtools view -bh $bam/${name}.ngm.sam | samtools sort > $bam/{$name}.ngm.bam
-   	$java -jar $bin/picard.jar AddOrReplaceReadGroups I=$bam/${name}.ngm.bam O=$bam/${name}.ngm.rg.bam RGID=$name RGLB=biol525D RGPL=ILLUMINA RGPU=biol525D RGSM=$name SORT_ORDER=coordinate VALIDATION_STRINGENCY=LENIENT COMPRESSION_LEVEL=0
-	$java -jar $bam/picard.jar CleanSam I=$bam/${name}.ngm.rg.bam O=$bam/${name}.ngm.rg.clean.bam VALIDATION_STRINGENCY=LENIENT
-	samtools index $bam/${name}.ngm.rg.clean.bam
+        $ngm -r $ref -1 $fastq/${name}_R1.fastq.gz -2 $fastq/${name}_R2.fastq.gz -o $bam/${name}.ngm.sam -t 2
+        samtools view -bh $bam/${name}.ngm.sam | samtools sort > $bam/${name}.ngm.bam
+        $java -jar $bin/picard.jar AddOrReplaceReadGroups I=$bam/${name}.ngm.bam O=$bam/${name}.ngm.rg.bam RGID=$name RGLB=biol525D RGPL=ILLUMINA RGPU=biol525D RGSM=$name SORT_ORDER=coordinate VALIDATION_STRINGENCY=LENIENT COMPRESSION_LEVEL=0
+        $java -jar $bin/picard.jar CleanSam I=$bam/${name}.ngm.rg.bam O=$bam/${name}.ngm.rg.clean.bam VALIDATION_STRINGENCY=LENIENT
+        samtools index $bam/${name}.ngm.rg.clean.bam
    done < $bam/samplelist.txt
 ```
 </details>
