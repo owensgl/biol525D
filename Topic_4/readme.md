@@ -47,14 +47,14 @@ wget https://github.com/broadinstitute/picard/releases/download/2.6.0/picard.jar
 
 #Index the reference for both programs
 cd /home/ubuntu/ref/
-/home/ubuntu/bin/NextGenMap-0.5.0/bin/ngm-0.5.0/ngm -r HanXRQr1.0-20151230.fa
-#/home/ubuntu/bin/bwa/bwa index HanXRQr1.0-20151230.fa #NOTE: This is already done because it takes an hour.
+/home/ubuntu/bin/NextGenMap-0.5.0/bin/ngm-0.5.0/ngm -r HA412.v1.1.bronze.20141015.fasta
+#/home/ubuntu/bin/bwa/bwa index HA412.v1.1.bronze.20141015.fasta #NOTE: This is already done because it takes an hour.
 cd ..
 
 #Test alignment on NGM
 mkdir bam
 /home/ubuntu/fastq/P1-1_R2.fastq.gz  -o /home/ubuntu/bam/P1-1.ngm.sam -t 2
-/home/ubuntu/bin/NextGenMap-0.5.0/bin/ngm-0.5.0/ngm -r /home/ubuntu/ref/HanXRQr1.0-20151230.fa -1 /home/ubuntu/fastq/P1-1_R1.fastq.gz -2 
+/home/ubuntu/bin/NextGenMap-0.5.0/bin/ngm-0.5.0/ngm -r /home/ubuntu/ref/HA412.v1.1.bronze.20141015.fasta -1 /home/ubuntu/fastq/P1-1_R1.fastq.gz -2  /home/ubuntu/fastq/P1-1_R2.fastq.gz -o /home/ubuntu/bam/P1-1.ngm.bam -t 2
 
 ###Run up to here at start of class.
 #Lets examine that bam file
@@ -68,7 +68,7 @@ samtools tview P1-1.ngm.bam
 samtools flagstat P1-1.ngm.bam > P1-1.ngm.stats.txt
 
 #Test alignment on BWA
-/home/ubuntu/bin/bwa/bwa mem /home/ubuntu/ref/HanXRQr1.0-20151230.fa /home/ubuntu/fastq/P1-1_R1.fastq.gz /home/ubuntu/fastq/P1-1_R2.fastq.gz -t 2 | samtools view -bh | samtools sort > /home/ubuntu/bam/P1-1.bwa.bam 
+/home/ubuntu/bin/bwa/bwa mem /home/ubuntu/ref/HA412.v1.1.bronze.20141015.fasta /home/ubuntu/fastq/P1-1_R1.fastq.gz /home/ubuntu/fastq/P1-1_R2.fastq.gz -t 2 | samtools view -bh | samtools sort > /home/ubuntu/bam/P1-1.bwa.bam 
 
 samtools index P1-1.bwa.bam
 samtools flagstat P1-1.bwa.bam > P1-1.bwa.stats.txt
@@ -79,6 +79,7 @@ samtools flagstat P1-1.bwa.bam > P1-1.bwa.stats.txt
 
 /home/ubuntu/bin/jdk1.8.0_102/jre/bin/java -jar /home/ubuntu/bin/picard.jar AddOrReplaceReadGroups I=/home/ubuntu/bam/P1-1.ngm.bam O=/home/ubuntu/bam/P1-1.ngm.rg.bam RGID=P1-1 RGLB=biol525D RGPL=ILLUMINA RGPU=biol525D RGSM=P1-1 SORT_ORDER=coordinate VALIDATION_STRINGENCY=LENIENT COMPRESSION_LEVEL=0
 /home/ubuntu/bin/jdk1.8.0_102/jre/bin/java -jar /home/ubuntu/bin/picard.jar CleanSam I=/home/ubuntu/bam/P1-1.ngm.rg.bam O=/home/ubuntu/bam/P1-1.ngm.rg.clean.bam VALIDATION_STRINGENCY=LENIENT
+samtools index /home/ubuntu/bam/P1-1.ngm.rg.clean.bam
 
 ```
 We now need to write a script to put these parts together and run them in one go. 
@@ -87,27 +88,28 @@ HINTS:
 * Use a loop.
 
 <details> 
-  <summary>**Answer 1**  </summary>
+  <summary>**Answer**  </summary>
    ```bash
    #First set up variable names
    bam=/home/ubuntu/bam
+   fastq=/home/ubuntu/fastq
    java=/home/ubuntu/bin/jdk1.8.0_102/jre/bin/java
    ngm=/home/ubuntu/bin/NextGenMap-0.5.0/bin/ngm-0.5.0/ngm
    bin=/home/ubuntu/bin
-   ref=/home/ubuntu/ref/HanXRQr1.0-20151230.fa
+   ref=/home/ubuntu/ref/HA412.v1.1.bronze.20141015.fasta
    #Then get a list of sample names, without suffixes
    ls $bam | grep ngm.rg.clean.bam | sed s/.ngm.rg.clean.bam//g > $bam/samplelist.txt
+   #Then loop through the samples
    while read name
    do
-   $ngm -r $ref -1 ${name}_R1.fastq.gz -2 ${name}_R2.fastq.gz
+   	$ngm -r $ref -1 $fastq/${name}_R1.fastq.gz -2 $fastq/${name}_R2.fastq.gz -o $bam/${name}.ngm.sam -t 2
+   	samtools view -bh $bam/${name}.ngm.sam | samtools sort > $bam/{$name}.ngm.bam
+   	$java -jar $bin/picard.jar AddOrReplaceReadGroups I=$bam/${name}.ngm.bam O=$bam/${name}.ngm.rg.bam RGID=$name RGLB=biol525D RGPL=ILLUMINA RGPU=biol525D RGSM=$name SORT_ORDER=coordinate VALIDATION_STRINGENCY=LENIENT COMPRESSION_LEVEL=0
+	$java -jar $bam/picard.jar CleanSam I=$bam/${name}.ngm.rg.bam O=$bam/${name}.ngm.rg.clean.bam VALIDATION_STRINGENCY=LENIENT
+	samtools index $bam/${name}.ngm.rg.clean.bam
+   done < $bam/samplelist.txt
 ```
 </details>
 
-	java $javarules -jar $picardtools/picard.jar SortSam I=$bam/$name.merged.bam O=$bam/$name.merged.v1.bam SORT_ORDER=coordinate VALIDATION_STRINGENCY=LENIENT COMPRESSION_LEVEL=0
-	java $javarules -jar $picardtools/picard.jar AddOrReplaceReadGroups I=$bam/$name.merged.v1.bam O=$bam/$name.merged.v2.bam \
-	RGID=$name RGLB=$project RGPL=ILLUMINA RGPU=$project RGSM=$name SORT_ORDER=coordinate VALIDATION_STRINGENCY=LENIENT COMPRESSION_LEVEL=0
-	java $javarules -jar $picardtools/picard.jar CleanSam I=$bam/$name.merged.v2.bam O=$bam/$name.bam VALIDATION_STRINGENCY=LENIENT
-
-#First we need to get a list of all the sample names
 
 
