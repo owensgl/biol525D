@@ -66,6 +66,26 @@ samtools flagstat P1-1.ngm.bam > P1-1.ngm.stats.txt
 #Test alignment on BWA
 /home/ubuntu/bin/bwa/bwa mem /home/ubuntu/ref/HanXRQr1.0-20151230.fa /home/ubuntu/fastq/P1-1_R1.fastq.gz /home/ubuntu/fastq/P1-1_R2.fastq.gz -t 2 | samtools view -bh | samtools sort > /home/ubuntu/bam/P1-1.bwa.bam 
 
+samtools index P1-1.bwa.bam
+samtools flagstat P1-1.bwa.bam > P1-1.bwa.stats.txt
 
+#Compare the two alignment programs.
+#We'll choose NGM for this exercise.
+```
+We now need to write a script to 
+
+<details> 
+  <summary>**Answer 1**  </summary>
+   ```bash
+    > seq 2 2 100 | grep -v 0 | sed "s/2$/2\!/g" | grep '\!\|3' > exercise_3.txt
+```
+</details>
+
+	java $javarules -jar $picardtools/picard.jar SortSam I=$bam/$name.merged.bam O=$bam/$name.merged.v1.bam SORT_ORDER=coordinate VALIDATION_STRINGENCY=LENIENT COMPRESSION_LEVEL=0
+	java $javarules -jar $picardtools/picard.jar AddOrReplaceReadGroups I=$bam/$name.merged.v1.bam O=$bam/$name.merged.v2.bam \
+	RGID=$name RGLB=$project RGPL=ILLUMINA RGPU=$project RGSM=$name SORT_ORDER=coordinate VALIDATION_STRINGENCY=LENIENT COMPRESSION_LEVEL=0
+	java $javarules -jar $picardtools/picard.jar CleanSam I=$bam/$name.merged.v2.bam O=$bam/$name.bam VALIDATION_STRINGENCY=LENIENT
+
+#First we need to get a list of all the sample names
 
 
