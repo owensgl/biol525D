@@ -4,24 +4,20 @@ Biol525D
 Topics in Systematics and Evolution:
 Bioinformatics for Evolutionary Biology
 
-##RESOURCES##
 
-**All of the following materials are available under the *resources* directory. You can follow the links in the text to find each resource.**
 
-- See the [syllabus](https://) for an overview of the course.
+- See the [syllabus](https://github.com/owensgl/biol525D/blob/master/resources/syllabus.md) for an overview of the course.
 
-The [programs](https://) file has a listing of the software used for each exercise.
 
-- The slides, commands, or any other information for each topic are under a directory for that topic. For example, the directory "[Topic01](https://)" contains information for topic 1, the directory "[Topic02](https://)" contains information for topic 2, and so on.
+- Each topic folder contains the lecture slides, as well as a markdown document used for coding examples. 
 
-   - There are two directories for each topic, one for the lecture and one for the exercises.
 
-- If you need a quick refresher (or some help getting up to speed) on working with a Unix system, take a look at the [unix help](https://) file. There are some resources there that will help you find the specific command you need for each task. 
+- If you need a quick refresher (or some help getting up to speed) on working with a Unix system, take a look at the [unix help](https://github.com/owensgl/biol525D/blob/master/resources/unix_ref.pdf) file. There are some resources there that will help you find the specific command you need for each task. 
 
 
 ##DATA REPOSITORY##
 
-All example data used in the class will be found on your Amazon AWS server. It can also be found on ...
+All example data used in the class will be found on your Amazon AWS server. 
 
 ##NAVIGATING THIS SITE##
 
