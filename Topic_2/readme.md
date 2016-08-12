@@ -1,4 +1,5 @@
-# Topic 2: Unix Tools
+# Topic 2: Commandline and R
+In this tutorial we will be going through parts of several software carpentry workshops. The tutorial can be found [here](http://swcarpentry.github.io/shell-novice/). Right now, just code along with me, but after the lesson you can go through the tutorial on your own to clarify any understanding problems. 
 
 
 ### Pipes and redirection
@@ -87,7 +88,7 @@ ctrl-c to cancel
  ```
 </details>
 
-
+Lastly, we will go through a [short tutorial](http://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro/) on R. 
 
 
 
