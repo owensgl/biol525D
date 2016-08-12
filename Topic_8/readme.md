@@ -17,30 +17,8 @@ wget popgen.dk/software/NGSadmix/ngsadmix32.cpp
 g++ ngsadmix32.cpp -O3 -lpthread -lz -o NGSadmix
 
 #FastStructure is similar to STRUCTURE but orders of magnitude faster. It has many dependencies
-sudo apt-get install python-setuptools
-sudo apt-get install python-dev
-#Cython...
-wget https://pypi.python.org/packages/c6/fe/97319581905de40f1be7015a0ea1bd336a756f6249914b148a17eefa75dc/Cython-0.24.1.tar.gz#md5=890b494a12951f1d6228c416a5789554
-tar xzf Cython-0.24.1.tar.gz
-cd Cython-0.24.1/
-sudo python setup.py install
-cd ..
-#Numpy...
-git clone http://github.com/numpy/numpy.git numpy
-cd numpy
-sudo python setup.py install
-cd ..
-#Scipy...
-git clone http://github.com/scipy/scipy.git scipy
-cd scipy
-sudo python setup.py install
-cd ..
-#Now clean up installers
-sudo rm -R numpy
-sudo rm -R scipy
-sudo rm -R 
 
-#Install anaconda 
+#Install anaconda, a python build for scientific computing
 wget http://repo.continuum.io/archive/Anaconda2-4.1.1-Linux-x86_64.sh
 bash Anaconda2-4.1.1-Linux-x86_64.sh
 
@@ -60,6 +38,11 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export CFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 source ~/.bashrc
+cd fastStructure/vars
+/home/ubuntu/anaconda2/bin/python setup.py build_ext --inplace
+cd ..
+/home/ubuntu/anaconda2/bin/python setup.py build_ext --inplace
+#Fast structure is now good to go! Remember to run it using the python version in anaconda
 
 
 
