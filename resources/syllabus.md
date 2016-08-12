@@ -10,7 +10,7 @@ The purpose of this course is to provide graduate students with the theoretical 
 
 ##INSTRUCTORS##
 
-Dr. Gregory Owens, Dr. Kathryn Hodgins, Dr. Matthew Pennell
+Dr. Gregory Owens, Dr. Kathryn Hodgins
 
 ##FORMAT##
 
@@ -33,13 +33,13 @@ TBD
 Resources for each topic are in a subdirectory based on the topic.
 
 1. Broad introduction: Scope of course, goals, overview of technology and bioinformatics, and the future of sequencing [GREG]
-2. Fastq files and quality checking/trimming [GREG]
-3. Alignment: algorithms and tools [KAY]
-4. Assembly: transcriptome and genome assembly [KAY]
-5. RNAseq + differential expression analysis [KAY]
-6. SNP and variant calling [GREG]
-7. Population level statistics (sliding window analyses, nucleotide diversity, FST, population structure) [GREG]
-8. Plotting data in R [GREG]
-9. Functional annotation and the use of ontologies [GREG]
+2. Programming for biologists [GREG]
+3. Fastq files and quality checking/trimming[Kay]
+4. Alignment: algorithms and tools [GREG]
+5. Assembly: transcriptome and genome assembly [KAY]
+6. RNAseq + differential expression analysis [KAY]
+7. SNP and variant calling [GREG]
+8. Population genomics and plotting in R (Part 1) [GREG]
+9. Population genomics and plotting in R (Part 2) [GREG]
 10. Phylogenetic inference [MATT]
 
