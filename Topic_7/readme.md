@@ -34,7 +34,7 @@ M=$bam/${name}.duplicateinfo.txt
 done </home/ubuntu/samplelist.txt
 
 #We now want to create a list of potential indel sites
-ls bam | grep ngm.rg.clean.bam | grep -v bai | sed "s/^/\/home\/ubuntu\/bam\//g" > /home/ubuntu/${project}.bamfiles.list
+ls $bam | grep ngm.rg.clean.bam | grep -v bai | sed "s/^/\/home\/ubuntu\/bam\//g" > /home/ubuntu/${project}.bamfiles.list
 $java -Xmx8g -jar $gatk \
    -T RealignerTargetCreator \
    -R $ref \
