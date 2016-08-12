@@ -16,7 +16,9 @@ ls /home/ubuntu/fastq | grep _R1.fastq | sed s/_R1.fastq.gz//g > /home/ubuntu/sa
 #Keep in mind, for GBS data, where the start and stop sites are set, there will be excessive false positives, so we should not mark duplicates. Here we run through it for practice but we do not use the product.
 while read name \
 do \
-/home/ubuntu/bin/jdk1.8.0_102/jre/bin/java -jar /home/ubuntu/bin/picard.jar MarkDuplicates I=/home/ubuntu/bam/${name}.ngm.rg.clean.bam O=/home/ubuntu/bam/${name}.tmp.bam RGID=P1-1 M=/home/ubuntu/bam/${name}.duplicateinfo.txt \
+/home/ubuntu/bin/jdk1.8.0_102/jre/bin/java -jar /home/ubuntu/bin/picard.jar MarkDuplicates \
+I=/home/ubuntu/bam/${name}.ngm.rg.clean.bam O=/home/ubuntu/bam/${name}.tmp.bam RGID=P1-1 \
+M=/home/ubuntu/bam/${name}.duplicateinfo.txt \
 done < /home/ubuntu/samplelist.txt
 
 #We now want to create a list of potential indel sites
@@ -42,6 +44,9 @@ do \
 done < /home/ubuntu/samplelist.txt
 
 #Next we use the haplotypecaller to create a gvcf file for each sample
+while read name \
+do \
+/home/ubuntu/bin/jdk1.8.0_102/jre/bin/java -Xmx8g -jar /home/ubuntu/bin/GenomeAnalysisTK.jar \
 
 #With all the gvcf files created, we jointly genotype all samples to produce a single vcf
 
