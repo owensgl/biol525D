@@ -111,5 +111,6 @@ HINTS:
 ```
 </details>
 
+After your final bam files are created, and you've checked that they look good, you should remove intermediate files to save space. 
 
 
