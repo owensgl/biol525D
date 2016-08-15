@@ -1,9 +1,9 @@
 #Course evaluation
 
 The student evualtion in Biol 525D is based on the following:
-*50% participation
-*40% daily assignments
-*10% final shell script
+* 50% participation
+* 40% daily assignments
+* 10% final shell script
 
 ###Participation
 Attending class, participating in discussions and working through tutorials
@@ -18,11 +18,11 @@ Answers should be sent to gregory.owens@alumni.ubc.ca
 
 ###Final shell script
 Students must produce a single shell script that does the following steps:
-*Trims fastq files for quality.
-*Aligns to a reference genome.
-*Calls SNPs.
-*Filters vcf output.
-*Runs a principal component analysis.
-*Outputs a pdf figure of the principal component analysis. 
+* Trims fastq files for quality.
+* Aligns to a reference genome.
+* Calls SNPs.
+* Filters vcf output.
+* Runs a principal component analysis.
+* Outputs a pdf figure of the principal component analysis. 
 
 Assume all programs and libraries are locally installed in the "/home/ubuntu/bin" directory.
