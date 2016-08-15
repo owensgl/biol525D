@@ -90,5 +90,10 @@ ctrl-c to cancel
 
 Lastly, we will go through a [short tutorial](http://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro/) on R. 
 
+###Daily Assignments
+1. What is one task you'd rather use an R script instead of a shell script? Why? What is one task you'd rather use a shell script, instead of an R script? Why?
+2. Why is piping directly between programs faster than writing each consecutive output to the disk? Explain using information about computer hardware.
+
+
 
 
