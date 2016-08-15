@@ -41,5 +41,5 @@ Resources for each topic are in a subdirectory based on the topic.
 7. SNP and variant calling [GREG]
 8. Population genomics and plotting in R (Part 1) [GREG]
 9. Population genomics and plotting in R (Part 2) [GREG]
-10. Phylogenetic inference [MATT]
+10. Phylogenetic inference [GREG]
 
