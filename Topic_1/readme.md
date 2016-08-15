@@ -27,7 +27,7 @@ bash ./test_server_ssh.bash
 ```
 
 
-
+Now that you've logged into the server, next we have to install and update some programs.
 
 ```bash
 #Update the OS
