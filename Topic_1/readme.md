@@ -40,6 +40,7 @@ sudo apt-get -y install zip
 sudo apt-get -y install zlib1g-dev
 sudo apt-get -y install libncurses5-dev
 sudo apt-get -y install git
+mkdir bin
 cd bin
  wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-linux-x64.tar.gz
 tar xzf jdk-8u102-linux-x64.tar.gz
