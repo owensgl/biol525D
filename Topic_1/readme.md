@@ -9,22 +9,21 @@ Programs to install:
 
 Log into AWS server using ssh (terminal or putty).
 #### Mac OS or Linux
+
+* Download Server_access.zip to Downloads folder
+* Unzip Server_access.zip (automatic on mac)
+* Open test_server_ssh.bash and replace <INSERT IP HERE> with IP from your server on [list](https://docs.google.com/spreadsheets/d/1k3o-g60c_3Parf0HDOfSnkjwemwYatn3UJLrNISMUNs/edit?usp=sharing)
+* open terminal
 ```bash
-#Download Server_access.zip to Downloads folder
-#Unzip Server_access.zip (automatic on mac)
-#Open test_server_ssh.bash and replace <INSERT IP HERE> with IP from your server on [list](https://docs.google.com/spreadsheets/d/1k3o-g60c_3Parf0HDOfSnkjwemwYatn3UJLrNISMUNs/edit?usp=sharing)
-#open terminal
 cd Downloads
 cd Server_access
 bash ./test_server_ssh.bash
 ```
 #### Windows
-```bash
-#Download putty and puttygen from [here](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
-#Download Server_access.zip to Downloads folder
-#Unzip Server_access.zip
-#Follow [this tutorial](https://support.rackspace.com/how-to/logging-in-with-an-ssh-private-key-on-windows/) to log into the server. The private key is biol525D.pem from Server_access folder, your IP address is from this [list](https://docs.google.com/spreadsheets/d/1k3o-g60c_3Parf0HDOfSnkjwemwYatn3UJLrNISMUNs/edit?usp=sharing).
-```
+* Download putty and puttygen from [here](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+* Download Server_access.zip to Downloads folder
+* Unzip Server_access.zip
+* Follow [this tutorial](https://support.rackspace.com/how-to/logging-in-with-an-ssh-private-key-on-windows/) to log into the server. The private key is biol525D.pem from Server_access folder, your IP address is from this [list](https://docs.google.com/spreadsheets/d/1k3o-g60c_3Parf0HDOfSnkjwemwYatn3UJLrNISMUNs/edit?usp=sharing).
 
 
 Now that you've logged into the server, next we have to install and update some programs.
