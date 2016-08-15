@@ -12,7 +12,7 @@ Log into AWS server using ssh (terminal or putty).
 
 * Download Server_access.zip to Downloads folder
 * Unzip Server_access.zip (automatic on mac)
-* Open test_server_ssh.bash and replace <INSERT IP HERE> with IP from your server on [list](https://docs.google.com/spreadsheets/d/1k3o-g60c_3Parf0HDOfSnkjwemwYatn3UJLrNISMUNs/edit?usp=sharing)
+* Open test_server_ssh.bash in textedit and replace <INSERT IP HERE> with IP from your server on [list](https://docs.google.com/spreadsheets/d/1k3o-g60c_3Parf0HDOfSnkjwemwYatn3UJLrNISMUNs/edit?usp=sharing)
 * open terminal
 ```bash
 cd Downloads
