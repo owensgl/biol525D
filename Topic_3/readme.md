@@ -192,7 +192,7 @@ awk '{s=0; for (i=3; i <= NF; i++) {if($i == "N"){s=s+1}}}; {print s}' sample_de
 ```bash
 awk 'BEGIN {FS=OFS=" "}{sum=0; n=0; for(i=3;i<=NF;i++){if ($i != "N"){sum+=$i; ++n}} print sum/n}' sample_depths.txt > sample_depths_rowmeans.txt
 ```
-#NOTE: these operations using awk are MUCH faster than R, especially on large files, and they are easy to integrate into shell scripts.
+* NOTE: these operations using awk are MUCH faster than R, especially on large files, and they are easy to integrate into shell scripts.
 
 * To list the files in a directory and pick out all of the fastq files:
 ```bash
