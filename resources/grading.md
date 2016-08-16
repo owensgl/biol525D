@@ -16,7 +16,7 @@ Daily questions for topics 2-5 are due on _Monday August 22_, and for topics 6-1
 Please group your answers together into one email per week.
 Answers should be sent to gregory.owens@alumni.ubc.ca
 
-###Final shell script
+###Final shell script *Due Monday August 29th*
 Students must produce a single shell script that does the following steps:
 * Trims fastq files for quality.
 * Aligns to a reference genome.
