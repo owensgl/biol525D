@@ -18,12 +18,12 @@ Hint: for grep ^ indicates the start of the line and $ indicates the end of the 
 ### Tutorial
 
 To practice unix-based command line, run through some of the examples after the quality trimming section to learn how to navigate through the file system and do basic file manipulation.
-
-1. Run prinseq-lite.pl on the unfiltered data first to examine the quality metrics:
+####Part 1.
+Run prinseq-lite.pl on the unfiltered data first to examine the quality metrics:
 
 (if you need to find which directory you are in, type "pwd" at command prompt)
 
-a. Move into the ~/programs folder. Unpack prinseq-lite-0.20.4.tar.gz by executing the following command:
+Move into the ~/programs folder. Unpack prinseq-lite-0.20.4.tar.gz by executing the following command:
 ```bash
 tar -xf prinseq-lite-0.20.4.tar
 ```
@@ -31,23 +31,22 @@ This first data set is from an RNAseq study. To create QC graphs for the raw dat
 ```bash
 perl ~/programs/prinseq-lite-0.20.4/prinseq-lite.pl -fastq PmdT_147_100k_R1.fq -fastq2 PmdT_147_100k_R2.fq -graph_data pmdt_147_100k_graph.txt 
 ```
-download your graph file to your computer and upload it to http://edwards.sdsu.edu/cgi-bin/prinseq/prinseq.cgi to view/download your graphs
+Download your graph file to your computer and upload it to http://edwards.sdsu.edu/cgi-bin/prinseq/prinseq.cgi to view/download your graphs
 
-note that you can execute the following line to create these same graphs on the server but you need to install a number of perl modules and the download the files to view anyway:
+Note that you can execute the following line to create these same graphs on the server but you need to install a number of perl modules and the download the files to view anyway:
 ```bash
 perl ~/programs/prinseq-lite-0.20.4/prinseq-graphs.pl -i pmdt_147_100k_graph.txt -o pmdt_147_100k_out_graphs.txt -html_all 
 ```
-For a description of the various plot types, see:
-
-http://prinseq.sourceforge.net/manual.html#STANDALONE
+For a description of the various plot types, see [here](http://prinseq.sourceforge.net/manual.html#STANDALONE)
 
 Now rerun the above commands on the fastq files named GBS12_brds_Pi_197A2_100k_R#.fastq, which are reads created using the GBS protocol with an enzyme called PST1.
 ```bash
 perl ~/programs/prinseq-lite-0.20.4/prinseq-lite.pl -fastq GBS12_brds_Pi_197A2_100k_R1.fastq -fastq2 GBS12_brds_Pi_197A2_100k_R2.fastq -graph_data GBS12_brds_Pi_197A2_100k_graph.txt 
 ```
-Question 1) Compare the two .html files. What kinds of differences do you see in the files? Why do you think these differences are found (think about the types of data you are analyzing)? 
+#####Daily Assignment 1
+* Compare the two .html files. What kinds of differences do you see in the files? Why do you think these differences are found (think about the types of data you are analyzing)? 
 
-
+####Part 2.
 2. Within prinseq (and most other programs), "trimming" will not affect the number of reads you have, but will alter the characteristics of the sequencing, while "filtering" will remove some reads that do not pass the criteria. This can result in un-paired reads in the two _1 and _2 files, but some programs (including prinseq) take care of this by outputting separate files for the good (i.e. paired) reads and the unpaired (i.e. singletons) where one read has been filtered. 
 
 Trim off sequences from either end with less than a quality score of 10 (-trim_qual_left and -trim_qual_right), and filter any sequences that have less than 70 base pairs (-min_len 70):
@@ -73,7 +72,8 @@ Or removing N's from the left and right hand side of the sequences:
 -trim_ns_left 3
 -trim_ns_right 3
 
-Question 2) Try different filtering options for the GBS data  (see http://prinseq.sourceforge.net/manual.html for options) and plot QC graphs. Discuss in a group of four which options you would choose to implement if this was your data.
+####Daily assignment 2
+* Try different filtering options for the GBS data  (see http://prinseq.sourceforge.net/manual.html for options) and plot QC graphs. Discuss in a group of four which options you would choose to implement if this was your data.
 
 
 Low complexity sequences can be filtered using:
@@ -107,112 +107,113 @@ There is no best option for trimming/filtering. The choices you make should refl
 ### Manipulating files in UNIX and bash
 
 Below are a bunch of examples for how to manipulate files. They are intended to provide an introduction to the kinds of things you can do in unix, and give you an idea of where to google to find more info. Generally, I have found that googling for what you want to do will almost always yield a scripting solution, often a very easy one using either awk, grep, sed, or some other bash command. 
+
+* To cancel any command, type "control-c". To pause it and send it to run in the background, type "control-z" and then "bg". To bring the job back to the foreground, type "fg"
+
+* To view the processes that are currently running, type "top" and then "q" to quit. 
+
+* To stop a process, type "kill PID", where PID is replaced with the process ID number you see in the "top" list
+
+* cp, mv, rm, rmdir, mkdir will copy, move, remove, remove directory, and make directory, respectively
+
+* FASTQ files have four lines per sequence. To get the first 100 lines (25 sequences):
 ```bash
-#To cancel any command, type "control-c". To pause it and send it to run in the background, type "control-z" and then "bg". To bring the job back to the foreground, type "fg"
-
-#to view the processes that are currently running, type "top" and then "q" to quit. 
-
-#to stop a process, type "kill PID", where PID is replaced with the process ID number you see in the "top" list
-
-#cp, mv, rm, rmdir, mkdir will copy, move, remove, remove directory, and make directory, respectively
-
-#FASTQ files have four lines per sequence. To get the first 100 lines (25 sequences):
-
 head -100 PmdT_147_100k_R1.fq
-
-#to copy them into a new file, use the ">" character to move information from the left hand side and print it to a file on the right hand side
-
+```
+* To copy them into a new file, use the ">" character to move information from the left hand side and print it to a file on the right hand side
+```bash
 head -100 PmdT_147_100k_R1.fq > new.fq
-
-#to pass them to another unix command, use the "|" character, for example, to count how many characters there are:
-
+```
+* To pass them to another unix command, use the "|" character, for example, to count how many characters there are:
+```bash
 head -100 PmdT_147_100k_R1.fq | wc -c
+```
 
-#to get only the sequence names, but nothing else, use "grep", searching for the characteristic string @HWI-ST, which is at the beginning of each of the reads in these files. Note, that you shouldn't grep for just the "@" character, because it is also a quality score encoding:
-
+* To get only the sequence names, but nothing else, use "grep", searching for the characteristic string @HWI-ST, which is at the beginning of each of the reads in these files. Note, that you shouldn't grep for just the "@" character, because it is also a quality score encoding:
+```bash
 grep @HWI-ST PmdT_147_100k_R1.fq
-
-#On the contrary, with .fasta files, it is possible to just grep for the ">" character. Sometimes fasta files will have multiple lines of sequence for a given contig, each of which is separated by a newline character. In this case, you can't count the number of contigs just by counting the number of lines in the file. A simple count can be done by grep'ing lines that start with ">":
-
+```
+* On the contrary, with .fasta files, it is possible to just grep for the ">" character. Sometimes fasta files will have multiple lines of sequence for a given contig, each of which is separated by a newline character. In this case, you can't count the number of contigs just by counting the number of lines in the file. A simple count can be done by grep'ing lines that start with ">":
+```bash
 grep "^>" Pine_reference_rnaseq_reduced.fa | wc -l
-
-#If you want to find a specific contig and get all of the sequence from a fasta file, this is a handy one-liner: 
-
+```
+* If you want to find a specific contig and get all of the sequence from a fasta file, this is a handy one-liner: 
+```bash
 sed -n '/>comp10454_c2_seq1/,/>/p' Pine_reference_rnaseq_reduced.fa | grep -v ">" | tr -d "\n"
+```
+* This uses sed to find everything between the two matches, the first of which is ">comp10454_c2_seq1" and the second is the next ">" character. Note the use of tr -d "\n" to clip the new line characters and return a single contiguous sequence.
 
-#This uses sed to find everything between the two matches, the first of which is ">comp10454_c2_seq1" and the second is the next ">" character. Note the use of tr -d "\n" to clip the new line characters and return a single contiguous sequence.
-
-#To get the last 10 lines of a file:
-
+* To get the last 10 lines of a file:
+```bash
 tail -10 Pine_reference_rnaseq_reduced.fa
-
-#head and tail can be used together to get a few lines of interest:
-
+```
+* Head and tail can be used together to get a few lines of interest:
+```bash
 head -1000 Pine_reference_rnaseq_reduced.fa | tail -10
-
-#to change all of the N's to A's, use sed:
-
+```
+* To change all of the N's to A's, use sed:
+```bash
 sed 's/N/A/g' file1 > file2
-
-#to remove double quotation marks that may occur in R output when the quote=F option has not been used:
-
+```
+* To remove double quotation marks that may occur in R output when the quote=F option has not been used:
+```bash
 sed 's/\"//g' file > file2
-
-#To print the first column of a file that has rows and columns (typical R-output):
-
+```
+* To print the first column of a file that has rows and columns (typical R-output):
+```bash
 awk '{print $1}' cold_hot_expression.txt 
-
-#to sort this column and output it to a new file:
-
+```
+* To sort this column and output it to a new file:
+```bash
 awk '{print $1}' cold_hot_expression.txt | sort > new2.txt
-
-#to join the sorted column with the old dataset:
-
+```
+* To join the sorted column with the old dataset:
+```bash
 paste cold_hot_expression.txt new2.txt > new3.txt
-
-#to output only the lines of a file that have a number > 85 in the 12th column:
-
+```
+* To output only the lines of a file that have a number > 85 in the 12th column:
+```bash
 awk '{if($12 > 85){print}}' sample_blast_results.txt > sample_blast_results_filt.txt
+```
 
-
-#This is really useful for filtering BLAST tabular format results. Another nice way to sort blast results to get the best hit for each contig that you queried, sorted by z-score and e-value:
-
+* This is really useful for filtering BLAST tabular format results. Another nice way to sort blast results to get the best hit for each contig that you queried, sorted by z-score and e-value:
+```bash
 sort -k1,1 -k12,12nr -k11,11n sample_blast_results.txt | sort -u -k1,1 --merge > sample_blast_results_sorted.txt
-
-#to output columns 3-8:
-
+```
+* To output columns 3-8:
+```bash
 cut -f3-8 sample_blast_results.txt > sample_blast_results_sub.txt
-
-#to count the number of occurrences of "N" that occur in each line of a file, from the 3rd column onwards:
-
+```
+* To count the number of occurrences of "N" that occur in each line of a file, from the 3rd column onwards:
+```bash
 awk '{s=0; for (i=3; i <= NF; i++) {if($i == "N"){s=s+1}}}; {print s}' sample_depths.txt > file_withnumber_ofNs.txt
-
-#to get the mean from all of the non-N entries in the same file, excluding the N's:
-
+```
+* To get the mean from all of the non-N entries in the same file, excluding the N's:
+```bash
 awk 'BEGIN {FS=OFS=" "}{sum=0; n=0; for(i=3;i<=NF;i++){if ($i != "N"){sum+=$i; ++n}} print sum/n}' sample_depths.txt > sample_depths_rowmeans.txt
-
+```
 #NOTE: these operations using awk are MUCH faster than R, especially on large files, and they are easy to integrate into shell scripts.
 
-#to list the files in a directory and pick out all of the fastq files:
-
+* To list the files in a directory and pick out all of the fastq files:
+```bash
 ls | grep fastq$
-
-#to move these files to a sub-directory called "sub":
-
+```
+* To move these files to a sub-directory called "sub":
+```bash
 ff=`ls | grep fastq$`
 mv $ff ./sub
+```
+* This stores the contents of the ls | grep command in a variable calld "ff" which can be used by prefixing it with the "$" sign. This is very useful for moving files around or deleting them.
 
-#This stores the contents of the ls | grep command in a variable calld "ff" which can be used by prefixing it with the "$" sign. This is very useful for moving files around or deleting them.
-
-#to check through a bunch of files and see how many lines are in each, with output to the screen (press enter for each line):
-
+* To check through a bunch of files and see how many lines are in each, with output to the screen (press enter for each line):
+```bash
 ff=`ls | grep fastq$`
 for i in $ff
 do
 echo $i
 wc -l $i
 done
-
-#If you do much playing around with sequence data, especially whole genome sequence files, learning to use awk, sed, grep, and other bash commands will be incredibly helpful and more efficient than relatively slow approaches such as reading data into R and manipulating it there.
+```
+If you do much playing around with sequence data, especially whole genome sequence files, learning to use awk, sed, grep, and other bash commands will be incredibly helpful and more efficient than relatively slow approaches such as reading data into R and manipulating it there.
 
 
