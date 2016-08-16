@@ -44,5 +44,6 @@ cd ..
 /home/ubuntu/anaconda2/bin/python setup.py build_ext --inplace
 #Fast structure is now good to go! Remember to run it using the python version in anaconda
 
+#Now to install TASSEL convert
 
 
