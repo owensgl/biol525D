@@ -1,6 +1,11 @@
 # Topic 2: Commandline and R
 In this tutorial we will be going through parts of several software carpentry workshops. The tutorial can be found [here](http://swcarpentry.github.io/shell-novice/). Right now, just code along with me, but after the lesson you can go through the tutorial on your own to clarify any understanding problems. 
 
+### Tutorials
+Here are some good tutorials if you're interested in learning a programming language
+* [Python](https://www.codecademy.com/learn/python)
+* [Perl](http://www.perl.com/pub/2000/10/begperl1.html)
+* [R](http://swirlstats.com/)
 
 ### Pipes and redirection
 A key feature of command line use is piping the output of one command to the input of another command. This means that large files can be analyzed in multiple scripts without having to write to disk repeatedly. 
