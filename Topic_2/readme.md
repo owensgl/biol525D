@@ -16,6 +16,7 @@ A key feature of command line use is piping the output of one command to the inp
   * seq 10 | sed s/1/one/g
 * Replace lines that only have "1" with "one".
     * seq 10 | sed s/^1$/one/g
+
 ##### *grep*
 *Search using regular expression*. This command searches for patterns and prints lines that match your pattern.\
 **Examples**:
