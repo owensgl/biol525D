@@ -89,6 +89,11 @@ ctrl-c to cancel
  ```
 </details>
 
+#### *Byobu*
+This program is similar to screen, but has some advantages over screen especially in keeping track of windows.
+You can find it [here](http://byobu.co/)
+
+
 Lastly, we will go through a [short tutorial](http://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro/) on R. 
 
 ###Daily Assignments
