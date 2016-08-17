@@ -11,7 +11,7 @@ Hint: wc –l <file name> provides the number of lines in a file
 
 2) How many sequences do you have in the fastq file GBS12_brds_Pi_197A2_100k_R1.fastq?
 
-Hint: for grep ^ indicates the start of the line and $ indicates the end of the line (e.g. grep ^H*?$ <filename> would find all the lines starting with H and ending in ?)
+Hint: for grep ^ indicates the start of the line and $ indicates the end of the line (e.g. grep ^H*$? <filename> would find all the lines starting with H and ending in ?)
 
 3) How many sequences contain a base with a Phred score of 2 GBS12_brds_Pi_197A2_100k_R1.fastq?
 
