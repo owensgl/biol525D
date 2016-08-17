@@ -104,6 +104,7 @@ $java -jar $gatk \
 -V $home/$project.vcf \
 -o $home/$project.snps.vcf \
 -selectType SNP \
+-restrictAllelesTo BIALLELIC \
 -log $log/${project}.selectvariants.log
 
 #Finally, vcf is often a difficult format to use, so lets convert it to a flat tab-separated format.
