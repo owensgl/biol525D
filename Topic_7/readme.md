@@ -102,7 +102,7 @@ $java -jar $gatk \
 -R $ref \
 -T SelectVariants \
 -V $home/$project.vcf \
--o $home/$project.snps.vcf\
+-o $home/$project.snps.vcf \
 -selectType SNP \
 -log $log/${project}.selectvariants.log
 
@@ -115,9 +115,11 @@ $java -jar $gatk \
 -F POS \
 -GF GT \
 -log $log/variantstotable.log \
--o $home/$project.snps.vcf
+-o $home/$project.snps.tab
 #Now to filter and reformat 
-cat $home/$project.snps.tab |sed 's/.GT /  /g' | sed 's/.GT$//g | sed 's|/||g' | sed 's/\.\./NN/g' | grep -v '*' > $home/$project.snps.formatted.tab
+
+cat $home/$project.snps.tab |sed 's/.GT   /  /g' | sed 's/.GT$//g' | sed 's|/||g' | sed 's/\.\./NN/g' | grep -v '*' > $home/$project.snps.formatted.tab
+#Note the sed 's/.GT   /  /g' command requires that the spaces are actually tabs. When copying and pasting, they are often substituted for spaces. To put an actual tab in the command, press ctrl-v, tab. 
 
 ###Daily assignments
 1. Another program that is useful for filtering and formatting vcf files is [vcftools](https://vcftools.github.io/index.html). Successfully install this program and record the steps necessary. 
