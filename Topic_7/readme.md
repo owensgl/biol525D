@@ -96,15 +96,16 @@ $java -Xmx8g -Djava.io.tmpdir=$home/tmp -jar $gatk \
 
 #Lets take a look at the vcf file
 less -S $home/$project.vcf
-#Some of those calls aren't very good. Also indels can be difficult to deal with, so lets get rid of them.
-#This step also lets you filter based on quality metrics
+#Lets filter this a bit. Only keeping biallelic snps and sites where less than 20% of samples are not genotyped.
+#This step also lets you filter based on other quality metrics.
 $java -jar $gatk \
 -R $ref \
 -T SelectVariants \
 -V $home/$project.vcf \
 -o $home/$project.snps.vcf \
--selectType SNP \
+-selectType SNP \ 
 -restrictAllelesTo BIALLELIC \
+--maxNOCALLfraction 0.2 \
 -log $log/${project}.selectvariants.log
 
 #Finally, vcf is often a difficult format to use, so lets convert it to a flat tab-separated format.
