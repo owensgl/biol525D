@@ -21,7 +21,7 @@ g++ ngsadmix32.cpp -O3 -lpthread -lz -o NGSadmix
 #Install anaconda, a python build for scientific computing
 wget http://repo.continuum.io/archive/Anaconda2-4.1.1-Linux-x86_64.sh
 bash Anaconda2-4.1.1-Linux-x86_64.sh
-
+python=/home/ubuntu/anaconda2/bin/python
 #Install GNU scientific library
 wget http://gnu.mirror.vexxhost.com/gsl/gsl-latest.tar.gz
 tar -zxvf gsl-latest.tar.gz
@@ -39,9 +39,9 @@ export CFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 source ~/.bashrc
 cd fastStructure/vars
-/home/ubuntu/anaconda2/bin/python setup.py build_ext --inplace
+$python setup.py build_ext --inplace
 cd ..
-/home/ubuntu/anaconda2/bin/python setup.py build_ext --inplace
+$python setup.py build_ext --inplace
 #Fast structure is now good to go! Remember to run it using the python version in anaconda
 
 #Now to convert between file types we're going to use PGDspider
@@ -52,6 +52,17 @@ cd ..
 cd /home/ubuntu/bin/
 wget http://www.cmpg.unibe.ch/software/PGDSpider/PGDSpider_2.1.0.3.zip
 unzip PGDSpider_2.1.0.3.zip
+#Now to convert the vcf file to faststructure format
+cd ..
+$java -jar bin/PGDSpider_2.1.0.3/PGDSpider2-cli.jar -inputfile biol525D.snps.vcf -inputformat VCF -outputfile biol525D.snps.str -outputformat STRUCTURE -spid VCF_to_structure.spid
 
-
-
+#Now we run fast structure
+mkdir faststructure
+cd faststructure
+for k in `seq 10`
+do
+$python /home/ubuntu/bin/fastStructure/structure.py -K $k --input=../biol525D.snps --output=biol525D --format=str
+done
+#This gives us a bunch of files for each K value, we'll use those to plot.
+#It's also useful to find out the best K value from the data and we can do that using faststructure
+$python /home/ubuntu/bin/fastStructure/chooseK.py --input=biol525D
