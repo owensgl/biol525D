@@ -4,9 +4,9 @@
 ```r
 #First we install some packages
 
-#install.packages("dplyr")
-#install.packages("ggplot2")
-#install.packages("reshape")
+install.packages("dplyr")
+install.packages("ggplot2")
+install.packages("reshape")
 #
 
 #Then we load those packages.
