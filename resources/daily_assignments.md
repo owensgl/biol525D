@@ -7,7 +7,7 @@ Why is piping directly between programs faster than writing each consecutive out
 ###Topic 3:
 Try different filtering options for the GBS data (see http://prinseq.sourceforge.net/manual.html for options) and plot some QC graphs. Which options you would choose to implement if this was your data and why?
 ###Topic 4:
-
+I want to reduce the percent of incorrectly mapped reads when using BWA. What setting or settings should I change in BWA?
 ###Topic 5:
 
 ####Questions 2-5 are due Monday August 22nd.
