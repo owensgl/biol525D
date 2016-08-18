@@ -68,5 +68,5 @@ done
 #It's also useful to find out the best K value from the data and we can do that using faststructure
 $python /home/ubuntu/bin/fastStructure/chooseK.py --input=biol525D
 ```
-Now that we've run faststructure, its time to plot our results. First we download our faststructure folder to your laptop, then open Rstudio.
-```R
+Now that we've run faststructure, its time to plot our results. First we download our faststructure folder to your laptop, then open Rstudio and continue onto the [next page](https://github.com/owensgl/biol525D/blob/master/Topic_8-9/plotting_structure.md)
+
