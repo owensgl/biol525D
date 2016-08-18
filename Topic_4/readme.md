@@ -53,7 +53,7 @@ cd ..
 
 #Test alignment on NGM
 mkdir bam
-/home/ubuntu/bin/NextGenMap-0.5.0/bin/ngm-0.5.0/ngm -r /home/ubuntu/ref/HA412.v1.1.bronze.20141015.fasta -1 /home/ubuntu/fastq/P1-1_R1.fastq.gz -2  /home/ubuntu/fastq/P1-1_R2.fastq.gz -o /home/ubuntu/bam/P1-1.ngm.bam -t 2
+/home/ubuntu/bin/NextGenMap-0.5.0/bin/ngm-0.5.0/ngm -r /home/ubuntu/ref/HA412.v1.1.bronze.20141015.fasta -1 /home/ubuntu/fastq/P1-1_R1.fastq.gz -2  /home/ubuntu/fastq/P1-1_R2.fastq.gz -o /home/ubuntu/bam/P1-1.ngm.sam -t 2
 
 ###Run up to here at start of class.
 #Lets examine that bam file
@@ -62,7 +62,7 @@ less -S P1-1.ngm.sam
 samtools view -bh P1-1.ngm.sam | samtools sort > P1-1.ngm.bam #Convert to bam and sort
 samtools index P1-1.ngm.bam
 samtools tview P1-1.ngm.bam
-#Go to HanXRQChr01:2888693
+#Go to cp_gi_88656873:52624
 #Check alignment numbers
 samtools flagstat P1-1.ngm.bam > P1-1.ngm.stats.txt
 
@@ -111,6 +111,7 @@ HINTS:
 </details>
 
 After your final bam files are created, and you've checked that they look good, you should remove intermediate files to save space. 
+###By topic 7, you should have created cleaned bam files for all samples.
 
 ##Daily assignments
 1. Is an alignment with a higher percent of mapped reads always better than one with a lower percent? Why or why not?
