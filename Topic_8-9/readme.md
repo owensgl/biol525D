@@ -64,5 +64,9 @@ do
 $python /home/ubuntu/bin/fastStructure/structure.py -K $k --input=../biol525D.snps --output=biol525D --format=str
 done
 #This gives us a bunch of files for each K value, we'll use those to plot.
+#The meanQ files give us admixture proportions which is what we care about.
 #It's also useful to find out the best K value from the data and we can do that using faststructure
 $python /home/ubuntu/bin/fastStructure/chooseK.py --input=biol525D
+```
+Now that we've run faststructure, its time to plot our results. First we download our faststructure folder to your laptop, then open Rstudio.
+```R
