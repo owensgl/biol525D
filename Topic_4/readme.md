@@ -115,6 +115,6 @@ After your final bam files are created, and you've checked that they look good, 
 
 ##Daily assignments
 1. Is an alignment with a higher percent of mapped reads always better than one with a lower percent? Why or why not?
-2. Is it easier to align shorter or longer reads to a genome? Why?
+2. I want to reduce the percent of incorrectly mapped reads when using BWA. What setting or settings should I change in BWA?
 3. What are two ways that could be used to evaluate which aligner is best?
 
