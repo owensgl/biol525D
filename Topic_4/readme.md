@@ -53,7 +53,6 @@ cd ..
 
 #Test alignment on NGM
 mkdir bam
-/home/ubuntu/fastq/P1-1_R2.fastq.gz  -o /home/ubuntu/bam/P1-1.ngm.sam -t 2
 /home/ubuntu/bin/NextGenMap-0.5.0/bin/ngm-0.5.0/ngm -r /home/ubuntu/ref/HA412.v1.1.bronze.20141015.fasta -1 /home/ubuntu/fastq/P1-1_R1.fastq.gz -2  /home/ubuntu/fastq/P1-1_R2.fastq.gz -o /home/ubuntu/bam/P1-1.ngm.bam -t 2
 
 ###Run up to here at start of class.
