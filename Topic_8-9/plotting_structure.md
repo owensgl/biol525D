@@ -1,8 +1,4 @@
----
-title: "Topic 8: Population genomics"
-output: github_document
----
-
+# Plotting FastStructure results in R 
 
 
 ```r
