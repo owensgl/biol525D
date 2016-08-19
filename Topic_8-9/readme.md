@@ -53,6 +53,7 @@ We take the spid file created and transfer it to your server using cyberduck.
 
 Next we download pgdspider to your server
 ```bash
+java=/home/ubuntu/bin/jdk1.8.0_102/jre/bin/java
 cd /home/ubuntu/bin/
 wget http://www.cmpg.unibe.ch/software/PGDSpider/PGDSpider_2.1.0.3.zip
 unzip PGDSpider_2.1.0.3.zip
