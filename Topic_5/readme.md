@@ -56,7 +56,7 @@ Insert length (sd): 180 bp (+/-20 bp)
 
 The data is located in ~/data/Topic5. One file contains the forward read (frag_1.fastq.gz) and the other file contains the reverse read (frag_2.fastq.gz). Each read has a match from the same fragment in the other file and is in the same order in the matching file.
 
-Step 1. Enter this folder and unpack these data:
+####Step 1. Enter this folder and unpack these data:
 
 ```bash
 gunzip -d frag_*.fastq.gz`
@@ -67,7 +67,7 @@ gunzip -d frag_*.fastq.gz`
 This information will be important when you are running your genome assemblies.
 
 
-##Step 2. Install Velvet (see Manual at http://www.ebi.ac.uk/~zerbino/velvet/Manual.pdf):
+####Step 2. Install Velvet (see Manual at http://www.ebi.ac.uk/~zerbino/velvet/Manual.pdf):
 
 ```bash
 sudo apt-get install velvet
@@ -75,7 +75,7 @@ sudo apt-get install velvet
 
 (note I also placed the zipped program in the ~/programs folder just in case, but it would have to be installed)
 
-Step 3. The first program you need to run is velveth
+####Step 3. The first program you need to run is velveth
 
 Velveth takes in a number of sequence files, produces a hashtable (i.e. all the kmers), then outputs two files in an output directory (creating it if necessary). These files are called Sequences and Roadmaps, and are necessary to velvetg. 
 
@@ -109,7 +109,7 @@ Run the above command.
 A Roadmap file is produced that is used as input for the next stage of velvet. For each k-mer observed in the set of reads, the hash table records the ID of the first read encountered containing that k-mer and the position of its occurrence within that read. This file rewrites each read as a set of original k-mers combined with overlaps with previously hashed reads. 
 
 
-Step 4. The next step is to make make the graph, simplify the graph, correct errors and resolve repeats. This is done by velvetg.
+####Step 4. The next step is to make make the graph, simplify the graph, correct errors and resolve repeats. This is done by velvetg.
 
 velvetg is run as follows:
 
@@ -142,7 +142,7 @@ Similarly, statistics derived from lengths are also subjected to this transforma
 ###Question 2) For a k-mer of 21 what is would the k-mer coverage be for this genome assembly?
 
 
-Step 5. Assess assembly: There are several basic metrics to quantify the quality of a genome assembly. N50 is a common statistic similar to a mean or median contig length, but has greater weight given to the longer contigs. It is defined as the contig length at which half the bases in the genome are in contigs that size or larger. Other metrics include the longest contig size, the total size of the assembly and total contig number. 
+####Step 5. Assess assembly: There are several basic metrics to quantify the quality of a genome assembly. N50 is a common statistic similar to a mean or median contig length, but has greater weight given to the longer contigs. It is defined as the contig length at which half the bases in the genome are in contigs that size or larger. Other metrics include the longest contig size, the total size of the assembly and total contig number. 
 
 ###Question 3) Can you think of other ways to assess assembly quality? What might be the trouble with only focusing on maximizing N50? Discuss this with your group.
 
