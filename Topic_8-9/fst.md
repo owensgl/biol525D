@@ -33,6 +33,55 @@ make install
 Next we'll take the Fst values and plot them in R. Transfer the biol525D.weir.fst file to your computer
 
 
+``` r
+#Load in some libraries
+#install.packages("qqman")
+library(qqman)
+library(ggplot2)
+library(dplyr)
+```
+
+``` r
+#Load in the data
+fst.filename <- "Downloads/biol525D.weir.fst"
+data <- read.table(fst.filename, header=T)
+
+#Now one problem with plotting this is that the chromosomes are not intergers
+summary(data$CHROM)
+```
+
+    ## Ha0_73Ns      Ha1     Ha10     Ha11     Ha12     Ha13     Ha14     Ha15 
+    ##       73      166      417      172      211      294      416      294 
+    ##     Ha16     Ha17      Ha2      Ha3      Ha4      Ha5      Ha6      Ha7 
+    ##      208      336      109      274      287      247      203       90 
+    ##      Ha8      Ha9 
+    ##      248      384
+
+``` r
+#This strips the "Ha" from the chromosome name
+data$CHROM <- gsub("Ha", "", data$CHROM)
+
+#This removes the 0_73Ns chromosome
+data %>% filter(CHROM != "0_73Ns") -> data
+
+#Lets also remove values that are NA
+data %>% filter(WEIR_AND_COCKERHAM_FST != "NaN") -> data
+
+#It's important to make sure that the chromosomes are numeric instead of character
+data$CHROM <- as.numeric(data$CHROM)
+
+#Lets do a basic plot using the manhattan tool in qqman. This is generally designed for plotting pvalues from GWAS, but it works here.
+manhattan(data, chr="CHROM",bp="POS",p="WEIR_AND_COCKERHAM_FST", snp="POS",
+          logp=FALSE,ylab="Fst")
+```
+
+![](figure/fst1-1.png)
+
+Question 3
+==========
+
+Do a manhattan plot in ggplot or base R. As a bonus, make it look nice.
+
 
 
 
