@@ -44,10 +44,13 @@ cd ..
 $python setup.py build_ext --inplace
 #Fast structure is now good to go! Remember to run it using the python version in anaconda
 ```
-Now to convert between file types we're going to use PGDspider. \
+Now to convert between file types we're going to use PGDspider.
+
 First download it to your home computer from [here](http://www.cmpg.unibe.ch/software/PGDSpider/#Download_and_Installation_Instructions)
-We're going to create a spid file to help pgdspider convert a vcf to faststructure format. This [video](https://www.youtube.com/watch?v=I7hJvE0USxQ) demonstrates how. \
-We take the spid file created and transfer it to your server using cyberduck. \
+We're going to create a spid file to help pgdspider convert a vcf to faststructure format. This [video](https://www.youtube.com/watch?v=I7hJvE0USxQ) demonstrates how.
+
+We take the spid file created and transfer it to your server using cyberduck.
+
 Next we download pgdspider to your server
 ```bash
 cd /home/ubuntu/bin/
