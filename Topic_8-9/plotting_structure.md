@@ -1,12 +1,11 @@
 # Plotting FastStructure results in R 
 
-
-```r
+``` r
 #First we install some packages
 
-install.packages("dplyr")
-install.packages("ggplot2")
-install.packages("reshape")
+#install.packages("dplyr")
+#install.packages("ggplot2")
+#install.packages("reshape")
 #
 
 #Then we load those packages.
@@ -16,12 +15,12 @@ library(dplyr)
 library(ggplot2)
 ```
 
-```r
+``` r
 #This file has information on our samples
 
-sampleinfo <- read.csv("Downloads/biol525D_popinfo.csv",header=T)
+sampleinfo <- read.csv("/Users/gregoryowens/Downloads/biol525D_popinfo.csv",header=T)
 #data name and directory
-name <- "Downloads/faststructure/biol525D"
+name <- "/Users/gregoryowens/Downloads/faststructure/biol525D"
 #We're going to loop through each k value, so we need a dataframe to save those values
 data.full <- data.frame(name=character(),
                         pop=character(),
@@ -52,9 +51,9 @@ data.full %>% filter(k == 2) %>% #This selects only the k=2 lines out of the ful
   geom_bar(stat = "identity",position="stack")
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
+![](figure/structure1-1.png)
 
-```r
+``` r
 #From this, we can easily scale up to all samples using facet
 data.full %>%
   ggplot(.,aes(x=name,y=value,fill=factor(variable))) +
@@ -62,9 +61,9 @@ data.full %>%
   facet_wrap(~k, nrow=5)
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-2.png) 
+![](figure/structure1-2.png)
 
-```r
+``` r
 #How about if we want to order samples by a variable
 data.full %>%
   mutate(name = factor(name, levels = name[order(color)])) %>%
@@ -73,24 +72,18 @@ data.full %>%
   facet_wrap(~k, nrow=5)
 ```
 
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
+    ## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+    ## else paste0(labels, : duplicated levels in factors are deprecated
 
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
+    ## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+    ## else paste0(labels, : duplicated levels in factors are deprecated
 
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
+    ## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+    ## else paste0(labels, : duplicated levels in factors are deprecated
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-3.png) 
+![](figure/structure1-3.png)
 
-```r
+``` r
 #The order works, but lets try to make it look nicer
 
 data.full %>%
@@ -110,24 +103,18 @@ data.full %>%
   guides(fill = guide_legend(title = "Group", title.position = "left"))
 ```
 
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
+    ## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+    ## else paste0(labels, : duplicated levels in factors are deprecated
 
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
+    ## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+    ## else paste0(labels, : duplicated levels in factors are deprecated
 
-```
-## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
-## else paste0(labels, : duplicated levels in factors are deprecated
-```
+    ## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
+    ## else paste0(labels, : duplicated levels in factors are deprecated
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-4.png) 
-## Plotting challenge 1
-* For K = 2, plot the faststructure results and divide your samples by populations. Furthermore, make group 1 red and group 2 blue. Title the plot "*Helianthus annuus* is great!"
+![](figure/structure1-4.png) \#\# Plotting challenge 1 \* For K = 2, plot the faststructure results and divide your samples by populations. Furthermore, make group 1 red and group 2 blue. Title the plot "*Helianthus annuus* is great!"
 
-## Plotting challenge 2
-* Download the "biol525D_FSexample" datasets from the github/Topic 8-9 page. Plot each of these as structure results and order the individuals by their admixture scores. 
+Plotting challenge 2
+--------------------
+
+-   Download the "biol525D\_FSexample" datasets from the github/Topic 8-9 page. Plot each of these as structure results and order the individuals by their admixture scores.
