@@ -192,3 +192,5 @@ Plotting challenge 2
 --------------------
 
 -   Make a single figure with four different versions of the same map with different types of maps.
+
+Lastly, lets move on to [plotting Fst across the genome](https://github.com/owensgl/biol525D/blob/master/Topic_8-9/fst.md)
