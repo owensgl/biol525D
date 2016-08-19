@@ -9,7 +9,7 @@ Try different filtering options for the GBS data (see http://prinseq.sourceforge
 ###Topic 4:
 I want to reduce the percent of incorrectly mapped reads when using BWA. What setting or settings should I change in BWA?
 ###Topic 5:
-
+Quantify the assembly metrics for your first assembly that you ran without any options (sa_assembly21). Pick two or three different sets of parameters to run. Compare the resulting assemblies with one another and discuss which ones seemed to have improved the assembly and why that might be.
 ####Questions 2-5 are due Monday August 22nd.
 ###Topic 6:
 
