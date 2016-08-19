@@ -142,7 +142,9 @@ Similarly, statistics derived from lengths are also subjected to this transforma
 ###Question 2) For a k-mer of 21 what is would the k-mer coverage be for this genome assembly?
 
 
-####Step 5. Assess assembly: There are several basic metrics to quantify the quality of a genome assembly. N50 is a common statistic similar to a mean or median contig length, but has greater weight given to the longer contigs. It is defined as the contig length at which half the bases in the genome are in contigs that size or larger. Other metrics include the longest contig size, the total size of the assembly and total contig number. 
+####Step 5. Assess assembly 
+There are several basic metrics to quantify the quality of a genome assembly. 
+N50 is a common statistic similar to a mean or median contig length, but has greater weight given to the longer contigs. It is defined as the contig length at which half the bases in the genome are in contigs that size or larger. Other metrics include the longest contig size, the total size of the assembly and total contig number. 
 
 ###Question 3) Can you think of other ways to assess assembly quality? What might be the trouble with only focusing on maximizing N50? Discuss this with your group.
 
