@@ -19,9 +19,9 @@ library(ggplot2)
 ```r
 #This file has information on our samples
 
-sampleinfo <- read.csv("/Users/gregoryowens/Downloads/biol525D_popinfo.csv",header=T)
+sampleinfo <- read.csv("Downloads/biol525D_popinfo.csv",header=T)
 #data name and directory
-name <- "/Users/gregoryowens/Downloads/faststructure/biol525D"
+name <- "Downloads/faststructure/biol525D"
 #We're going to loop through each k value, so we need a dataframe to save those values
 data.full <- data.frame(name=character(),
                         pop=character(),
