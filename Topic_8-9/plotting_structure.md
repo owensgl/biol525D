@@ -118,3 +118,6 @@ Plotting challenge 2
 --------------------
 
 -   Download the "biol525D\_FSexample" datasets from the github/Topic 8-9 page. Plot each of these as structure results and order the individuals by their admixture scores.
+
+
+Now lets move onto [Principal Component Analysis](https://github.com/owensgl/biol525D/blob/master/Topic_8-9/pca.md)
