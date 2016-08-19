@@ -4,8 +4,8 @@ First used cyberduck to download "biol525D.snps.vcf" from your server
 
 ``` r
 #First we install some packages
-#source("https://bioconductor.org/biocLite.R")
-#biocLite("SNPRelate")
+source("https://bioconductor.org/biocLite.R")
+biocLite("SNPRelate")
 
 #Then load them
 library(SNPRelate)
@@ -15,9 +15,9 @@ library(dplyr)
 
 ``` r
 #Set up file names
-vcf_filename<- c("/Users/gregoryowens/Downloads/biol525D.snps.vcf")
-gds_filename<- c("/Users/gregoryowens/Downloads/biol525D.snps.gds")
-sampleinfo_filename <- c("/Users/gregoryowens/Downloads/biol525D_popinfo.csv")
+vcf_filename<- c("Downloads/biol525D.snps.vcf")
+gds_filename<- c("Downloads/biol525D.snps.gds")
+sampleinfo_filename <- c("Downloads/biol525D_popinfo.csv")
 #Convert your vcf to gds for use with snprelate
 snpgdsVCF2GDS(vcf_filename, gds_filename,  method="biallelic.only",ignore.chr.prefix="Ha")
 ```
@@ -25,15 +25,15 @@ snpgdsVCF2GDS(vcf_filename, gds_filename,  method="biallelic.only",ignore.chr.pr
     ## VCF Format ==> SNP GDS Format
     ## Method: exacting biallelic SNPs
     ## Number of samples: 8
-    ## Parsing "/Users/gregoryowens/Downloads/biol525D.snps.vcf" ...
+    ## Parsing "Downloads/biol525D.snps.vcf" ...
     ##  import 4429 variants.
     ## + genotype   { Bit2 8x4429, 8.7K } *
     ## Optimize the access efficiency ...
     ## Clean up the fragments of GDS file:
-    ##     open the file '/Users/gregoryowens/Downloads/biol525D.snps.gds' (44.9K)
+    ##     open the file 'Downloads/biol525D.snps.gds' (44.9K)
     ##     # of fragments: 46
-    ##     save to '/Users/gregoryowens/Downloads/biol525D.snps.gds.tmp'
-    ##     rename '/Users/gregoryowens/Downloads/biol525D.snps.gds.tmp' (44.6K, reduced: 312B)
+    ##     save to 'Downloads/biol525D.snps.gds.tmp'
+    ##     rename 'Downloads/biol525D.snps.gds.tmp' (44.6K, reduced: 312B)
     ##     # of fragments: 20
 
 ``` r
@@ -147,8 +147,8 @@ Mapping your data
 ``` r
 #Now lets put this on a map
 #First we install some more packages
-#install.packages("viridis") #This is a nice color pallete
-#install.packages("ggmap") #This is for mapping
+install.packages("viridis") #This is a nice color pallete
+install.packages("ggmap") #This is for mapping
 #Then we load those libraries
 library(viridis)
 library(ggmap)
