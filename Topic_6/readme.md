@@ -23,7 +23,7 @@ First unpack.
 ```bash
 gunzip -d RSEM-1.2.31.tar.gz
 
-```bash
+
 tar -xvf RSEM-1.2.31.tar
 ```
 Then compile the program. 
