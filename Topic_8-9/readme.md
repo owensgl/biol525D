@@ -1,5 +1,10 @@
 # Topic 8: Population genomics
 
+### Daily Questions:
+1. For a site that is invariant in both populations (i.e. a locus with no variation), what is Fst?
+2. Which two samples are the most extreme outliers (in either direction) for PC1?
+3. What is the average Fst between the two populations in our example data? Hint, SNPrelate can calculate Fst.
+
 The first thing we have to do is install some programs.
 
 ```bash
