@@ -122,7 +122,7 @@ $java -jar $gatk \
 
 cat $home/$project.snps.tab |sed 's/.GT   /  /g' | sed 's/.GT$//g' | sed 's|/||g' | sed 's/\.\./NN/g' | grep -v '*' > $home/$project.snps.formatted.tab
 #Note the sed 's/.GT   /  /g' command requires that the spaces are actually tabs. When copying and pasting, they are often substituted for spaces. To put an actual tab in the command, press ctrl-v, tab. 
-
+```
 ###Daily assignments
 1. Another program that is useful for filtering and formatting vcf files is [vcftools](https://vcftools.github.io/index.html). Successfully install this program and record the steps necessary. 
 2. You're going to use a set of SNPs to estimate population structure, what filters should you use and why? What about if you were using them for QTL mapping?
