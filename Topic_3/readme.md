@@ -78,7 +78,7 @@ Or removing N's from the left and right hand side of the sequences:
 
 Low complexity sequences can be filtered using:
 
--lc_method [dust/entropy] -lc_threshold [7
+-lc_method [dust/entropy] -lc_threshold [7/70]
 
 From the manual: 
 
