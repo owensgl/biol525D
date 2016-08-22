@@ -119,4 +119,17 @@ ggtree(tree) +
 
 Put bootstrap and aLRT values on all internal nodes of the midpoint rooted tree. For bonus points, highlight the two populations with different colors.
 
+## Splitstree
+Now we want to try out splitstree, a reticulate network phylogeny. Download it [here](http://ab.inf.uni-tuebingen.de/data/software/splitstree4/download/welcome.html). 
+It should just run if you have the correct version of java. For newer macs you may have to install an older version of java, it should be a suggestion when you attempt to run the program.
+Before we download the fasta file we have to replace all N with ?, because splitstree does not accept N.
+```bash
+cat biol525D.snps.fasta | sed s/N/?/g biol525D.snps.fasta > biol525D.snps.splitstree.fasta
+```
+Then transfer it to your laptop. Open Splitstree and select the biol525D.snps.splitstree.fasta file.
+The first tree you see is a NeighbourNet, but you can also select many other algorithms or distance methods. When you're done, it can be exported as a svg for editing in adobe illustrator or inkscape. 
+
+
+
+
 
