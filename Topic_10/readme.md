@@ -129,7 +129,9 @@ cat biol525D.snps.fasta | sed s/N/?/g biol525D.snps.fasta > biol525D.snps.splits
 Then transfer it to your laptop. Open Splitstree and select the biol525D.snps.splitstree.fasta file.
 The first tree you see is a NeighbourNet, but you can also select many other algorithms or distance methods. When you're done, it can be exported as a svg for editing in adobe illustrator or inkscape. 
 
-
+## Daily Questions:
+1. What are two biological scenarios where you would want to use a reticulate tree, versus the standard non-reticulate tree, to represent the phylogeny?
+2. What does it mean when something has 50% bootstrap support? What are two possible reasons that a node may have low support? Include one biological and one methodological reason.
 
 
 
