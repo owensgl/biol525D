@@ -19,4 +19,104 @@ bin/iqtree-omp-1.4.3-Linux/bin/iqtree-omp -s biol525D.snps.fasta -st DNA -m TEST
 In the next step, we're going to use R to visualize our tree using ggtree. To do that you need to download "biol525D.snps.fasta.treefile" to your laptop. Another way to visualize a tree is [Figtree](http://tree.bio.ed.ac.uk/software/figtree/).
 
 
+``` r
+#First we install some packages
+#source("https://bioconductor.org/biocLite.R")
+#biocLite("ggtree")
+#install.packages("phytools")
+
+#Then load some libraries
+library(ggtree)
+library(phytools)
+library(phangorn)
+```
+
+``` r
+#Then load in our data
+filename <- "/Users/gregoryowens/Downloads/biol525D.snps.fasta.treefile"
+tree <- read.tree(filename)
+
+#Lets take a look
+ggtree(tree, layout="unrooted") +
+  #This labels nodes by their number, so we can work with them.
+  geom_text2(aes(subset=!isTip, label=node)) + 
+  #This labels tips.
+  geom_tiplab() 
+```
+
+![](figure/ggtree-1.png)
+
+``` r
+#Since we have two populations, we don't have a known root. 
+#In this case we should do a midpoint root between the two populations
+
+tree.midpoint <- midpoint(tree)
+```
+
+    ## Warning in as.splits.phylo(x): NAs introduced by coercion
+
+    ## Warning in max(na.omit(conf)): no non-missing arguments to max; returning -
+    ## Inf
+
+    ## Warning in as.splits.phylo(y): NAs introduced by coercion
+
+    ## Warning in max(na.omit(conf)): no non-missing arguments to max; returning -
+    ## Inf
+
+``` r
+ggtree(tree.midpoint) +
+  geom_text2(aes(subset=!isTip, label=node)) + 
+  geom_tiplab() 
+```
+
+![](figure/ggtree-2.png)
+
+``` r
+#How about we now label our two populations
+ggtree(tree.midpoint) +
+  geom_text2(aes(subset=!isTip, label=node)) + 
+  geom_tiplab() +
+  geom_cladelabel(node=15, label="Population 1", align=T, offset=.01) +
+  geom_cladelabel(node=12, label="Population 2", align=T, offset=.01)
+```
+
+![](figure/ggtree-3.png)
+
+``` r
+#Uh oh, labels are off the printed screen. Here's a work around
+ggtree(tree.midpoint) +
+  geom_text2(aes(subset=!isTip, label=node)) + 
+  geom_tiplab() +
+  geom_cladelabel(node=15, label="Population 1", align=T, offset=.01) +
+  geom_cladelabel(node=12, label="Population 2", align=T, offset=.01) + 
+  geom_cladelabel(node=12, label="", align=T, offset=.05,color="white")
+```
+
+![](figure/ggtree-4.png)
+
+``` r
+#Using similar grammar, we can also include bootstrap/aLRT support values for nodes. 
+#Unfortunately, when we midpoint rooted it, that information is lost, so lets put info on the original tree
+ggtree(tree) +
+  geom_tiplab() +
+  geom_label2(aes(subset=12, label=label)) +
+  geom_label2(aes(subset=10, label=label)) 
+```
+
+![](figure/ggtree-5.png)
+
+``` r
+#We can also make up our labels
+ggtree(tree) +
+  geom_tiplab() +
+  geom_label2(aes(subset=12, label='Robots')) +
+  geom_label2(aes(subset=10, label='Non-robots')) 
+```
+
+![](figure/ggtree-6.png)
+
+### Coding challenge 1
+
+Put bootstrap and aLRT values on all internal nodes of the midpoint rooted tree. For bonus points, highlight the two populations with different colors.
+
 
