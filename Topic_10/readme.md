@@ -15,5 +15,8 @@ wget https://github.com/Cibiv/IQ-TREE/releases/download/v1.4.3/iqtree-omp-1.4.3-
 bin/iqtree-omp-1.4.3-Linux/bin/iqtree-omp -s biol525D.snps.fasta -st DNA -m TEST+ASC -nt 2 -alrt 1000 -lbp 1000
 
 #This produces several output files, including a log and a couple different versions of the treefile. The -m TEST command does a model test and selects the best substition model. 
+```
+In the next step, we're going to use R to visualize our tree using ggtree. To do that you need to download "biol525D.snps.fasta.treefile" to your laptop. Another way to visualize a tree is [Figtree](http://tree.bio.ed.ac.uk/software/figtree/).
+
 
 
