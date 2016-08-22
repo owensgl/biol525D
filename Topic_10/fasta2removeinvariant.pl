@@ -39,7 +39,7 @@ foreach my $n (2..$sample_counter){
   foreach my $i (0..$n_bases){
     my $bases = keys %{ $base_hash{$i} };
     if ($bases > 1){
-      print "$data_hash{$sample_counter}{$i}";
+      print "$data_hash{$n}{$i}";
     }
   }
 }
