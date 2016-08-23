@@ -12,7 +12,7 @@ I want to reduce the percent of incorrectly mapped reads when using BWA. What se
 Quantify the assembly metrics for your first assembly that you ran without any options (sa_assembly21). Pick two or three different sets of parameters to run. Compare the resulting assemblies with one another and discuss which ones seemed to have improved the assembly and why that might be.
 ####Questions 2-5 are due Monday August 22nd.
 ###Topic 6:
-
+What expression measure would you use to compare gene expression between different genes and why? Is it appropriate to compare the raw expression counts? Can you get more appropriate data from RSEM?
 ###Topic 7:
 
 ###Topic 8:
