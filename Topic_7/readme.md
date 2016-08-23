@@ -103,7 +103,7 @@ $java -jar $gatk \
 -T SelectVariants \
 -V $home/$project.vcf \
 -o $home/$project.snps.vcf \
--selectType SNP \ 
+-selectType SNP \
 -restrictAllelesTo BIALLELIC \
 --maxNOCALLfraction 0.2 \
 -log $log/${project}.selectvariants.log
