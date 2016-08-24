@@ -35,6 +35,7 @@ cd gsl-1.16
 make
 sudo make install
 
+cd /home/ubuntu/bin
 #Get faststructure
 git clone https://github.com/rajanil/fastStructure
 
