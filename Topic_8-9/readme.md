@@ -28,7 +28,7 @@ wget http://repo.continuum.io/archive/Anaconda2-4.1.1-Linux-x86_64.sh
 bash Anaconda2-4.1.1-Linux-x86_64.sh
 python=/home/ubuntu/anaconda2/bin/python
 #Install GNU scientific library
-wget http://gnu.mirror.vexxhost.com/gsl/gsl-latest.tar.gz
+wget http://ftp.gnu.org/gnu/gsl/gsl-1.16.tar.gz
 tar -zxvf gsl-latest.tar.gz
 cd gsl-1.16
 ./configure
