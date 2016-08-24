@@ -17,8 +17,6 @@ What expression measure would you use to compare gene expression between differe
 What is strand bias and why would you filter based on it?
 ###Topic 8:
 What is the average Fst between the two populations in our example data? Hint, SNPrelate can calculate Fst.
-###Topic 9:
-
 ###Topic 10:
-
+What does it mean when something has 50% bootstrap support? What are two possible reasons that a node may have low support? Include one biological and one methodological reason.
 ####Questions 6-10 are due Monday August 29th.
