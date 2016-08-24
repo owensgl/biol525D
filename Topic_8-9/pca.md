@@ -4,7 +4,7 @@ First used cyberduck to download "biol525D.snps.vcf" from your server
 
 ``` r
 #First we install some packages
-source("https://bioconductor.org/biocLite.R")
+source("http://bioconductor.org/biocLite.R")
 biocLite("SNPRelate")
 
 #Then load them
