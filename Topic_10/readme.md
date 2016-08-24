@@ -21,7 +21,7 @@ In the next step, we're going to use R to visualize our tree using ggtree. To do
 
 ``` r
 #First we install some packages
-source("https://bioconductor.org/biocLite.R")
+source("http://bioconductor.org/biocLite.R")
 biocLite("ggtree")
 install.packages("phytools")
 
