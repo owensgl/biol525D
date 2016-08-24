@@ -14,9 +14,9 @@ Quantify the assembly metrics for your first assembly that you ran without any o
 ###Topic 6:
 What expression measure would you use to compare gene expression between different genes and why? Is it appropriate to compare the raw expression counts? Can you get more appropriate data from RSEM?
 ###Topic 7:
-
+What is strand bias and why would you filter based on it?
 ###Topic 8:
-
+What is the average Fst between the two populations in our example data? Hint, SNPrelate can calculate Fst.
 ###Topic 9:
 
 ###Topic 10:
