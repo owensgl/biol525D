@@ -29,7 +29,7 @@ bash Anaconda2-4.1.1-Linux-x86_64.sh
 python=/home/ubuntu/anaconda2/bin/python
 #Install GNU scientific library
 wget http://ftp.gnu.org/gnu/gsl/gsl-1.16.tar.gz
-tar -zxvf gsl-latest.tar.gz
+tar -zxvf gsl-1.16.tar.gz
 cd gsl-1.16
 ./configure
 make
