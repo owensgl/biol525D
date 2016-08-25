@@ -6,6 +6,7 @@ We also have to remove invariant sites, so that we can use an ascertainment bias
 IQtree also has a [webserver](http://iqtree.cibiv.univie.ac.at/).
 
 ```
+#Note: biol525D.snps.formatted.tab comes from topic 7
 cat biol525D.snps.formatted.tab | perl bin/SNPtable2fasta_pickoneallele.pl | perl bin/fasta2removeinvariant.pl > biol525D.snps.fasta
 
 #Next we should install IQ-tree
