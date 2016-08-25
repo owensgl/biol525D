@@ -14,6 +14,8 @@ make
 make install
 
 #Next we use it to calculate Fst
+#You will have to download from the github page samplelist.P1.txt and samplelist.P2.txt
+cd /home/ubuntu
 /home/ubuntu/bin/vcftools/src/cpp/vcftools  \
 --vcf biol525D.snps.vcf \
 --weir-fst-pop samplelist.P1.txt --weir-fst-pop samplelist.P2.txt \
