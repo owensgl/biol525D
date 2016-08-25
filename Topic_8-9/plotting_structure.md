@@ -112,7 +112,12 @@ data.full %>%
     ## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
     ## else paste0(labels, : duplicated levels in factors are deprecated
 
-![](figure/structure1-4.png) \#\# Plotting challenge 1 \* For K = 2, plot the faststructure results and divide your samples by populations. Furthermore, make group 1 red and group 2 blue. Title the plot "*Helianthus annuus* is great!"
+![](figure/structure1-4.png)
+
+Plotting challenge 1
+--------------------
+
+-   For K = 2, plot the faststructure results and divide your samples by populations. Furthermore, make group 1 red and group 2 blue. Title the plot "*Helianthus annuus* is great!"
 
 Plotting challenge 2
 --------------------
