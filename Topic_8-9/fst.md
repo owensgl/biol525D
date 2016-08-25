@@ -38,7 +38,7 @@ Next we'll take the Fst values and plot them in R. Transfer the biol525D.weir.fs
 
 ``` r
 #Load in some libraries
-#install.packages("qqman")
+install.packages("qqman")
 library(qqman)
 library(ggplot2)
 library(dplyr)
