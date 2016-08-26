@@ -25,4 +25,8 @@ Students must produce a single shell script that does the following steps:
 * Runs a principal component analysis.
 * Outputs a pdf figure of the principal component analysis. 
 
-Assume all programs and libraries are locally installed in the "/home/ubuntu/bin" directory.
+Assume all programs and libraries are locally installed in the "/home/ubuntu/bin" directory. You can have additional scripts that are called by the shell script (i.e. an R script to run the PCA). 
+
+#### R help
+* To call an R script in command line use "R CMD BATCH Rscriptname.R"
+* To print a pdf use the [pdf() command](http://www.cookbook-r.com/Graphs/Output_to_a_file/)
