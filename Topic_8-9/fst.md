@@ -11,7 +11,7 @@ cd vcftools/
 ./autogen.sh 
 ./configure	
 make 
-make install
+sudo make install
 
 #Next we use it to calculate Fst
 #You will have to download from the github page samplelist.P1.txt and samplelist.P2.txt
