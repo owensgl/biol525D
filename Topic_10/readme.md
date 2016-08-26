@@ -9,8 +9,10 @@ IQtree also has a [webserver](http://iqtree.cibiv.univie.ac.at/).
 #Note: biol525D.snps.formatted.tab comes from topic 7
 cat biol525D.snps.formatted.tab | perl bin/SNPtable2fasta_pickoneallele.pl | perl bin/fasta2removeinvariant.pl > biol525D.snps.fasta
 
+cd bin
 #Next we should install IQ-tree
 wget https://github.com/Cibiv/IQ-TREE/releases/download/v1.4.3/iqtree-omp-1.4.3-Linux.tar.gz
+tar -xzf iqtree-omp-1.4.3-Linux.tar.gz
 
 #Next we run it
 bin/iqtree-omp-1.4.3-Linux/bin/iqtree-omp -s biol525D.snps.fasta -st DNA -m TEST+ASC -nt 2 -alrt 1000 -lbp 1000
