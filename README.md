@@ -45,6 +45,7 @@ You may use any of the materials provided here, and modify them in any way, prov
 ##LICENSE AND COPYRIGHT
 
 Copyright (C) 2015 S. Evan Staton, Sariel Hubner, Sam Yeaman
+
 Modified work (c) 2016. Gregroy Owens, Kathryn Hodgins
 
 This program is distributed under the MIT (X11) License, which should be distributed with the package. 
