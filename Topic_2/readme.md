@@ -60,7 +60,12 @@ Example:
 > seq 1000000
 ctrl-c to cancel
 ```
-##### *screen* commands:
+##### *Byobu* commands:
+First you have to install byobu on your system. In ubuntu you can use the following command:
+```bash
+>sudo apt-get byobu
+```
+
 * **screen** : Opens a new screen session. Only use when you don't have any running screens.
 * **screen -r** : Reattaches a detached screen session. Use this when re-entering a previously used screen.
 * **screen -d** : Detaches a currently attached screen you aren't using now. Use this when you forgot to formally detach from your screen last time you used it.
@@ -102,9 +107,7 @@ ctrl-c to cancel
 #### *Byobu*
 This program is similar to screen, but has some advantages over screen especially in keeping track of windows.
 You can find it [here](http://byobu.co/)
-
-
-Lastly, we will go through a [short tutorial](http://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro/) on R. 
+ 
 
 ###Daily Assignments
 1. What is one task you'd rather use an R script instead of a shell script? Why? What is one task you'd rather use a shell script, instead of an R script? Why?
