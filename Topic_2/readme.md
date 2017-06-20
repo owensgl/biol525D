@@ -60,8 +60,9 @@ Example:
 > seq 1000000
 ctrl-c to cancel
 ```
-##### *Byobu* commands:
+#### *Byobu*:
 [Guide to Byobu](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-byobu-for-terminal-management-on-ubuntu-16-04)
+
 First you have to install byobu on your system. In ubuntu you can use the following command:
 ```bash
 >sudo apt-get install byobu
@@ -71,6 +72,7 @@ Byobu can create multiple levels.
 * **Window** : A session can have multiple windows. You can easily toggle between windows using F3 and F4. If you start a command in a window and then detach the session or switch windows, the command will continue running. Generally when you are working, you will have multiple windows open for different tasks (e.g. testing a script, editing that script, looking for files).
 * **Panes** : A window can have multiple panes. Panes split your window into multiple panes. These are functionally windows, but exist together on your screen. Useful if you want to observe multiple things at one (e.g. watch cpu usage while running a script).
 
+#### Commands in Byobu
 * **byobu** : Opens byobu and attaches a session. If you have multiple sessions you will have to select which session to attach.
 * **F2** : Creates a new window.
 * **F3** : Toggles through your windows.
@@ -109,7 +111,7 @@ Byobu can create multiple levels.
 
  
 
-###Daily Assignments
+### Daily Assignments
 1. What is one task you'd rather use an R script instead of a shell script? Why? What is one task you'd rather use a shell script, instead of an R script? Why?
 2. Why is piping directly between programs faster than writing each consecutive output to the disk? Explain using information about computer hardware.
 
