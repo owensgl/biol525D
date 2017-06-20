@@ -61,52 +61,52 @@ Example:
 ctrl-c to cancel
 ```
 ##### *Byobu* commands:
+[Guide to Byobu](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-byobu-for-terminal-management-on-ubuntu-16-04)
 First you have to install byobu on your system. In ubuntu you can use the following command:
 ```bash
->sudo apt-get byobu
+>sudo apt-get install byobu
 ```
+Byobu can create multiple levels.
+* **Session**: A running instance of byobu. You can have multiple of these and when you start byobu you select which session you want to run. You can also switch between sessions. Sessions will continue existing and running on your computer until you shut them down. You may want multiple sessions if you connect to with different screen sizes. 
+* **Window** : A session can have multiple windows. You can easily toggle between windows using F3 and F4. If you start a command in a window and then detach the session or switch windows, the command will continue running. Generally when you are working, you will have multiple windows open for different tasks (e.g. testing a script, editing that script, looking for files).
+* **Panes** : A window can have multiple panes. Panes split your window into multiple panes. These are functionally windows, but exist together on your screen. Useful if you want to observe multiple things at one (e.g. watch cpu usage while running a script).
 
-* **screen** : Opens a new screen session. Only use when you don't have any running screens.
-* **screen -r** : Reattaches a detached screen session. Use this when re-entering a previously used screen.
-* **screen -d** : Detaches a currently attached screen you aren't using now. Use this when you forgot to formally detach from your screen last time you used it.
-* **Commands within screen**
-    * ctrl-a, c : Opens a new screen window.
-    * ctrl-a, n : Moves to the next screen window.
-    * ctrl-a, p : Moves to the previous screen window.
-    * ctrl-a, d : Detaches from screen session.
-    * exit : Closes current screen window.
+* **byobu** : Opens byobu and attaches a session. If you have multiple sessions you will have to select which session to attach.
+* **F2** : Creates a new window.
+* **F3** : Toggles through your windows.
+* **F8** : Renames the current open window in the list.
+* **F7** : Lets you view scrollback history in the current window.
+* **SHIFT+F2** :  Creates a horizontal pane.
+* **CTRL+F2** : Creates a vertical pane.
 
 **Exercise 2**:
-* Open a new screen session.
+* Open a new byobu session.
 * Make a new window.
 * In the new window print numbers 1 to 10000000 
-* Move back to your old screen.
+* Move back to your old window.
 * Periodically check on the number screen to check when it is done.
 * When counting is done, close the original empty window.
-* Detach from the screen session.
-* Reattach to the same screen session
-* Close the screen session entirely
+* Detach from the session.
+* Reattach to the same byobu session
+* Close the byobu session entirely
  
 <details> 
 <summary><b>Answer 2</b></summary>
   
    ```bash
-   > screen 
-   ctrl-a, c
+   > byobu 
+   F2
    > seq 10000000
-   ctrl-a, n
-   ctrl-a, p
+   F3
+   F3
    > exit
-   ctrl-a, d
-   > screen -r
+   F6
+   > byobu
    > exit
  ```
  
 </details>
 
-#### *Byobu*
-This program is similar to screen, but has some advantages over screen especially in keeping track of windows.
-You can find it [here](http://byobu.co/)
  
 
 ###Daily Assignments
