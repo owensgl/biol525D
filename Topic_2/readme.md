@@ -45,7 +45,7 @@ A key feature of command line use is piping the output of one command to the inp
   <summary>**Answer 1**  </summary>
    ```bash
     > seq 2 2 100 | grep -v 0 | sed "s/2$/2\!/g" | grep '\!\|3' > exercise_3.txt
-```
+   ```
 </details>
 
 ### Running commands in background
