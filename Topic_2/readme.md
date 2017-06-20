@@ -43,7 +43,7 @@ A key feature of command line use is piping the output of one command to the inp
 
 <details> 
 <summary>
-<bold>Answer 1</bold>
+<b>Answer 1</b>
 </summary>
 
 ```bash
