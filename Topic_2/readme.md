@@ -83,7 +83,8 @@ ctrl-c to cancel
 * Close the screen session entirely
  
 <details> 
-  <summary>**Answer 2**  </summary>
+<summary><b>Answer 2</b></summary>
+  
    ```bash
    > screen 
    ctrl-a, c
@@ -95,6 +96,7 @@ ctrl-c to cancel
    > screen -r
    > exit
  ```
+ 
 </details>
 
 #### *Byobu*
