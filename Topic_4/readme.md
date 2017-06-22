@@ -88,6 +88,7 @@ HINTS:
 
 <details> 
   <summary>**Answer**  </summary>
+  
    ```bash
    #First set up variable names
    bam=/home/ubuntu/bam
