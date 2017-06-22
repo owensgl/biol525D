@@ -2,7 +2,7 @@
 
 The first step is to install several programs we will be using. These should be installed in the "/home/ubuntu/bin" directory.
 
-####Programs to install
+#### Programs to install
 * Samtools
 * htslib
 * NextGenMap
@@ -87,7 +87,7 @@ HINTS:
 * Use a loop.
 
 <details> 
-  <summary>**Answer**  </summary>
+<summary> <b>Answer</b>  </summary>
   
    ```bash
    #First set up variable names
@@ -112,9 +112,9 @@ HINTS:
 </details>
 
 After your final bam files are created, and you've checked that they look good, you should remove intermediate files to save space. 
-###By topic 7, you should have created cleaned bam files for all samples.
+### By topic 7, you should have created cleaned bam files for all samples.
 
-##Daily assignments
+## Daily assignments
 1. Is an alignment with a higher percent of mapped reads always better than one with a lower percent? Why or why not?
 2. I want to reduce the percent of incorrectly mapped reads when using BWA. What setting or settings should I change in BWA?
 3. What are two ways that could be used to evaluate which aligner is best?
