@@ -124,10 +124,10 @@ cat $home/$project.snps.tab |sed 's/.GT   /  /g' | sed 's/.GT$//g' | sed 's|/||g
 #Note the sed 's/.GT   /  /g' command requires that the spaces are actually tabs. When copying and pasting, they are often substituted for spaces. To put an actual tab in the command, press ctrl-v, tab. 
 
 ```
-###Coding challenge 1:
+### Coding challenge 1:
 * Take the original vcf file produced and create a vcf of only high quality indels for population 1 samples. Make sure that each indel is actually variable within population 1 samples.
 
-###Daily assignments
+### Daily assignments
 1. Another program that is useful for filtering and formatting vcf files is [vcftools](https://vcftools.github.io/index.html). Successfully install this program and record the steps necessary. 
 2. You're trying to create a very stringent set of SNPs. Based on the site information GATK produces, what filters would you use? Include the actual GATK abbreviations.
 3. What is strand bias and why would you filter based on it?
