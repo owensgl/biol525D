@@ -17,7 +17,7 @@ Bioinformatics for Evolutionary Biology
 
 ##DATA REPOSITORY##
 
-All example data used in the class will be found on your Amazon AWS server. 
+All example data used in the class will be found on your WestCloud server. 
 
 ##NAVIGATING THIS SITE##
 
@@ -46,7 +46,7 @@ You may use any of the materials provided here, and modify them in any way, prov
 
 Copyright (C) 2015 S. Evan Staton, Sariel Hubner, Sam Yeaman
 
-Modified work (c) 2016. Gregroy Owens, Kathryn Hodgins
+Modified work (c) 2016, 2017. Gregory Owens, Kathryn Hodgins
 
 This program is distributed under the MIT (X11) License, which should be distributed with the package. 
 If not, it can be found here: http://www.opensource.org/licenses/mit-license.php
