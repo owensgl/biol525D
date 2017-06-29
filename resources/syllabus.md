@@ -4,31 +4,31 @@ Bio525D
 Topics in Systematics and Evolution:
 Bioinformatics for Evolutionary Biology
 
-##DESCRIPTION##
+## DESCRIPTION
 
 The purpose of this course is to provide graduate students with the theoretical knowledge and practical skills for the evolutionary analysis of next generation sequence data.  The course will entail data retrieval and assembly, alignment techniques, variant calling, gene expression analyses, hypothesis testing, and population genomic and phylogenomic approaches. The course will be presented as a series of short lectures and lab exercises over a two week period in August.
 
-##INSTRUCTORS##
+## INSTRUCTORS
 
 Dr. Gregory Owens, Dr. Kathryn Hodgins
 
-##FORMAT##
+## FORMAT
 
 A mix of lecture and lab exercises, running in a 2-hour block.  
 
-##PREREQUISITES##
+## PREREQUISITES
 
 Students should have basic knowledge in R and some command line knowledge (although the latter could be obtained during the course)
 
-##EVALUATION##
+## EVALUATION
 
 Participation in discussions and lab exercises.
 
-##LOCATION AND TIME##
+## LOCATION AND TIME
 
-TBD
+BRKX 2365, 10am to Noon
 
-##TOPICS##
+## TOPICS
 
 Resources for each topic are in a subdirectory based on the topic.
 
