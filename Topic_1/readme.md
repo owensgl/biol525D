@@ -6,7 +6,7 @@ Programs to install:
 * [MobaXterm](http://mobaxterm.mobatek.net/download.html) *For windows
 * [Cyberduck](https://cyberduck.io/?l=en)
 
-Log into WestCloud server using ssh (terminal or MobaXterm). You will find your IP address in this [table[(https://docs.google.com/spreadsheets/d/1TSDfm448WuiH9caFgP6sBOfktBVTjvtm9M27EyQS7dg/edit?usp=sharing). 
+Log into WestCloud server using ssh (terminal or MobaXterm). You will find your IP address in this [table](https://docs.google.com/spreadsheets/d/1TSDfm448WuiH9caFgP6sBOfktBVTjvtm9M27EyQS7dg/edit?usp=sharing). 
 ```bash
 ssh  -v  ubuntu@<your_server_ip>
 ```
