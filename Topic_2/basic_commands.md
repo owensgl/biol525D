@@ -47,7 +47,8 @@ cats
 * **echo** : Prints text you give it to STDOUT. 
 * **cat** : Prints all text of a file to STDOUT.
 * **less** : Lets you view text line by line, without loading the whole file (quit using q).
-* **vi** : Keyboard only minimal text editor (quit using :wq). [Guide here](https://www.cs.colostate.edu/helpdocs/vi.html)
+* **nano** : A minimal text editor with the easiest learning curve. (quite using ctrl-x). [Guide here](https://wiki.gentoo.org/wiki/Nano/Basics_Guide)
+* **vi** : Keyboard only minimal text editor with a steep learning curve. (quit using :wq). [Guide here](https://www.cs.colostate.edu/helpdocs/vi.html)
 * **emacs** : Another Keyboard only minimal text editor, but more expandable) (quit using ctrl-x, ctrl-c). [Guide here](http://mally.stanford.edu/~sr/computing/emacs.html)
 * **seq** : Prints sequential numbers up to your specified value.
 * **mv** : _Move_. Moves a file, also used for renaming.
