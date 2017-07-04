@@ -30,7 +30,8 @@ cats
 
 
 <details> 
-  <summary>**Answer 1**  </summary>
+<summary> <b>Answer 1</b>  </summary>
+  
    ```bash
     > mkdir exercise_1
     > mkdir exercise_1/inside_1
@@ -74,7 +75,8 @@ Lets see how they work.
 
 
 <details> 
-  <summary>**Answer 2**  </summary>
+<summary><b>Answer 2</b>  </summary>
+
    ```bash
     > echo "This course is fun!" > exercise_2.txt
     > cat exercise_2.txt
