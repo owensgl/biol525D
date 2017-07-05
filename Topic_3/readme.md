@@ -1,4 +1,4 @@
-#Topic 3 Fastq quality trimming
+# Topic 3 Fastq quality trimming
 
 
 ## Code break questions
@@ -18,7 +18,7 @@ Hint: for grep ^ indicates the start of the line and $ indicates the end of the 
 ### Tutorial
 
 To practice unix-based command line, run through some of the examples after the quality trimming section to learn how to navigate through the file system and do basic file manipulation.
-####Part 1.
+#### Part 1.
 Run prinseq-lite.pl on the unfiltered data first to examine the quality metrics:
 
 (if you need to find which directory you are in, type "pwd" at command prompt)
@@ -43,10 +43,10 @@ Now rerun the above commands on the fastq files named GBS12_brds_Pi_197A2_100k_R
 ```bash
 perl ~/programs/prinseq-lite-0.20.4/prinseq-lite.pl -fastq GBS12_brds_Pi_197A2_100k_R1.fastq -fastq2 GBS12_brds_Pi_197A2_100k_R2.fastq -graph_data GBS12_brds_Pi_197A2_100k_graph.txt 
 ```
-#####Daily Assignment 1
+##### Daily Assignment 1
 * Compare the two .html files. What kinds of differences do you see in the files? Why do you think these differences are found (think about the types of data you are analyzing)? 
 
-####Part 2.
+#### Part 2.
 2. Within prinseq (and most other programs), "trimming" will not affect the number of reads you have, but will alter the characteristics of the sequencing, while "filtering" will remove some reads that do not pass the criteria. This can result in un-paired reads in the two _1 and _2 files, but some programs (including prinseq) take care of this by outputting separate files for the good (i.e. paired) reads and the unpaired (i.e. singletons) where one read has been filtered. 
 
 Trim off sequences from either end with less than a quality score of 10 (-trim_qual_left and -trim_qual_right), and filter any sequences that have less than 70 base pairs (-min_len 70):
@@ -72,7 +72,7 @@ Or removing N's from the left and right hand side of the sequences:
 -trim_ns_left 3
 -trim_ns_right 3
 
-####Daily assignment 2
+#### Daily assignment 2
 * Try different filtering options for the GBS data  (see http://prinseq.sourceforge.net/manual.html for options) and plot QC graphs. Discuss in a group of four which options you would choose to implement if this was your data.
 
 
