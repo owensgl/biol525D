@@ -63,32 +63,43 @@ wget https://github.com/broadinstitute/picard/releases/download/2.9.4/picard.jar
 
 #Test alignment on NGM
 mkdir bam
-/home/ubuntu/bin/NextGenMap-0.5.2/bin/ngm-0.5.2/ngm -r /mnt/data/ref/Gasterosteus_aculeatus.BROADS1.dna_rm.toplevel.fa -1 /mnt/data/Topic4/Sample1_R1.fastq.gz -2  /mnt/data/Topic4/Sample1_R2.fastq.gz -o /home/ubuntu/bam/Sample1.ngm.sam -t 2
+/home/ubuntu/bin/NextGenMap-0.5.2/bin/ngm-0.5.2/ngm \
+-r /mnt/data/ref/Gasterosteus_aculeatus.BROADS1.dna_rm.toplevel.fa \
+-1 /mnt/data/Topic4/Sample1_R1.fastq.gz \
+-2 /mnt/data/Topic4/Sample1_R2.fastq.gz \
+-o /home/ubuntu/bam/Sample1.ngm.sam -t 2 \
+--rg-id Sample1 \
+--rg-sm Sample1 \ 
+--rg-pl illumina \
+--rg-pu Biol525D \
+--rg-lb Sample1_lib
 
 ###Run up to here at start of class.
 #Lets examine that bam file
 cd bam
-less -S P1-1.ngm.sam
-samtools view -bh P1-1.ngm.sam | samtools sort > P1-1.ngm.bam #Convert to bam and sort
-samtools index P1-1.ngm.bam
-samtools tview P1-1.ngm.bam
-#Go to cp_gi_88656873:52624
+less -S Sample1.ngm.sam
+samtools view -bh Sample1.ngm.sam | samtools sort > Sample1.ngm.bam #Convert to bam and sort
+samtools index Sample1.ngm.bam
+samtools tview Sample1.ngm.bam
+#Go to groupIV:27900
 #Check alignment numbers
-samtools flagstat P1-1.ngm.bam > P1-1.ngm.stats.txt
+samtools flagstat Sample1.ngm.bam > Sample1.ngm.stats.txt
 
 #Test alignment on BWA
-/home/ubuntu/bin/bwa/bwa mem /home/ubuntu/ref/HA412.v1.1.bronze.20141015.fasta /home/ubuntu/fastq/P1-1_R1.fastq.gz /home/ubuntu/fastq/P1-1_R2.fastq.gz -t 2 | samtools view -bh | samtools sort > /home/ubuntu/bam/P1-1.bwa.bam 
+/home/ubuntu/bin/bwa/bwa mem /mnt/data/ref/Gasterosteus_aculeatus.BROADS1.dna_rm.toplevel.fa \
+/mnt/data/Topic4/Sample1_R1.fastq.gz \
+/mnt/data/Topic4/Sample1_R2.fastq.gz \
+-t 1 \
+-R '@RG\tID:Sample1\tSM:Sample1\tPL:illumina\tPU:Biol525D\tLB:Sample1_lib' |\
+samtools view -bh |\
+samtools sort > /home/ubuntu/bam/Sample1.bwa.bam 
 
-samtools index P1-1.bwa.bam
-samtools flagstat P1-1.bwa.bam > P1-1.bwa.stats.txt
+samtools index Sample1.bwa.bam
+samtools flagstat Sample1.bwa.bam > Sample1.bwa.stats.txt
 
 #Compare the two alignment programs.
 #We'll choose NGM for this exercise.
-#We then have to process the bam file for future use using picardtools
 
-/home/ubuntu/bin/jdk1.8.0_102/jre/bin/java -jar /home/ubuntu/bin/picard.jar AddOrReplaceReadGroups I=/home/ubuntu/bam/P1-1.ngm.bam O=/home/ubuntu/bam/P1-1.ngm.rg.bam RGID=P1-1 RGLB=biol525D RGPL=ILLUMINA RGPU=biol525D RGSM=P1-1 SORT_ORDER=coordinate VALIDATION_STRINGENCY=LENIENT COMPRESSION_LEVEL=0
-/home/ubuntu/bin/jdk1.8.0_102/jre/bin/java -jar /home/ubuntu/bin/picard.jar CleanSam I=/home/ubuntu/bam/P1-1.ngm.rg.bam O=/home/ubuntu/bam/P1-1.ngm.rg.clean.bam VALIDATION_STRINGENCY=LENIENT
-samtools index /home/ubuntu/bam/P1-1.ngm.rg.clean.bam
 
 ```
 We now need to write a script to put these parts together and run them in one go. 
@@ -102,7 +113,7 @@ HINTS:
    ```bash
    #First set up variable names
    bam=/home/ubuntu/bam
-   fastq=/home/ubuntu/fastq
+   fastq=/mnt/data/
    java=/home/ubuntu/bin/jdk1.8.0_102/jre/bin/java
    ngm=/home/ubuntu/bin/NextGenMap-0.5.0/bin/ngm-0.5.0/ngm
    bin=/home/ubuntu/bin
@@ -114,9 +125,7 @@ HINTS:
    do
         $ngm -r $ref -1 $fastq/${name}_R1.fastq.gz -2 $fastq/${name}_R2.fastq.gz -o $bam/${name}.ngm.sam -t 2
         samtools view -bh $bam/${name}.ngm.sam | samtools sort > $bam/${name}.ngm.bam
-        $java -jar $bin/picard.jar AddOrReplaceReadGroups I=$bam/${name}.ngm.bam O=$bam/${name}.ngm.rg.bam RGID=$name RGLB=biol525D RGPL=ILLUMINA RGPU=biol525D RGSM=$name SORT_ORDER=coordinate VALIDATION_STRINGENCY=LENIENT COMPRESSION_LEVEL=0
-        $java -jar $bin/picard.jar CleanSam I=$bam/${name}.ngm.rg.bam O=$bam/${name}.ngm.rg.clean.bam VALIDATION_STRINGENCY=LENIENT
-        samtools index $bam/${name}.ngm.rg.clean.bam
+
    done < $bam/samplelist.txt
 ```
 </details>
