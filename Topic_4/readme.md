@@ -10,18 +10,24 @@ The first step is to install several programs we will be using. These should be 
 * Picard tools
 
 ```bash
-screen -r
-#Download and extract samtools and htslib
-wget https://github.com/samtools/samtools/releases/download/1.3.1/samtools-1.3.1.tar.bz2
-wget https://github.com/samtools/htslib/releases/download/1.3.1/htslib-1.3.1.tar.bz2
-tar xvjf samtools-1.3.1.tar.bz2
-tar xvjf htslib-1.3.1.tar.bz2
+byobu
+
+mkdir bin
+cd bin
+
+#Download and extract java, samtools and htslib
+wget -c --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jre-8u131-linux-x64.tar.gz
+wget https://github.com/samtools/samtools/releases/download/1.5/samtools-1.5.tar.bz2
+wget https://github.com/samtools/htslib/releases/download/1.5/htslib-1.5.tar.bz2
+tar xvjf samtools-1.5.tar.bz2
+tar xvjf htslib-1.5.tar.bz2
+tar xzf jre-8u131-linux-x64.tar.gz
 
 #Install both programs
-cd samtools-1.3.1 
+cd samtools-1.5
 make
 sudo make install
-cd ../htslib-1.3.1
+cd ../htslib-1.5
 make
 sudo make install
 cd ..
@@ -32,28 +38,32 @@ cd bwa
 make
 cd ..
 
+#Make sure cmake is installed, so that you can install NextGenMap
+sudo apt-get install cmake
+sudo apt-get install build-essential
+
 #Download and install NextGenMap
-wget https://github.com/Cibiv/NextGenMap/archive/0.5.0.tar.gz -O NextGenMap-0.5.0.tar.gz
-tar xzvf NextGenMap-0.5.0.tar.gz
-cd NextGenMap-0.5.0/
+wget https://github.com/Cibiv/NextGenMap/archive/v0.5.2.tar.gz -O NextGenMap-0.5.2.tar.gz
+tar xzvf NextGenMap-0.5.2.tar.gz
+cd NextGenMap-0.5.2/
 mkdir -p build/
 cd build/
 cmake ..
 make
-cd ../../
+cd ~
 
 #Download Picardtools
-wget https://github.com/broadinstitute/picard/releases/download/2.6.0/picard.jar
+wget https://github.com/broadinstitute/picard/releases/download/2.9.4/picard.jar
 
-#Index the reference for both programs
-cd /home/ubuntu/ref/
-/home/ubuntu/bin/NextGenMap-0.5.0/bin/ngm-0.5.0/ngm -r HA412.v1.1.bronze.20141015.fasta
+#Index the reference for both programs. This is already done, but this is how you would do it.
+#cd /home/ubuntu/ref/
+#/home/ubuntu/bin/NextGenMap-0.5.2/bin/ngm-0.5.2/ngm -r Gasterosteus_aculeatus.BROADS1.dna_rm.toplevel.fa
 #/home/ubuntu/bin/bwa/bwa index HA412.v1.1.bronze.20141015.fasta #NOTE: This is already done because it takes an hour.
-cd ..
+#cd ..
 
 #Test alignment on NGM
 mkdir bam
-/home/ubuntu/bin/NextGenMap-0.5.0/bin/ngm-0.5.0/ngm -r /home/ubuntu/ref/HA412.v1.1.bronze.20141015.fasta -1 /home/ubuntu/fastq/P1-1_R1.fastq.gz -2  /home/ubuntu/fastq/P1-1_R2.fastq.gz -o /home/ubuntu/bam/P1-1.ngm.sam -t 2
+/home/ubuntu/bin/NextGenMap-0.5.2/bin/ngm-0.5.2/ngm -r /mnt/data/ref/Gasterosteus_aculeatus.BROADS1.dna_rm.toplevel.fa -1 /mnt/data/Topic4/Sample1_R1.fastq.gz -2  /mnt/data/Topic4/Sample1_R2.fastq.gz -o /home/ubuntu/bam/Sample1.ngm.sam -t 2
 
 ###Run up to here at start of class.
 #Lets examine that bam file
