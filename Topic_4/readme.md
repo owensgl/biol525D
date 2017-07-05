@@ -7,7 +7,6 @@ The first step is to install several programs we will be using. These should be 
 * htslib
 * NextGenMap
 * BWA
-* Picard tools
 
 ```bash
 byobu
@@ -51,9 +50,6 @@ cd build/
 cmake ..
 make
 cd ~
-
-#Download Picardtools for later
-wget https://github.com/broadinstitute/picard/releases/download/2.9.4/picard.jar
 
 #Index the reference for both programs. This is already done, but this is how you would do it.
 #cd /home/ubuntu/ref/
