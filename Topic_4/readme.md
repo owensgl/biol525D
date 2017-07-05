@@ -124,7 +124,8 @@ HINTS:
    #Then loop through the samples
    while read name
    do
-        $ngm -r $ref \
+        $ngm \
+          -r $ref \
           -1 $fastq/${name}_R1.fastq.gz \
           -2 $fastq/${name}_R2.fastq.gz \
           -o $bam/${name}.ngm.sam \
