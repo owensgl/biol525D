@@ -52,7 +52,7 @@ cmake ..
 make
 cd ~
 
-#Download Picardtools
+#Download Picardtools for later
 wget https://github.com/broadinstitute/picard/releases/download/2.9.4/picard.jar
 
 #Index the reference for both programs. This is already done, but this is how you would do it.
@@ -64,15 +64,15 @@ wget https://github.com/broadinstitute/picard/releases/download/2.9.4/picard.jar
 #Test alignment on NGM
 mkdir bam
 /home/ubuntu/bin/NextGenMap-0.5.2/bin/ngm-0.5.2/ngm \
--r /mnt/data/ref/Gasterosteus_aculeatus.BROADS1.dna_rm.toplevel.fa \
--1 /mnt/data/Topic4/Sample1_R1.fastq.gz \
--2 /mnt/data/Topic4/Sample1_R2.fastq.gz \
--o /home/ubuntu/bam/Sample1.ngm.sam -t 2 \
---rg-id Sample1 \
---rg-sm Sample1 \ 
---rg-pl illumina \
---rg-pu Biol525D \
---rg-lb Sample1_lib
+  -r /mnt/data/ref/Gasterosteus_aculeatus.BROADS1.dna_rm.toplevel.fa \
+  -1 /mnt/data/Topic4/Sample1_R1.fastq.gz \
+  -2 /mnt/data/Topic4/Sample1_R2.fastq.gz \
+  -o /home/ubuntu/bam/Sample1.ngm.sam -t 2 \
+  --rg-id Sample1 \
+  --rg-sm Sample1 \ 
+  --rg-pl illumina \
+  --rg-pu Biol525D \
+  --rg-lb Sample1_lib
 
 ###Run up to here at start of class.
 #Lets examine that bam file
@@ -86,13 +86,14 @@ samtools tview Sample1.ngm.bam
 samtools flagstat Sample1.ngm.bam > Sample1.ngm.stats.txt
 
 #Test alignment on BWA
-/home/ubuntu/bin/bwa/bwa mem /mnt/data/ref/Gasterosteus_aculeatus.BROADS1.dna_rm.toplevel.fa \
-/mnt/data/Topic4/Sample1_R1.fastq.gz \
-/mnt/data/Topic4/Sample1_R2.fastq.gz \
--t 1 \
--R '@RG\tID:Sample1\tSM:Sample1\tPL:illumina\tPU:Biol525D\tLB:Sample1_lib' |\
-samtools view -bh |\
-samtools sort > /home/ubuntu/bam/Sample1.bwa.bam 
+/home/ubuntu/bin/bwa/bwa mem \
+  /mnt/data/ref/Gasterosteus_aculeatus.BROADS1.dna_rm.toplevel.fa \
+  /mnt/data/Topic4/Sample1_R1.fastq.gz \
+  /mnt/data/Topic4/Sample1_R2.fastq.gz \
+  -t 1 \
+  -R '@RG\tID:Sample1\tSM:Sample1\tPL:illumina\tPU:Biol525D\tLB:Sample1_lib' |\
+ samtools view -bh |\
+ samtools sort > /home/ubuntu/bam/Sample1.bwa.bam 
 
 samtools index Sample1.bwa.bam
 samtools flagstat Sample1.bwa.bam > Sample1.bwa.stats.txt
@@ -113,18 +114,28 @@ HINTS:
    ```bash
    #First set up variable names
    bam=/home/ubuntu/bam
-   fastq=/mnt/data/
-   java=/home/ubuntu/bin/jdk1.8.0_102/jre/bin/java
-   ngm=/home/ubuntu/bin/NextGenMap-0.5.0/bin/ngm-0.5.0/ngm
+   fastq=/mnt/data/Topic4
+   ngm=/home/ubuntu/bin/NextGenMap-0.5.2/bin/ngm-0.5.2/ngm
    bin=/home/ubuntu/bin
-   ref=/home/ubuntu/ref/HA412.v1.1.bronze.20141015.fasta
+   ref=/home/ubuntu/ref/Gasterosteus_aculeatus.BROADS1.dna_rm.toplevel.fa
+   project=Biol525D
    #Then get a list of sample names, without suffixes
    ls $fastq | grep R1.fastq | sed s/_R1.fastq.gz//g > $bam/samplelist.txt
    #Then loop through the samples
    while read name
    do
-        $ngm -r $ref -1 $fastq/${name}_R1.fastq.gz -2 $fastq/${name}_R2.fastq.gz -o $bam/${name}.ngm.sam -t 2
-        samtools view -bh $bam/${name}.ngm.sam | samtools sort > $bam/${name}.ngm.bam
+        $ngm -r $ref \
+          -1 $fastq/${name}_R1.fastq.gz \
+          -2 $fastq/${name}_R2.fastq.gz \
+          -o $bam/${name}.ngm.sam \
+          --rg-id $name \
+          --rg-sm $name \ 
+          --rg-pl illumina \
+          --rg-pu $project \
+          --rg-lb ${name}_lib \
+          -t 1 |\
+        samtools view -bh $bam/${name}.ngm.sam |\
+        samtools sort > $bam/${name}.ngm.bam
 
    done < $bam/samplelist.txt
 ```
