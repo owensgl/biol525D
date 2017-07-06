@@ -66,7 +66,7 @@ mkdir bam
   -o /home/ubuntu/bam/Sample1.ngm.sam \
   -t 2 \
   --rg-id Sample1 \
-  --rg-sm Sample1 \ 
+  --rg-sm Sample1 \
   --rg-pl illumina \
   --rg-pu Biol525D \
   --rg-lb Sample1_lib
