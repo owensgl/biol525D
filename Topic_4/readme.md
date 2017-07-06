@@ -70,7 +70,6 @@ mkdir bam
   --rg-pu Biol525D \
   --rg-lb Sample1_lib
 
-###Run up to here at start of class.
 #Lets examine that bam file
 cd bam
 less -S Sample1.ngm.sam
