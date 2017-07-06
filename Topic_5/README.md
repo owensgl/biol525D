@@ -16,7 +16,7 @@ cut -c1- kmer.fa
 ```
 
 ```bash
-cut -c1-4 kmer.fa`
+cut -c1-4 kmer.fa
 ```
 		
 ```bash
@@ -54,12 +54,12 @@ Step 1. Enter this folder and unpack these data:
 gunzip -d frag_*.fastq.gz
 ```
 
-###Question 1) Given the above information, what is the expected coverage?
+### Question 1) Given the above information, what is the expected coverage?
 
 This information will be useful when you are running your genome assemblies.
 
 
-##Step 2. Install Velvet (see Manual at http://www.ebi.ac.uk/~zerbino/velvet/Manual.pdf):
+## Step 2. Install Velvet (see Manual at http://www.ebi.ac.uk/~zerbino/velvet/Manual.pdf):
 
 ```bash
 sudo apt-get install velvet
@@ -82,7 +82,7 @@ For all the options simply type velveth and refer to the velvet manual for more 
 Here is an example command line:
 
 ```bash
-velveth sa_assembly21 21 -shortPaired -fastq  -separate ~/data/Topic5/frag_1.fastq ~/data/Topic5/frag_2.fastq
+velveth sa_assembly21 21 -shortPaired -fastq  -separate ~/Topic5/data/frag_1.fastq ~/Topic5/data/frag_2.fastq
 ```
 
 21 is the kmer length
@@ -126,7 +126,7 @@ Where C=coverage, L=read length, and k=kmer length.
 
 Similarly, statistics derived from lengths are also subjected to this transformation. It is as simple as adding k-1 to the reported length to recover the length in bp. If the median coverage of an assembly is reported as Ck read k-mers per contig k-mer it is corresponds in fact to roughly CkL/(L + k −1) read basepair per contig basepair (assuming that contigs are significantly longer than the hash length).
 
-### Question 2) For a k-mer of 21 what is the k-mer coverage be for this genome assembly?
+### Question 2) For a k-mer of 21 what is the k-mer coverage for this genome assembly?
 
 
 Step 5. Assess assembly 
