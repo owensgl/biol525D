@@ -63,7 +63,8 @@ mkdir bam
   -r /mnt/data/ref/Gasterosteus_aculeatus.BROADS1.dna_rm.toplevel.fa \
   -1 /mnt/data/Topic4/Sample1_R1.fastq.gz \
   -2 /mnt/data/Topic4/Sample1_R2.fastq.gz \
-  -o /home/ubuntu/bam/Sample1.ngm.sam -t 2 \
+  -o /home/ubuntu/bam/Sample1.ngm.sam \
+  -t 2 \
   --rg-id Sample1 \
   --rg-sm Sample1 \ 
   --rg-pl illumina \
