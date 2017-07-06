@@ -26,6 +26,7 @@ sudo apt-get -y install zip
 sudo apt-get -y install zlib1g-dev
 sudo apt-get -y install libncurses5-dev
 sudo apt-get -y install git
+sudo apt-get -y install liblzma-dev
 mkdir bin
 cd bin
   wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz
