@@ -11,6 +11,20 @@ The first step is to install several programs we will be using. These should be 
 ```bash
 byobu
 
+
+#Before we do anything else, we have to install some dependencies. Put them in one at a time, if you copy and paste the whole list sometimes it doesn't work.
+sudo apt-get -y install cmake
+sudo apt-get -y install build-essential
+sudo apt-get -y install parallel
+sudo apt-get -y install zip
+sudo apt-get -y install zlib1g-dev
+sudo apt-get -y install libncurses5-dev
+sudo apt-get -y install git
+sudo apt-get -y install liblzma-dev
+sudo apt-get -y install libbz2-dev
+sudo apt-get -y install libbz2-1.0 libbz2-dev libbz2-ocaml libbz2-ocaml-dev
+sudo apt-get -y install liblzma-dev
+
 mkdir bin
 cd bin
 
