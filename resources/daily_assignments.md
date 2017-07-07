@@ -7,3 +7,8 @@ Answers should be sent to gregory.owens@alumni.ubc.ca
 3. Try different filtering options for the GBS data  (see http://prinseq.sourceforge.net/manual.html for options) and plot QC graphs. Discuss which options you would choose to implement if this was your data and why.
 
 4. Is an alignment with a higher percent of mapped reads always better than one with a lower percent? Why or why not?
+
+
+### Questions 2-5 are due on Monday, July 10th at 10 am. 
+
+### Questions 6-10 are due on Monday July 17th at 10 am. 
