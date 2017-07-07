@@ -4,3 +4,6 @@ Answers should be sent to gregory.owens@alumni.ubc.ca
 
 2. Why is piping directly between programs faster than writing each consecutive output to the disk? Explain using information about computer hardware.
 
+3. Try different filtering options for the GBS data  (see http://prinseq.sourceforge.net/manual.html for options) and plot QC graphs. Discuss which options you would choose to implement if this was your data and why.
+
+4. Is an alignment with a higher percent of mapped reads always better than one with a lower percent? Why or why not?
