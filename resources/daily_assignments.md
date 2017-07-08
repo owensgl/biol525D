@@ -8,6 +8,7 @@ Answers should be sent to gregory.owens@alumni.ubc.ca
 
 4. Is an alignment with a higher percent of mapped reads always better than one with a lower percent? Why or why not?
 
+5. Quantify the assembly metrics for your first assembly that you ran without any options (sa_assembly21). Pick two or three different sets of parameters to run. Compare the resulting assemblies with one another and discuss which ones seemed to have improved the assembly and why that might be. 
 
 ### Questions 2-5 are due on Monday, July 10th at 10 am. 
 
