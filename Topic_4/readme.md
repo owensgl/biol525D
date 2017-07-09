@@ -147,6 +147,7 @@ HINTS:
           -t 1 |\
         samtools view -bh $bam/${name}.ngm.sam |\
         samtools sort > $bam/${name}.ngm.bam
+        samtools index $bam/${name}.ngm.bam
 
    done < $bam/samplelist.txt
 ```
