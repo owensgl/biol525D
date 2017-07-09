@@ -1,6 +1,5 @@
 #install the package edgeR
 source ("http://www.bioconductor.org/biocLite.R")
-
 biocLite("edgeR")
 
 #find your working directory:
@@ -22,7 +21,7 @@ treat <- as.factor (sapply (strsplit(colnames(data),split = ""),"[[",1))
 #make a DGElist object out of the data
 list1 <- DGEList (counts = data, group = treat)
 
-#calculate the normalization factors to adjust the effective library size relative to other libraries in the dataset
+#calculate the normalization factors to adjust the effective library size relative to other libraries in the dataset (norm.factor that minimizes log fold change among samples)
 list1 <- calcNormFactors (list1)
 
 #calculate the counts per million
@@ -55,8 +54,9 @@ lrt.list2 <- glmLRT (glm.list2)
 top <- topTags (lrt.list2, n = 1000)$table
 
 fdr<-p.adjust(lrt.list2$table$PValue, method='fdr')
-hist(fdr,  breaks=1000)
+
 dim(lrt.list2$table[fdr<0.05,])
+length(lrt.list2$table$PValue[lrt.list2$table$PValue<0.05])
 
 #make a heatmap by getting the counts per million from each gene and turning them relative proportions (columns add up to 1)
 sub1 <- colSums (cpm.list2)
