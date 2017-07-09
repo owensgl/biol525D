@@ -127,7 +127,7 @@ HINTS:
    fastq=/mnt/data/Topic4
    ngm=/home/ubuntu/bin/NextGenMap-0.5.2/bin/ngm-0.5.2/ngm
    bin=/home/ubuntu/bin
-   ref=/home/ubuntu/ref/Gasterosteus_aculeatus.BROADS1.dna_rm.toplevel.fa
+   ref=/mnt/data/ref/Gasterosteus_aculeatus.BROADS1.dna_rm.toplevel.fa
    project=Biol525D
    #Then get a list of sample names, without suffixes
    ls $fastq | grep R1.fastq | sed s/_R1.fastq.gz//g > $bam/samplelist.txt
@@ -140,7 +140,7 @@ HINTS:
           -2 $fastq/${name}_R2.fastq.gz \
           -o $bam/${name}.ngm.sam \
           --rg-id $name \
-          --rg-sm $name \ 
+          --rg-sm $name \
           --rg-pl illumina \
           --rg-pu $project \
           --rg-lb ${name}_lib \
