@@ -144,7 +144,7 @@ HINTS:
           --rg-pl illumina \
           --rg-pu $project \
           --rg-lb ${name}_lib \
-          -t 1 |\
+          -t 1 
         samtools view -bh $bam/${name}.ngm.sam |\
         samtools sort > $bam/${name}.ngm.bam
         samtools index $bam/${name}.ngm.bam
