@@ -1,24 +1,20 @@
 # Topic 7: SNP calling with GATK
 In this tutorial we're going to call SNPs with GATK. We will run steps as we talk about them 
 ```bash
-screen -r
+byobu
 mkdir /home/ubuntu/log
 mkdir /home/ubuntu/gvcf
 #Set up variables
-ref=/home/ubuntu/ref/HA412.v1.1.bronze.20141015.fasta
-java=/home/ubuntu/bin/jdk1.8.0_102/jre/bin/java
-picard=/home/ubuntu/bin/picard.jar
+ref=/mnt/data/ref/Gasterosteus_aculeatus.BROADS1.dna_rm.toplevel.fa
+java=/home/ubuntu/bin/jre1.8.0_131/bin/java
 bam=/home/ubuntu/bam
-gatk=/home/ubuntu/bin/GenomeAnalysisTK.jar
+gatk=/mnt/data/bin/GenomeAnalysisTK.jar
 log=/home/ubuntu/log
 project=biol525D
 home=/home/ubuntu
-fastq=/home/ubuntu/fastq
 gvcf=/home/ubuntu/gvcf
 
-#First we need to index the reference for GATK.
-$java -jar $picard CreateSequenceDictionary R=$ref O=/home/ubuntu/ref/HA412.v1.1.bronze.20141015.dict
-samtools faidx $ref
+
 
 #Since we're going to apply most functions to each sample, lets make a list of samplenames
 ls $fastq | grep _R1.fastq | sed s/_R1.fastq.gz//g > $home/samplelist.txt
@@ -33,27 +29,7 @@ I=$bam/${name}.ngm.rg.clean.bam O=$bam/${name}.tmp.bam \
 M=$bam/${name}.duplicateinfo.txt 
 done </home/ubuntu/samplelist.txt
 
-#We now want to create a list of potential indel sites
-ls $bam | grep ngm.rg.clean.bam | grep -v bai | sed "s/^/\/home\/ubuntu\/bam\//g" > /home/ubuntu/${project}.bamfiles.list
-$java -Xmx8g -jar $gatk \
-   -T RealignerTargetCreator \
-   -R $ref \
-   -I /home/ubuntu/${project}.bamfiles.list \
-   -nt 2 \
-   -log $log/${project}.RealignerTargetCreator.log \
-   -o /home/ubuntu/${project}.realign.intervals
 
-#Now with the list of indel sites, we need to realign in those regions
-while read name 
-do 
-$java -Xmx8g -jar $gatk \
-  -T IndelRealigner \
-  -R $ref \
-  -I $bam/${name}.ngm.rg.clean.bam \
-  -targetIntervals $home/${project}.realign.intervals \
-  -o $bam/${name}.ngm.rg.clean.realign.bam \
-  -log  $log/${name}.IndelRealigner.log
-done <$home/samplelist.txt
 
 #Next we use the haplotypecaller to create a gvcf file for each sample
 time while read name 
