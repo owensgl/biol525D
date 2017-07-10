@@ -10,11 +10,31 @@ java=/home/ubuntu/bin/jre1.8.0_131/bin/java
 bam=/home/ubuntu/bam
 gatk=/mnt/data/bin/GenomeAnalysisTK.jar
 log=/home/ubuntu/log
-project=biol525D
 home=/home/ubuntu
 gvcf=/home/ubuntu/gvcf
+fastq=/mnt/data/Topic4
+ngm=/home/ubuntu/bin/NextGenMap-0.5.2/bin/ngm-0.5.2/ngm
+bin=/home/ubuntu/bin
+project=Biol525D
+#We need to make aligned bam files for all our samples. I've reduced the data in each sample because of RAM limitations, so please rerun this command
+for name in `ls $fastq | grep R1.fastq.gz | sed s/_R1.fastq.gz//g`
+do
+     $ngm \
+       -r $ref \
+       -1 $fastq/${name}_R1.fastq.gz \
+       -2 $fastq/${name}_R2.fastq.gz \
+       -o $bam/${name}.ngm.sam \
+       --rg-id $name \
+       --rg-sm $name \
+       --rg-pl illumina \
+       --rg-pu $project \
+       --rg-lb ${name}_lib \
+       -t 1 
+     samtools view -bh $bam/${name}.ngm.sam |\
+     samtools sort > $bam/${name}.ngm.bam
+     samtools index $bam/${name}.ngm.bam
 
-
+done
 
 #Since we're going to apply most functions to each sample, lets make a list of samplenames
 ls $fastq | grep _R1.fastq | sed s/_R1.fastq.gz//g > $home/samplelist.txt
@@ -26,24 +46,22 @@ while read name
 do 
 $java -jar $picard MarkDuplicates \
 I=$bam/${name}.ngm.rg.clean.bam O=$bam/${name}.tmp.bam \
-M=$bam/${name}.duplicateinfo.txt 
-done </home/ubuntu/samplelist.txt
+M=$log/${name}.duplicateinfo.txt 
+done < $home/samplelist.txt
 
 
 
 #Next we use the haplotypecaller to create a gvcf file for each sample
-time while read name 
+while read name 
 do 
-$java -Xmx8g -jar $gatk \
+$java -Xmx3g -jar $gatk \
    -l INFO \
    -R $ref \
    -log $log/${project}.HaplotypeCaller.log \
    -T HaplotypeCaller \
-   -I $bam/${name}.ngm.rg.clean.realign.bam \
+   -I $bam/${name}.ngm.bam \
    --emitRefConfidence GVCF \
-   --max_alternate_alleles 1 \
-   -variant_index_type LINEAR \
-   -variant_index_parameter 128000 \
+   --max_alternate_alleles 2 \
    -o $gvcf/${name}.GATK.g.vcf
 done <$home/samplelist.txt
 
@@ -52,6 +70,8 @@ done <$home/samplelist.txt
 
 #With all the gvcf files created, we jointly genotype all samples to produce a single vcf
 ls $gvcf | grep "vcf" | grep -v ".idx"   > $home/GVCFs.samplelist.txt
+
+#This loop is going to make a string that has all the sample names, so we can give that to GATK.
 tmp=""
 while read prefix
 do
@@ -59,7 +79,7 @@ do
 done < $home/GVCFs.samplelist.txt
 
 mkdir $home/tmp
-$java -Xmx8g -Djava.io.tmpdir=$home/tmp -jar $gatk \
+$java -Xmx3g -Djava.io.tmpdir=$home -jar $gatk \
         -nt 1 \
         -l INFO \
         -R $ref \
@@ -82,7 +102,7 @@ $java -jar $gatk \
 -selectType SNP \
 -restrictAllelesTo BIALLELIC \
 --maxNOCALLfraction 0.2 \
--log $log/${project}.selectvariants.log
+-log $log/$project.selectvariants.log
 
 #Finally, vcf is often a difficult format to use, so lets convert it to a flat tab-separated format.
 $java -jar $gatk \
