@@ -33,6 +33,7 @@ do
      samtools view -bh $bam/${name}.ngm.sam |\
      samtools sort > $bam/${name}.ngm.bam
      samtools index $bam/${name}.ngm.bam
+     rm $bam/${name}.ngm.sam
 
 done
 
@@ -90,6 +91,9 @@ $java -Xmx3g -Djava.io.tmpdir=$home -jar $gatk \
         -hets 0.01 \
         --max_alternate_alleles 4
 
+
+####RUN UP TO THIS STEP AT THE START OF THE CLASS
+
 #Lets take a look at the vcf file
 less -S $home/$project.vcf
 #Lets filter this a bit. Only keeping biallelic snps and sites where less than 20% of samples are not genotyped.
@@ -101,7 +105,7 @@ $java -jar $gatk \
 -o $home/$project.snps.vcf \
 -selectType SNP \
 -restrictAllelesTo BIALLELIC \
---maxNOCALLfraction 0.2 \
+--maxNOCALLfraction 0.4 \
 -log $log/$project.selectvariants.log
 
 #Finally, vcf is often a difficult format to use, so lets convert it to a flat tab-separated format.
@@ -118,6 +122,20 @@ $java -jar $gatk \
 #Now to filter and reformat. We want to remove the GT from the sample name, and also remove lines with *, which indicate deletions.
 cat $home/$project.snps.tab |sed 's/.GT   /  /g' | sed 's/.GT$//g' | sed 's|/||g' | sed 's/\.\./NN/g' | grep -v '*' > $home/$project.snps.formatted.tab
 #Note the sed 's/.GT   /  /g' command requires that the spaces are actually tabs. When copying and pasting, they are often substituted for spaces. To put an actual tab in the command, press ctrl-v, tab. 
+
+#We don't have very many reads, so for many of the genotypes we can't confidently call SNPs. One way to deal with this is to take into account the uncertainty of the genotype call using ANGSD.
+#First we install ANGSD
+cd ~/bin
+git clone https://github.com/ANGSD/angsd.git 
+cd angsd ;make HTSSRC=../htslib-1.5
+
+#ANGSD has many different functions, but for now lets just calculate allele frequencies for our three samples
+ls -d $PWD $bam/*.* | grep .bam$ | grep -v bai > ~/$project.bamlist.txt
+~/bin/angsd/angsd -out $project.angsd -doMajorMinor 2 -doMaf 8 -bam  ~/$project.bamlist.txt -doCounts 1  -minMaf 0.1
+
+#This is much faster than GATK, although it does not do local realignment of haplotypes. 
+
+
 
 ```
 ### Coding challenge 1:
