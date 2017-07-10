@@ -2,38 +2,30 @@
 
 ### Daily Questions:
 1. For a site that is invariant in both populations (i.e. a locus with no variation), what is Fst?
-2. Which two samples are the most extreme outliers (in either direction) for PC1?
-3. What is the average Fst between the two populations in our example data? Hint, SNPrelate can calculate Fst.
+2.
+3. What is the average Fst between sample1 and sample2+3  in our example data? Hint, SNPrelate can calculate Fst.
 
 The first thing we have to do is install some programs.
 
 ```bash
-screen -r
-cd bin
-#ANGSD is a package for analyzing next gen sequencing data. It uses genotype uncertainty and can work off bam files directly.
-wget http://popgen.dk/software/download/angsd/angsd0.912.tar.gz
-tar xfz angsd0.912.tar.gz
-cd htslib;make;cd ..
-cd angsd
-make HTSSRC=../htslib
-cd ..
+byobu
+
 #NGSadmix
-wget popgen.dk/software/NGSadmix/ngsadmix32.cpp 
+cd ~/bin
+wget popgen.dk/software/download/NGSadmix/ngsadmix32.cpp 
 g++ ngsadmix32.cpp -O3 -lpthread -lz -o NGSadmix
 
 #FastStructure is similar to STRUCTURE but orders of magnitude faster. It has many dependencies
 
-#Install anaconda, a python build for scientific computing
-wget http://repo.continuum.io/archive/Anaconda2-4.1.1-Linux-x86_64.sh
-bash Anaconda2-4.1.1-Linux-x86_64.sh
-python=/home/ubuntu/anaconda2/bin/python
-#Install GNU scientific library
-wget http://ftp.gnu.org/gnu/gsl/gsl-1.16.tar.gz
-tar -zxvf gsl-1.16.tar.gz
-cd gsl-1.16
-./configure
-make
-sudo make install
+#Install miniconda, a python build for scientific computing. It also lets us install python packages easily.
+cd ~/bin
+wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
+bash Miniconda2-latest-Linux-x86_64.sh  #Say yes to every question.
+source ~/.bashrc
+conda install -c salilab gsl=1.16
+conda install -c anaconda cython=0.25.2
+conda install -c anaconda numpy=1.13.1
+sudo apt-get install libgsl0-dev
 
 cd /home/ubuntu/bin
 #Get faststructure
