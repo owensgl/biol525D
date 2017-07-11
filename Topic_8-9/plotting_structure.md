@@ -10,13 +10,11 @@ install.packages("reshape")
 #Then we load those packages.
 
 library(reshape)
-library(dplyr)
-library(ggplot2)
+library(tidyverse)
 ```
 
 ``` r
-#This file has information on our samples
-
+#"Biol525D_popinfo.csv" has information on our samples. It is in the github. Figure out a way to download it to your laptop.
 sampleinfo <- read.csv("Downloads/Biol525D_popinfo.csv",header=T)
 #data name and directory
 name <- "Downloads/faststructure/Biol525D"
@@ -29,7 +27,7 @@ data.full <- data.frame(name=character(),
                         value=numeric(),
                         k=numeric())
 #Now we loop through each K output
-for (k in 1:10){
+for (k in 1:4){
   #Load the data file
   data <- read.table(paste(name, k, "meanQ",sep="."),colClasses="numeric")
   #Label the columns (one for each group)
@@ -57,7 +55,7 @@ data.full %>% filter(k == 2) %>% #This selects only the k=2 lines out of the ful
 data.full %>%
   ggplot(.,aes(x=name,y=value,fill=factor(variable))) +
   geom_bar(stat = "identity",position="stack") +
-  facet_wrap(~k, nrow=5)
+  facet_wrap(~k, nrow=2)
 ```
 
 ![](figure/structure1-2.png)
@@ -68,7 +66,7 @@ data.full %>%
   mutate(name = factor(name, levels = name[order(color)])) %>%
   ggplot(.,aes(x=name,y=value,fill=factor(variable))) +
   geom_bar(stat = "identity",position="stack") +
-  facet_wrap(~k, nrow=5)
+  facet_wrap(~k, nrow=2)
 ```
 
     ## Warning in `levels<-`(`*tmp*`, value = if (nl == nL) as.character(labels)
@@ -116,7 +114,7 @@ data.full %>%
 Plotting challenge 1
 --------------------
 
--   For K = 2, plot the faststructure results and divide your samples by populations. Furthermore, make group 1 red and group 2 blue. Title the plot "*Helianthus annuus* is great!"
+-   For K = 2, plot the faststructure results and divide your samples by populations. Furthermore, make group 1 red and group 2 blue. Title the plot "*Gasterosteus* is great!"
 
 Plotting challenge 2
 --------------------
