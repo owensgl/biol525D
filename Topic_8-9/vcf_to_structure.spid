@@ -1,0 +1,39 @@
+# spid-file generated: Tue Jul 11 14:38:12 PDT 2017
+
+# VCF Parser questions
+PARSER_FORMAT=VCF
+
+# Only output SNPs with a phred-scaled quality of at least:
+VCF_PARSER_QUAL_QUESTION=
+# Select population definition file:
+VCF_PARSER_POP_FILE_QUESTION=
+# What is the ploidy of the data?
+VCF_PARSER_PLOIDY_QUESTION=DIPLOID
+# Do you want to include a file with population definitions?
+VCF_PARSER_POP_QUESTION=false
+# Output genotypes as missing if the phred-scale genotype quality is below:
+VCF_PARSER_GTQUAL_QUESTION=
+# Do you want to include non-polymorphic SNPs?
+VCF_PARSER_MONOMORPHIC_QUESTION=false
+# Only output following individuals (ind1, ind2, ind4, ...):
+VCF_PARSER_IND_QUESTION=
+# Only input following regions (refSeqName:start:end, multiple regions: whitespace separated):
+VCF_PARSER_REGION_QUESTION=
+# Output genotypes as missing if the read depth of a position for the sample is below:
+VCF_PARSER_READ_QUESTION=
+# Take most likely genotype if "PL" or "GL" is given in the genotype field?
+VCF_PARSER_PL_QUESTION=false
+# Do you want to exclude loci with only missing data?
+VCF_PARSER_EXC_MISSING_LOCI_QUESTION=false
+
+# STRUCTURE Writer questions
+WRITER_FORMAT=STRUCTURE
+
+# Specify the locus/locus combination you want to write to the STRUCTURE file:
+STRUCTURE_WRITER_LOCUS_COMBINATION_QUESTION=
+# Do you want to include inter-marker distances?
+STRUCTURE_WRITER_LOCI_DISTANCE_QUESTION=false
+# Specify which data type should be included in the STRUCTURE file  (STRUCTURE can only analyze one data type per file):
+STRUCTURE_WRITER_DATA_TYPE_QUESTION=MICROSAT
+# Save more specific fastSTRUCTURE format?
+STRUCTURE_WRITER_FAST_FORMAT_QUESTION=true
