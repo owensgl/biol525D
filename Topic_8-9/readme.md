@@ -63,7 +63,7 @@ $java -jar ~/bin/PGDSpider_2.1.0.3/PGDSpider2-cli.jar -inputfile ~/Biol525D.snps
 #Now we run fast structure
 mkdir faststructure
 cd faststructure
-for k in `seq 10`
+for k in `seq 6`
 do
 python /home/ubuntu/bin/fastStructure/structure.py -K $k --input=../Biol525D.snps --output=Biol525D --format=str
 done
