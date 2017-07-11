@@ -81,7 +81,6 @@ do
         tmp="$tmp --variant $gvcf/$prefix"
 done < $home/GVCFs.samplelist.txt
 
-mkdir $home/tmp
 $java -Xmx3g -Djava.io.tmpdir=$home -jar $gatk \
         -nt 1 \
         -l INFO \
