@@ -9,6 +9,7 @@ ref=/mnt/data/ref/Gasterosteus_aculeatus.BROADS1.dna_rm.toplevel.fa
 java=/home/ubuntu/bin/jre1.8.0_131/bin/java
 bam=/home/ubuntu/bam
 gatk=/mnt/data/bin/GenomeAnalysisTK.jar
+picard=/mnt/data/bin/picard_2.9.jar
 log=/home/ubuntu/log
 home=/home/ubuntu
 gvcf=/home/ubuntu/gvcf
