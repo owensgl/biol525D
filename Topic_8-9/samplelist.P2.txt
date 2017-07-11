@@ -1,4 +1,2 @@
-P2-1
-P2-2
-P2-3
-P2-4
+Sample2
+Sample3
