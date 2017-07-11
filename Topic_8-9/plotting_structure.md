@@ -1,10 +1,9 @@
 # Plotting FastStructure results in R 
-
+Make sure you have downloaded your faststructure directory your Downloads folder using cyberduck or scp. 
 ``` r
 #First we install some packages
 
-install.packages("dplyr")
-install.packages("ggplot2")
+install.packages("tidyverse")
 install.packages("reshape")
 
 
@@ -18,9 +17,9 @@ library(ggplot2)
 ``` r
 #This file has information on our samples
 
-sampleinfo <- read.csv("Downloads/biol525D_popinfo.csv",header=T)
+sampleinfo <- read.csv("Downloads/Biol525D_popinfo.csv",header=T)
 #data name and directory
-name <- "Downloads/faststructure/biol525D"
+name <- "Downloads/faststructure/Biol525D"
 #We're going to loop through each k value, so we need a dataframe to save those values
 data.full <- data.frame(name=character(),
                         pop=character(),
