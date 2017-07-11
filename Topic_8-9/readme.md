@@ -2,8 +2,8 @@
 
 ### Daily Questions:
 1. For a site that is invariant in both populations (i.e. a locus with no variation), what is Fst?
-2.
-3. What is the average Fst between sample1 and sample2+3  in our example data? Hint, SNPrelate can calculate Fst.
+2. What effect does missing data have on a PCA?
+3. What is the average Fst between sample1 and sample2+3 in our example data? Hint, SNPrelate can calculate Fst.
 
 The first thing we have to do is install some programs.
 
@@ -25,6 +25,7 @@ source ~/.bashrc
 conda install -c salilab gsl=1.16
 conda install -c anaconda cython=0.25.2
 conda install -c anaconda numpy=1.13.1
+conda install -c anaconda scipy=0.19.1
 sudo apt-get install libgsl0-dev
 
 cd /home/ubuntu/bin
@@ -51,20 +52,20 @@ We take the spid file created and transfer it to your server using cyberduck.
 
 Next we download pgdspider to your server
 ```bash
-java=/home/ubuntu/bin/jdk1.8.0_102/jre/bin/java
+java=/home/ubuntu/bin/jre1.8.0_131/bin/java
 cd /home/ubuntu/bin/
 wget http://www.cmpg.unibe.ch/software/PGDSpider/PGDSpider_2.1.0.3.zip
 unzip PGDSpider_2.1.0.3.zip
 #Now to convert the vcf file to faststructure format
 cd ..
-$java -jar bin/PGDSpider_2.1.0.3/PGDSpider2-cli.jar -inputfile biol525D.snps.vcf -inputformat VCF -outputfile biol525D.snps.str -outputformat STRUCTURE -spid VCF_to_structure.spid
+$java -jar ~/bin/PGDSpider_2.1.0.3/PGDSpider2-cli.jar -inputfile ~/Biol525D.snps.vcf -inputformat VCF -outputfile ~/Biol525D.snps.str -outputformat STRUCTURE -spid vcf_to_structure.spid
 
 #Now we run fast structure
 mkdir faststructure
 cd faststructure
 for k in `seq 10`
 do
-$python /home/ubuntu/bin/fastStructure/structure.py -K $k --input=../biol525D.snps --output=biol525D --format=str
+python /home/ubuntu/bin/fastStructure/structure.py -K $k --input=../Biol525D.snps --output=Biol525D --format=str
 done
 #This gives us a bunch of files for each K value, we'll use those to plot.
 #The meanQ files give us admixture proportions which is what we care about.
