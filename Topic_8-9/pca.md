@@ -260,7 +260,7 @@ tab <- merge(tab, sampleinfo)
 ggplot(data=tab,aes(EV1,EV2)) + geom_point()
 ```
 
-![](figures/pca1-1.png)
+![](figure/pca1-1.png)
 
 
 ```r
@@ -268,7 +268,7 @@ ggplot(data=tab,aes(EV1,EV2)) + geom_point()
 ggplot(data=tab,aes(EV1,EV2)) + geom_point(aes(color=as.factor(pop))) + ylab("Principal component 2") + xlab("Principal component 1")
 ```
 
-![](figures/pca1-2.png)
+![](figure/pca1-2.png)
 
 ```r
 #We can make that look nicer
@@ -277,7 +277,7 @@ ggplot(data=tab,aes(EV1,EV2)) + geom_point(aes(color=as.factor(pop))) + ylab("Pr
   theme(panel.border = element_rect(fill = NA, colour = "grey50")) 
 ```
 
-![](figures/pca1-3.png)
+![](figure/pca1-3.png)
 
 
 Plotting challenge 1
