@@ -4,6 +4,7 @@ In this tutorial we're going to call SNPs with GATK. We will run steps as we tal
 byobu
 mkdir /home/ubuntu/log
 mkdir /home/ubuntu/gvcf
+mkdir /home/ubuntu/bam
 #Set up variables
 ref=/mnt/data/ref/Gasterosteus_aculeatus.BROADS1.dna_rm.toplevel.fa
 java=/home/ubuntu/bin/jre1.8.0_131/bin/java
