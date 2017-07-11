@@ -1,11 +1,11 @@
 # Calculating and plotting Fst
 
-First we need to download and install vcftools
+First we need to download and install vcftools. This is back on your ubuntu server.
 ```bash
 sudo apt-get install pkg-config
 sudo apt-get install autoconf
 
-cd /home/ubuntu/bin 
+cd ~/bin 
 git clone https://github.com/vcftools/vcftools.git
 cd vcftools/ 
 ./autogen.sh 
@@ -15,9 +15,9 @@ sudo make install
 
 #Next we use it to calculate Fst
 #You will have to download from the github page samplelist.P1.txt and samplelist.P2.txt
-cd /home/ubuntu
-/home/ubuntu/bin/vcftools/src/cpp/vcftools  \
---vcf biol525D.snps.vcf \
+cd ~
+vcftools  \
+--vcf Biol525D.snps.vcf \
 --weir-fst-pop samplelist.P1.txt --weir-fst-pop samplelist.P2.txt \
 --out biol525D
 #Note, samplelist.P1/2.txt are found on the github page. They are just lists of samples for each population.
@@ -31,7 +31,7 @@ cd /home/ubuntu
 
   
     Fst is a ratio so calculating the overall values requires summing the numerator and denominator for each locus, which we don't have. 
-    To calculate the mean value using command line you could use awk '{if ($3 != "-nan") sum += $3; n++ } END { print sum / n; }' biol525D.weir.fst
+    
 </details>
 Next we'll take the Fst values and plot them in R. Transfer the biol525D.weir.fst file to your computer
 
@@ -40,8 +40,7 @@ Next we'll take the Fst values and plot them in R. Transfer the biol525D.weir.fs
 #Load in some libraries
 install.packages("qqman")
 library(qqman)
-library(ggplot2)
-library(dplyr)
+library(tidyverse)
 ```
 
 ``` r
