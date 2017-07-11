@@ -141,7 +141,7 @@ ls -d $PWD $bam/*.* | grep .bam$ | grep -v bai > ~/$project.bamlist.txt
 
 ```
 ### Coding challenge
-* Take the original vcf file produced and create a vcf of only high quality indels for population 1 samples. Make sure that each indel is actually variable within population 1 samples.
+* Take the original vcf file produced and create a vcf of only high quality indels for samples 1 and 2. Make sure that each indel is actually variable in those samples.
 * It can be better to use genotype likelihoods instead of called genotypes when you have low depth. One tool for doing this is [ngsTools](https://github.com/mfumagalli/ngsTools#ngscovar). Install this program and run a PCA on your samples.
 
 ### Daily assignments
