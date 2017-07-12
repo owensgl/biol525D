@@ -33,6 +33,7 @@ vcftools  \
     Fst is a ratio so calculating the overall values requires summing the numerator and denominator for each locus, which we don't have. 
     
 </details>
+---------------------
 Next we'll take the Fst values and plot them in R. Transfer the biol525D.weir.fst file to your computer
 
 
