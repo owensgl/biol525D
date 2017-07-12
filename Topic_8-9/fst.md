@@ -41,36 +41,12 @@ Next we'll take the Fst values and plot them in R. Transfer the biol525D.weir.fs
 
 ```r
 install.packages("qqman", repos = "http://cran.us.r-project.org")
-```
-
-```
-## 
-## The downloaded binary packages are in
-## 	/var/folders/k6/qh44xkwj58dcllfbrp57ww700000gn/T//RtmpCqXNos/downloaded_packages
-```
-
-```r
 library(qqman)
-```
-
-```
-## Warning: package 'qqman' was built under R version 3.3.2
-```
-
-```r
 library(tidyverse)
 ```
 
-```
-## Warning: package 'tidyverse' was built under R version 3.3.2
-```
-
-```
-## Warning: package 'ggplot2' was built under R version 3.3.2
-```
-
 ```r
-fst.filename <- "/Users/gregoryowens/Downloads/biol525D.weir.fst"
+fst.filename <- "Downloads/biol525D.weir.fst"
 data <- read.delim(fst.filename, header=T)
 #Now one problem with plotting this is that the chromosomes are not intergers
 summary(data$CHROM)
