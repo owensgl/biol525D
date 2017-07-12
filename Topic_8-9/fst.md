@@ -19,7 +19,7 @@ cd ~
 vcftools  \
 --vcf Biol525D.snps.vcf \
 --weir-fst-pop samplelist.P1.txt --weir-fst-pop samplelist.P2.txt \
---out biol525D
+--out Biol525D
 #Note, samplelist.P1/2.txt are found on the github page. They are just lists of samples for each population.
 #Take a look at the fst file, does it have reasonable data? Is it all missing data?
 ```
@@ -36,35 +36,94 @@ vcftools  \
 Next we'll take the Fst values and plot them in R. Transfer the biol525D.weir.fst file to your computer
 
 
-``` r
-#Load in some libraries
-install.packages("qqman")
+```r
+install.packages("qqman", repos = "http://cran.us.r-project.org")
+```
+
+```
+## 
+## The downloaded binary packages are in
+## 	/var/folders/k6/qh44xkwj58dcllfbrp57ww700000gn/T//RtmpCqXNos/downloaded_packages
+```
+
+```r
 library(qqman)
+```
+
+```
+## Warning: package 'qqman' was built under R version 3.3.2
+```
+
+```r
 library(tidyverse)
 ```
 
-``` r
-#Load in the data
-fst.filename <- "Downloads/biol525D.weir.fst"
-data <- read.table(fst.filename, header=T)
+```
+## Warning: package 'tidyverse' was built under R version 3.3.2
+```
 
+```
+## Warning: package 'ggplot2' was built under R version 3.3.2
+```
+
+```r
+fst.filename <- "/Users/gregoryowens/Downloads/biol525D.weir.fst"
+data <- read.delim(fst.filename, header=T)
 #Now one problem with plotting this is that the chromosomes are not intergers
 summary(data$CHROM)
 ```
 
-    ## Ha0_73Ns      Ha1     Ha10     Ha11     Ha12     Ha13     Ha14     Ha15 
-    ##       73      166      417      172      211      294      416      294 
-    ##     Ha16     Ha17      Ha2      Ha3      Ha4      Ha5      Ha6      Ha7 
-    ##      208      336      109      274      287      247      203       90 
-    ##      Ha8      Ha9 
-    ##      248      384
+```
+##       groupIV      groupVII        groupI       groupIX       groupXX 
+##          1234          1201          1081           806           806 
+##       groupII     groupVIII       groupXI      groupXII     groupXIII 
+##           793           748           652           651           645 
+##     groupXVII    groupXVIII       groupVI      groupIII      groupXVI 
+##           600           594           591           554           554 
+##      groupXIV        groupX      groupXIX       groupXV      groupXXI 
+##           546           542           532           482           482 
+##        groupV   scaffold_27   scaffold_37   scaffold_99   scaffold_74 
+##           428           144            71            55            45 
+##   scaffold_67   scaffold_47   scaffold_48   scaffold_68  scaffold_122 
+##            44            37            37            35            29 
+##   scaffold_54  scaffold_168  scaffold_112  scaffold_115  scaffold_184 
+##            28            20            19            19            19 
+##  scaffold_151   scaffold_95  scaffold_114  scaffold_126  scaffold_149 
+##            16            16            14            14            13 
+##   scaffold_56  scaffold_120  scaffold_165  scaffold_214   scaffold_84 
+##            13            12            12            12            12 
+##  scaffold_135   scaffold_61  scaffold_111  scaffold_157  scaffold_169 
+##            10            10             9             9             9 
+##  scaffold_211  scaffold_256   scaffold_69   scaffold_89   scaffold_90 
+##             9             9             9             9             8 
+##   scaffold_98  scaffold_180  scaffold_202  scaffold_213  scaffold_300 
+##             8             7             7             7             7 
+##  scaffold_354  scaffold_101  scaffold_132  scaffold_139  scaffold_150 
+##             7             6             6             6             6 
+##  scaffold_156  scaffold_159  scaffold_177  scaffold_181  scaffold_197 
+##             6             6             6             6             6 
+##  scaffold_206  scaffold_363   scaffold_58   scaffold_88  scaffold_129 
+##             6             6             6             6             5 
+##  scaffold_137  scaffold_161  scaffold_163  scaffold_175  scaffold_216 
+##             5             5             5             5             5 
+##  scaffold_238  scaffold_246  scaffold_270  scaffold_273  scaffold_281 
+##             5             5             5             5             5 
+##  scaffold_545  scaffold_740   scaffold_80 scaffold_1075  scaffold_121 
+##             5             5             5             4             4 
+##  scaffold_128  scaffold_133  scaffold_152  scaffold_182  scaffold_204 
+##             4             4             4             4             4 
+##  scaffold_208  scaffold_225  scaffold_249  scaffold_369       (Other) 
+##             4             4             4             4           121
+```
 
-``` r
+```r
 #This strips the "Ha" from the chromosome name
-data$CHROM <- gsub("Ha", "", data$CHROM)
+data$CHROM <- gsub("group", "", data$CHROM)
 
-#This removes the 0_73Ns chromosome
-data %>% filter(CHROM != "0_73Ns") -> data
+#This converts it to numeric
+data$CHROM <- as.numeric(as.roman(data$CHROM))
+#This removes scaffolds
+data %>% filter(!is.na(CHROM)) -> data
 
 #Lets also remove values that are NA
 data %>% filter(WEIR_AND_COCKERHAM_FST != "NaN") -> data
@@ -79,10 +138,12 @@ manhattan(data, chr="CHROM",bp="POS",p="WEIR_AND_COCKERHAM_FST", snp="POS",
 
 ![](figure/fst1-1.png)
 
-Question 3
-==========
 
-Do a manhattan plot in ggplot or base R. As a bonus, make it look nice.
+**Question 2**:
+* Why are there so few possible Fst values? Why are there so few that have zero Fst?
+
+**Coding challenge**:
+* Do a manhattan plot in ggplot or base R. As a bonus, make it look nice.
 
 
 
