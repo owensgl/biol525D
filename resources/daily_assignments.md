@@ -13,3 +13,5 @@ Answers should be sent to gregory.owens@alumni.ubc.ca
 ### Questions 2-5 are due on Monday, July 10th at 10 am. 
 
 ### Questions 6-10 are due on Monday July 17th at 10 am. 
+
+7. You're trying to create a very stringent set of SNPs. Based on the site information GATK produces, what filters would you use? Include the actual GATK abbreviations.
