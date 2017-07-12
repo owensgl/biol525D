@@ -38,9 +38,9 @@ export CFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 source ~/.bashrc
 cd fastStructure/vars
-$python setup.py build_ext --inplace
+python setup.py build_ext --inplace
 cd ..
-$python setup.py build_ext --inplace
+python setup.py build_ext --inplace
 #Fast structure is now good to go! Remember to run it using the python version in anaconda
 ```
 Now to convert between file types we're going to use PGDspider.
