@@ -96,7 +96,7 @@ summary(data$CHROM)
 ```
 
 ```r
-#This strips the "Ha" from the chromosome name
+#This strips the "group" from the chromosome name
 data$CHROM <- gsub("group", "", data$CHROM)
 
 #This converts it to numeric
