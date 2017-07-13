@@ -283,7 +283,7 @@ ggplot(data=tab,aes(EV1,EV2)) + geom_point(aes(color=as.factor(pop))) + ylab("Pr
 Plotting challenge 1
 --------------------
 
--   Plot the 3rd and 4th principal components and color code the points by the color sample info.
+-   Plot the 2nd and 3rd principal components and color code the points by the color sample info.
 
 
 
