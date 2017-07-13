@@ -1,42 +1,48 @@
 # Topic 10: Phylogenetics
 
-The first step is to convert the formatted.tab file into a fasta file. We are going to use a perl script in this github directory. Download SNPtable2fasta.pl and move it into your bin directory. It converts the tab style file that we created to a fasta, for heterozygous sites it picks one random allele. IQtree and Splitstree both have seem to ignore ambiguous bases, so we're not going to use them.
+The first step is to convert the formatted.tab file into a fasta file. The script will convert the tab style file that we created to a fasta, for heterozygous sites it picks one random allele. IQtree and Splitstree both have seem to ignore ambiguous bases, so we're not going to use them.
 
 We also have to remove invariant sites, so that we can use an ascertainment bias in IQtree. 
 IQtree also has a [webserver](http://iqtree.cibiv.univie.ac.at/).
 
 ```
-#Note: biol525D.snps.formatted.tab comes from topic 7
-cat biol525D.snps.formatted.tab | perl bin/SNPtable2fasta_pickoneallele.pl | perl bin/fasta2removeinvariant.pl > biol525D.snps.fasta
+cd ~
+#Note: Biol525D.snps.formatted.tab comes from topic 7
+cat Biol525D.snps.formatted.tab | perl /mnt/data/bin/SNPtable2fasta_pickoneallele.pl | perl /mnt/data/bin/fasta2removeinvariant.pl >Biol525D.snps.fasta
 
-cd bin
+
 #Next we should install IQ-tree
-wget https://github.com/Cibiv/IQ-TREE/releases/download/v1.4.3/iqtree-omp-1.4.3-Linux.tar.gz
-tar -xzf iqtree-omp-1.4.3-Linux.tar.gz
+cd ~/bin
+wget https://github.com/Cibiv/IQ-TREE/releases/download/v1.5.5/iqtree-omp-1.5.5-Linux.tar.gz
+tar -xzf iqtree-omp-1.5.5-Linux.tar.gz
 
 #Next we run it
-bin/iqtree-omp-1.4.3-Linux/bin/iqtree-omp -s biol525D.snps.fasta -st DNA -m TEST+ASC -nt 2 -alrt 1000 -lbp 1000
+bin/iqtree-omp-1.5.5-Linux/bin/iqtree-omp -s Biol525D.snps.fasta -st DNA -m TEST+ASC
 
 #This produces several output files, including a log and a couple different versions of the treefile. The -m TEST command does a model test and selects the best substition model. 
 ```
-In the next step, we're going to use R to visualize our tree using ggtree. To do that you need to download "biol525D.snps.fasta.treefile" to your laptop. Another way to visualize a tree is [Figtree](http://tree.bio.ed.ac.uk/software/figtree/).
+In the next step, we're going to use R to visualize our tree using ggtree. To do that you need to download "Biol525D.snps.fasta.treefile" to your laptop. Another way to visualize a tree is [Figtree](http://tree.bio.ed.ac.uk/software/figtree/).
 
 
-``` r
+```r
 #First we install some packages
 source("http://bioconductor.org/biocLite.R")
 biocLite("ggtree")
 install.packages("phytools")
+```
 
+```r
 #Then load some libraries
 library(ggtree)
 library(phytools)
 library(phangorn)
 ```
 
-``` r
+
+
+```r
 #Then load in our data
-filename <- "/Users/gregoryowens/Downloads/biol525D.snps.fasta.treefile"
+filename <- "/Downloads/Biol525D.snps.fasta.treefile"
 tree <- read.tree(filename)
 
 #Lets take a look
@@ -49,24 +55,12 @@ ggtree(tree, layout="unrooted") +
 
 ![](figure/ggtree-1.png)
 
-``` r
-#Since we have two populations, we don't have a known root. 
+
+```r
+#Since we have three samples, we don't have a known root. 
 #In this case we should do a midpoint root between the two populations
 
 tree.midpoint <- midpoint(tree)
-```
-
-    ## Warning in as.splits.phylo(x): NAs introduced by coercion
-
-    ## Warning in max(na.omit(conf)): no non-missing arguments to max; returning -
-    ## Inf
-
-    ## Warning in as.splits.phylo(y): NAs introduced by coercion
-
-    ## Warning in max(na.omit(conf)): no non-missing arguments to max; returning -
-    ## Inf
-
-``` r
 ggtree(tree.midpoint) +
   geom_text2(aes(subset=!isTip, label=node)) + 
   geom_tiplab() 
@@ -74,60 +68,51 @@ ggtree(tree.midpoint) +
 
 ![](figure/ggtree-2.png)
 
-``` r
-#How about we now label our two populations
+
+```r
+#How about we now label a group
 ggtree(tree.midpoint) +
   geom_text2(aes(subset=!isTip, label=node)) + 
   geom_tiplab() +
-  geom_cladelabel(node=15, label="Population 1", align=T, offset=.01) +
-  geom_cladelabel(node=12, label="Population 2", align=T, offset=.01)
+  geom_cladelabel(node=5, label="Population 1", align=T, offset=.0001)
 ```
 
 ![](figure/ggtree-3.png)
 
-``` r
+```r
 #Uh oh, labels are off the printed screen. Here's a work around
 ggtree(tree.midpoint) +
   geom_text2(aes(subset=!isTip, label=node)) + 
   geom_tiplab() +
-  geom_cladelabel(node=15, label="Population 1", align=T, offset=.01) +
-  geom_cladelabel(node=12, label="Population 2", align=T, offset=.01) + 
-  geom_cladelabel(node=12, label="", align=T, offset=.05,color="white")
+  geom_cladelabel(node=5, label="Population 1", align=T, offset=.0001) +
+  geom_cladelabel(node=5, label="", align=T, offset=.0002,color="white")
 ```
 
 ![](figure/ggtree-4.png)
 
-``` r
-#Using similar grammar, we can also include bootstrap/aLRT support values for nodes. 
-#Unfortunately, when we midpoint rooted it, that information is lost, so lets put info on the original tree
-ggtree(tree) +
+
+```r
+#We can  make up our labels
+ggtree(tree.midpoint) +
   geom_tiplab() +
-  geom_label2(aes(subset=12, label=label)) +
-  geom_label2(aes(subset=10, label=label)) 
+  geom_label2(aes(subset=4, label='Robot Fish')) +
+  geom_label2(aes(subset=5, label='Robots')) +
+    geom_cladelabel(node=5, label="", align=T, offset=.0001,color="white") + 
+    geom_cladelabel(node=5, label="", align=T, offset=-.0002,color="white")
 ```
 
 ![](figure/ggtree-5.png)
 
-``` r
-#We can also make up our labels
-ggtree(tree) +
-  geom_tiplab() +
-  geom_label2(aes(subset=12, label='Robots')) +
-  geom_label2(aes(subset=10, label='Non-robots')) 
-```
-
-![](figure/ggtree-6.png)
-
 ### Coding challenge 1
 
-Put bootstrap and aLRT values on all internal nodes of the midpoint rooted tree. For bonus points, highlight the two populations with different colors.
+Replace the names of the three samples with the names of the three stooges. 
 
 ## Splitstree
 Now we want to try out splitstree, a reticulate network phylogeny. Download it [here](http://ab.inf.uni-tuebingen.de/data/software/splitstree4/download/welcome.html). 
 It should just run if you have the correct version of java. For newer macs you may have to install an older version of java, it should be a suggestion when you attempt to run the program.
 Before we download the fasta file we have to replace all N with ?, because splitstree does not accept N.
 ```bash
-cat biol525D.snps.fasta | sed s/N/?/g biol525D.snps.fasta > biol525D.snps.splitstree.fasta
+cat Biol525D.snps.fasta | sed s/N/?/g Biol525D.snps.fasta > Biol525D.snps.splitstree.fasta
 ```
 Then transfer it to your laptop. Open Splitstree and select the biol525D.snps.splitstree.fasta file.
 The first tree you see is a NeighbourNet, but you can also select many other algorithms or distance methods. When you're done, it can be exported as a svg for editing in adobe illustrator or inkscape. 
