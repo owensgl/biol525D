@@ -115,7 +115,9 @@ Before we download the fasta file we have to replace all N with ?, because split
 cat Biol525D.snps.fasta | sed s/N/?/g Biol525D.snps.fasta > Biol525D.snps.splitstree.fasta
 ```
 Then transfer it to your laptop. Open Splitstree and select the biol525D.snps.splitstree.fasta file.
-The first tree you see is a NeighbourNet, but you can also select many other algorithms or distance methods. When you're done, it can be exported as a svg for editing in adobe illustrator or inkscape. 
+The first tree you see is a NeighbourNet, but you can also select many other algorithms or distance methods.
+
+The first tree was very boring, so lets try a bigger dataset. Download example.fa from the github page and then run that in Splitstree. Use the zoom controls to make a readable tree. Export the figure to svg for further editting. With a tree like this, how would you format it to make it understandable in a paper?
 
 ## Daily Questions:
 1. What are two biological scenarios where you would want to use a reticulate tree, versus the standard non-reticulate tree, to represent the phylogeny?
