@@ -17,7 +17,8 @@ wget https://github.com/Cibiv/IQ-TREE/releases/download/v1.5.5/iqtree-omp-1.5.5-
 tar -xzf iqtree-omp-1.5.5-Linux.tar.gz
 
 #Next we run it
-bin/iqtree-omp-1.5.5-Linux/bin/iqtree-omp -s Biol525D.snps.fasta -st DNA -m TEST+ASC
+cd ..
+bin/iqtree-omp-1.5.5-Linux/bin/iqtree-omp -s Biol525D.snps.fasta -st DNA -m TEST+ASC -nt 1
 
 #This produces several output files, including a log and a couple different versions of the treefile. The -m TEST command does a model test and selects the best substition model. 
 ```
