@@ -20,6 +20,8 @@ Answers should be sent to gregory.owens@alumni.ubc.ca
 
 9. If you have a dataset of 100 samples and 100,000 SNPs, what is the maximum number of PC axes?
 
+10. What does it mean when something has 50% bootstrap support? What are two possible reasons that a node may have low support? Include one biological and one methodological reason.
+
 ### Questions 6-10 are due on Monday July 17th at 10 am. 
 
 
