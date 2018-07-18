@@ -6,7 +6,7 @@ Bioinformatics for Evolutionary Biology
 
 ## DESCRIPTION
 
-The purpose of this course is to provide graduate students with the theoretical knowledge and practical skills for the evolutionary analysis of next generation sequence data.  The course will entail data retrieval and assembly, alignment techniques, variant calling, gene expression analyses, hypothesis testing, and population genomic and phylogenomic approaches. The course will be presented as a series of short lectures and lab exercises over a two week period in August.
+The purpose of this course is to provide graduate students with the theoretical knowledge and practical skills for the evolutionary analysis of next generation sequence data.  The course will entail data retrieval and assembly, alignment techniques, variant calling, gene expression analyses, hypothesis testing, and population genomic and phylogenomic approaches. The course will be presented as a series of short lectures and lab exercises over a one week period in August.
 
 ## INSTRUCTORS
 
@@ -26,15 +26,15 @@ Participation in discussions and lab exercises.
 
 ## LOCATION AND TIME
 
-BRKX 2365, 10am to Noon
+FSC 1003, 10am to Noon, 1pm to 3pm.
 
 ## TOPICS
 
-Resources for each topic are in a subdirectory based on the topic.
+Resources for each topic are in a subdirectory based on the topic. Two topics will be covered per day.
 
 1. Broad introduction: Scope of course, goals, overview of technology and bioinformatics, and the future of sequencing [GREG]
 2. Programming for biologists [GREG]
-3. Fastq files and quality checking/trimming[Kay]
+3. Fastq files and quality checking/trimming [Kay]
 4. Alignment: algorithms and tools [GREG]
 5. Assembly: transcriptome and genome assembly [KAY]
 6. RNAseq + differential expression analysis [KAY]
