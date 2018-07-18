@@ -12,11 +12,11 @@ Attending class, participating in discussions and working through tutorials
 As part of most lecture, there will be questions presented for you to work on and discuss in class. 
 After the tutorial, we will select one question per topic and you will be responsible for answering that question. 
 Answers should be less than one paragraph. 
-Daily questions for topics 2-5 are due on _Monday July 10_, and for topics 6-10 on _Monday July 17_.
+Daily questions for all topics (2-10) are due on _Monday August 6_.
 Please group your answers together into one email per week.
-Answers should be sent to gregory.owens@alumni.ubc.ca
+Answers should be sent to gregory.lawrence.owens@gmail.com
 
-### Final shell script *Due Monday July 17th*
+### Final shell script *Due Wednesday August 8th*
 Students must produce a single shell script that does the following steps:
 * Trims fastq files for quality.
 * Aligns to a reference genome.
