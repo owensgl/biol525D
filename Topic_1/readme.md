@@ -15,6 +15,6 @@ ssh  -v  <your_user_name>@<your_server_ip>
 
 Your screen should look like this:
 
-![alt text](terminal.jpg "Terminal")
+![](terminal.jpeg "Terminal")
 
 
