@@ -64,10 +64,6 @@ ctrl-c to cancel
 #### *Byobu*:
 [Guide to Byobu](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-byobu-for-terminal-management-on-ubuntu-16-04)
 
-First you have to install byobu on your system. In ubuntu you can use the following command:
-```bash
->sudo apt-get install byobu
-```
 Byobu can create multiple levels.
 * **Session**: A running instance of byobu. You can have multiple of these and when you start byobu you select which session you want to run. You can also switch between sessions. Sessions will continue existing and running on your computer until you shut them down. You may want multiple sessions if you connect to with different screen sizes. 
 * **Window** : A session can have multiple windows. You can easily toggle between windows using F3 and F4. If you start a command in a window and then detach the session or switch windows, the command will continue running. Generally when you are working, you will have multiple windows open for different tasks (e.g. testing a script, editing that script, looking for files).
