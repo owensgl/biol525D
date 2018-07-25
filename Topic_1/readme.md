@@ -1,37 +1,20 @@
-# Topic 1: Setting up programs
+# Topic 1: Logging into the server.
+
+We are working on servers provided by Compute Canada, hosted on the [WestCloud](https://www.computecanada.ca/research-portal/national-services/compute-canada-cloud/) system. These are cloud servers, so 
+
 
 In this course we need several programs. 
 Programs to install: 
 * [Rstudio](https://www.rstudio.com/products/rstudio/download2/)
-* [MobaXterm](http://mobaxterm.mobatek.net/download.html) *For windows
 * [Cyberduck](https://cyberduck.io/?l=en)
 
-Log into WestCloud server using ssh (terminal or MobaXterm). You will find your IP address in this [table](https://docs.google.com/spreadsheets/d/1TSDfm448WuiH9caFgP6sBOfktBVTjvtm9M27EyQS7dg/edit?usp=sharing). 
+Log into WestCloud server using ssh (terminal). You will find your username and ip address in this [table](). 
 ```bash
-ssh  -v  ubuntu@<your_server_ip>
+ssh  -v  <your_user_name>@<your_server_ip>
 ```
 
+Your screen should look like this:
 
-Now that you've logged into the server, next we have to install and update some programs.
-
-```bash
-#Update the OS
-sudo apt-get update
-
-#Install essential programs
-sudo apt-get -y install cmake
-sudo apt-get -y install build-essential
-sudo apt-get -y install parallel
-sudo apt-get -y install zip
-sudo apt-get -y install zlib1g-dev
-sudo apt-get -y install libncurses5-dev
-sudo apt-get -y install git
-sudo apt-get -y install liblzma-dev
-mkdir bin
-cd bin
-  wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz
-
-tar xzf jdk-8u112-linux-x64.tar.gz
-```
+![alt text](terminal.jpg "Terminal")
 
 
