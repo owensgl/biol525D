@@ -1,9 +1,7 @@
 # Topic 1: Logging into the server.
 
-We are working on servers provided by Compute Canada, hosted on the [WestCloud](https://www.computecanada.ca/research-portal/national-services/compute-canada-cloud/) system. These are cloud servers, so 
+We are working on servers provided by Compute Canada, hosted on the [WestCloud](https://www.computecanada.ca/research-portal/national-services/compute-canada-cloud/) system. The only task now is to install a few programs we'll need later on, and login to your account.
 
-
-In this course we need several programs. 
 Programs to install: 
 * [Rstudio](https://www.rstudio.com/products/rstudio/download2/)
 * [Cyberduck](https://cyberduck.io/?l=en)
