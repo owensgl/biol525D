@@ -36,7 +36,7 @@ less -S 001.ngm.sam
 
 ```
 Lets examine the sam file. It contains all the information on the reads from the fastq file, but also alignment information. 
-##Questions:
+### Questions:
 1. How are reads ordered in the sam file? 
 2. What does the 6th column represent? What would the string "1S93M6S" mean?
 3. What are three possible reasons why mapping quality could be low for a particular read?
