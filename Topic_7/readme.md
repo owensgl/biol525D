@@ -2,53 +2,35 @@
 In this tutorial we're going to call SNPs with GATK. We will run steps as we talk about them 
 ```bash
 byobu
-mkdir /home/ubuntu/log
-mkdir /home/ubuntu/gvcf
-mkdir /home/ubuntu/bam
-#Set up variables
-ref=/mnt/data/ref/Gasterosteus_aculeatus.BROADS1.dna_rm.toplevel.fa
-java=/home/ubuntu/bin/jre1.8.0_131/bin/java
-bam=/home/ubuntu/bam
-gatk=/mnt/data/bin/GenomeAnalysisTK.jar
-picard=/mnt/data/bin/picard_2.9.jar
-log=/home/ubuntu/log
-home=/home/ubuntu
-gvcf=/home/ubuntu/gvcf
-fastq=/mnt/data/Topic4
-ngm=/home/ubuntu/bin/NextGenMap-0.5.2/bin/ngm-0.5.2/ngm
-bin=/home/ubuntu/bin
-project=Biol525D
-#We need to make aligned bam files for all our samples. I've reduced the data in each sample because of RAM limitations, so please rerun this command
-for name in `ls $fastq | grep R1.fastq.gz | sed s/_R1.fastq.gz//g`
-do
-     $ngm \
-       -r $ref \
-       -1 $fastq/${name}_R1.fastq.gz \
-       -2 $fastq/${name}_R2.fastq.gz \
-       -o $bam/${name}.ngm.sam \
-       --rg-id $name \
-       --rg-sm $name \
-       --rg-pl illumina \
-       --rg-pu $project \
-       --rg-lb ${name}_lib \
-       -t 1 
-     samtools view -bh $bam/${name}.ngm.sam |\
-     samtools sort > $bam/${name}.ngm.bam
-     samtools index $bam/${name}.ngm.bam
-     rm $bam/${name}.ngm.sam
 
-done
+#To make this easier, we're going to set up our directories and make a bunch of variables with paths to programs we're going to use and directories we want to make files in. 
+mkdir /mnt/<USERNAME>/log
+mkdir /mnt/<USERNAME>/gvcf
+mkdir /mnt/<USERNAME>/bam
+#Set up variables
+ref=/home/biol525d/ref/reference.fa
+java=/home/biol525d/bin/jre1.8.0_131/bin/java
+bam=/mnt/<USERNAME>/bam
+gatk=/home/biol525d/bin/gatk-4.0.6.0/gatk
+picard=/mnt/biol525d/bin/picard.jar
+log=/mnt/<USERNAME>/log
+home=/mnt/<USERNAME>
+gvcf=/mnt/<USERNAME>/gvcf
+fastq=/mnt/biol525d/Topic_4/fastq
+bin=/home/biol525d/bin
+project=biol525d
+
 
 #Since we're going to apply most functions to each sample, lets make a list of samplenames
-ls $fastq | grep _R1.fastq | sed s/_R1.fastq.gz//g > $home/samplelist.txt
+ls $bam | grep .ngm.bam$ | sed s/.ngm.bam//g > $home/samplelist.txt
 
 
 #Now lets mark PCR duplicates. 
-#Keep in mind, for GBS data there will be excessive false positives, so we should not mark duplicates. Here we run through it for practice but we do not use the product.
+#If you were using GBS data, you wouldn't want to mark duplicates.
 while read name 
 do 
 $java -jar $picard MarkDuplicates \
-I=$bam/${name}.ngm.rg.clean.bam O=$bam/${name}.tmp.bam \
+I=$bam/${name}.ngm.bam O=$bam/${name}.ngm.dedup.bam \
 M=$log/${name}.duplicateinfo.txt 
 done < $home/samplelist.txt
 
