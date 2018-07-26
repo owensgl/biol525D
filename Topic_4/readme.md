@@ -82,7 +82,7 @@ HINTS:
   
    ```bash
    #First set up variable names
-   bam=/home/<USERNAME>/bam
+   bam=/mnt/<USERNAME>/bam
    fastq=/home/biol525d/Topic_4/fastq
    ngm=/home/biol525d/bin/NextGenMap-0.5.2/bin/ngm-0.5.2/ngm
    ref=/mnt/<USERNAME>/ref/reference.fa
