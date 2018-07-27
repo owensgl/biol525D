@@ -6,17 +6,16 @@ byobu
 #To make this easier, we're going to set up our directories and make a bunch of variables with paths to programs we're going to use and directories we want to make files in. 
 mkdir /mnt/<USERNAME>/log
 mkdir /mnt/<USERNAME>/gvcf
-mkdir /mnt/<USERNAME>/bam
 #Set up variables
-ref=/home/biol525d/ref/reference.fa
+ref=/home/biol525d/ref
 java=/home/biol525d/bin/jre1.8.0_131/bin/java
 bam=/mnt/<USERNAME>/bam
 gatk=/home/biol525d/bin/gatk-4.0.6.0/gatk
-picard=/mnt/biol525d/bin/picard.jar
+picard=/home/biol525d/bin/picard.jar
 log=/mnt/<USERNAME>/log
 home=/mnt/<USERNAME>
 gvcf=/mnt/<USERNAME>/gvcf
-fastq=/mnt/biol525d/Topic_4/fastq
+fastq=/home/biol525d/Topic_4/fastq
 bin=/home/biol525d/bin
 project=biol525d
 
@@ -31,24 +30,21 @@ while read name
 do 
 $java -jar $picard MarkDuplicates \
 I=$bam/${name}.ngm.bam O=$bam/${name}.ngm.dedup.bam \
-M=$log/${name}.duplicateinfo.txt 
+M=$log/${name}.duplicateinfo.txt
+samtools index $name.ngm.dedup.bam
 done < $home/samplelist.txt
 
- gatk --java-options "-Xmx4g" HaplotypeCaller  \
-   -R Homo_sapiens_assembly38.fasta \
-   -I input.bam \
-   -O output.g.vcf.gz \
-   -ERC GVCF
-
+$java -jar $picard CreateSequenceDictionary R= $ref/reference.fa O= $ref/reference.dict
+samtools faidx $ref/reference.fa 
 #Next we use the haplotypecaller to create a gvcf file for each sample
 while read name 
 do 
 $gatk --java-options "-Xmx4g" HaplotypeCaller \
    -R $ref \
-   -log $log/${project}.HaplotypeCaller.log \
    -I $bam/${name}.ngm.dedup.bam \
+   --native-pair-hmm-threads 1 \
    -ERC GVCF \
-   -o $gvcf/${name}.ngm.dedup.g.vcf
+   -O $gvcf/${name}.ngm.dedup.g.vcf
 done <$home/samplelist.txt
 
 #Check your gvcf files to make sure each has a .idx file. If the haplotypecaller crashes, it will produce a truncated gvcf file that will eventually crash the genotypegvcf step. Note that if you give genotypegvcf a truncated file without a idx file, it will produce an idx file itself, but it still won't work. 
