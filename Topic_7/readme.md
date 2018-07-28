@@ -99,7 +99,7 @@ $gatk --java-options "-Xmx4g" GenotypeGVCFs \
 less -S $home/$project.vcf.gz
 #Try to find an indel 
 
-#Lets filter this a bit. Only keeping biallelic snps, with a minor allele frequency > 10%.
+#Lets filter this a bit. Only keeping biallelic snps, with a minor allele frequency > 10%. Also, sometimes you'll want to work will less SNPs than your full dataset, so lets subset to a random 10% of the total sites. 
 #This step also lets you filter based on other quality metrics.
 $gatk SelectVariants \
 -R $ref/reference.fa \
@@ -107,6 +107,7 @@ $gatk SelectVariants \
 -O $home/$project.snps.vcf.gz \
 --select-type-to-include SNP \
 --restrict-alleles-to BIALLELIC \
+-fraction 0.1 \
 -select "AF > 0.1" 
 
 #Finally, vcf is often a difficult format to use, so lets convert it to a flat tab-separated format.
