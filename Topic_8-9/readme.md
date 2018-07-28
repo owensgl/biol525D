@@ -3,74 +3,26 @@
 ### Daily Questions:
 1. For a site that is invariant in both populations (i.e. a locus with no variation), what is Fst?
 2. What effect does missing data have on a PCA?
-3. What is the average Fst between sample1 and sample2+3 in our example data? Hint, SNPrelate can calculate Fst.
+3. What is the average Fst between samples 1-50 and 51-100 in our example data? Hint, SNPrelate can calculate Fst.
 
-The first thing we have to do is install some programs.
+A common first pass analysis is to use structure to look at clustering in your data. FastStructure is similar to STRUCTURE but orders of magnitude faster. We're going use that, but before that we have to convert our VCF to the bed format. We're going to use plink to do that.
 
 ```bash
-byobu
+cd ~/
+ plink --make-bed --vcf biol525d.snps.vcf.gz --out biol525d.snps --set-missing-var-ids @:# --double-id --allow-extra-chr
 
-#NGSadmix
-cd ~/bin
-wget popgen.dk/software/download/NGSadmix/ngsadmix32.cpp 
-g++ ngsadmix32.cpp -O3 -lpthread -lz -o NGSadmix
-
-#FastStructure is similar to STRUCTURE but orders of magnitude faster. It has many dependencies
-
-#Install miniconda, a python build for scientific computing. It also lets us install python packages easily.
-cd ~/bin
-wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
-bash Miniconda2-latest-Linux-x86_64.sh  #Say yes to every question.
-source ~/.bashrc
-conda install -c salilab gsl=1.16
-conda install -c anaconda cython=0.25.2
-conda install -c anaconda numpy=1.13.1
-conda install -c anaconda scipy=0.19.1
-sudo apt-get install libgsl0-dev
-
-cd /home/ubuntu/bin
-#Get faststructure
-git clone https://github.com/rajanil/fastStructure
-
-#Build the python extensions
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-export CFLAGS="-I/usr/local/include"
-export LDFLAGS="-L/usr/local/lib"
-source ~/.bashrc
-cd fastStructure/vars
-python setup.py build_ext --inplace
-cd ..
-python setup.py build_ext --inplace
-#Fast structure is now good to go! Remember to run it using the python version in anaconda
-```
-Now to convert between file types we're going to use PGDspider.
-
-First download it to your home computer from [here](http://www.cmpg.unibe.ch/software/PGDSpider/#Download_and_Installation_Instructions)
-We're going to create a spid file to help pgdspider convert a vcf to faststructure format. This [video](https://www.youtube.com/watch?v=I7hJvE0USxQ) demonstrates how.
-
-We take the spid file created and transfer it to your server using cyberduck.
-
-Next we download pgdspider to your server
-```bash
-java=/home/ubuntu/bin/jre1.8.0_131/bin/java
-cd /home/ubuntu/bin/
-wget http://www.cmpg.unibe.ch/software/PGDSpider/PGDSpider_2.1.0.3.zip
-unzip PGDSpider_2.1.0.3.zip
-#Now to convert the vcf file to faststructure format
-cd ..
-$java -jar ~/bin/PGDSpider_2.1.0.3/PGDSpider2-cli.jar -inputfile ~/Biol525D.snps.vcf -inputformat VCF -outputfile ~/Biol525D.snps.str -outputformat STRUCTURE -spid vcf_to_structure.spid
-
-#Now we run fast structure
+#Now we run fast structure with K values from 1 to 4.
+#In this case, we're not explicitely filtering for linkage between SNPs (which you should), although subsetting to 10% of sites helps that somewhat.
 mkdir faststructure
 cd faststructure
 for k in `seq 4`
 do
-python /home/ubuntu/bin/fastStructure/structure.py -K $k --input=../Biol525D.snps --output=Biol525D --format=str
+python /home/biol525d/bin/fastStructure/structure.py -K $k --input=../biol525d.snps --output=biol525d
 done
 #This gives us a bunch of files for each K value, we'll use those to plot.
 #The meanQ files give us admixture proportions which is what we care about.
 #It's also useful to find out the best K value from the data and we can do that using faststructure
-python /home/ubuntu/bin/fastStructure/chooseK.py --input=Biol525D
+python /home/biol525d/bin/fastStructure/chooseK.py --input=biol525d
 ```
 Now that we've run faststructure, its time to plot our results. First we download our faststructure folder to your laptop, then open Rstudio and continue onto the [next page](https://github.com/owensgl/biol525D/blob/master/Topic_8-9/plotting_structure.md)
 
