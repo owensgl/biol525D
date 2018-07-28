@@ -36,8 +36,8 @@ done < $home/samplelist.txt
 
 $java -jar $picard CreateSequenceDictionary R= $ref/reference.fa O= $ref/reference.dict
 samtools faidx $ref/reference.fa 
-#Next we use the haplotypecaller to create a gvcf file for each sample
-while read name 
+#Next we use the haplotypecaller to create a gvcf file. This takes about 20 minutes per sample, so for right now we're only going to run it on one sample. 
+for name in `cat $home/samplelist.txt | head -n 1`
 do 
 $gatk --java-options "-Xmx4g" HaplotypeCaller \
    -R $ref \
@@ -45,84 +45,91 @@ $gatk --java-options "-Xmx4g" HaplotypeCaller \
    --native-pair-hmm-threads 1 \
    -ERC GVCF \
    -O $gvcf/${name}.ngm.dedup.g.vcf
-done <$home/samplelist.txt
+done 
 
-#Check your gvcf files to make sure each has a .idx file. If the haplotypecaller crashes, it will produce a truncated gvcf file that will eventually crash the genotypegvcf step. Note that if you give genotypegvcf a truncated file without a idx file, it will produce an idx file itself, but it still won't work. 
-#The haplotypecaller tends to crash when run on multiple cores when it runs out of ram in an unpredictable fashion. 
+#Check your gvcf file to make sure it has a .idx index file. If the haplotypecaller crashes, it will produce a truncated gvcf file that will eventually crash the genotypegvcf step. Note that if you give genotypegvcf a truncated file without a idx file, it will produce an idx file itself, but it still won't work. 
 
-#With all the gvcf files created, we jointly genotype all samples to produce a single vcf
-ls $gvcf | grep "vcf" | grep -v ".idx"   > $home/GVCFs.samplelist.txt
+#We don't have time to run each of those, so if the first file worked, copy the completed gvcf files into your directory.
+cp /home/biol525d/Topic_7/gvcf/* /mnt/<USERNAME>/gvcf/
 
-#This loop is going to make a string that has all the sample names, so we can give that to GATK.
-tmp=""
-while read prefix
+```
+
+The next step is to import our gvcf files into a genomicsDB file. This is a compressed database representation of all the read data in our samples. It has two important features to remember:
+1) Each time you call GenomicsDBImport, you create a database for a single interval. This means that you can parallelize it easier, for example by calling it once per chromosome.
+2) The GenomicsDB file contains all the information of your GVCF files, but can't be added to, and can't be back transformed into a gvcf. That means if you get more samples, you can't just add them to your genomicdDB file, you have to go back to the gvcf files.
+
+
+We need to create a map file to GATK where our gvcf files are and what sample is in each. Because we use a regular naming scheme for our samples, we can create that using a bash script.
+This is what we're looking for:
+sample1      sample1.vcf.gz
+sample2      sample2.vcf.gz
+sample3      sample3.vcf.gz
+
+```bash
+
+for i in `ls $gvcf | grep "vcf" | grep -v ".idx" | sed s/.ngm.dedup.g.vcf//g`
 do
-        tmp="$tmp --variant $gvcf/$prefix"
-done < $home/GVCFs.samplelist.txt
+echo -e "$i\t$gvcf/$i.ngm.dedup.g.vcf"
+done > $home/$project.sample_map
 
-$java -Xmx3g -Djava.io.tmpdir=$home -jar $gatk \
-        -nt 1 \
-        -l INFO \
-        -R $ref \
-        -log $log/GenotypeGVCFs.log \
-        -T GenotypeGVCFs \
-        $tmp \
-        -o $home/$project.vcf \
-        -hets 0.01 \
-        --max_alternate_alleles 4
+#Break down the chained grep and sed commands above and figure out what they do. Try removing one part and see what you.
+
+#Next we call GenomicsDBImport to actually create the database.
+
+$gatk --java-options "-Xmx4g -Xms4g" \
+       GenomicsDBImport \
+       --genomicsdb-workspace-path $home/db \
+       --batch-size 50 \
+       -L Chr1 \
+       --sample-name-map $home/$project.sample_map \
+       --reader-threads 2
+
+#With the genomicsDB created, we're finally ready to actually call variants and output a vcf
+
+$gatk --java-options "-Xmx4g" GenotypeGVCFs \
+   -R $ref/reference.fa \
+   -V gendb://$home/db \
+   -O $home/$project.vcf.gz
+
 
 
 ####RUN UP TO THIS STEP AT THE START OF THE CLASS
 
 #Lets take a look at the vcf file
-less -S $home/$project.vcf
-#Lets filter this a bit. Only keeping biallelic snps and sites where less than 20% of samples are not genotyped.
+less -S $home/$project.vcf.gz
+#Try to find an indel 
+
+#Lets filter this a bit. Only keeping biallelic snps, with a minor allele frequency > 10%.
 #This step also lets you filter based on other quality metrics.
-$java -jar $gatk \
--R $ref \
--T SelectVariants \
--V $home/$project.vcf \
--o $home/$project.snps.vcf \
--selectType SNP \
--restrictAllelesTo BIALLELIC \
---maxNOCALLfraction 0.4 \
--log $log/$project.selectvariants.log
+$gatk SelectVariants \
+-R $ref/reference.fa \
+-V $home/$project.vcf.gz \
+-O $home/$project.snps.vcf.gz \
+--select-type-to-include SNP \
+--restrict-alleles-to BIALLELIC \
+-select "AF > 0.1" 
 
 #Finally, vcf is often a difficult format to use, so lets convert it to a flat tab-separated format.
-$java -jar $gatk \
--R $ref \
--T VariantsToTable \
--V $home/$project.snps.vcf \
+$gatk VariantsToTable \
+-R $ref/reference.fa \
+-V $home/$project.snps.vcf.gz \
 -F CHROM \
 -F POS \
 -GF GT \
--log $log/variantstotable.log \
--o $home/$project.snps.tab
+-O $home/$project.snps.tab
 
 #Now to filter and reformat. We want to remove the GT from the sample name, and also remove lines with *, which indicate deletions.
 cat $home/$project.snps.tab |sed 's/.GT   /  /g' | sed 's/.GT$//g' | sed 's|/||g' | sed 's/\.\./NN/g' | grep -v '*' > $home/$project.snps.formatted.tab
 #Note the sed 's/.GT   /  /g' command requires that the spaces are actually tabs. When copying and pasting, they are often substituted for spaces. To put an actual tab in the command, press ctrl-v, tab. 
 
-#We don't have very many reads, so for many of the genotypes we can't confidently call SNPs. One way to deal with this is to take into account the uncertainty of the genotype call using ANGSD.
-#First we install ANGSD
-cd ~/bin
-git clone https://github.com/ANGSD/angsd.git 
-cd angsd ;make HTSSRC=../htslib-1.5
-
-#ANGSD has many different functions, but for now lets just calculate allele frequencies for our three samples
-ls -d $PWD $bam/*.* | grep .bam$ | grep -v bai > ~/$project.bamlist.txt
-~/bin/angsd/angsd -out $project.angsd -doMajorMinor 2 -doMaf 8 -bam  ~/$project.bamlist.txt -doCounts 1  -minMaf 0.1
-
-#This is much faster than GATK, although it does not do local realignment of haplotypes. 
-
-
+#This tab delimited file is easier to parse if you want to write your own scripts.
 
 ```
 ### Coding challenge
-* Take the original vcf file produced and create a vcf of only high quality indels for samples 1 and 2. Make sure that each indel is actually variable in those samples.
+* Take the original vcf file produced and create a vcf of only high quality indels for samples 1-25,50-75. Make sure that each indel is actually variable in those samples.
 * It can be better to use genotype likelihoods instead of called genotypes when you have low depth. One tool for doing this is [ngsTools](https://github.com/mfumagalli/ngsTools#ngscovar). Install this program and run a PCA on your samples.
 
 ### Daily assignments
-1. Another program that is useful for filtering and formatting vcf files is [vcftools](https://vcftools.github.io/index.html). Successfully install this program and record the steps necessary. 
+1. Another program that is useful for filtering and formatting vcf files is [vcftools](https://vcftools.github.io/index.html). It is installed on the server. It can also do basic pop gen stats. Use it to calculate Fst between samples 1-50 and 51-100.
 2. You're trying to create a very stringent set of SNPs. Based on the site information GATK produces, what filters would you use? Include the actual GATK abbreviations.
 3. What is strand bias and why would you filter based on it?
