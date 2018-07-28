@@ -1,17 +1,8 @@
 # Calculating and plotting Fst
 
-First we need to download and install vcftools. This is back on your ubuntu server.
+Now to calculate Fst, we're going back to the server.
 ```bash
-sudo apt-get install pkg-config
-sudo apt-get install autoconf
 
-cd ~/bin 
-git clone https://github.com/vcftools/vcftools.git
-cd vcftools/ 
-./autogen.sh 
-./configure	
-make 
-sudo make install
 
 #Next we use it to calculate Fst
 #You will have to download from the github page samplelist.P1.txt and samplelist.P2.txt
