@@ -76,13 +76,12 @@ data.full %>%
 #The order works, but lets try to make it look nicer
 
 data.full %>%
-  mutate(name = factor(name, levels = name[order(color)])) %>%
+  mutate(name = factor(name, levels = name[order(-lat)])) %>%
   ggplot(.,aes(x=name,y=value,fill=factor(variable))) +
   geom_bar(stat = "identity",position="stack") +
   facet_wrap(~k, nrow=5) +
   theme_classic()+
   theme(axis.text.x = element_blank(),
-        axis.text.y = element_blank(),
         axis.ticks = element_blank(), 
         axis.line = element_blank(),
         axis.title.x = element_blank(),
