@@ -3,9 +3,9 @@
 
 ## Code break questions 
 
-1. Write a one liner to find all the overlaps exactly 4 bp in length between CTCTAGGCC and a list of other sequences in the file ~/Topic5/data/overlaps.fa
+1. Write a one liner to find all the overlaps exactly 4 bp in length between CTCTAGGCC and a list of other sequences in the file /home/biol525d/Topic_5/data/overlaps.fa
 
-2. Find all the unique 9mers in a fasta sequence ~/Topic5/data/kmer.fa
+2. Find all the unique 9mers in a fasta sequence /home/biol525d/Topic_5/data/kmer.fa
 
 This might be a tricky one and there are likely many ways to do this. First try out these commands that might help you complete this task. It might also be helpful to determine how many characters are in the sequence (wc -c).
 		
@@ -48,24 +48,23 @@ Details for this dataset are as follows:
 
 The data is located in ~/Topic5/data. One file contains the forward read (frag_1.fastq.gz) and the other file contains the reverse read (frag_2.fastq.gz). Each read has a match from the same fragment in the other file and is in the same order in the matching file.
 
-Step 1. Enter this folder and unpack these data:
+Step 1. Install Velvet COMPLETED 
+(see Manual at http://www.ebi.ac.uk/~zerbino/velvet/Manual.pdf):
 
-```bash
+Velvet is already installed, but this was the command used to install the program:
+
+sudo apt-get install velvet
+
+(note I also placed the zipped program in the /home/biol525d/Topic_5/scripts folder just in case, but it would have to be installed)
+
+Step 2. Enter this folder and unpack these data: COMPLETED 
+
 gunzip -d frag_*.fastq.gz
-```
+
 
 ### Question 1) Given the above information, what is the expected coverage?
 
 This information will be useful when you are running your genome assemblies.
-
-
-## Step 2. Install Velvet (see Manual at http://www.ebi.ac.uk/~zerbino/velvet/Manual.pdf):
-
-```bash
-sudo apt-get install velvet
-```
-
-(note I also placed the zipped program in the ~/Topic5/scripts folder just in case, but it would have to be installed)
 
 Step 3. The first program you need to run is velveth
 
@@ -81,8 +80,16 @@ For all the options simply type velveth and refer to the velvet manual for more 
 
 Here is an example command line:
 
+Make a directory in your home directory for your output
+
 ```bash
-velveth sa_assembly21 21 -shortPaired -fastq  -separate ~/Topic5/data/frag_1.fastq ~/Topic5/data/frag_2.fastq
+mkdir ~/Topic_5
+```
+
+Move into the ~/Topic_5 directory and run velveth
+
+```bash
+velveth sa_assembly21 21 -shortPaired -fastq  -separate /home/biol525d/Topic_5/data/frag_1.fastq /home/biol525d/Topic_5/data/frag_2.fastq
 ```
 
 21 is the kmer length
@@ -92,7 +99,9 @@ velveth sa_assembly21 21 -shortPaired -fastq  -separate ~/Topic5/data/frag_1.fas
 
 Run the above command.
 
-A Roadmap file is produced. This file is used as input for the next stage of velvet. For each k-mer observed in the set of reads, the hash table records the ID of the first read encountered containing that k-mer and the position of its occurrence within that read. This file rewrites each read as a set of original k-mers combined with overlaps with previously hashed reads. 
+A Roadmap file is produced. This file is used as input for the next stage of velvet. For each k-mer observed in the set of reads, the hash table records the ID of the first read encountered containing that k-mer and the position of its occurrence within that read. This file rewrites each read as a set of original k-mers combined with overlaps with previously hashed reads. For more information see:
+
+http://homolog.us/blogs/blog/2011/12/06/format-of-velvet-roadmap-file/
 
 This command needs a great deal of memory and may not work on your instance. Therefore, I have run this command using two different kmers (31 and 21). You can use the Roadmaps that I generated complete the rest of the tutorial.
 
@@ -140,7 +149,7 @@ You can also quantify the assembly metrics using the perl script fasta_lengths_w
 Run as follows in the sa_assembly21 directory:
 
 ```bash
-perl  ~/Topic5/scripts/fasta_lengths_workshop.pl contigs.fa
+perl  /home/biol525d/Topic_5/scripts/fasta_lengths_workshop.pl contigs.fa
 ```
 
 This script will produce two files. The first will be called contigs.fa.lengths, which is the length of each contig in the assembly. The second is contigs.fa.stats which provides: 
@@ -217,4 +226,6 @@ Some potential parameters to modify include (see the manual for details):
 -ins_length_sd 
 -exp_cov (note that for this parameter you can include an estimated expected k-mer coverage or ask velvet to estimate it from the data by typing -exp_cov auto)
 
-Be sure to test -exp_cov.
+Be sure to test -exp_cov. For a more detailed explanation of this parameter see:
+
+http://homolog.us/blogs/blog/2012/06/08/an-explanation-of-velvet-parameter-exp_cov/
