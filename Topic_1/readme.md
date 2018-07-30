@@ -5,6 +5,7 @@ We are working on servers provided by Compute Canada, hosted on the [WestCloud](
 Programs to install: 
 * [Rstudio](https://www.rstudio.com/products/rstudio/download2/)
 * [Cyberduck](https://cyberduck.io/?l=en)
+* [iTerm](https://www.iterm2.com/)
 
 Log into WestCloud server using ssh (terminal). You will find your username and ip address in this [table](https://docs.google.com/spreadsheets/d/1v7k2-XtfiwOoQ3iZHnJyqVXsxgekVGXEtnFIvdk7aqU/edit?usp=sharing). 
 ```bash
