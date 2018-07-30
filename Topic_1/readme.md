@@ -9,7 +9,8 @@ Programs to install:
 
 Log into WestCloud server using ssh (terminal). You will find your username and ip address in this [table](https://docs.google.com/spreadsheets/d/1v7k2-XtfiwOoQ3iZHnJyqVXsxgekVGXEtnFIvdk7aqU/edit?usp=sharing). 
 ```bash
-ssh  -v  <your_user_name>@<your_server_ip>
+
+ssh  -v -i ~/.ssh/id_rsa <your_user_name>@<your_server_ip>
 ```
 
 Your screen should look like this:
