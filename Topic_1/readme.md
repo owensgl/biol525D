@@ -6,7 +6,7 @@ Programs to install:
 * [Rstudio](https://www.rstudio.com/products/rstudio/download2/)
 * [Cyberduck](https://cyberduck.io/?l=en)
 
-Log into WestCloud server using ssh (terminal). You will find your username and ip address in this [table](). 
+Log into WestCloud server using ssh (terminal). You will find your username and ip address in this [table](https://docs.google.com/spreadsheets/d/1v7k2-XtfiwOoQ3iZHnJyqVXsxgekVGXEtnFIvdk7aqU/edit?usp=sharing). 
 ```bash
 ssh  -v  <your_user_name>@<your_server_ip>
 ```
