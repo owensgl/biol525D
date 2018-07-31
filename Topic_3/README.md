@@ -31,10 +31,18 @@ This first dataset is from an RNAseq study. To create QC graphs for the raw data
 ```bash
 mkdir ~/Topic_3
 ```
+
+copy the sequence data into your folder
+
+```bash
+cp /home/biol525d/Topic_3/data/*fq ~/Topic_3/ 
+cp /home/biol525d/Topic_3/data/*fastq ~/Topic_3/ 
+```
+
 move into your ~/Topic_3/ folder and execute the following commands:
 
 ```bash
-perl /home/biol525d/Topic_3/scripts/prinseq-lite-0.20.4/prinseq-lite.pl -fastq /home/biol525d/Topic_3/data/PmdT_147_100k_R1.fq -fastq2 /home/biol525d/Topic_3/data/PmdT_147_100k_R2.fq -graph_data pmdt_147_100k_graph.txt 
+perl /home/biol525d/Topic_3/scripts/prinseq-lite-0.20.4/prinseq-lite.pl -fastq ~/Topic_3/PmdT_147_100k_R1.fq -fastq2 ~/Topic_3/PmdT_147_100k_R2.fq -graph_data pmdt_147_100k_graph.txt 
 ```
 
 download your graph file to your computer and upload it to http://edwards.sdsu.edu/cgi-bin/prinseq/prinseq.cgi to view/download your graphs
@@ -52,7 +60,7 @@ http://prinseq.sourceforge.net/manual.html#STANDALONE
 Now rerun the above commands on the fastq files named GBS12_brds_Pi_197A2_100k_R#.fastq, which are reads created using the GBS protocol with an enzyme called PST1.
 
 ```bash
-perl /home/biol525d/Topic_3/scripts/prinseq-lite-0.20.4/prinseq-lite.pl -fastq /home/biol525d/Topic_3/data/GBS12_brds_Pi_197A2_100k_R1.fastq -fastq2 /home/biol525d/Topic_3/data/GBS12_brds_Pi_197A2_100k_R2.fastq -graph_data GBS12_brds_Pi_197A2_100k_graph.txt 
+perl /home/biol525d/Topic_3/scripts/prinseq-lite-0.20.4/prinseq-lite.pl -fastq ~/Topic_3/GBS12_brds_Pi_197A2_100k_R1.fastq -fastq2 ~/Topic_3/GBS12_brds_Pi_197A2_100k_R2.fastq -graph_data GBS12_brds_Pi_197A2_100k_graph.txt 
 ```
 
 Question 1) Compare the two .html files. What kinds of differences do you see in the files? Why do you think these differences are found (hint: think about the types of data you are analyzing)? 
@@ -63,7 +71,7 @@ Question 1) Compare the two .html files. What kinds of differences do you see in
 Trim off bases from either end with less than a quality score of 10 (-trim_qual_left and -trim_qual_right), and filter any sequences that have less than 70 base pairs (-min_len 70):
 
 ```bash
-perl /home/biol525d/Topic_3/scripts/prinseq-lite-0.20.4/prinseq-lite.pl -fastq /home/biol525d/Topic_3/data/GBS12_brds_Pi_197A2_100k_R1.fastq -fastq2 /home/biol525d/Topic_3/data/GBS12_brds_Pi_197A2_100k_R2.fastq -log log1 -out_good GBS_filter1 -min_len 70 -trim_qual_left 10 -trim_qual_right 10 
+perl /home/biol525d/Topic_3/scripts/prinseq-lite-0.20.4/prinseq-lite.pl -fastq ~/Topic_3/GBS12_brds_Pi_197A2_100k_R1.fastq -fastq2 ~/Topic_3/GBS12_brds_Pi_197A2_100k_R2.fastq -log log1 -out_good GBS_filter1 -min_len 70 -trim_qual_left 10 -trim_qual_right 10 
 ```
 
 Note that you can view the log file (log1) to see the command executed and the output (including the default parameters run)
