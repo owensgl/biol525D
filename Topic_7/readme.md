@@ -127,7 +127,7 @@ cat $home/$project.snps.tab |sed 's/.GT   /  /g' | sed 's/.GT$//g' | sed 's|/||g
 ```
 ### Coding challenge
 * Take the original vcf file produced and create a vcf of only high quality indels for samples 1-25,50-75. Make sure that each indel is actually variable in those samples.
-* It can be better to use genotype likelihoods instead of called genotypes when you have low depth. One tool for doing this is [ngsTools](https://github.com/mfumagalli/ngsTools#ngscovar). Install this program and run a PCA on your samples.
+* Use GATK to filter your vcf file and select for sites with alternate allele frequencies > 0.01, including multi-allelic sites. 
 
 ### Daily assignments
 1. Another program that is useful for filtering and formatting vcf files is [vcftools](https://vcftools.github.io/index.html). It is installed on the server. It can also do basic pop gen stats. Use it to calculate Fst between samples 1-50 and 51-100.
