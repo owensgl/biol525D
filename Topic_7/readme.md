@@ -72,7 +72,7 @@ do
 echo -e "$i\t$gvcf/$i.ngm.dedup.g.vcf"
 done > $home/$project.sample_map
 
-#Break down the chained grep and sed commands above and figure out what they do. Try removing one part and see what you.
+#Break down the piped grep and sed commands above and figure out what they do. Try removing one part and see what you.
 
 #Next we call GenomicsDBImport to actually create the database.
 
@@ -93,7 +93,6 @@ $gatk --java-options "-Xmx4g" GenotypeGVCFs \
 
 
 
-####RUN UP TO THIS STEP AT THE START OF THE CLASS
 
 #Lets take a look at the vcf file
 less -S $home/$project.vcf.gz
