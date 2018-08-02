@@ -9,6 +9,8 @@ A common first pass analysis is to use structure to look at clustering in your d
 
 ```bash
 cd ~/
+
+#If you didn't make the biol525d.snps.vcf.gz file, you can download it from this github page. 
  plink --make-bed --vcf biol525d.snps.vcf.gz --out biol525d.snps --set-missing-var-ids @:# --double-id --allow-extra-chr
 
 #Now we run fast structure with K values from 1 to 4.
