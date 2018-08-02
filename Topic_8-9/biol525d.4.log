@@ -8,3 +8,7 @@ Iteration Marginal_Likelihood delta_Marginal_Likelihood Iteration_Time (secs)
 10 -0.2901555757 1.0223779959 14.009
 20 -0.2900961583 0.0000594174 17.162
 30 -0.2900940030 0.0000021554 17.162
+40 -0.2900940030 0.0000000000 17.161
+Marginal Likelihood = -0.2900940030
+Total time = 68.9326 seconds
+Total iterations = 40 
