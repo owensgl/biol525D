@@ -7,6 +7,8 @@ Now to calculate Fst, we're going back to the server.
 #Next we use it to calculate Fst
 #We need a list of samples for the two different populations. 
 cd ~
+seq -f "%03g" 1 50 > samplelist.pop1.txt
+seq -f "%03g" 51 100 > samplelist.pop2.txt
 vcftools  \
 --gzvcf biol525d.snps.vcf.gz \
 --weir-fst-pop samplelist.pop1.txt --weir-fst-pop samplelist.pop2.txt \
