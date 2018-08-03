@@ -10,3 +10,11 @@ Answers should be sent to gregory.lawrence.owens@gmail.com
 3. Try different filtering options for the GBS data  (see http://prinseq.sourceforge.net/manual.html for options) and plot QC graphs. Discuss which options you would choose to implement if this was your data and why.
 
 4. Is an alignment with a higher percent of mapped reads always better than one with a lower percent? Why or why not?
+
+5. Quantify the assembly metrics for your first assembly that you ran without any options. Pick different sets of parameters to run. Compare the resulting assemblies and discuss which ones seemed to have improved the assembly and why that might be.
+
+6. What expression measure would you use to compare gene expression between different genes and why? Is it appropriate to compare the raw expression counts? Can you get more appropriate data from RSEM? 
+
+7. You're trying to create a very stringent set of SNPs. Based on the site information GATK produces, what filters would you use? Include the actual GATK abbreviations.
+
+8. For a site that is invariant in both populations (i.e. a locus with no variation), what is Fst?
