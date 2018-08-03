@@ -15,7 +15,6 @@ zcat biol525d.snps.vcf.gz | perl /home/biol525d/bin/vcf2fasta_gaps.pl  > biol525
 
 
 #Next we run it
-cd ..
 iqtree -s biol525d.snps.fasta -st DNA -m TEST+ASC -nt 1
 
 #This produces several output files, including a log and a couple different versions of the treefile. The -m TEST command does a model test and selects the best substition model. 
@@ -114,9 +113,9 @@ Now we want to try out splitstree, a reticulate network phylogeny. Download it [
 It should just run if you have the correct version of java. For newer macs you may have to install an older version of java, it should be a suggestion when you attempt to run the program.
 Before we download the fasta file we have to replace all N with ?, because splitstree does not accept N.
 ```bash
-cat Biol525D.snps.fasta | sed s/N/?/g Biol525D.snps.fasta > Biol525D.snps.splitstree.fasta
+cat biol525d.snps.fasta | sed s/N/?/g biol525d.snps.fasta > biol525d.snps.splitstree.fasta
 ```
-Then transfer it to your laptop. Open Splitstree and select the biol525D.snps.splitstree.fasta file.
+Then transfer it to your laptop. Open Splitstree and select the biol525d.snps.splitstree.fasta file.
 The first tree you see is a NeighbourNet, but you can also select many other algorithms or distance methods.
 
 
