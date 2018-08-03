@@ -19,6 +19,6 @@ Answers should be sent to gregory.lawrence.owens@gmail.com
 
 8. For a site that is invariant in both populations (i.e. a locus with no variation), what is Fst?
 
-9. If you have a dataset of 100 samples and 100,000 SNPs, what is the maximum number of PC axes? PCs can also be called eigenvectors. HINT: Here's an explanation of (PCAs)[http://setosa.io/ev/principal-component-analysis/]
+9. If you have a dataset of 100 samples and 100,000 SNPs, what is the maximum number of PC axes? PCs can also be called eigenvectors. HINT: Here's an explanation of [PCAs](http://setosa.io/ev/principal-component-analysis/)
 
 10. What does it mean when something has 50% bootstrap support? What are two possible reasons that a node may have low support? Include one biological and one methodological reason.
