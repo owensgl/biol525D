@@ -95,8 +95,8 @@ ggtree(tree.midpoint) +
 #We can  make up our labels
 ggtree(tree.midpoint) +
   geom_tiplab() +
-  geom_label2(aes(subset=111, label='Robot Fish')) +
-  geom_label2(aes(subset=199, label='Robots')) +
+  geom_label2(aes(subset=(node==111), label='Robot Fish')) +
+  geom_label2(aes(subset=(node==199), label='Robots')) +
   geom_cladelabel(node=111, label="", align=T, offset=.0001,color="white") + 
   geom_cladelabel(node=199, label="", align=T, offset=-.0002,color="white")
 
