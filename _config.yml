@@ -1,0 +1,26 @@
+# configuration
+# fill in the course details
+ 
+courseName: "Biol525D Topics in Systematics and Evolution"
+
+# small title that is at the top of every page
+subtitle: "Bioinformatics for Evolutionary Biology -- Summer 2019"
+
+# baseurl: /
+
+# url where the required reading is available to download
+docsUrl: "" 
+
+# url where the student's grading info is kept
+gradingUrl: "" 
+
+# change only if you know what you are doing
+collections:
+  syllabus:
+    output: true
+defaults:
+  - scope:
+      path: ""
+      type: syllabus
+    values:
+      layout: unit
