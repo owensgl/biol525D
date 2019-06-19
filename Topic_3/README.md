@@ -1,3 +1,7 @@
+---
+title: Topic 3
+permalink: /Topic_3/
+---
 
 # Code break questions 
 

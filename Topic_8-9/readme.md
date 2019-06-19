@@ -1,3 +1,8 @@
+---
+title: Topic 8
+permalink: /Topic_8-9/
+---
+
 # Topic 8: Population genomics
 
 ### Daily Questions:

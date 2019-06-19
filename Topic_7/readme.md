@@ -1,3 +1,8 @@
+---
+title: Topic 7
+permalink: /Topic_7/
+---
+
 # Topic 7: SNP calling with GATK
 In this tutorial we're going to call SNPs with GATK. We will run steps as we talk about them 
 ```bash

@@ -1,18 +1,18 @@
 # configuration
 # fill in the course details
- 
-courseName: "Biol525D Topics in Systematics and Evolution"
+
+courseName: "UBC Biol525D -- Summer 2019"
 
 # small title that is at the top of every page
-subtitle: "Bioinformatics for Evolutionary Biology -- Summer 2019"
+subtitle: "Topics in Systematics and Evolution: Bioinformatics for Evolutionary Biology"
 
 # baseurl: /
 
 # url where the required reading is available to download
-docsUrl: "" 
+docsUrl: ""
 
 # url where the student's grading info is kept
-gradingUrl: "" 
+gradingUrl: ""
 
 # change only if you know what you are doing
 collections:
@@ -24,3 +24,7 @@ defaults:
       type: syllabus
     values:
       layout: unit
+
+exclude:
+  - ".*"
+  - "#*"
