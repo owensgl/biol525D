@@ -14,7 +14,7 @@ The purpose of this course is to provide graduate students with the theoretical 
 
 ## INSTRUCTORS
 
-Dr. Gregory Owens, Dr. Kathryn Hodgins
+Dr. Gregory Owens, Dr. Kathryn Hodgins, Dr. Jean-Sebastien Legare
 
 ## FORMAT
 
