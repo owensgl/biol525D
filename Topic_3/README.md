@@ -1,6 +1,8 @@
 ---
 title: Topic 3
 permalink: /Topic_3/
+topickey: 3
+topictitle: "Preprocess Seq. Data"
 ---
 
 ### Accompanying material

@@ -1,6 +1,8 @@
 ---
 title: "Topic 10: Phylogenetics"
 permalink: /Topic_10/
+topickey: 10
+topictitle: Phylogenetics
 ---
 
 ## Accompanying material
@@ -8,10 +10,10 @@ permalink: /Topic_10/
 
 The first step is to convert the VCF file into a fasta file. It is surprisingly hard to find a tool to do that, so I've supplied a script.
 
-We only have variable sites, so we're going to use an ascertainment bias to correct for that. Typically phylogenetic programs assume you have all sites, including invariant ones.  
+We only have variable sites, so we're going to use an ascertainment bias to correct for that. Typically phylogenetic programs assume you have all sites, including invariant ones.
 IQtree also has a [webserver](http://iqtree.cibiv.univie.ac.at/).
 
-When using an ascertainment bias, every site needs to be variable. Annoyingly, when many phylogenetic programs treat heterozygous site as both homozygous types with some probability. Consequently, if an allele is only represented in its heterozygous state, there is some probability that the site is invariant, causing the program to crash. The script I provide filters out those sites. 
+When using an ascertainment bias, every site needs to be variable. Annoyingly, when many phylogenetic programs treat heterozygous site as both homozygous types with some probability. Consequently, if an allele is only represented in its heterozygous state, there is some probability that the site is invariant, causing the program to crash. The script I provide filters out those sites.
 
 ```
 

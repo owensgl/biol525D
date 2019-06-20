@@ -1,6 +1,8 @@
 ---
 title: "Topic 6: RNAseq analysis exercise"
 permalink: /Topic_6/
+topickey: 6
+topictitle: "RNASeq Analysis"
 ---
 
 ## Accompanying material

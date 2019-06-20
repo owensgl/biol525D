@@ -1,5 +1,7 @@
 ---
 title: "Topic 9 (continued): Principal Component Analysis in R"
+topickey: 9.1
+topictitle: "PCA"
 ---
 
 _Note: The sections below require file biol525d.snps.vcf.gz. If you didn't generate it, you can download it using the link [here](./biol525d.snps.vcf.gz)._

@@ -1,5 +1,7 @@
 ---
 title: "Topic 9: Plotting FastStructure results in R"
+topickey: 9
+topictitle: "Plotting in R"
 datafiles: [1,2,3,4]
 ---
 

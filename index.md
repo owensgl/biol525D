@@ -1,7 +1,7 @@
 ---
 title: "Biol525D Homepage"
 layout: home
-menuItem: "Basic info"
+menuItem: "General info"
 menuPosition: 1
 ---
 

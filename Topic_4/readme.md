@@ -1,6 +1,8 @@
 ---
 title: "Topic 4: Sequence Alignment"
 permalink: /Topic_4/
+topickey: 4
+topictitle: "Sequence Alignment"
 ---
 
 ### Accompanying material

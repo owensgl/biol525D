@@ -1,6 +1,8 @@
 ---
 title: "Topic 5: Assembly"
 permalink: /Topic_5/
+topickey: 5
+topictitle: "Assembly"
 ---
 
 ## Accompanying material

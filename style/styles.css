@@ -18,7 +18,7 @@ h1, h2, h3, p, li, blockquote, th, td, a {
 code {
 	font-size: 100%;
 	font-family: 'Inconsolata', monospace;
-	color: #444;
+	color: #333;
 	/* padding: 2px 4px; */
 }
 
@@ -107,25 +107,42 @@ a[href$='.pdf'] {
 }
 
 @media screen and (min-width: 70rem) {
+        /* show navbar on the left */
 	nav {
 		float: left;
 		margin-left: -12rem;	
 		width: 12rem;
 		padding-right: 3rem;
 		margin-top: 100px;
-	}		
+	}
 }
 @media screen and (max-width: 69.999rem) {
+        /* leave nav at the top of the page */
 	nav {
 		border-bottom: 3px solid rgba(0, 0, 0, .1);
 		padding-bottom: .5rem;
-		margin-bottom: 1rem;	
+		margin-bottom: 1rem;
+	}
+	nav li {
+	    display: inline;
+	    margin-right: 10px;
 	}
 }
 
 nav ul, nav li {
 	list-style-type: none;
 	padding: 0;
+}
+
+nav .topicslist {
+    font-size: 75%;
+    margin-top: 20px;
+}
+
+nav .topicsheader {
+    color: rgba(5,5,5,.8);
+    border-bottom: 1px solid rgba(5,5,5,.3);
+
 }
 
 nav .active a {

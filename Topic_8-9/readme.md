@@ -1,6 +1,8 @@
 ---
 title: "Topics 8: Population genomics"
 permalink: /Topic_8-9/
+topickey: 8
+topictitle: "Population genomics"
 ---
 
 ## Accompanying material
@@ -31,7 +33,9 @@ cd ~/
 mkdir faststructure
 cd faststructure
 for k in `seq 4`; do
-  python /home/biol525d/bin/fastStructure/structure.py -K $k --input=../biol525d.snps --output=biol525d
+  python /home/biol525d/bin/fastStructure/structure.py -K $k \
+         --input=../biol525d.snps \
+	 --output=biol525d
 done
 
 # This gives us a bunch of files for each K value, we'll use those to plot.

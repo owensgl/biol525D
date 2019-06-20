@@ -1,5 +1,7 @@
 ---
 title: "Topic 9 (final): Calculating and plotting Fst"
+topickey: 9.2
+topictitle: "Plotting Fst"
 ---
 
 Now to calculate Fst, we're going back to the server.

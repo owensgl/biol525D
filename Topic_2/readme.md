@@ -1,6 +1,8 @@
 ---
 title: "Topic 2: Commandline and R"
 permalink: /Topic_2/
+topickey: 2
+topictitle: "Cmdline and R"
 ---
 
 In this tutorial we will be going through parts of several software

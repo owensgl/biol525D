@@ -1,6 +1,8 @@
 ---
 title: "Topic 1: Logging into the server."
 permalink: /Topic_1/
+topickey: 1
+topictitle: Servers
 ---
 
 We are working on servers provided by Compute Canada, hosted on the [WestCloud](https://www.computecanada.ca/research-portal/national-services/compute-canada-cloud/) system. The only task now is to install a few programs we'll need later on, and login to your account.

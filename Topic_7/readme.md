@@ -1,6 +1,8 @@
 ---
 title: "Topic 7: SNP calling with GATK"
 permalink: /Topic_7/
+topickey: 7
+topictitle: "SNP Calling"
 ---
 
 ## Accompanying material

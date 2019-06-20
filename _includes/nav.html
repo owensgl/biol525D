@@ -3,11 +3,39 @@
 	<ul>
 		{% assign pages = (site.pages | sort: "menuPosition") %}
 		{% for node in pages %}
-		{% if page.url == node.url %}
-		<li class="active"><a href="{{ site.baseurl }}{{node.url}}" class="active">{{node.menuItem}}</a></li>
-		{% else %}
-		<li><a href="{{ site.baseurl }}{{node.url}}">{{node.menuItem}}</a></li>
-		{% endif %}
+  		  {% if node.menuItem %}
+		<li {% if page.url == node.url %}class="active"{% endif %}>
+		  <a href="{{ site.baseurl }}{{node.url}}" {% if page.url == node.url %}class="active"{% endif %}>{{node.menuItem}}</a>
+		</li>
+		  {% endif %}
 		{% endfor %}
+
 	</ul>
+		<!-- list pages with a topictitle key
+
+                     - page.topickey determines which topic nav entry gets highlighted when the page is active
+                     - page.topictitle adds an entry for the page in the navbar
+
+		  -->
+		{% assign topics = '' | split: '' %}
+		{% for node in site.pages %}
+		{% if node.topictitle != nil %}{% assign topics = topics|push: node %}{% endif %}
+		{% endfor %}
+		{% assign topics = (topics | sort: "topickey") %}
+		{% if topics.size > 0 %}
+  		<ul class="topicslist">
+		    <li class="topicsheader"> Topics:</li>
+		    {% for node in topics %}
+		    {% if page.topickey == node.topickey %}
+		    <li class="active">
+		      <a class="active" href="{{ site .baseurl }}{{node.url}}">{{node.topickey}}. {{node.topictitle || node.title}}</a>
+		    </li>
+		    {% else %}
+		    <li>
+		      <a href="{{ site .baseurl }}{{node.url}}">{{node.topickey}}. {{node.topictitle || node.title}}</a>
+		    </li>
+		    {% endif %}
+		    {% endfor %}
+		</ul>
+		{% endif %}
 </nav>
