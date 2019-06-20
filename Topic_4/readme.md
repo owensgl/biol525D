@@ -1,10 +1,7 @@
 ---
-title: Topic 4
+title: "Topic 4: Sequence Alignment"
 permalink: /Topic_4/
 ---
-
-# Topic 4: Sequence alignment
-
 
 ```bash
 byobu

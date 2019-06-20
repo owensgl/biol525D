@@ -1,9 +1,7 @@
 ---
-title: Topic 1
+title: "Topic 1: Logging into the server."
 permalink: /Topic_1/
 ---
-
-# Topic 1: Logging into the server.
 
 We are working on servers provided by Compute Canada, hosted on the [WestCloud](https://www.computecanada.ca/research-portal/national-services/compute-canada-cloud/) system. The only task now is to install a few programs we'll need later on, and login to your account.
 
@@ -20,6 +18,6 @@ ssh  -v -i ~/.ssh/id_rsa <your_user_name>@<your_server_ip>
 
 Your screen should look like this:
 
-![](terminal.jpeg "Terminal")
+![](terminal.jpeg "Terminal"){:width="100%"}
 
 

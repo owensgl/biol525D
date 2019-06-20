@@ -1,18 +1,16 @@
 ---
-title: Topic 5
+title: "Topic 5: Assembly"
 permalink: /Topic_5/
 ---
 
-# Topic 5 Assembly
-
-## Code break questions 
+## Code break questions
 
 1. Write a one liner to find all the overlaps exactly 4 bp in length between CTCTAGGCC and a list of other sequences in the file /home/biol525d/Topic_5/data/overlaps.fa
 
 2. Find all the unique 9mers in a fasta sequence /home/biol525d/Topic_5/data/kmer.fa
 
 This might be a tricky one and there are likely many ways to do this. First try out these commands that might help you complete this task. It might also be helpful to determine how many characters are in the sequence (wc -c).
-		
+
 Hints: test out the following commands:
 
 ```bash
