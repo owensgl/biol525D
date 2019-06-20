@@ -27,3 +27,6 @@
     See https://help.github.com/en/articles/setting-up-your-github-pages-site-locally-with-jekyll
 
     View local site: `bundle exec jekyll serve`
+
+    (this makes the site available for you to browse at localhost:4000/, and will regenerate the site
+     when files change)
