@@ -1,5 +1,7 @@
-# Topic 4: Sequence alignment
-
+---
+title: "Topic 4: Sequence Alignment"
+permalink: /Topic_4/
+---
 
 ```bash
 byobu
@@ -77,39 +79,38 @@ HINTS:
 * Use variables for directory paths "bwa=/home/biol525d/bin/bwa/bwa"
 * Use a loop.
 
-<details> 
-<summary> <b>Answer</b>  </summary>
-  
-   ```bash
-   #First set up variable names
-   bam=/mnt/<USERNAME>/bam
-   fastq=/home/biol525d/Topic_4/fastq
+<details><summary><b>Answer</b></summary><p>
+
+```bash
+    #First set up variable names
+    bam=/mnt/<USERNAME>/bam
+    fastq=/home/biol525d/Topic_4/fastq
    ngm=/home/biol525d/bin/NextGenMap-0.5.2/bin/ngm-0.5.2/ngm
    ref=/mnt/<USERNAME>/ref/reference.fa
    project=biol525d
-   #Then get a list of sample names, without suffixes
-   ls $fastq | grep R1.fastq.gz | sed s/.R1.fastq.gz//g > $bam/samplelist.txt
-   #Then loop through the samples
-   while read name
-   do
-        $ngm \
-          -r $ref \
-          -1 $fastq/${name}.R1.fastq.gz \
-          -2 $fastq/${name}.R2.fastq.gz \
-          -o $bam/${name}.ngm.sam \
-          --rg-id $name \
-          --rg-sm $name \
-          --rg-pl illumina \
-          --rg-pu $project \
-          --rg-lb ${name}_lib \
-          -t 1 
-        samtools view -bh $bam/${name}.ngm.sam |\
-        samtools sort > $bam/${name}.ngm.bam
-        samtools index $bam/${name}.ngm.bam
+    #Then get a list of sample names, without suffixes
+    ls $fastq | grep R1.fastq.gz | sed s/.R1.fastq.gz//g > $bam/samplelist.txt
+    #Then loop through the samples
+    while read name
+    do
+         $ngm \
+           -r $ref \
+           -1 $fastq/${name}.R1.fastq.gz \
+           -2 $fastq/${name}.R2.fastq.gz \
+           -o $bam/${name}.ngm.sam \
+           --rg-id $name \
+           --rg-sm $name \
+           --rg-pl illumina \
+           --rg-pu $project \
+           --rg-lb ${name}_lib \
+           -t 1 
+         samtools view -bh $bam/${name}.ngm.sam |\
+         samtools sort > $bam/${name}.ngm.bam
+         samtools index $bam/${name}.ngm.bam
 
-   done < $bam/samplelist.txt
+    done < $bam/samplelist.txt
 ```
-</details>
+</p></details>
 
 After your final bam files are created, and you've checked that they look good, you should remove intermediate files to save space. You can build file removal into your bash scripts, but it is often helpful to only add that in once the script works. It's hard to troubleshoot a failed script if it deletes everything as it goes. 
 ### By topic 7, you should have created cleaned bam files for all samples.

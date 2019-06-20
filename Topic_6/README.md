@@ -1,4 +1,7 @@
-# Topic 6 RNAseq analysis exercise 
+---
+title: "Topic 6: RNAseq analysis exercise"
+permalink: /Topic_6/
+---
 
 ## PART I: RSEM Processing
 

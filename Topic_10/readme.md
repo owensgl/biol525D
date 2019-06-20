@@ -1,4 +1,7 @@
-# Topic 10: Phylogenetics
+---
+title: "Topic 10: Phylogenetics"
+permalink: /Topic_10/
+---
 
 The first step is to convert the VCF file into a fasta file. It is surprisingly hard to find a tool to do that, so I've supplied a script.
 

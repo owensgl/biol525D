@@ -1,4 +1,7 @@
-# Topic 8: Population genomics
+---
+title: "Topic 8: Population genomics"
+permalink: /Topic_8-9/
+---
 
 ### Daily Questions:
 1. For a site that is invariant in both populations (i.e. a locus with no variation), what is Fst?

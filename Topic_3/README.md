@@ -1,5 +1,9 @@
+---
+title: Topic 3
+permalink: /Topic_3/
+---
 
-# Code break questions 
+# Code break questions
 
 1) How many sequences so you have in the fasta file /home/biol525d/Topic_6/data/Pine_reference_rnaseq_reduced.fa?
 

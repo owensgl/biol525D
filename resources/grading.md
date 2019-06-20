@@ -1,6 +1,9 @@
-# Course evaluation
+---
+title: Course Evaluation
+---
 
 The student evualtion in Biol 525D is based on the following:
+
 * 50% participation
 * 40% daily assignments
 * 10% final shell script
