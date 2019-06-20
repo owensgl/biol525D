@@ -3,7 +3,10 @@ title: "Topic 7: SNP calling with GATK"
 permalink: /Topic_7/
 ---
 
-In this tutorial we're going to call SNPs with GATK. We will run steps as we talk about them 
+## Accompanying material
+* [Slides](./Topic 7.pdf)
+
+In this tutorial we're going to call SNPs with GATK. We will run steps as we talk about them
 ```bash
 byobu
 

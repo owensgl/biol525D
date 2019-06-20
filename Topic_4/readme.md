@@ -3,6 +3,11 @@ title: "Topic 4: Sequence Alignment"
 permalink: /Topic_4/
 ---
 
+### Accompanying material
+
+* [Slides](./Topic 4.pdf)
+
+
 ```bash
 byobu
 

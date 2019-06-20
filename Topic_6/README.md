@@ -3,6 +3,10 @@ title: "Topic 6: RNAseq analysis exercise"
 permalink: /Topic_6/
 ---
 
+## Accompanying material
+
+* [Slides](./rnaseq_lecture_2018.pdf)
+
 ## PART I: RSEM Processing
 
 Steps for running RSEM:

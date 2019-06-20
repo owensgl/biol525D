@@ -3,6 +3,12 @@ title: Topic 3
 permalink: /Topic_3/
 ---
 
+### Accompanying material
+
+* Background reading: [Data preprocessing](./background_reading/Data_preprocessing.pdf), by Robert Schmieder.
+* Background reading: Del Fabbro C, Scalabrin S, Morgante M, Giorgi FM (2013) [An Extensive Evaluation of Read Trimming Effects on Illumina NGS Data Analysis](./background_reading/journal.pone.0085024.PDF). PLoS ONE 8(12): e85024. doi:10.1371/journal.pone.0085024
+
+
 # Code break questions
 
 1) How many sequences so you have in the fasta file /home/biol525d/Topic_6/data/Pine_reference_rnaseq_reduced.fa?

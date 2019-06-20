@@ -3,6 +3,16 @@ title: "Topic 5: Assembly"
 permalink: /Topic_5/
 ---
 
+## Accompanying material
+
+* Slides 2017: [UBC - De novo Assembly 2017](./Assembly2017.pdf)
+* Slides 2018: [UBC - De novo Assembly 2018](./Assembly2018.pdf)
+* Background reading: Comparison of the two major classes of assembly algorithms: overlap-layout-consensus and de-bruijn-graph [Paper](./background_reading/Briefings in Functional Genomics-2011-Li-bfgp-elr035.pdf). Briefings in Functional Genetics 2011.
+* Sense from sequence reads: methods for alignment and assembly [Paper](./background_reading/Flicek&Birney2009.pdf). Flicek and Birney. Nature methods supplement 2009.
+* [Velvet Manual 1.1](./background_reading/Manual.pdf). Daniel Zerbino, 2008.
+* Stacks: Building and Genotyping Loci De Novo From Short-Read Sequences [Paper](./background_reading/Stacks.pdf). Catchen, Amores, Hohenlohe, Cresko, Postlethwait. G3 Genes Genomes Genetics, 2011.
+* Trinity: reconstructing a full-length transcriptome without a genome from RNA-Seq data [Paper](./background_reading/nihms292662.pdf). Grabherr, Haas, Yassour, Levin, Thompson et al. Nat Biotechnol. 2013.
+
 ## Code break questions
 
 1. Write a one liner to find all the overlaps exactly 4 bp in length between CTCTAGGCC and a list of other sequences in the file /home/biol525d/Topic_5/data/overlaps.fa

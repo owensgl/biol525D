@@ -1,5 +1,10 @@
-# Plotting FastStructure results in R 
-Make sure you have downloaded your faststructure directory your Downloads folder using cyberduck or scp. 
+---
+title: "Topic 9: Plotting FastStructure results in R"
+datafiles: [1,2,3,4]
+---
+
+Make sure you have downloaded your faststructure directory to your Downloads folder using cyberduck or scp.
+
 ``` r
 #First we install some packages
 
@@ -13,8 +18,16 @@ library(reshape)
 library(tidyverse)
 ```
 
+
+Save these files to your Downloads (these files are also in the course repository under ./Topic_8-9/):
+  - Sample info [biol525d.popinfo.txt](biol525d.popinfo.txt)
+  - Data files:
+    {% for i in page.datafiles %}
+    - [biol525d.{{i}}.meanQ](./biol525d.{{i}}.meanQ), [biol525d.{{i}}.meanP](./biol525d.{{i}}.meanP)
+    {% endfor %}
+
 ``` r
-#"biol525d.popinfo.txt" has information on our samples. It is in /home/biol525d/Topic_8. Figure out a way to download it to your laptop.
+#"biol525d.popinfo.txt" has information on our samples.
 sampleinfo <- read_tsv("Downloads/biol525d.popinfo.txt")
 #data name and directory
 name <- "Downloads/faststructure/biol525d"
@@ -101,4 +114,4 @@ Plotting challenge 1
 
 
 
-Now lets move onto [Principal Component Analysis](https://github.com/owensgl/biol525D/blob/master/Topic_8-9/pca.md)
+Now lets move onto [Principal Component Analysis](./pca.md)

@@ -3,6 +3,9 @@ title: "Topic 10: Phylogenetics"
 permalink: /Topic_10/
 ---
 
+## Accompanying material
+* [Slides](./Topic 10.pdf)
+
 The first step is to convert the VCF file into a fasta file. It is surprisingly hard to find a tool to do that, so I've supplied a script.
 
 We only have variable sites, so we're going to use an ascertainment bias to correct for that. Typically phylogenetic programs assume you have all sites, including invariant ones.  

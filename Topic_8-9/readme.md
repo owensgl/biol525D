@@ -1,9 +1,11 @@
 ---
-title: "Topic 8: Population genomics"
+title: "Topics 8: Population genomics"
 permalink: /Topic_8-9/
 ---
 
-### Daily Questions:
+## Accompanying material
+* [Slides](./Topic 8.pdf)
+
 1. For a site that is invariant in both populations (i.e. a locus with no variation), what is Fst?
 2. What effect does missing data have on a PCA?
 3. What is the average Fst between samples 1-50 and 51-100 in our example data? Hint, SNPrelate can calculate Fst.
@@ -29,5 +31,8 @@ done
 #It's also useful to find out the best K value from the data and we can do that using faststructure
 python /home/biol525d/bin/fastStructure/chooseK.py --input=biol525d
 ```
-Now that we've run faststructure, its time to plot our results. First we download our faststructure folder to your laptop, then open Rstudio and continue onto the [next page](https://github.com/owensgl/biol525D/blob/master/Topic_8-9/plotting_structure.md)
+
+Now that we've run faststructure, its time to plot our results.
+First we download our faststructure folder to your laptop, then open Rstudio
+and continue onto the [next page](./plotting_structure.md).
 

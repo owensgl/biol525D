@@ -1,6 +1,9 @@
-# Principal Component Analysis in R
+---
+title: "Topic 9 (continued): Principal Component Analysis in R"
+---
 
-First used cyberduck to download "biol525d.snps.vcf.gz" from your server
+_Note: The sections below require file biol525d.snps.vcf.gz. If you didn't generate it, you can download it using the link [here](./biol525d.snps.vcf.gz)._
+
 ```r
 #First we install some packages
 source("http://bioconductor.org/biocLite.R")
@@ -8,7 +11,7 @@ biocLite("SNPRelate")
 ```
 
 ```
-## 
+##
 ## The downloaded binary packages are in
 ## 	/var/folders/xr/sh3jfkts64q_lxbhbsftgmhw0000gn/T//RtmptFKnPA/downloaded_packages
 ```
@@ -137,4 +140,4 @@ Plotting challenge 2
 
 -   Calculate the mean PCA score per population and then put that on a map using the latitude and longitude information. There is many ways of doing this, look it up.
 
-Lastly, lets move on to [plotting Fst across the genome](https://github.com/owensgl/biol525D/blob/master/Topic_8-9/fst.md)
+Lastly, lets move on to [plotting Fst across the genome](./fst.md)

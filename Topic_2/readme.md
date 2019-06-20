@@ -3,8 +3,15 @@ title: "Topic 2: Commandline and R"
 permalink: /Topic_2/
 ---
 
-In this tutorial we will be going through parts of several software carpentry workshops.  Right now, just code along with me, but after the lesson you can go through the tutorial on your own to clarify any understanding problems. 
-## [TUTORIAL](http://swcarpentry.github.io/shell-novice/)
+In this tutorial we will be going through parts of several software
+carpentry workshops. Right now, just code along with me, but after
+the lesson you can go through the tutorial on your own to clarify any
+understanding problems.
+
+### Accompanying material
+
+* [Slides](./Topic 2.pdf)
+* [Software Carpentry Tutorial](http://swcarpentry.github.io/shell-novice/)
 
 ### Other Tutorials
 Here are some good tutorials if you're interested in learning a programming language

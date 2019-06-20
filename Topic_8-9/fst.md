@@ -1,4 +1,6 @@
-# Calculating and plotting Fst
+---
+title: "Topic 9 (final): Calculating and plotting Fst"
+---
 
 Now to calculate Fst, we're going back to the server.
 ```bash
