@@ -22,6 +22,20 @@ If the course content changes, you can update your local copy by going into to t
 
     git pull
 
+## MAKING CHANGES TO THE SITE
+
+Site content can be edited directly from github's builtin
+editors. Every time a commit is made to the master branch, github
+rebuilds the live version of the site content. Changes can take around
+30seconds to take effect.
+
+If you wish to perform a large amount of tweaks, or apply larger
+structural changes to the site, you may speed up the iterative test
+development cycle, by following instructions in [building the site
+locally](./build-site-locally.md) to create a test environment local
+to your computer. You would tweak the site to your satisfaction and
+push to github to publish your work.
+
 ## LICENSE AND COPYRIGHT
 
 Copyright (C) 2015 S. Evan Staton, Sariel Hubner, Sam Yeaman
