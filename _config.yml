@@ -28,3 +28,5 @@ defaults:
 exclude:
   - ".*"
   - "#*"
+
+highlighter: rouge
