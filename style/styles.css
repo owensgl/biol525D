@@ -19,7 +19,7 @@ code {
 	font-size: 100%;
 	font-family: 'Inconsolata', monospace;
 	color: #444;
-	padding: 2px 4px;
+	/* padding: 2px 4px; */
 }
 
 h1, h2, h3 {
