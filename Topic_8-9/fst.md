@@ -3,6 +3,7 @@ title: "Topic 9 (final): Calculating and plotting Fst"
 ---
 
 Now to calculate Fst, we're going back to the server.
+
 ```bash
 
 
@@ -52,19 +53,20 @@ summary(data$CHROM)
 ```
 
 ```r
-#This strips the "group" from the chromosome name
+# This strips the "group" from the chromosome name
 data$CHROM <- gsub("Chr", "", data$CHROM)
 
-#This converts it to numeric
+# This converts it to numeric
 data$CHROM <- as.numeric(data$CHROM)
 
-#Lets also remove values that are NA
+# Lets also remove values that are NA
 data %>% filter(WEIR_AND_COCKERHAM_FST != "NaN") -> data
 
-#It's important to make sure that the chromosomes are numeric instead of character
+# It's important to make sure that the chromosomes are numeric instead of character
 data$CHROM <- as.numeric(data$CHROM)
 
-#Lets do a basic plot using the manhattan tool in qqman. This is generally designed for plotting pvalues from GWAS, but it works here.
+# Lets do a basic plot using the manhattan tool in qqman. This is generally designed
+# for plotting pvalues from GWAS, but it works here.
 manhattan(data, chr="CHROM",bp="POS",p="WEIR_AND_COCKERHAM_FST", snp="POS",
           logp=FALSE,ylab="Fst")
 ```
@@ -77,7 +79,7 @@ manhattan(data, chr="CHROM",bp="POS",p="WEIR_AND_COCKERHAM_FST", snp="POS",
 
 **Coding challenges**:
 * Do a manhattan plot in ggplot or base R. As a bonus, make it look nice.
-* Calculate the \*mean Fst in for 5kb windows across the genome. In this case, just mean the individual Fst values, although for real data make sure you sum the numerator and denominator of Fst for windows. HINT: dplyr's group_by command can help. 
+* Calculate the \*mean Fst in for 5kb windows across the genome. In this case, just mean the individual Fst values, although for real data make sure you sum the numerator and denominator of Fst for windows. HINT: dplyr's group_by command can help.
 * Plot the windowed Fst.
 
 

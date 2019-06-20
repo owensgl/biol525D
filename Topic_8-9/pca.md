@@ -104,7 +104,9 @@ ggplot(data=tab,aes(EV1,EV2)) + geom_point()
 
 
 ```r
-#There are only a few points because so many of the samples are identical once we've pruned it down to the 12 SNPs. To check to make sure that the points are actually there, we can add a slight jitter to the positions.
+# There are only a few points because so many of the samples are identical
+# once we've pruned it down to the 12 SNPs. To check to make sure that
+# the points are actually there, we can add a slight jitter to the positions.
 ggplot(data=tab,aes(EV1,EV2)) + geom_jitter(width=0.01,height=0.01)
 ```
 
@@ -112,17 +114,23 @@ ggplot(data=tab,aes(EV1,EV2)) + geom_jitter(width=0.01,height=0.01)
 
 ```r
 #Next lets color code by population and add axis labels
-ggplot(data=tab,aes(EV1,EV2)) + geom_jitter(aes(color=as.factor(population)),width=0.01,height=0.01) + ylab("Principal component 2") + xlab("Principal component 1")
+ggplot(data=tab,aes(EV1,EV2)) +
+   geom_jitter(aes(color=as.factor(population)),width=0.01,height=0.01) +
+   ylab("Principal component 2") +
+   xlab("Principal component 1")
 ```
 
 ![](figure/pca1-3.png)
 
 ```r
 #We can make that look nicer
-ggplot(data=tab,aes(EV1,EV2)) + geom_jitter(aes(color=as.factor(population)),
-                                            width=0.01,height=0.01) + ylab("Principal component 2") + xlab("Principal component 1") +
-  theme_classic() + scale_color_discrete(name="Population") +
-  theme(panel.border = element_rect(fill = NA, colour = "grey50")) 
+ggplot(data=tab,aes(EV1,EV2)) +
+    geom_jitter(aes(color=as.factor(population)), width=0.01,height=0.01) +
+    ylab("Principal component 2") +
+    xlab("Principal component 1") +
+    theme_classic() +
+    scale_color_discrete(name="Population") +
+    theme(panel.border = element_rect(fill = NA, colour = "grey50"))
 ```
 
 ![](figure/pca1-4.png)

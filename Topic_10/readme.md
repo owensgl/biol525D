@@ -16,14 +16,16 @@ When using an ascertainment bias, every site needs to be variable. Annoyingly, w
 ```
 
 cd ~
-zcat biol525d.snps.vcf.gz | perl /home/biol525d/bin/vcf2fasta_gaps.pl  > biol525d.snps.fasta
+zcat biol525d.snps.vcf.gz | \
+     perl /home/biol525d/bin/vcf2fasta_gaps.pl \
+     > biol525d.snps.fasta
 
-
-
-#Next we run it
+# Next we run it
 iqtree -s biol525d.snps.fasta -st DNA -m TEST+ASC -nt 1
 
-#This produces several output files, including a log and a couple different versions of the treefile. The -m TEST command does a model test and selects the best substition model. 
+# This produces several output files, including a log and a couple different versions
+# of the treefile. The -m TEST command does a model test and selects
+# the best substition model.
 ```
 In the next step, we're going to use R to visualize our tree using ggtree. To do that you need to download "Biol525D.snps.fasta.treefile" to your laptop. Another way to visualize a tree is [Figtree](http://tree.bio.ed.ac.uk/software/figtree/).
 
@@ -61,7 +63,8 @@ ggtree(tree, layout="unrooted") +
 
 
 ```r
-#The samples are very clumpy because of the lack of variation. We don't have an outgroup species, so lets tree a midpoint root.
+# The samples are very clumpy because of the lack of variation. We don't have
+# an outgroup species, so lets tree a midpoint root.
 
 tree.midpoint <- midpoint(tree)
 ggtree(tree.midpoint) +
@@ -72,7 +75,8 @@ ggtree(tree.midpoint) +
 
 
 ```r
-#How about we now label each population. I'm picking the node numbers off my phylogeny, and it may be different for your tree.
+# How about we now label each population. I'm picking the node numbers
+# off my phylogeny, and it may be different for your tree.
 ggtree(tree.midpoint) +
   geom_text2(aes(subset=!isTip, label=node)) + 
   geom_tiplab() +
