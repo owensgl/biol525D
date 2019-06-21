@@ -22,31 +22,31 @@ Here are some good tutorials if you're interested in learning a programming lang
 * [R](http://swirlstats.com/)
 
 ### Pipes and redirection
-A key feature of command line use is piping the output of one command to the input of another command. This means that large files can be analyzed in multiple scripts without having to write to disk repeatedly. 
+A key feature of command line use is piping the output of one command to the input of another command. This means that large files can be analyzed in multiple scripts without having to write to disk repeatedly.
 ##### *Key terms*
-* **STDOUT** : Standard out. The regular output of a script. Can be directed to a file with ">" or "1>", and directed to another command with "|" .
-* **STDIN** : Standard in. The input of STDOUT, piped in from another command.
-* **STDERR** : Standard error. The error output of a script. Generally prints to screen but can be saved to a file using "2>".
+* **STDOUT** : Standard output. The regular output of a script. Can be directed to a file with ">" or "1>", and directed to another command with `|`.
+* **STDIN** : Standard input. The input of STDOUT, piped in from another command.
+* **STDERR** : Standard error. The error output of a script. Generally prints to screen but can be saved to a file using `2>`. It is also conventionally used to provide progress information to the user.
 
 ##### *sed*
 *Stream editor*. It parses and transforms text using regular expressions. Very powerful, but most easily used to reformat files based on patterns.\
-**Examples**: 
-* Replace all instances of "1" with "one". 
-  * seq 10 | sed s/1/one/g
+**Examples**:
+* Replace all instances of "1" with "one".
+  * `seq 10 | sed s/1/one/g`
 * Replace lines that only have "1" with "one".
-    * seq 10 | sed s/^1$/one/g
+    * `seq 10 | sed s/^1$/one/g`
 
 ##### *grep*
 *Search using regular expression*. This command searches for patterns and prints lines that match your pattern.\
 **Examples**:
 * Print all lines with "1".
-    * seq 10 | grep 1
+    * `seq 10 | grep 1`
 * Print all lines without "1".
-    * seq 10 | grep -v 1
+    * `seq 10 | grep -v 1`
 * Print all lines with "1" and "0"
-    * seq 10 | grep 1 | grep 0
+    * `seq 10 | grep 1 | grep 0`
 * Print all lines with "1" or "2"
-    * seq 10 | grep "1\|2" 
+    * `seq 10 | grep "1\|2"`
 
 **Exercise 1**:
 * Print the even numbers up to 100.
@@ -55,13 +55,10 @@ A key feature of command line use is piping the output of one command to the inp
 * Print only numbers with "!" or "3".
 * Save the resulting file to exercise_3.txt
 
-<details> 
-<summary>
-<b>Answer 1</b>
-</summary>
-
+<details>
+<summary markdown="span">**Answer 1**</summary>
 ```bash
-    > seq 2 2 100 | grep -v 0 | sed "s/2$/2\!/g" | grep '\!\|3' > exercise_3.txt  
+seq 2 2 100 | grep -v 0 | sed "s/2$/2\!/g" | grep '\!\|3' > exercise_3.txt
    ```
 </details>
 
@@ -69,7 +66,7 @@ A key feature of command line use is piping the output of one command to the inp
 Often you will run commands that take hours or days to finish. If you run them normally your connection needs to be maintained for the whole time which can be impossible. Using _screen_ allows you to keep a screen open while you're logged out and then reconnect to it without loss of data at a later time. 
 
 **Cancel command** = ctrl-c. This will cancel a script that is currently running.
-Example: 
+Example:
 ```bash
 > seq 1000000
 ctrl-c to cancel
@@ -102,10 +99,10 @@ Byobu can create multiple levels.
 * Reattach to the same byobu session
 * Close the byobu session entirely
  
-<details> 
-<summary><b>Answer 2</b></summary>
-  
-   ```bash
+<details>
+<summary markdown="span">**Answer 2**
+</summary>
+```bash
    > byobu 
    F2
    > seq 10000000
@@ -115,11 +112,9 @@ Byobu can create multiple levels.
    F6
    > byobu
    > exit
- ```
- 
+```
 </details>
 
- 
 
 ### Daily Assignments
 1. What is one task you'd rather use an R script instead of a shell script? Why? What is one task you'd rather use a shell script, instead of an R script? Why?

@@ -31,3 +31,11 @@ exclude:
 
 highlighter: rouge
 
+markdown: kramdown
+
+# The parse_block_html allows converting markdown which is
+# passed inside <details> </details> blocks which we use
+# for presending code inside hidden/collapsible question/answer
+# blocks.
+kramdown:
+  parse_block_html: true
