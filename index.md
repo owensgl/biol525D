@@ -9,18 +9,29 @@ menuPosition: 1
 
 <img src="{{ site.baseurl }}/style/header.jpg" width="100%">
 
-See the [syllabus](resources/syllabus.md) for an overview of the course.
+## Description
+The purpose of this course is to provide graduate students with the theoretical knowledge and practical skills for the evolutionary analysis of next generation sequence data. The course will entail data retrieval and assembly, alignment techniques, variant calling, gene expression analyses, hypothesis testing, and population genomic and phylogenomic approaches. The course will be presented as a series of short lectures and lab exercises over a one week period in August.
 
+## Instructors
+Dr. Gregory Owens, Dr. Kathryn Hodgins, Dr. Jean-Sebastien Legare
 
-## Course goals
+## Format
+A mix of lecture and lab exercises, running in a 2-hour block.
 
-Students will gain a basic proficiency in command line computing, understand the steps involved in processing high throughput sequence data and conduct basic population genetic analyses.  
+## Prequisites
+Students should have basic knowledge in R and some command line knowledge (although the latter could be obtained during the course)
+
+## Evaluation
+Participation in discussions and lab exercises.
+Consult [Grading Information](./grading.md).
+
+## Assignments
+Consult [Daily Assignments](./daily_assignments.md)
 
 ## Lectures/seminars
 
 July 29th to August 2nd, 2019.
 SCRF 1318, 10am to Noon, 1pm to 3pm.
-
 
 ## Basic course structure
 
@@ -28,7 +39,17 @@ The course material is organized in several [Topics](resources/topics.md), with 
 
 To get up to speed on working with a Unix system, take a look at the [unix help](resources/unix_ref.pdf) file. There are some resources there that will help you find the specific command you need for each task.
 
-
+## Syllabus
+1. [Topic 1](../Topic_1/) Broad introduction: Scope of course, goals, overview of technology and bioinformatics, and the future of sequencing [JS]
+2. [Topic 2](../Topic_2/) Programming for biologists [JS]
+3. [Topic 3](../Topic_3/) Fastq files and quality checking/trimming [Kay]
+4. [Topic 4](../Topic_4/) Alignment: algorithms and tools [GREG]
+5. [Topic 5](../Topic_5/) Assembly: transcriptome and genome assembly [KAY]
+6. [Topic 6](../Topic_6/) RNAseq + differential expression analysis [KAY]
+7. [Topic 7](../Topic_7/) SNP and variant calling [GREG]
+8. [Topic 8](../Topic_8-9/) Population genomics and plotting in R (Part 1) [GREG]
+9. [Topic 9](../Topic_8-9/) Population genomics and plotting in R (Part 2) [GREG]
+10. [Topic 10](../Topic_10/) Phylogenetic inference [GREG]
 
 ## Obtaining all the files on this site
 
