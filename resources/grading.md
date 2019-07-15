@@ -1,5 +1,7 @@
 ---
 title: Course Evaluation
+menuItem: Course Evaluation
+menuPosition: 2
 ---
 
 The student evualtion in Biol 525D is based on the following:
