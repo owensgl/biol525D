@@ -1,8 +1,6 @@
 ---
 title: Course Syllabus
 layout: page
-menuItem: Syllabus
-menuPosition: 2
 ---
 
 Topics in Systematics and Evolution:
