@@ -12,20 +12,14 @@ menuPosition: 1
 See the [syllabus](resources/syllabus.md) for an overview of the course.
 
 
-## Why to enroll in this course?
-
-- There's a good reason.
-- And another one.
-
-[Enroll right now!](https://your-school-information-system.edu/course-page)
-
 ## Course goals
 
-Students will be able to…
+Students will gain a basic proficiency in command line computing, understand the steps involved in processing high throughput sequence data and conduct basic population genetic analyses.  
 
 ## Lectures/seminars
 
-When and where.
+July 29th to August 2nd, 2019.
+SCRF 1318, 10am to Noon, 1pm to 3pm.
 
 
 ## Basic course structure
@@ -34,18 +28,7 @@ The course material is organized in several [Topics](resources/topics.md), with 
 
 To get up to speed on working with a Unix system, take a look at the [unix help](resources/unix_ref.pdf) file. There are some resources there that will help you find the specific command you need for each task.
 
-**Week 1–4:** Something basic.
 
-**Week 5–7:** Something not that basic.
-
-**Week 8-12:** There will be sweat.
-
-
-## Data Repository
-
-Several of the hands-on tasks will involve data analysis on real
-samples. The data used in the class will be found on a WestCloud
-server which will be assigned to each student.
 
 ## Obtaining all the files on this site
 
@@ -65,9 +48,6 @@ To update the all the files at any point in the future, change to the **biol525D
 
     git pull
 
-## Enrollment requirements
-
-Course capacity, prerequisites, eligibilities etc.
 
 ## Use and modification of these resources
 
@@ -77,7 +57,9 @@ You may use any of the materials provided here, and modify them in any way, prov
 
 Copyright (C) 2015 S. Evan Staton, Sariel Hubner, Sam Yeaman
 
-Modified work (c) 2016, 2017. Gregory Owens, Kathryn Hodgins
+Modified work (c) 2016, 2017, 2018 Gregory Owens, Kathryn Hodgins
+
+Modified work (c) 2019 Gregory Owens, Kathryn Hodgins, J.S. Legare
 
 This program is distributed under the MIT (X11) License, which should be distributed with the package. 
 If not, it can be found here: http://www.opensource.org/licenses/mit-license.php
