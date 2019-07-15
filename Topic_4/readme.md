@@ -19,7 +19,8 @@ cd /mnt/<USERNAME>
 #Copy the reference directory to your working directory
 cp -r /home/biol525d/ref/ ./
 
-#Index the reference for BWA and NGM. This step is fast for a very small reference that we're working with but can take an hour with full genomes. 
+#Index the reference for BWA and NGM. 
+#This step is fast for a very small reference that we're working with but can take an hour with full genomes. 
 /home/biol525d/bin/NextGenMap-0.5.2/bin/ngm-0.5.2/ngm -r ref/reference.fa
 /home/biol525d/bin/bwa/bwa index ref/reference.fa
 
