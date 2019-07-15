@@ -31,9 +31,9 @@ Students must produce a single shell script that does the following steps:
 Assume all programs and libraries are locally installed in the "/home/ubuntu/bin" directory. You can have additional scripts that are called by the shell script (i.e. an R script to run the PCA). 
 ### Grading
 Scripts will be graded on the following criteria:
--Is the script generalizable? The script should work for any number of files with a specific naming scheme.
--Is the script annotated? The script should have comments throughout explaining what each step is doing.
--Is the script free of errors? The script should not have errors or skipped steps that would prevent it from working
+* Is the script generalizable? The script should work for any number of files with a specific naming scheme.
+* Is the script annotated? The script should have comments throughout explaining what each step is doing.
+* Is the script free of errors? The script should not have errors or skipped steps that would prevent it from working
 
 #### R help
 * To call an R script in command line use "R CMD BATCH Rscriptname.R"
