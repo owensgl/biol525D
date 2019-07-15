@@ -23,14 +23,15 @@ Students should have basic knowledge in R and some command line knowledge (altho
 
 ## Evaluation
 Participation in discussions and lab exercises.
+
 Consult [Grading Information](./grading.md).
 
 ## Assignments
 Consult [Daily Assignments](./daily_assignments.md)
 
 ## Lectures/seminars
-
 July 29th to August 2nd, 2019.
+
 SCRF 1318, 10am to Noon, 1pm to 3pm.
 
 ## Basic course structure
