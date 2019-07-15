@@ -1,5 +1,8 @@
 ---
 title: Daily Assignments
+menuItem: Assignments
+layout: page
+menuPosition: 3
 ---
 
 These are the questions selected for marking. Reminder, answers should be <= 1 paragraph in length. 
