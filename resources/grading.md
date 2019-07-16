@@ -32,12 +32,13 @@ Students must produce a single shell script that does the following steps:
 * Outputs a pdf figure of the principal component analysis. 
 
 Assume all programs and libraries are locally installed in the "/home/ubuntu/bin" directory. You can have additional scripts that are called by the shell script (i.e. an R script to run the PCA). 
+
 ### Grading
 Scripts will be graded on the following criteria:
 * Is the script generalizable? The script should work for any number of files with a specific naming scheme.
 * Is the script annotated? The script should have comments throughout explaining what each step is doing.
 * Is the script free of errors? The script should not have errors or skipped steps that would prevent it from working.
 
-#### R help
+### R help
 * To call an R script in command line use "R CMD BATCH Rscriptname.R"
-* To print a pdf use the [pdf() command](http://www.cookbook-r.com/Graphs/Output_to_a_file/)
+* To print a pdf use the [ggsave() command](https://ggplot2.tidyverse.org/reference/ggsave.html)
