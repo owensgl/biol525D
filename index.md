@@ -41,15 +41,15 @@ The course material is organized in several [Topics](resources/topics.md), with 
 To get up to speed on working with a Unix system, take a look at the [unix help](resources/unix_ref.pdf) file. There are some resources there that will help you find the specific command you need for each task.
 
 ## Syllabus
-1. [Topic 1](../Topic_1/) Broad introduction: Scope of course, goals, overview of technology and bioinformatics, and the future of sequencing [JS]
-2. [Topic 2](../Topic_2/) Programming for biologists [JS]
-3. [Topic 3](../Topic_3/) Fastq files and quality checking/trimming [Kay]
-4. [Topic 4](../Topic_4/) Alignment: algorithms and tools [GREG]
-5. [Topic 5](../Topic_5/) Assembly: transcriptome and genome assembly [KAY]
-6. [Topic 6](../Topic_6/) RNAseq + differential expression analysis [KAY]
-7. [Topic 7](../Topic_7/) SNP and variant calling [GREG]
-8. [Topic 8](../Topic_8-9/) Population genomics and plotting in R (Part 1) [GREG]
-9. [Topic 9](../Topic_8-9/) Population genomics and plotting in R (Part 2) [GREG]
+1. [Topic 1](./Topic_1/) Broad introduction: Scope of course, goals, overview of technology and bioinformatics, and the future of sequencing [Greg, JS]
+2. [Topic 2](./Topic_2/) Programming for biologists [JS]
+3. [Topic 3](./Topic_3/) Fastq files and quality checking/trimming [Kay]
+4. [Topic 4](./Topic_4/) Alignment: algorithms and tools [GREG]
+5. [Topic 5](./Topic_5/) Assembly: transcriptome and genome assembly [KAY]
+6. [Topic 6](./Topic_6/) RNAseq + differential expression analysis [KAY]
+7. [Topic 7](./Topic_7/) SNP and variant calling [GREG]
+8. [Topic 8](./Topic_8-9/) Population genomics and plotting in R (Part 1) [GREG]
+9. [Topic 9](./Topic_8-9/) Population genomics and plotting in R (Part 2) [GREG]
 10. [Topic 10](../Topic_10/) Phylogenetic inference [GREG]
 
 ## Obtaining all the files on this site
@@ -83,7 +83,7 @@ Modified work (c) 2016, 2017, 2018 Gregory Owens, Kathryn Hodgins
 
 Modified work (c) 2019 Gregory Owens, Kathryn Hodgins, J.S. Legare
 
-This program is distributed under the MIT (X11) License, which should be distributed with the package. 
+This program is distributed under the MIT (X11) License, which should be distributed with the package.
 If not, it can be found here: http://www.opensource.org/licenses/mit-license.php
 
 ## About this site:
