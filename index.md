@@ -24,10 +24,10 @@ Students should have basic knowledge in R and some command line knowledge (altho
 ## Evaluation
 Participation in discussions and lab exercises.
 
-Consult [Grading Information](./grading.md).
+Consult [Grading Information](resources/grading.md).
 
 ## Assignments
-Consult [Daily Assignments](./daily_assignments.md)
+Consult [Daily Assignments](resources/daily_assignments.md)
 
 ## Lectures/seminars
 July 29th to August 2nd, 2019.
