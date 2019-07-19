@@ -15,11 +15,49 @@ h1, h2, h3, p, li, blockquote, th, td, a {
 	font-family: 'Open Sans', sans-serif;
 }
 
+blockquote * {
+    color: inherit;
+}
+
+blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+blockquote {
+    border-left: solid 2px;
+    margin: .5rem 0 .5rem 0;
+    padding: .75rem;
+    /* font-size: 90%; */
+}
+
+
 code {
 	font-size: 100%;
 	font-family: 'Inconsolata', monospace;
 	color: #333;
 	/* padding: 2px 4px; */
+}
+
+/* for showing key strokes
+
+   usage (in markdown), e.g:: 
+
+        <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>del</kbd>
+*/
+kbd {
+    display: inline-block;
+    margin: 0 .1em;
+    padding: .1em .6em;
+    /* font-family: Arial,"Helvetica Neue",Helvetica,sans-serif; */
+    font-size: 100%;
+    line-height: 1.2;
+    color: #242729;
+    text-shadow: 0 1px 0 #FFF;
+    background-color: #e1e3e5;
+    border: 1px solid #adb3b9;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(12,13,14,0.2), 0 0 0 2px #FFF inset;
+    white-space: nowrap;
 }
 
 h1, h2, h3 {
