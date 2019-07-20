@@ -99,12 +99,11 @@ This section assumes that you've already followed the steps to install software 
      - *MobaXterm*: Find the program and start it. In the main menu. Open a local shell. TODO configure home dir. Show image of welcome screen.
      - *Putty*: TODO make sure PATH is set correctly. Show image of welcome screen.
 
-1. Generate a key for authenticating to your assigned server. Details in [this page](./generate_a_key.md).
+1. Generate a key for authenticating to your assigned server. Follow steps in [this page](./generate_a_key).
 
-2. Load the key in your ssh-agent. Details in [this page](./configure_the_ssh_agent.md)
+2. Load the key in your ssh-agent. Details in [configure-ssh-agent](./configure_ssh_agent.md)
 
-3. (Optional) Configure a host alias in your ~/.ssh/.config. Details here [this page](./configure/
-
+3. Configure an SSH session to connect rapidly to your assigned server. Take note of your server IP, username, and password and follow details in [configure-ssh-config](./configure_ssh_config). This will let you login to the server without remembering usernames, ips, or keys.
 
 
 Testing it all: _(can be completed early)_{: style="color: darkred"}
