@@ -10,20 +10,51 @@ topictitle: "Sequence Alignment"
 * [Slides](./Topic 4.pdf)
 
 
+Today we're going to align sequence data to a reference genome useing BWA and explore what a BAM file is.
+
+The first step is to set up a directory structure so the resulting files will be organized and copy the raw data to your home directory.
+
 ```bash
-byobu
 
 #Navigate to your working directory
 cd /mnt/<USERNAME>
 
 #Copy the reference directory to your working directory
-cp -r /home/biol525d/ref/ ./
+cp -r /mnt/data/ref ./
 
-#Index the reference for BWA and NGM. 
-#This step is fast for a very small reference that we're working with but can take an hour with full genomes. 
-/home/biol525d/bin/NextGenMap-0.5.2/bin/ngm-0.5.2/ngm -r ref/reference.fa
-/home/biol525d/bin/bwa/bwa index ref/reference.fa
+#Copy the fastq files to your working directory
+cp -r /mnt/data/fastq ./
 
+#Make a new directory for your resulting bam files
+mkdir bam
+
+```
+Once that is done, we have to index our reference genome.
+
+```bash
+#Index the reference for BWA. 
+
+/mnt/bin/bwa/bwa index ref/HanXRQr1.0-20151230.1mb.fa
+
+```
+Now finally we can run BWA and align our data
+```bash
+/mnt/bin/bwa/bwa mem \
+  ref/HanXRQr1.0-20151230.1mb.fa \
+  fastq/ANN1133.R1.fastq.gz \
+  fastq/ANN1133.R2.fastq.gz \
+  -t 2 \
+  -R '@RG\tID:ANN1133\tSM:ANN1133\tPL:illumina\tPU:biol525d\tLB:ANN1133_lib' > \
+  bam/ANN1133.sam
+  
+```
+Lets break this command down since it has several parts:
+**/mnt/bin/bwa/bwa** <- We're calling the program _bwa_ from the directory _/mnt/bin/bwa_. This is the full path to that program so you can call this no matter where you are in the file system
+**mem** <- This is the bwa command we are calling. It is specific to bwa and not a unix command.
+**\\** <- Having this at the end of the line tells the shell that the line isn't finished and keeps going. You don't need to use this when typing commands in, but it helps break up really long commands and keeps your code more organized.
+**ref/HanXRQr1.0-20151230.1mb.fa** <- This is the reference genome. We're using a relative path here so you need be in /mnt/<USERNAME> or it won't be able to find this file.
+**fastq/ANN1133.R1.fastq.gz** <- 
+  
 
 #Test alignment on NGM
 mkdir bam
