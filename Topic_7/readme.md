@@ -167,12 +167,12 @@ bcftools concat vcf/HanXRQChr01.vcf.gz vcf/HanXRQChr02.vcf.gz vcf/HanXRQChr03.vc
 
 ```
 
-You've 
+You've done it! We have a VCF. Tomorrow we will fliter this file and use it for some analyses.
 
 ### Coding challenge
 * Use command line tools to extract a list of all the samples in your VCF file, from the vcf file itself. They should be one name per line.
-* Take the original vcf file produced and create a vcf of only high quality indels for samples 1-25,50-75. Make sure that each indel is actually variable in those samples.
-* Use GATK to filter your vcf file and select for sites with alternate allele frequencies > 0.01, including multi-allelic sites. 
+* Take the original vcf file produced and create a vcf of only high biallelic SNPs for ANN samples. 
+* Use bcftools to filter your vcf file and select for sites with alternate allele frequencies > 0.01, including multi-allelic sites. 
 
 ### Daily assignments
 1. Another program that is useful for filtering and formatting vcf files is [vcftools](https://vcftools.github.io/index.html). It is installed on the server. It can also do basic pop gen stats. Use it to calculate Fst between samples with ARG and ANN names.
