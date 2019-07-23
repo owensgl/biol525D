@@ -110,6 +110,37 @@ HINTS:
 * Use variables for directory paths "bwa=/mnt/bin/bwa/bwa"
 * Use a loop.
 
+<details>
+<summary markdown="span">**Answer 2**
+</summary>
+```bash
+  #First set up variable names
+  bam=/mnt/<USERNAME>/bam
+  fastq=/mnt/<USERNAME>/fastq 
+  bwa=/mnt/bin/bwa/bwa 
+  ref=/mnt/<USERNAME>/ref/HanXRQr1.0-20151230.1mb.fa
+  
+  #Then get a list of sample names, without suffixes    
+  ls $fastq | grep R1.fastq.gz | sed s/.R1.fastq.gz//g > $bam/samplelist.txt
+    
+  #Then loop through the samples   
+  while read name  
+  do  
+    $bwa mem \     
+    -R "@RG\tID:$name\tSM:$name\tPL:ILLUMINA" \
+    ref/HanXRQr1.0-20151230.1mb.fa \          
+    fastq/ANN1133.R1.fastq.gz \
+    fastq/ANN1133.R2.fastq.gz \
+    -t 1 > $bam/$name.sam
+           
+    samtools view -bh $bam/$name.sam |\
+    samtools sort > $bam/$name.sort.bam
+    samtools index $bam/$name.sort.bam
+  done < $bam/samplelist.txt
+```
+</details>
+
+
 
 <details><summary markdown="span">***Answer***</summary>
 
