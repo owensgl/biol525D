@@ -110,7 +110,7 @@ HINTS:
 * Use variables for directory paths "bwa=/mnt/bin/bwa/bwa"
 * Use a loop.
 
-spoilerAlert('spoiler, .spoiler');
+
 <details><summary><b>Answer</b></summary><p>
 
 ```bash
