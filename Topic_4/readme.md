@@ -111,7 +111,7 @@ HINTS:
 * Use a loop.
 
 
-<details><summary><b>Answer</b></summary><p>
+<details><summary markdown="span"><b>Answer</b></summary><p>
 
 ```bash
     #First set up variable names
