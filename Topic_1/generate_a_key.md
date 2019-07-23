@@ -3,18 +3,15 @@ title: "Key Authentication: generate a key"
 layout: page
 ---
 
-This page contains instructions to configure a key usable for password-less login to your server account. The exercise is part of [Topic 1](./).
+This page contains instructions to configure a key usable for
+password-less login to your server account. This allows you, and
+scripts that you run, to authenticate automatically with the server
+environment.
+
+*Instructions:* Read the general text, and then follow only the instructions that pertain to your operating system and software.
 
 Time needed to complete: 5 minutes.
 
-
-Each student is provided credentials to login to a server account:
-
-  - an account `username`
-  - an account `password`
-  - the address of a server, `serverhost`, which may take the form of an IP address.
-
-> *Note:* In the instructions below, substitute these placeholders with the values you were provided with.
 
 ## Generating a keypair for key authentication ##
 
@@ -33,7 +30,7 @@ remember, but hard to guess for a computer. `My roommate wastes good water.`,
 
 *Won't I also need to unlock the key to use it? When will I need the passphrase?* Yes, but you will do so _less frequently_. One of the advantages of key-based authentication, is that you will load your key once with the passphrase, but once it's loaded, you can login to your server without typing in anything. You will need to enter this passphrase once each time you open a new computer session (after a fresh boot). If you put it to sleep, but never it shut down completely, then you might need to recall it once in a blue moon.
 
-> *Note on information security:* Passwords constrained in length like `p0werhouse%1` or `M4jestic2`, that many websites train you to use are hard to remember, and easy to guess for (a hacker on) a computer. They are inferior. Such passwords can be cracked with slightly modified dictionary attacks.
+> *Note on information security:* Passwords constrained in length like `p0werhouse%1` or `M4jestic2`, that many websites train you to use are hard to remember, and easy to guess for (a hacker on) a computer. Such passwords can be cracked with slightly modified dictionary attacks.
 
 ### MAC or GNU/Linux ###
 
@@ -91,7 +88,7 @@ These instructions are specific to MobaXTerm. If you are using PuTTy only, use t
    - Set the persistent home folder location to somewhere under your Documents, e.g. `My Documents/MobaXTerm/home`.
    - Set the persistent root folder location to somewhere under your Documents, e.g. `My Documents/MobaXTerm/slash`.
 
-1. Generate the key using a local terminal.
+1. Generate the key using a "local terminal". On the home screen this is "Start a local terminal".
 
    Run the following command, substituting your name and email address:
 
@@ -125,7 +122,7 @@ These instructions are specific to MobaXTerm. If you are using PuTTy only, use t
    +----[SHA256]-----+
    ```
 
-1. Convert the generated key into the other windows format, .ppk
+1. Convert the generated key into the other windows format, `.ppk`. Most windows tools ingest keys in that format, so it's a good idea to have that handy as well. It uses the same key content and same passphrase, just a different file format.
 
    1. Open `Menu` -> `Tools` -> `MobaKeyGen (SSH Key generator)`
 
@@ -147,13 +144,19 @@ These instructions are specific to MobaXTerm. If you are using PuTTy only, use t
    
    1. Draw a doodle in the area below the progress bar. This is to help the computer generate some randomness. Be as random as possible. At the bottom, change 2048 bits for 4096. Hit "generate" again.
    
-   1. In the "key comment" section write your name and email address: `Full Name biol525 <myemail@example.org>`
+   1. In the "key comment" section write your name and email address:
+
+		   Full Name biol525 <myemail@example.org>
 
    1. Enter a good passphrase in the passphrase/confirm fields. Keep the same window open for the following steps. If you accidentally close it, you will have to re-load the key or generate a new one.
    
    1. Click "save private key". Choose a location and save as "biol525D.ppk". Somewhere under `My Documents` is fine. Remember that location.
 
-   1. Click "save public key". Choose the same location as the private key, but call it "biol525.pub"
+   1. Click "save public key". Choose the same location as the private key, but replace the ".ppk" extension with ".ppub". i.e. call it "biol525D.ppub"
 
 
-Congratulations! You may continue on to page [configuring the agent](./configure_ssh_agent).
+## Continuing ##
+
+Congratulations! You now have a key that can uniquely identify your computer. Continue on to learn how to configure your computer to use it.
+
+You may continue on to page [Configure SSH Agent](./configure_ssh_agent).

@@ -4,9 +4,11 @@ layout: page
 ---
 
 
-This page contains instructions to load up a key into the ssh-agent. The exercise is part of [Topic 1](./).
+This page contains instructions to load up a key into the ssh-agent. The exercise is part of [Topic 1](./). It assumes you have followed steps in [Generate a key](./generate_a_key).
 
-Time needed to complete: 2 minutes.
+Instructions: Read the general text, and then follow only the instructions that pertain to your operating system and software.
+
+Time needed to complete: 5 minutes.
 
 
 One way to think about the ssh-agent is that it is a program which has a keyring on which you add keys. When a program needs to log in to a server over SSH, it will check with the agent to see if it has a valid key for that server.
@@ -29,21 +31,24 @@ _Other Info_:
         # lists identities currently loaded in the agent
         ssh-add -l
 
-   - If it says "The agent has no identities." then it is running, but no keys are loaded in it yet. Skip step 2.
+   - If it says "The agent has no identities." then it is running, but no keys are loaded in it yet. Skip step 3 (starting the agent).
    - If it lists one or more key fingerprints, such as
 
          4096 SHA256:W/q4wBqfovIxIL7iO6mnDM/IPl0pjW5SqbjwinYmu70 /home/foo/.ssh/id_rsa2 some name (RSA)
 
-     then skip step 2.
+     then skip step 3 (starting the agent).
 
-   - If it says It "cannot connect to the agent", or "Connection refused" then it needs to be started. This would be surprising. Typically the agent will be available from all terminals started locally in your desktop session.
+   - If it says It "cannot connect to the agent", or "Connection
+     refused" then it needs to be started. This would be surprising,
+     but not impossible. Typically the agent will be available from
+     all terminals started locally in your desktop session.
 
-1. For whichever reason, _if it's not already running_, you can start an Agent with the following command:
+1. Starting the agent: For whichever reason, _if it's not already running_, you can start an Agent with the following command:
 
         eval "$(ssh-agent -s)"
 
-   *Note:* This will start the agent in the background of the _current_ shell session _only_. (Optional:) To ensure your agent is running
-           whenever you open a new terminal (or another tab), you may add the following to the end of file `~/.bashrc`:
+   *Note:* This will start the agent in the background of the _current_ shell session _only_. (Optional: To ensure your agent is running
+           whenever you open a new terminal (or another tab), you may add the following to the end of file `~/.bashrc`):
 
     ```
 	#
@@ -60,7 +65,7 @@ _Other Info_:
 
 1. Add the key to your agent (you want the private key, not the .pub). You will be prompted for your passphrase. You will have to perform this operation once _per computer session_ (i.e. next time you reboot your computer).
 
-    ssh-add ~/.ssh/biol525D
+       ssh-add ~/.ssh/biol525D
 
 
 ### Instructions for Windows: MobaXTerm ###
@@ -71,19 +76,23 @@ _Other Info_:
 
 1. In the list of keys to load on Startup, click `+` and add your `biol525D.ppk` file that you generated following the [previous instructions](./generate_a_key). You will be prompted to restart MobaXTerm.
 
-1. On restart, it will prompt you for the passphrase for your key.
+1. When Moba restarts, it will prompt you for the passphrase for your key.
 
 1. If you go back to that SSH configuration tab later, in the configuration, you should see your key in the list.
 
 
 ### Instructions for Windows: PuTTY ###
 
-The PuTTY suite comes with Pagent.exe which will be available in your system tray.
+The PuTTY suite comes with Pagent.exe which runs in the background. When it is running, it will signal its presence with an icon in the system tray.
 
-1. Run Pagent.exe. <kbd>Winkey</kbd>+<kbd>r</kbd>+"Pageant"+<kbd>Enter</kbd>
+1. Run Pagent.exe. <kbd>Winkey</kbd>+<kbd>r</kbd>, type Pageant + <kbd>Enter</kbd>
 
 1. Pageant runs silently, but it adds a little icon in your system tray -- a computer with a hat. Right click on the icon and choose "Add Key".
 
-1. Select your `biol525D.ppk` file that you selected earlier, and enter its passphrase. You will have to perform this operation _once_ every time you login to your computer after boot. Optional: You may add Pageant to the list of programs to start automatically when you login (but you still will need to add the key).
+1. Select your `biol525D.ppk` file that you selected earlier, and enter its passphrase. You will have to perform this operation _once_ every time you login to your computer after boot. Optional: You may add Pageant to the list of programs to start automatically when you login to Windows.
 
 1. If you don't remember if your key is loaded or not, you can do "List keys" in the right-click menu of Pageant.
+
+### Next step ###
+
+Follow instructions at [finalize tool config](./finalize_tool_config).

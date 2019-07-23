@@ -31,7 +31,7 @@ On your computer, you will need:
 
 1. Tool to transfer files over SFTP (secure file transfer protocol) or
    SCP (secure copy). We can use these tools to browse and transfer files
-   back and forth between your workstation and the server. We recommend one of the following options:
+   back and forth between your workstation and the server. Get *one* of the following options:
 
    * _Graphical option 1_: [Cyberduck](https://cyberduck.io/?l=en) (Mac &
     Windows). This is a graphical tool that will allow you to transfer
@@ -53,7 +53,10 @@ On your computer, you will need:
 
    * _Command line option_1_: pscp.exe/psftp.exe from the [PuTTy](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) suite (Windows only). Install the MSI version to get all the utilities at once. It comes in 32bit and 64bit editions. Unless you know your workstation has a 32bit cpu or operating system (which is uncommon in 2019), pick 64bit.
 
-   * _Command line option 2_: Other platforms (Mac & GNU/Linux) have sftp and scp tools installed. We will also teach you how to transfer files from the command-line using these. This knowledge will come in handy for scripting.
+   * _Command line option 2_: Other platforms (Mac & GNU/Linux) have
+     sftp and scp tools installed out-of-the-box. We will also teach
+     you how to transfer files from the command-line using these. This
+     knowledge will come in handy for scripting.
 
 1. A (good) terminal emulator. To interact with command line programs, you will need to type a terminal emulator, and parse results.
 
@@ -81,41 +84,50 @@ On your computer, you will need:
    it's worthwhile to spend a few minutes on getting a better
    emulator with better defaults.
    >
-   *Note 2*: If you're curious why it's called an "emulator", you may read about ["real" terminals](https://en.wikipedia.org/wiki/Computer_terminal#Text_terminals), which are the elecromechanical devices that they are meant to replicate. The truth is, however, that terminal emulators do so much more.
+   *Note 2*: If you're curious why it's called an "emulator", you may read about their ancestor: ["real" terminals](https://en.wikipedia.org/wiki/Computer_terminal#Text_terminals).
 
 
 Configuration: _(can be completed early)_{: style="color: darkred"}
 ---------------
 
-This section assumes that you've already followed the steps to install software for your environment.
+This section assumes that you've already followed the steps to install
+software above for your environment. We have provided steps to
+configure rapid authentication between your computer and the
+server. The steps are meant to be done in sequence and should take
+about 15 minutes to complete once the software above is installed.
 
-1. Open your (perhaps shiny new) terminal emulator:
+Configuration steps, in sequence:
 
-   - Mac:
-     - *Terminal*: In Finder, choose *Utilities* from the *Applications* folder. Find *Terminal* in the list. Open *Terminal*
-     - *iTerm2*: Open iTerm2. [General usage](https://iterm2.com/documentation-general-usage.html)
+1. Generate a key for authenticating to your assigned server. Follow steps in [Generate A Key](./generate_a_key).
 
-   - Windows:
-     - *MobaXterm*: Find the program and start it. In the main menu. Open a local shell. TODO configure home dir. Show image of welcome screen.
-     - *Putty*: TODO make sure PATH is set correctly. Show image of welcome screen.
+2. Load the key in your ssh-agent. Details in [Configure-SSH-Agent](./configure_ssh_agent)
 
-1. Generate a key for authenticating to your assigned server. Follow steps in [this page](./generate_a_key).
-
-2. Load the key in your ssh-agent. Details in [configure-ssh-agent](./configure_ssh_agent.md)
-
-3. Configure an SSH session to connect rapidly to your assigned server. Take note of your server IP, username, and password and follow details in [configure-ssh-config](./configure_ssh_config). This will let you login to the server without remembering usernames, ips, or keys.
+3. Configure the server account to authenticate with your new key. Take note of your assigned server hostname (IP), username, and password and follow details in [Finalize Tool Config](./finalize_tool_config). This will let you login to the server without remembering usernames, ips, or keys.
 
 
 Testing it all: _(can be completed early)_{: style="color: darkred"}
 ---------------
 
-Use this checklist to ensure that your workstation is (well) prepared for the next topics.
-
 Log into WestCloud server using ssh (terminal). You will find your username and ip address in this [table](https://docs.google.com/spreadsheets/d/1v7k2-XtfiwOoQ3iZHnJyqVXsxgekVGXEtnFIvdk7aqU/edit?usp=sharing).
-```bash
 
-ssh  -v -i ~/.ssh/id_rsa <your_user_name>@<your_server_ip>
-```
+
+* For Mac, GNU Linux, and MobaXTerm users:
+
+  ```bash
+
+  ssh -v -i <serveruser>@<serverhost>
+
+  # if you have followed the key authentication steps, you need only to specify
+  # the host alias from your `~/.ssh_config`, e.g. b525:
+
+  ssh -v b525
+  ```
+
+* Putty users:
+
+  - provide the parameters `serveruser` `serverpass` and `serverhost` in the menu.
+  - if you have followed the key authentication steps, you will not have to enter
+    passwords, and will be logged in immediately.
 
 Your screen should look like this:
 
