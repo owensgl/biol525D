@@ -44,17 +44,26 @@ Now finally we can run BWA and align our data
   fastq/ANN1133.R1.fastq.gz \
   fastq/ANN1133.R2.fastq.gz \
   -t 2 \
-  -R '@RG\tID:ANN1133\tSM:ANN1133\tPL:illumina\tPU:biol525d\tLB:ANN1133_lib' > \
-  bam/ANN1133.sam
+  -R '@RG\tID:ANN1133\tSM:ANN1133\tPL:illumina\tPU:biol525d\tLB:ANN1133_lib' \
+  > bam/ANN1133.sam
   
 ```
 Lets break this command down since it has several parts:
-**/mnt/bin/bwa/bwa** <- We're calling the program _bwa_ from the directory _/mnt/bin/bwa_. This is the full path to that program so you can call this no matter where you are in the file system
+**/mnt/bin/bwa/bwa** <- We're calling the program _bwa_ from the directory _/mnt/bin/bwa_. This is the full path to that program so you can call this no matter where you are in the file system.
+
 **mem** <- This is the bwa command we are calling. It is specific to bwa and not a unix command.
+
 **\\** <- Having this at the end of the line tells the shell that the line isn't finished and keeps going. You don't need to use this when typing commands in, but it helps break up really long commands and keeps your code more organized.
+
 **ref/HanXRQr1.0-20151230.1mb.fa** <- This is the reference genome. We're using a relative path here so you need be in /mnt/<USERNAME> or it won't be able to find this file.
-**fastq/ANN1133.R1.fastq.gz** <- 
   
+**fastq/ANN1133.R1.fastq.gz** <- This is the forward read (e.g. read 1)  set for the first sample. It's also a relative path and we can see that the file has been gzipped (since it has a .gz ending).
+
+**fastq/ANN1133.R2.fastq.gz** <- This is the reverse read (e.g. read 2)  set for the first sample.
+  
+**-t 2** <- This is telling the program how many threads (i.e. cpus) to use. In this case we're only using two because we're sharing the machine with the other students.
+
+**-R '@RG\tID:ANN1133\tSM:ANN1133\tPL:illumina\tPU:biol525d\tLB:ANN1133_lib'** <- This
 
 #Test alignment on NGM
 mkdir bam
