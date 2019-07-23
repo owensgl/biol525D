@@ -34,12 +34,12 @@ Once that is done, we have to index our reference genome.
 ```bash
 #Index the reference for BWA. 
 
-/mnt/bin/bwa/bwa index ref/HanXRQr1.0-20151230.1mb.fa
+/mnt/bin/bwa-0.7.17/bwa index ref/HanXRQr1.0-20151230.1mb.fa
 
 ```
 Now finally we can run BWA and align our data
 ```bash
-/mnt/bin/bwa/bwa mem \
+/mnt/bin/bwa-0.7.17/bwa mem \
   ref/HanXRQr1.0-20151230.1mb.fa \
   fastq/ANN1133.R1.fastq.gz \
   fastq/ANN1133.R2.fastq.gz \
@@ -49,7 +49,7 @@ Now finally we can run BWA and align our data
   
 ```
 Lets break this command down since it has several parts:
-**/mnt/bin/bwa/bwa** <= We're calling the program _bwa_ from the directory _/mnt/bin/bwa_. This is the full path to that program so you can call this no matter where you are in the file system.
+**/mnt/bin/bwa-0.7.17/bwa** <= We're calling the program _bwa_ from the directory _/mnt/bin/bwa-0.7.17_. This is the full path to that program so you can call this no matter where you are in the file system.
 
 **mem** <= This is the bwa command we are calling. It is specific to bwa and not a unix command.
 
@@ -95,7 +95,7 @@ With this command we're using the pipe "|" to pass data directly between command
 
 Next we want to take a look at our aligned reads. First we index the file, then we use samtools tview.
 ```bash
-samtools bam/ANN1133.sort.bam  
+samtools index bam/ANN1133.sort.bam  
 samtools tview bam/ANN1133.sort.bam  --reference ref/HanXRQr1.0-20151230.1mb.fa
 #use ? to open the help menu. Scroll left and right with H and L. 
 #Try to find positions where the sample doesn't have the reference allele. 
@@ -115,10 +115,10 @@ HINTS:
 </summary>
 ```bash
   #First set up variable names
-  bam=/mnt/<USERNAME>/bam
-  fastq=/mnt/<USERNAME>/fastq 
-  bwa=/mnt/bin/bwa/bwa 
-  ref=/mnt/<USERNAME>/ref/HanXRQr1.0-20151230.1mb.fa
+  bam=~/bam
+  fastq=~/fastq 
+  bwa=/mnt/bin/bwa-0.7.17/bwa 
+  ref_file=~/ref/HanXRQr1.0-20151230.1mb.fa
   
   #Then get a list of sample names, without suffixes    
   ls $fastq | grep R1.fastq.gz | sed s/.R1.fastq.gz//g > $bam/samplelist.txt
@@ -128,13 +128,13 @@ HINTS:
   do  
     $bwa mem \     
     -R "@RG\tID:$name\tSM:$name\tPL:ILLUMINA" \
-    ref/HanXRQr1.0-20151230.1mb.fa \          
-    fastq/ANN1133.R1.fastq.gz \
-    fastq/ANN1133.R2.fastq.gz \
-    -t 1 > $bam/$name.sam
+    $ref_file \          
+    $fastq/ANN1133.R1.fastq.gz \
+    $fastq/ANN1133.R2.fastq.gz \
+    -t 1 > $bam/$name.sam;
            
     samtools view -bh $bam/$name.sam |\
-    samtools sort > $bam/$name.sort.bam
+    samtools sort > $bam/$name.sort.bam;
     samtools index $bam/$name.sort.bam
   done < $bam/samplelist.txt
 ```
