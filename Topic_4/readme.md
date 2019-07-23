@@ -110,6 +110,7 @@ HINTS:
 * Use variables for directory paths "bwa=/mnt/bin/bwa/bwa"
 * Use a loop.
 
+>! SPOILERS?
 <details><summary><b>Answer</b></summary><p>
 
 ```bash
