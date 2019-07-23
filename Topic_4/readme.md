@@ -148,3 +148,4 @@ After your final bam files are created, and you've checked that they look good, 
 2. I want to reduce the percent of incorrectly mapped reads when using BWA. What setting or settings should I change in BWA?
 3. What are two ways that could be used to evaluate which aligner is best?
 
+*Some markdown text*{: .spoiler}
