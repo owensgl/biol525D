@@ -7,6 +7,8 @@ datafiles: [1,2,3,4]
 
 Make sure you have downloaded your faststructure directory to your Downloads folder using cyberduck or scp.
 
+NOTE: This tutorial is based on Rstudio 1.2.1335 and R 3.6.1, the latest version of both. Almost all steps should work identically on older versions, but there may be issues installing some packages. In this case, I recommend updating your version of R unless you have a specific reason not to. 
+
 ``` r
 #First we install some packages
 
