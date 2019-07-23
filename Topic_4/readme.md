@@ -111,13 +111,13 @@ HINTS:
 * Use a loop.
 
 
-<details><summary markdown="span"><b>Answer</b></summary><p>
+<details><summary markdown="span">***Answer***</summary>
 
-
+```bash
 #First set up variable names
     
 bam=/mnt/<USERNAME>/bam
-    
+    ```
 fastq=/mnt/<USERNAME>/fastq
     
 bwa=/mnt/bin/bwa/bwa
@@ -155,7 +155,7 @@ samtools index $bam/$name.sort.bam
 
 done < $bam/samplelist.txt
 
-</p></details>
+</details>
 
 After your final bam files are created, and you've checked that they look good, you should remove intermediate files to save space. You can build file removal into your bash scripts, but it is often helpful to only add that in once the script works. It's hard to troubleshoot a failed script if it deletes everything as it goes. 
 ### By topic 7, you should have created cleaned bam files for all samples.
