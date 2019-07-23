@@ -73,7 +73,8 @@ We now have our reads aligned to the genome in a human readable format (sam) ins
 
 #Lets examine that bam file
 less -S bam/ANN1133.sam
-#Notice the @PG line that includes the program call that created the sam file. This is useful for record keeping.
+#Notice the @PG line that includes the program call that created the sam file. 
+#This is useful for record keeping.
 
 ```
 Lets examine the sam file. It contains all the information on the reads from the fastq file, but also alignment information. 
