@@ -49,23 +49,23 @@ Now finally we can run BWA and align our data
   
 ```
 Lets break this command down since it has several parts:
-**/mnt/bin/bwa/bwa** <- We're calling the program _bwa_ from the directory _/mnt/bin/bwa_. This is the full path to that program so you can call this no matter where you are in the file system.
+**/mnt/bin/bwa/bwa** <= We're calling the program _bwa_ from the directory _/mnt/bin/bwa_. This is the full path to that program so you can call this no matter where you are in the file system.
 
-**mem** <- This is the bwa command we are calling. It is specific to bwa and not a unix command.
+**mem** <= This is the bwa command we are calling. It is specific to bwa and not a unix command.
 
-**\\** <- Having this at the end of the line tells the shell that the line isn't finished and keeps going. You don't need to use this when typing commands in, but it helps break up really long commands and keeps your code more organized.
+**\\** <= Having this at the end of the line tells the shell that the line isn't finished and keeps going. You don't need to use this when typing commands in, but it helps break up really long commands and keeps your code more organized.
 
-**ref/HanXRQr1.0-20151230.1mb.fa** <- This is the reference genome. We're using a relative path here so you need be in /mnt/<USERNAME> or it won't be able to find this file.
+**ref/HanXRQr1.0-20151230.1mb.fa** <= This is the reference genome. We're using a relative path here so you need be in /mnt/<USERNAME> or it won't be able to find this file.
   
-**fastq/ANN1133.R1.fastq.gz** <- This is the forward read (e.g. read 1)  set for the first sample. It's also a relative path and we can see that the file has been gzipped (since it has a .gz ending).
+**fastq/ANN1133.R1.fastq.gz** <= This is the forward read (e.g. read 1)  set for the first sample. It's also a relative path and we can see that the file has been gzipped (since it has a .gz ending).
 
-**fastq/ANN1133.R2.fastq.gz** <- This is the reverse read (e.g. read 2)  set for the first sample.
+**fastq/ANN1133.R2.fastq.gz** <= This is the reverse read (e.g. read 2)  set for the first sample.
   
-**-t 2** <- This is telling the program how many threads (i.e. cpus) to use. In this case we're only using two because we're sharing the machine with the other students.
+**-t 2** <= This is telling the program how many threads (i.e. cpus) to use. In this case we're only using two because we're sharing the machine with the other students.
 
-**-R '@RG\tID:ANN1133\tSM:ANN1133\tPL:illumina\tPU:biol525d\tLB:ANN1133_lib'** <- This is adding read group information to the resulting sam file. Read group information lets other programs know what the sample name along with other factors. It is necessary for GATK to run later on.
+**-R '@RG\tID:ANN1133\tSM:ANN1133\tPL:illumina\tPU:biol525d\tLB:ANN1133_lib'** <= This is adding read group information to the resulting sam file. Read group information lets other programs know what the sample name along with other factors. It is necessary for GATK to run later on.
 
-**> bam/ANN1133.sam** <- This is directing the output of the program into the file _bam/ANN1133.sam_
+**> bam/ANN1133.sam** <= This is directing the output of the program into the file _bam/ANN1133.sam_
 
 We now have our reads aligned to the genome in a human readable format (sam) instead of binary format (bam) which we will use later. Generally we keep our data in bam format because its more compressed but we can use this opportunity to better understand the format. 
 
