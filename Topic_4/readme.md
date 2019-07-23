@@ -17,7 +17,7 @@ The first step is to set up a directory structure so the resulting files will be
 ```bash
 
 #Navigate to your working directory
-cd /mnt/<USERNAME>
+cd ~
 
 #Copy the reference directory to your working directory
 cp -r /mnt/data/ref ./
