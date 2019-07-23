@@ -118,7 +118,7 @@ Log into WestCloud server using ssh (terminal). You will find your username and 
   ssh -v -i <serveruser>@<serverhost>
 
   # if you have followed the key authentication steps, you need only to specify
-  # the host alias from your `~/.ssh_config`, e.g. b525:
+  # the host alias from your `~/.ssh/config`, e.g. b525:
 
   ssh -v b525
   ```
