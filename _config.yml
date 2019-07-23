@@ -39,3 +39,4 @@ markdown: kramdown
 # blocks.
 kramdown:
   parse_block_html: true
+  
