@@ -107,7 +107,7 @@ samtools tview bam/ANN1133.sort.bam  --reference ref/HanXRQr1.0-20151230.1mb.fa
 
 We have 10 samples, so we don't want to have to type these commands out 10 times. Write a bash script to produced a sorted bam file for each sample.
 HINTS:
-* Use variables for directory paths "bwa=/mnt/bin/bwa/bwa"
+* Use variables for directory paths "bwa=/mnt/bin/bwa-0.7.17/bwa"
 * Use a loop.
 
 <details>
