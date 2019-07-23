@@ -110,6 +110,7 @@ Testing it all: _(can be completed early)_{: style="color: darkred"}
 
 Log into WestCloud server using ssh (terminal). You will find your username and ip address in this [table](https://docs.google.com/spreadsheets/d/1v7k2-XtfiwOoQ3iZHnJyqVXsxgekVGXEtnFIvdk7aqU/edit?usp=sharing).
 
+The information presented by the servers when you connect to them is shown here in [Fingerprints](./fingerprints).
 
 * For Mac, GNU Linux, and MobaXTerm users:
 
