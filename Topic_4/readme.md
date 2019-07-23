@@ -114,46 +114,46 @@ HINTS:
 <details><summary markdown="span"><b>Answer</b></summary><p>
 
 
-    #First set up variable names
+#First set up variable names
     
-    bam=/mnt/<USERNAME>/bam
+bam=/mnt/<USERNAME>/bam
     
-    fastq=/mnt/<USERNAME>/fastq
+fastq=/mnt/<USERNAME>/fastq
     
-   bwa=/mnt/bin/bwa/bwa
+bwa=/mnt/bin/bwa/bwa
    
-   ref=/mnt/<USERNAME>/ref/HanXRQr1.0-20151230.1mb.fa
+ref=/mnt/<USERNAME>/ref/HanXRQr1.0-20151230.1mb.fa
   
-    #Then get a list of sample names, without suffixes
+#Then get a list of sample names, without suffixes
     
-    ls $fastq | grep R1.fastq.gz | sed s/.R1.fastq.gz//g > $bam/samplelist.txt
+ls $fastq | grep R1.fastq.gz | sed s/.R1.fastq.gz//g > $bam/samplelist.txt
     
-    #Then loop through the samples
+#Then loop through the samples
     
-    while read name
+while read name
     
-    do
+do
     
-         $bwa mem \
+$bwa mem \
          
-           -R "@RG\tID:$name\tSM:$name\tPL:ILLUMINA" \
+-R "@RG\tID:$name\tSM:$name\tPL:ILLUMINA" \
            
-           ref/HanXRQr1.0-20151230.1mb.fa \
+ref/HanXRQr1.0-20151230.1mb.fa \
            
-           fastq/ANN1133.R1.fastq.gz \
+fastq/ANN1133.R1.fastq.gz \
            
-           fastq/ANN1133.R2.fastq.gz \
+fastq/ANN1133.R2.fastq.gz \
            
-           -t 1 > $bam/$name.sam
+-t 1 > $bam/$name.sam
            
-         samtools view -bh $bam/$name.sam |\
+samtools view -bh $bam/$name.sam |\
          
-         samtools sort > $bam/$name.sort.bam
+samtools sort > $bam/$name.sort.bam
          
-         samtools index $bam/$name.sort.bam
+samtools index $bam/$name.sort.bam
          
 
-    done < $bam/samplelist.txt
+done < $bam/samplelist.txt
 
 </p></details>
 
