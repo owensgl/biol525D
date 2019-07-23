@@ -63,8 +63,11 @@ Lets break this command down since it has several parts:
   
 **-t 2** <- This is telling the program how many threads (i.e. cpus) to use. In this case we're only using two because we're sharing the machine with the other students.
 
-**-R '@RG\tID:ANN1133\tSM:ANN1133\tPL:illumina\tPU:biol525d\tLB:ANN1133_lib'** <- This
+**-R '@RG\tID:ANN1133\tSM:ANN1133\tPL:illumina\tPU:biol525d\tLB:ANN1133_lib'** <- This is adding read group information to the resulting sam file. Read group information lets other programs know what the sample name along with other factors. It is necessary for GATK to run later on.
 
+**> bam/ANN1133.sam** <- This is directing the output of the program into the file _bam/ANN1133.sam_
+
+```bash
 #Test alignment on NGM
 mkdir bam
 /home/biol525d/bin/NextGenMap-0.5.2/bin/ngm-0.5.2/ngm \
