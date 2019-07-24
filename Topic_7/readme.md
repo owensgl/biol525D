@@ -48,7 +48,7 @@ while read name; do
   java -jar $picard MarkDuplicates \
   I=bam/$name.sort.bam O=bam/$name.sort.dedup.bam \
   M=log/$name.duplicateinfo.txt
-  samtools index $name.sort.dedup.bam
+  samtools index bam/$name.sort.dedup.bam
 done < samplelist.txt
 
 ```
@@ -70,7 +70,7 @@ The next step is to use GATK to create a GVCF file for each sample. This file su
 
 This step can take a few minutes so lets first test it with a single sample to make sure it works.
 ```
-for name in `cat $home/samplelist.txt | head -n 1`
+for name in `cat ~/samplelist.txt | head -n 1`
 do
 $gatk --java-options "-Xmx15g" HaplotypeCaller \
    -R ref/HanXRQr1.0-20151230.1mb.fa \
@@ -82,7 +82,7 @@ done
 ```
  Check your gvcf file to make sure it has a .idx index file. If the haplotypecaller crashes, it will produce a truncated gvcf file that will eventually crash the genotypegvcf step. Note that if you give genotypegvcf a truncated file without a idx file, it will produce an idx file itself, but it still won't work.
 
-Once you're satisfied that the program finished without problems you can run the same command but remove _\|head -n 1_ to run it for all samples.
+Once you're satisfied that the program finished without problems you can run the same command but remove _\|head -n 1_ to run it for all samples, which will take around 10-20 minutes.
 
 
 
@@ -94,11 +94,11 @@ The next step is to import our gvcf files into a genomicsDB file. This is a comp
 We need to create a map file to GATK where our gvcf files are and what sample is in each. Because we use a regular naming scheme for our samples, we can create that using a bash script.
 This is what we're looking for:
 
-sample1      gvcf/sample1.g.vcf.gz
+sample1<tab>gvcf/sample1.g.vcf.gz
 
-sample2      gvcf/sample2.g.vcf.gz
+sample2<tab>gvcf/sample2.g.vcf.gz
 
-sample3      gvcf/sample3.g.vcf.gz
+sample3<tab>gvcf/sample3.g.vcf.gz
 
 ```bash
 
