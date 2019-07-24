@@ -82,7 +82,7 @@ done
 ```
  Check your gvcf file to make sure it has a .idx index file. If the haplotypecaller crashes, it will produce a truncated gvcf file that will eventually crash the genotypegvcf step. Note that if you give genotypegvcf a truncated file without a idx file, it will produce an idx file itself, but it still won't work.
 
-Once you're satisfied that the program finished without problems you can run the same command but remove _\|head -n 1_ to run it for all samples, which will take around 10-20 minutes.
+We would run the HaplotypeCaller on the rest of the samples, but that will take too much time, so once you're satisfied that your script works, you can copy the rest of the gvcf files (+ idx files) from /mnt/data/gvcf into ~/gvcf.
 
 
 
