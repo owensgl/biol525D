@@ -14,9 +14,21 @@ The first step to any organized R project is to create a new Rstudio project. A 
 
 In Rstudio, select File->New Project
 
+![](rstudio_project_1.jpeg)
+
+Then select "New Directory".
+
+![](rstudio_project_2.jpeg)
+
+Click on "New Directory".
+
+![](rstudio_project_3.jpeg)
+
+Enter directory name "biol525d" and put it somewhere you can get to. In my case, I put it on the Desktop directory.
 
 
-First we install the tidyverse package, which includes a suite of tools for manipulating data and plotting. The examples today will be focused on tidyverse solutions to problems. 
+
+You're now in your Rstudio Project and the next step is to install the tidyverse package, which includes a suite of tools for manipulating data and plotting. The examples today will be focused on tidyverse solutions to problems. 
 
 
 
