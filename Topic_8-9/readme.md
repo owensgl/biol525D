@@ -21,10 +21,17 @@ We're going to use _bcftools_ a very fast program for processing and filtering V
 * At least 2 copies of the alternate allele
 
 ```bash
-bcftools  view -c 2 -i 'INFO/AN >= 18' -m2 -M2 -v snps vcf/full_genome.vcf.gz -O z > vcf/full_genome.filtered.vcf.gz
+bcftools  view \
+	-c 2 \
+	-i 'INFO/AN >= 18' \
+	-m2 \
+	-M2 \
+	-v snps \
+	vcf/full_genome.vcf.gz \
+	-O z > vcf/full_genome.filtered.vcf.gz
 ```
 
-####Coding challenge
+##Coding challenge
 * How many sites remain in the filtered VCF? How many in the chromosome HanXRQChr01?
 
 A common first pass analysis is to use structure to look at clustering in your data. Admixture is similar to STRUCTURE but orders of magnitude faster. We're going use that, but before that we have to convert our VCF to the bed format. We're going to use plink to do that. Plink is a large set of tools for manipulating genetic data, running GWAS and calculating various stats. It's geared towards human data, so sometimes you have to force it to work with non-human data. For example, it assumes you have human chromosomes (eg 23 of them) and will complain if that doesn't see them.
@@ -126,7 +133,10 @@ Vcftools needs to know which samples are in which groups for Fst, so we need to 
 cat samplelist.txt | grep ANN > ann.samplelist.txt
 cat samplelist.txt | grep ARG > arg.samplelist.txt
 
-vcftools --gzvcf vcf/full_genome.filtered.vcf.gz  --weir-fst-pop ann.samplelist.txt --weir-fst-pop arg.samplelist.txt --out analysis/full_genome.filtered
+vcftools --gzvcf vcf/full_genome.filtered.vcf.gz  \
+	--weir-fst-pop ann.samplelist.txt \
+	--weir-fst-pop arg.samplelist.txt \
+	--out analysis/full_genome.filtered
 
 ```
 We're going to move from the command line to desktop Rstudio, but as a last step lets copy our samplelist file to the analysis directory so we can use it later.
