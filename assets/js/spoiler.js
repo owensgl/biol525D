@@ -1,3 +1,17 @@
+/**
+  Taken from https://github.com/joshbuddy/spoiler-alert/blob/master/spoiler.js
+
+  To make your site spoiler free, simply include spoiler.js, then, add this somewhere:
+
+    // makes every element with class .spoiler blurry
+    spoilerAlert('spoiler, .spoiler');
+
+  To control the maximum and partial blurs, you can pass arguments:
+
+  spoilerAlert('spoiler, .spoiler', {max: 10, partial: 4});
+
+**/
+
 (function() {
   if (typeof Object.assign != 'function') {
     (function () {

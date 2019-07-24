@@ -82,7 +82,7 @@ Lets examine the sam file. It contains all the information on the reads from the
 1. How are reads ordered in the sam file? 
 2. What does the 6th column represent? What would the string "1S93M6S" mean?
 3. What are three possible reasons why mapping quality could be low for a particular read?
-4. What percent of your reads mapped to the genome? Hint: Samtools
+4. What percent of your reads mapped to the genome? Hint: <span>Samtools</span>{: .spoiler}
 
 ```bash
 
@@ -106,9 +106,32 @@ samtools tview bam/ANN1133.sort.bam  --reference ref/HanXRQr1.0-20151230.1mb.fa
 
 
 We have 10 samples, so we don't want to have to type these commands out 10 times. Write a bash script to produced a sorted bam file for each sample.
+
 HINTS:
-* Use variables for directory paths "bwa=/mnt/bin/bwa-0.7.17/bwa"
-* Use a loop.
+  * Use variables for directory paths "bwa=/mnt/bin/bwa-0.7.17/bwa"
+  * Use a loop.
+  {: .spoiler}
+
+MORE HINTS:
+  * for/while loops can receive input from stdin (or a file):
+
+        while read fname;
+	  do echo processing "$fname";
+	done < list_of_things.txt
+  {: .spoiler}
+
+  * You can do pathname manipulation with `basename` and `dirname` (see manual pages):
+
+    ```
+    dirname a/b/c          # prints a/b
+    basename a/b/c.gz      # prints c.gz
+    basename a/b/c.gz .gz  # prints c
+
+    fpath=/path/to/the/file.gz
+    base=$(basename "$fpath")    # assign "file.gz" to variable base
+    echo "$base"                 # prints file.gz
+    ```
+  {: .spoiler}
 
 <details>
 <summary markdown="span">**Answer**

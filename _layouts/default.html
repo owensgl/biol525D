@@ -8,6 +8,17 @@
 	<link href="https://fonts.googleapis.com/css?family=Inconsolata&subset=latin-ext" rel="stylesheet">
 	<link rel="stylesheet" href="{{ site.baseurl }}/style/pygments-default.css">
 	<link rel="stylesheet" href="{{ site.baseurl }}/style/styles.css">
+
+	<!-- START spoiler code setup -->
+	<script type="text/javascript" src="{{ site.baseurl }}/assets/js/spoiler.js"></script>
+	<script type="text/javascript">
+          // once the page is assembled, anything with class "spoiler" or tag <spoiler> gets blurred
+          document.addEventListener("DOMContentLoaded", function(event) {
+            spoilerAlert('spoiler', {max: 4, partial: 2});
+            spoilerAlert('.spoiler', {max: 4, partial: 2});
+          });
+	</script>
+	<!-- END spoiler code setup -->
 </head>
 <body>
 	<div class="column">
