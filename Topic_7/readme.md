@@ -143,7 +143,7 @@ With the genomicsDB created, we're finally ready to actually call variants and o
 ```bash
 $gatk --java-options "-Xmx10g" GenotypeGVCFs \
    -R ref/HanXRQr1.0-20151230.1mb.fa \
-   -V gendb://~/db/HanXRQChr01 \
+   -V gendb://db/HanXRQChr01 \
    -O vcf/HanXRQChr01.vcf.gz
 ```
 Now we can actually look at the VCF file
