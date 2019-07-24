@@ -5,33 +5,30 @@ topictitle: "Plotting in R"
 datafiles: [1,2,3,4]
 ---
 
-Make sure you have downloaded your faststructure directory to your Downloads folder using cyberduck or scp.
+We're working with Rstudio on our desktops, so download the "vcf" and "analysis" directories to your laptop. The rest of this tutorial should be run in your Rstudio IDE. 
 
 NOTE: This tutorial is based on Rstudio 1.2.1335 and R 3.6.1, the latest version of both. Almost all steps should work identically on older versions, but there may be issues installing some packages. In this case, I recommend updating your version of R unless you have a specific reason not to. 
 
+
+The first step to any organized R project is to create a new Rstudio project. A project keeps all your different scripts and results together in a single directory. It also separates saved variables, so when you are switching between different projects you aren't accidentally using the same variables between them. 
+
+In Rstudio, select File->New Project
+
+
+
+First we install the tidyverse package, which includes a suite of tools for manipulating data and plotting. The examples today will be focused on tidyverse solutions to problems. 
+
+
+
 ``` r
-#First we install some packages
-
-install.packages("tidyverse")
-install.packages("reshape")
-
-
-#Then we load those packages.
-
-library(reshape)
+install.packages("tidyverse") 
 library(tidyverse)
 ```
 
 
-Save these files to your Downloads (these files are also in the course repository under ./Topic_8-9/):
-  - Sample info [biol525d.popinfo.txt](biol525d.popinfo.txt)
-  - Data files:
-    {% for i in page.datafiles %}
-    - [biol525d.{{i}}.meanQ](./biol525d.{{i}}.meanQ), [biol525d.{{i}}.meanP](./biol525d.{{i}}.meanP)
-    {% endfor %}
-
 ``` r
-#"biol525d.popinfo.txt" has information on our samples.
+#I put the analysis and vcf directory in my desktop, so I've
+data_directory <- "Desktop/"
 sampleinfo <- read_tsv("Downloads/biol525d.popinfo.txt")
 #data name and directory
 name <- "Downloads/faststructure/biol525d"
