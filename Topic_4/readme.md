@@ -152,8 +152,8 @@ MORE HINTS:
     $bwa mem \     
     -R "@RG\tID:$name\tSM:$name\tPL:ILLUMINA" \
     $ref_file \          
-    $fastq/ANN1133.R1.fastq.gz \
-    $fastq/ANN1133.R2.fastq.gz \
+    $fastq/$name.R1.fastq.gz \
+    $fastq/$name.R2.fastq.gz \
     -t 1 > $bam/$name.sam;
            
     samtools view -bh $bam/$name.sam |\
