@@ -33,9 +33,9 @@ Lets break this down.
 
 **ls bam** <= List all the files in the _bam_ directory
 
-**| grep .sort.bam$** <= Only keep the file names ending in _.sort.bam_.
+**\| grep .sort.bam$** <= Only keep the file names ending in _.sort.bam_.
 
-**| sed s/.sort.bam//g** <= Replace the string _.sort.bam_ with "", effectively leaving only the sample name.
+**\| sed s/.sort.bam//g** <= Replace the string _.sort.bam_ with "", effectively leaving only the sample name.
 
 **> samplelist.txt** <= Save the result in a file named _samplelist.txt_
 
