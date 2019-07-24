@@ -66,10 +66,6 @@ Take a look at the ref/HanXRQr1.0-20151230.1mb.fa.fai. How many chromosomes are 
 
 
 
-# Next we use the haplotypecaller to create a gvcf file.
-# This takes about 20 minutes per sample, so for right now we're only
-# going to run it on one sample.
-
 The next step is to use GATK to create a GVCF file for each sample. This file summarizes support for reference or alternate alleles at all positions in the genome. It's an intermediate file we need to use before we create our final VCF file.
 
 This step can take a few minutes so lets first test it with a single sample to make sure it works.
@@ -86,13 +82,13 @@ done
 ```
  Check your gvcf file to make sure it has a .idx index file. If the haplotypecaller crashes, it will produce a truncated gvcf file that will eventually crash the genotypegvcf step. Note that if you give genotypegvcf a truncated file without a idx file, it will produce an idx file itself, but it still won't work.
 
-Once you're satisfied that the program finished without problems you can run the same command but remove _|head -n 1_ to run it for all samples.
+Once you're satisfied that the program finished without problems you can run the same command but remove _\|head -n 1_ to run it for all samples.
 
 
 
 The next step is to import our gvcf files into a genomicsDB file. This is a compressed database representation of all the read data in our samples. It has two important features to remember:
-1) Each time you call GenomicsDBImport, you create a database for a single interval. This means that you can parallelize it easier, for example by calling it once per chromosome.
-2) The GenomicsDB file contains all the information of your GVCF files, but can't be added to, and can't be back transformed into a gvcf. That means if you get more samples, you can't just add them to your genomicdDB file, you have to go back to the gvcf files.
+1. Each time you call GenomicsDBImport, you create a database for a single interval. This means that you can parallelize it easier, for example by calling it once per chromosome.
+2. The GenomicsDB file contains all the information of your GVCF files, but can't be added to, and can't be back transformed into a gvcf. That means if you get more samples, you can't just add them to your genomicdDB file, you have to go back to the gvcf files.
 
 
 We need to create a map file to GATK where our gvcf files are and what sample is in each. Because we use a regular naming scheme for our samples, we can create that using a bash script.
@@ -116,11 +112,11 @@ Lets break down this loop to understand how its working
 
 **ls gvcf** <= List all files in the gvcf directory.
 
-**| grep ".g.vcf"** <= Only keep the files including .g.vcf in their name.
+**\| grep ".g.vcf"** <= Only keep the files including .g.vcf in their name.
 
-**| grep -v ".idx"** <= Remove any file including .idx, which are the index files
+**\| grep -v ".idx"** <= Remove any file including .idx, which are the index files
 
-**| sed s/.sort.dedup.g.vcf//g** <= Remove the suffix to the filename so that its only the sample name remaining.
+**\| sed s/.sort.dedup.g.vcf//g** <= Remove the suffix to the filename so that its only the sample name remaining.
 
 **do** <= Starts the part of the script where you put the commands to be repeated.
 
