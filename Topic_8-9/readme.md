@@ -29,6 +29,9 @@ bcftools  view \
 	-v snps \
 	vcf/full_genome.vcf.gz \
 	-O z > vcf/full_genome.filtered.vcf.gz
+
+#We also should index the vcf file for future use
+tabix -p vcf vcf/full_genome.filtered.vcf.gz
 ```
 
 ##Coding challenge
