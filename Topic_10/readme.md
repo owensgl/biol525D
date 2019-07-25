@@ -8,6 +8,15 @@ topictitle: Phylogenetics
 ## Accompanying material
 * [Slides](./Topic 10.pdf)
 
+Converting between file types is the perennial issue of all bioinformatics and its particularly hard when trying to take a VCF into phylogenetics. We're going to use PGDSpider, a GUI program that can convert between many different formats. It works well, although since its not command line you can't incorporate it into an automated pipeline. 
+
+(Download and install PGDSpider)[http://www.cmpg.unibe.ch/software/PGDSpider/#Download_and_Installation_Instructions]
+
+Next we want to convert our vcf from vcf into nexus format. You'll need to unzip full_genome.filtered.vcf.gz, which you can use using gunzip in the command line.
+
+![](pgd_spider.jpeg)
+
+
 The first step is to convert the VCF file into a fasta file. It is surprisingly hard to find a tool to do that, so I've supplied a script.
 
 We only have variable sites, so we're going to use an ascertainment bias to correct for that. Typically phylogenetic programs assume you have all sites, including invariant ones.
