@@ -10,15 +10,15 @@ topictitle: Phylogenetics
 
 We're going to run our data through SNAPP since we only have variant sites. As the first step you need to download a couple things:
 
-(BEAST2)[https://github.com/CompEvol/beast2/releases]: Choose the option that fits your operating system. _with_JRE_ means that it includes java. If you've never installed java on your computer then you should download that version.
+[BEAST2](https://github.com/CompEvol/beast2/releases): Choose the option that fits your operating system. _with_JRE_ means that it includes java. If you've never installed java on your computer then you should download that version.
 
-(TRACER)[https://github.com/beast-dev/tracer/releases/tag/v1.7.1]: Again download the version that fits your operating system.
+[TRACER](https://github.com/beast-dev/tracer/releases/tag/v1.7.1): Again download the version that fits your operating system.
 
-(FigTree)[https://github.com/rambaut/figtree/releases]: Choose the .dmg for mac or .zip for other systems
+[FigTree](https://github.com/rambaut/figtree/releases): Choose the .dmg for mac or .zip for other systems
 
-(vcf2nex.pl)[vcf2nex.pl]: This is a perl converter from vcf to the nexus input format. It is edited from the version on the (SNAPP FAQ)[https://www.beast2.org/snapp-faq/] to output integers instead of binary output. Put this in your biol525d project directory.
+[vcf2nex.pl](vcf2nex.pl): This is a perl converter from vcf to the nexus input format. It is edited from the version on the [SNAPP FAQ](https://www.beast2.org/snapp-faq/) to output integers instead of binary output. Put this in your biol525d project directory.
 
-Also note, this tutorial is based heavily off this (SNAPP tutorial)[https://github.com/BEAST2-Dev/beast-docs/releases/download/v1.0/SNAPP-tutorial-2018.zip], so please refer to it for further details. 
+Also note, this tutorial is based heavily off this [SNAPP tutorial](https://github.com/BEAST2-Dev/beast-docs/releases/download/v1.0/SNAPP-tutorial-2018.zip), so please refer to it for further details. 
 
 The first step is to convert our filtered vcf into the nexus format. Nexus is a phylogenetics data format. In this case we're converting our genotypes from 0/0, 0/1 and 1/1 into 0, 1 and 2.
 
@@ -44,7 +44,7 @@ Next, in the BEAST 2.6.0 directory open the BEAUTi app.
 * Modify *Store Every* to 100
 * Modify tracelog => File Name to "full_genome.filtered.log"
 * Modify tracelog => Log Every to 10
-* Modify screenlog =? Log Every to 100
+* Modify screenlog => Log Every to 100
 * Modify treelog => File Name to "full_genome.filtered.trees"
 * Modify treelog => Log Every to 100
 * Select *File => Save* and name file "full_genome.filtered.snapp"
