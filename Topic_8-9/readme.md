@@ -128,18 +128,19 @@ ARG0016	0.999990 0.000010
 ARG0018	0.999990 0.000010
 ARG0028	0.999990 0.000010
 ```
-All the ANN samples are one group and all the ARG are a different group, which makes sense, since they are different species. We're going to plot these results, but before we leave the command line, lets also calculate Fst between the groups (or species in this case) using vcftools.
+All the ANN samples are one group and all the ARG are a different group, which makes sense, since they are different species. We're going to plot these results, but before we leave the command line, lets also calculate Fst between the groups (or species in this case) using the perl tool vcf2fst.pl. This is a custom script from Greg, since we want to keep the numerator and denominator from the Fst calculations, which is hard to do.
 
-Vcftools needs to know which samples are in which groups for Fst, so we need to make lists of each sample in each group. For this example, its as easy as selecting by sample name.
+We need two files, a sample info file and a group file. The sample info file tells the program which population each sample is in and the group file tells the program which populations to compare. We can make them here:
 
 ```
-cat samplelist.txt | grep ANN > ann.samplelist.txt
-cat samplelist.txt | grep ARG > arg.samplelist.txt
+for i in `cat samplelist.txt`; 
+	do echo -e "$i\t${i/%????/}"; 
+done > sampleinfo.txt
+echo -e "ANN\t1\nARG\t2" > popinfo.txt
 
-vcftools --gzvcf vcf/full_genome.filtered.vcf.gz  \
-	--weir-fst-pop ann.samplelist.txt \
-	--weir-fst-pop arg.samplelist.txt \
-	--out analysis/full_genome.filtered
+zcat vcf/full_genome.filtered.vcf.gz |\
+perl /mnt/bin/vcf2fst.pl sampleinfo.txt popinfo.txt \
+> analysis/full_genome.filtered.fst.txt
 
 ```
 We're going to move from the command line to desktop Rstudio, but as a last step lets copy our samplelist file to the analysis directory so we can use it later.
