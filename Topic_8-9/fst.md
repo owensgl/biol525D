@@ -4,23 +4,53 @@ topickey: 9.2
 topictitle: "Plotting Fst"
 ---
 
-Now to calculate Fst, we're going back to the server.
-
-```bash
+We're now moving onto plotting Fst values, so you should again start a new Rscript and clear your environment.
 
 
-#Next we use it to calculate Fst
-#We need a list of samples for the two different populations. 
-cd ~
-seq -f "%03g" 1 50 > samplelist.pop1.txt
-seq -f "%03g" 51 100 > samplelist.pop2.txt
-vcftools  \
---gzvcf biol525d.snps.vcf.gz \
---weir-fst-pop samplelist.pop1.txt --weir-fst-pop samplelist.pop2.txt \
---out biol525d
-#Take a look at the fst file, does it have reasonable data? Is it all missing data?
+We have a the Fst values for each site in the genome. Lets load that into R.
+```r
+library(tidyverse)
+
+fst <- read_tsv("analysis/full_genome.filtered.weir.fst")
+fst
+# A tibble: 6,750 x 3
+   CHROM         POS WEIR_AND_COCKERHAM_FST
+   <chr>       <dbl>                  <dbl>
+ 1 HanXRQChr01  1134                 1     
+ 2 HanXRQChr01  1137                 0.214 
+ 3 HanXRQChr01  1146               NaN     
+ 4 HanXRQChr01  1160                 0.0543
+ 5 HanXRQChr01  1166                 1     
+ 6 HanXRQChr01  1335                 0.352 
+ 7 HanXRQChr01  1404                 1     
+ 8 HanXRQChr01  1429                 0.352 
+ 9 HanXRQChr01  1450                 1     
+10 HanXRQChr01  1458                 1     
+# … with 6,740 more rows
 ```
-**Question 1**:
+That worked, but its kind of annoying to have to type in such long ALL CAPS names, so we should rename them using the _rename()_ command.
+```r
+fst <- fst %>%
+  rename(chr=CHROM,pos=POS, fst=WEIR_AND_COCKERHAM_FST) 
+fst
+# A tibble: 6,750 x 3
+   chr           pos      fst
+   <chr>       <dbl>    <dbl>
+ 1 HanXRQChr01  1134   1     
+ 2 HanXRQChr01  1137   0.214 
+ 3 HanXRQChr01  1146 NaN     
+ 4 HanXRQChr01  1160   0.0543
+ 5 HanXRQChr01  1166   1     
+ 6 HanXRQChr01  1335   0.352 
+ 7 HanXRQChr01  1404   1     
+ 8 HanXRQChr01  1429   0.352 
+ 9 HanXRQChr01  1450   1     
+10 HanXRQChr01  1458   1     
+# … with 6,740 more rows
+```
+
+
+**Side Question 1**:
 * Can you calculate overall Fst from this file and if so how would you do it using command line tools?
 
 <details> 
