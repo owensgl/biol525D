@@ -37,7 +37,7 @@ fst %>%
   ggplot(.,aes(x=pos,y=Fst)) + geom_point()
 
 ```
-![](fst_1.jpg)
+![](fst_1.jpeg)
 
 We can see that Fst is generally pretty high, there are a lot of regions with no sites, in this case due to repetitive regions. What if we wanted to do a sliding window mean Fst? You can do that directly in R tidyverse. In this case we're using non-overlapping windows based on bp position.
 
@@ -63,7 +63,7 @@ fst %>%
    #Now we finally plot it
    ggplot(.,aes(x=window,y=window_fst)) + geom_line()
 ```
-![](fst_2.jpg)
+![](fst_2.jpeg)
 
 We can see some variation in Fst across the chromosome. It'd be better if we could put both the points and windowed line together.
 
@@ -81,7 +81,7 @@ fst %>%
              aes(x=pos,y=Fst),alpha=0.5) +
   geom_line(color="dark green",size=2) 
 ```
-![](fst_3.jpg)
+![](fst_3.jpeg)
 
 For this we're including a call to geom_point() but specifying its own dataset, which we are filtering in place. Also note, that we call geom_line() after geom_point() so that the line is on top of the points. 
 
@@ -100,7 +100,7 @@ fst %>%
   geom_line(color="dark green",size=2) +
   facet_wrap(~chr,nrow=1)
 ```
-![](fst_4.jpg)
+![](fst_4.jpeg)
 
 All the chromosomes are there, but that's not ideal. To get the classic "Manhattan plot" look we need all points in a single continuous x axis. To do that we need to create a new x axis that is the cumulative position (i.e. chromosome 2 starts at the end of chromosome 1).
 As a first step we need the full chromosome lengths. You can find that in the .fai file, so copy the file "HanXRQr1.0-20151230.1mb.fa.fai" into your Rstudio project directory
@@ -134,7 +134,7 @@ chr_lengths %>%
 fst_cumulative %>%
   ggplot(aes(x=cumulative_pos,y=Fst)) + geom_point()
 ```
-![](fst_5.jpg)
+![](fst_5.jpeg)
 
 Pretty good, but we can't tell where one chromosome end and another starts. We also want to actually label those chromosomes. Lets make a new dataframe with the mid-point of each chromosome so we can put our chromosome label there.
 
@@ -160,7 +160,7 @@ fst_cumulative %>%
         panel.grid.minor.x = element_blank()) +
   xlab("Chr") 
 ```
-![](fst_6.jpg)
+![](fst_6.jpeg)
 
 You can use this approach for plotting any kind of variable across the genome.
 
