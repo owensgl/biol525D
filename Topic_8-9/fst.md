@@ -174,6 +174,7 @@ HINT:
 {: .spoiler}
 
 * The SNPs with Fst < -0.3 are of particular interest to a collaborator. Set up your plot to automatically highlight each site like that. For bonus points, label each point with its exact position.
+
 HINT:
 * The package ggrepel is great for adding custom text labels.
 {: .spoiler}
