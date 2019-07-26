@@ -183,6 +183,8 @@ ggtree(rooted.tree) +
   geom_tiplab() +
   xlim(0, 0.2)
 ```
+![](ggtree_3.jpeg)
+
 One of the really cool features of ggtree is the %<+% operator. This allows you to take dataframes with sample specific information and join that with the tree file. Once its joined you can easily highlight samples or add extra information. Unfortunately, details on this method can only be found on the wayback machine [here](https://web.archive.org/web/20181227140306/https://bioconductor.org/packages/release/bioc/vignettes/ggtree/inst/doc/treeAnnotation.html#the-operator).
 
 ```r
@@ -211,6 +213,7 @@ ggtree(rooted.tree) %<+% tree_info +
   geom_tiplab(aes(color=species)) +
   xlim(0, 0.2)
 ```
+![](ggtree_4.jpeg)
 
 
 
