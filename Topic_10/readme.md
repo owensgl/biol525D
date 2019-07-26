@@ -108,7 +108,9 @@ The first step is to convert the VCF file into a fasta file. It is surprisingly 
 ```bash
 cd ~
 mkdir phylogenetics
-zcat vcf/full_genome.filtered.vcf.gz | perl /mnt/bin/vcf2fasta_basic.pl > phylogenetics/full_genome.filtered.fa
+zcat vcf/full_genome.filtered.vcf.gz |\
+     perl /mnt/bin/vcf2fasta_basic.pl \
+     > phylogenetics/full_genome.filtered.fa
 ```
 We only have variable sites, so we're going to use an ascertainment bias to correct for that. Typically phylogenetic programs assume you have all sites, including invariant ones.
 
