@@ -100,133 +100,116 @@ It will run and output a new .tre file. We then open that file in FigTree
 
 This is showing the confidence interval for that node height. If we had more taxa you could also show node confidence using the branch labels feature.
 
+-------------
 
+We've gone through how to use SNAPP, but there are cases where you may want a phylogeny of samples, rather than populations. Additionally, SNAPP can be quite slow, especially as sample size increase. Another program that can estimate phylogenies is IQtree, which uses maximum likelihood and is considerably faster. It is very user-friendly and works well for estimating gene trees.
 
-
-
-
-
-The first step is to convert the VCF file into a fasta file. It is surprisingly hard to find a tool to do that, so I've supplied a script.
-
-We only have variable sites, so we're going to use an ascertainment bias to correct for that. Typically phylogenetic programs assume you have all sites, including invariant ones.
-IQtree also has a [webserver](http://iqtree.cibiv.univie.ac.at/).
-
-When using an ascertainment bias, every site needs to be variable. Annoyingly, when many phylogenetic programs treat heterozygous site as both homozygous types with some probability. Consequently, if an allele is only represented in its heterozygous state, there is some probability that the site is invariant, causing the program to crash. The script I provide filters out those sites.
-
-```
-
+The first step is to convert the VCF file into a fasta file. It is surprisingly hard to find a tool to do that, so I've supplied a script. Log back into your server
+```bash
 cd ~
-zcat biol525d.snps.vcf.gz | \
-     perl /home/biol525d/bin/vcf2fasta_gaps.pl \
-     > biol525d.snps.fasta
-
-# Next we run it
-iqtree -s biol525d.snps.fasta -st DNA -m TEST+ASC -nt 1
-
-# This produces several output files, including a log and a couple different versions
-# of the treefile. The -m TEST command does a model test and selects
-# the best substition model.
+mkdir phylogenetics
+zcat vcf/full_genome.filtered.vcf.gz | perl /mnt/bin/vcf2fasta_basic.pl > phylogenetics/full_genome.filtered.fa
 ```
-In the next step, we're going to use R to visualize our tree using ggtree. To do that you need to download "Biol525D.snps.fasta.treefile" to your laptop. Another way to visualize a tree is [Figtree](http://tree.bio.ed.ac.uk/software/figtree/).
+We only have variable sites, so we're going to use an ascertainment bias to correct for that. Typically phylogenetic programs assume you have all sites, including invariant ones.
+
+When using an ascertainment bias, every site needs to be variable. Annoyingly, phylogenetic programs treat heterozygous site as both homozygous types with some probability. Consequently, if an allele is only represented in its heterozygous state, there is some probability that the site is invariant, causing the program to crash. The script I provide filters out those sites.
+
+We can then call iqtree.
+```bash
+/mnt/bin/iqtree-1.6.11-Linux/bin/iqtree \
+     -s phylogenetics/full_genome.filtered.fa \
+     -m TEST+ASC \
+     -bb 1000 \
+     -st DNA
+```
+Lets break down this command
+* */mnt/bin/iqtree-1.6.11-Linux/bin/iqtree* <= Calling the iqtree program
+* *-s phylogenetics/full_genome.filtered.fa* <= The fasta file we just made.
+* *-m TEST+ASC* <= This makes iqtree test many different models of sequence evolution and pick the best one. All models include ascertainment bias correction.
+* *-bb 1000* <= This does 1000 ultrafast bootstrap approximations to estimate branch support
+* *-st DNA* <= This tells it that the data is DNA and not protein sequences or something else.
+
+Take a look at the output files. One of the most useful is *full_genome.filtered.fa.iqtree* which is a log of the run and a summary of all its results. It also includes an ascii phylogeny. We're going to focus on *full_genome.filtered.fa.treefile*, which is the maximum likelihood tree it selected.
+
+Transfer your whole *phylogenetics* directory to your *biol525d* Rstudio project directory on your laptop. Then open Rstudio, reload your project if its been closed, create a new Rscript and clear your environment. 
 
 
 ```r
-#First we install some packages
-source("http://bioconductor.org/biocLite.R")
-biocLite("ggtree")
+#First some package installation.
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+
+BiocManager::install("ggtree")
 install.packages("phytools")
-```
+#Note: Phytools installation may give this error message:
+#ERROR: configuration failed for package ‘magick’
+#It should still works for our purposes.
 
-```r
-#Then load some libraries
+#Then loading them
 library(ggtree)
 library(phytools)
-library(phangorn)
+
+
 ```
 
+We can now use ggtree to plot our tree. The advantage of using ggtree versus figtree is that we can script processing so we can do more complicated manipulations without lots of clicking (e.g. colour coding). An extensive guide to ggtree is [here](https://yulab-smu.github.io/treedata-book/index.html).
 
 
 ```r
-#Then load in our data
-filename <- "Downloads/biol525d.snps.fasta.treefile"
-tree <- read.tree(filename)
-
-#Lets take a look
-ggtree(tree, layout="unrooted") +
-  #This labels nodes by their number, so we can work with them.
-  geom_text2(aes(subset=!isTip, label=node)) + 
-  #This labels tips.
-  geom_tiplab() 
-```
-
-![](figure/ggtree-1.png)
-
-
-```r
-# The samples are very clumpy because of the lack of variation. We don't have
-# an outgroup species, so lets tree a midpoint root.
-
-tree.midpoint <- midpoint(tree)
-ggtree(tree.midpoint) +
-  geom_tiplab() 
-```
-
-![](figure/ggtree-2.png)
-
-
-```r
-# How about we now label each population. I'm picking the node numbers
-# off my phylogeny, and it may be different for your tree.
-ggtree(tree.midpoint) +
-  geom_text2(aes(subset=!isTip, label=node)) + 
+#Load the data
+tree <- read.newick("phylogenetics/full_genome.filtered.fa.treefile")
+#Plot the tree. We use xlim to make sure names are not cut off.
+ggtree(tree) +
   geom_tiplab() +
-  geom_cladelabel(node=111, label="Population 2", align=T, offset=.0001) +
-  geom_cladelabel(node=199, label="Population 1", align=T, offset=.0001)
-
+  xlim(0, 0.3)
 ```
+![](ggtree_1.jpeg)
 
-![](figure/ggtree-3.png)
+This tree is unrooted, so it has chosen the alphabetically earliest sample as the root. To emphasize that its unrooted, you could also plot it like this:
+```r
+ggtree(tree, layout="equal_angle") +
+  geom_tiplab() +
+  xlim(-0.3, 0.2)
+```
+![](ggtree_2.jpeg)
+
+As we expect, there are two clear groups. If you don't have a clear outgroup sample (like in this case), one way of rooting the phylogeny is using a midpoint root. This takes the longest branch in the tree and declares it the root. In this phylogeny, the longest branch separates the two groups.
 
 ```r
-#Uh oh, labels are off the printed screen. Here's a work around
-ggtree(tree.midpoint) +
-  geom_text2(aes(subset=!isTip, label=node)) + 
+rooted.tree <- midpoint.root(tree)
+ggtree(rooted.tree) +
   geom_tiplab() +
-  geom_cladelabel(node=111, label="Population 2", align=T, offset=.01) +
-  geom_cladelabel(node=199, label="Population 1", align=T, offset=.01) +
-  geom_cladelabel(node=111, label="", align=T, offset=.03,color="white")
-
+  xlim(0, 0.2)
 ```
-
-![](figure/ggtree-4.png)
-
+One of the really cool features of ggtree is the %<+% operator. This allows you to take dataframes with sample specific information and join that with the tree file. Once its joined you can easily highlight samples or add extra information. Unfortunately, details on this method can only be found on the wayback machine [here](https://web.archive.org/web/20181227140306/https://bioconductor.org/packages/release/bioc/vignettes/ggtree/inst/doc/treeAnnotation.html#the-operator).
 
 ```r
-#We can  make up our labels
-ggtree(tree.midpoint) +
-  geom_tiplab() +
-  geom_label2(aes(subset=(node==111), label='Robot Fish')) +
-  geom_label2(aes(subset=(node==199), label='Robots')) +
-  geom_cladelabel(node=111, label="", align=T, offset=.0001,color="white") + 
-  geom_cladelabel(node=199, label="", align=T, offset=-.0002,color="white")
+#First we make a dataframe with species information
 
+tree_info <- tibble(taxa=as.character(tree$tip.label))
+tree_info %>%
+  mutate(species=substr(taxa,0,3)) -> tree_info
+tree_info
+# A tibble: 10 x 2
+   taxa    species
+   <chr>   <chr>  
+ 1 ANN1133 ANN    
+ 2 ANN1134 ANN    
+ 3 ANN1337 ANN    
+ 4 ANN1373 ANN    
+ 5 ARG0010 ARG    
+ 6 ARG0015 ARG    
+ 7 ARG0016 ARG    
+ 8 ARG0018 ARG    
+ 9 ARG0028 ARG    
+10 ANN1338 ANN    
+
+#Then we use %<+% to add that to the tree.
+ggtree(rooted.tree) %<+% tree_info +
+  geom_tiplab(aes(color=species)) +
+  xlim(0, 0.2)
 ```
 
-![](figure/ggtree-5.png)
-
-### Coding challenge 1
-
-Rename samples 050 and 051 to "turbo50" and "awesome51".
-
-## Splitstree
-Now we want to try out splitstree, a reticulate network phylogeny. Download it [here](http://ab.inf.uni-tuebingen.de/data/software/splitstree4/download/welcome.html). 
-It should just run if you have the correct version of java. For newer macs you may have to install an older version of java, it should be a suggestion when you attempt to run the program.
-Before we download the fasta file we have to replace all N with ?, because splitstree does not accept N.
-```bash
-cat biol525d.snps.fasta | sed s/N/?/g biol525d.snps.fasta > biol525d.snps.splitstree.fasta
-```
-Then transfer it to your laptop. Open Splitstree and select the biol525d.snps.splitstree.fasta file.
-The first tree you see is a NeighbourNet, but you can also select many other algorithms or distance methods.
 
 
 ## Daily Questions:
