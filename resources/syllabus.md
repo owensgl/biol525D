@@ -28,14 +28,14 @@ Participation in discussions and lab exercises.
 
 ## LOCATION AND TIME
 
-FSC 1003, 10am to Noon, 1pm to 3pm.
+SCRF 1328, 10am to Noon, 1pm to 3pm.
 
 ## TOPICS
 
 Resources for each topic are in a subdirectory based on the topic. Two topics will be covered per day.
 
-1. [Topic 1](../Topic_1/) Broad introduction: Scope of course, goals, overview of technology and bioinformatics, and the future of sequencing [GREG]
-2. [Topic 2](../Topic_2/) Programming for biologists [GREG]
+1. [Topic 1](../Topic_1/) Broad introduction: Scope of course, goals, overview of technology and bioinformatics, and the future of sequencing [Greg, JS]
+2. [Topic 2](../Topic_2/) Programming for biologists [JS]
 3. [Topic 3](../Topic_3/) Fastq files and quality checking/trimming [Kay]
 4. [Topic 4](../Topic_4/) Alignment: algorithms and tools [GREG]
 5. [Topic 5](../Topic_5/) Assembly: transcriptome and genome assembly [KAY]
