@@ -32,11 +32,11 @@ Consult [Daily Assignments](resources/daily_assignments.md)
 ## Lectures/seminars
 July 29th to August 2nd, 2019.
 
-SCRF 1318, 10am to Noon, 1pm to 3pm.
+SCRF 1328, 10am to Noon, 1pm to 3pm.
 
 ## Basic course structure
 
-The course material is organized in several [Topics](resources/topics.md), with slides and coding examples.
+The course material is organized in several topics, with slides and coding examples.
 
 To get up to speed on working with a Unix system, take a look at the [unix help](resources/unix_ref.pdf) file. There are some resources there that will help you find the specific command you need for each task.
 
@@ -50,7 +50,7 @@ To get up to speed on working with a Unix system, take a look at the [unix help]
 7. [Topic 7](./Topic_7/) SNP and variant calling [GREG]
 8. [Topic 8](./Topic_8-9/) Population genomics and plotting in R (Part 1) [GREG]
 9. [Topic 9](./Topic_8-9/) Population genomics and plotting in R (Part 2) [GREG]
-10. [Topic 10](../Topic_10/) Phylogenetic inference [GREG]
+10. [Topic 10](./Topic_10/) Phylogenetic inference [GREG]
 
 ## Obtaining all the files on this site
 
