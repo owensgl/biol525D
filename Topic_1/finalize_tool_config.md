@@ -139,6 +139,36 @@ Time to complete: 5 minutes
    If you type `ssh b525` like the command output suggests, you should automatically be logged in
    without typing in a password.
 
+1. Create a session bookmark in the MobaXterm menu.
+
+   We'll bookmark a session for connecting to the server by double clicking. This will give us an opportunity to configure terminal settings to map your keyboard correctly.
+
+   In the Moba menu, do "Sessions"-> "New session". Choose "SSH":
+
+     1. In "Remote host", enter your `serverhost` (the IP)
+	 1. Check "Specify username" and enter your `serveruser`
+	 1. Leave port at 22
+	 1. Click "Advanced SSH settings" Tab
+	    1. Enable "X11 Forwarding" (if you want)
+		1. You can leave the rest as is. You don't need to configure the key there if your agent is running.
+	 1. Click "Terminal settings Tab"
+	    1. Uncheck "Backspace sends ^H" -- this will allow your backspace key to work as it does on windows.
+		1. Under "Terminal Type", pick "Byobu" -- this will allow your function keys to work as expected (for using byobu).
+	 1. Click "Bookmark Settings" Tab
+	    1. Pick a short name for your session.
+	 1. Click the green "OK" to commit the session settings.
+
+1. Activate the session
+
+   You can retrieve your session bookmark on the left, on the vertical tabs of the main Moba window, under "Sessions".
+   You can double-click it to start the session.
+
+   If you need to go back to change the parameters of the session, you can right click the session icon, and "edit".
+
+   Activating your new session should allow you to see something like this (a prompt provided _on the remote server_):
+
+   ![moba logged in](./img/loginmoba.png "Moba is logged in")
+
 ### Instructions for Windows: Cyberduck ###
 
 Cyberduck works on Mac and Windows. In theory, it should pick up the
@@ -189,6 +219,8 @@ locally in your session.
 
    - Start putty. Shortcut: <kbd>windows</kbd>+<kbd>r</kbd>, putty+<kbd>enter</kbd>. You will see the (one and only) menu.
    - In "Session". Under "Host Name" enter your server IP: `serverhost`
+   - In "Terminal/Keyboard". Under "Function keys and Keypad, choose Xterm R6". This is a sensible default to get
+     some of the F keys mapped correctly.
    - In "Connection/Data",  under "Auto-login username" enter your server username: `serveruser`
    - In "Connection/SSH/Auth". Enable "Agent forwarding" (see notes on "ForwardAgent" in `man ssh_config`).
    - In "Connection/SSH/X11". Enable "X11 Forwarding" (see notes on "ForwardX11" in `man ssh_config`).
@@ -247,7 +279,8 @@ locally in your session.
 
    - Log in to the server with your PuTTy session. If Pageant is
    running in the system tray, you can right-click its icon, go to "Saved Sessions"
-   and pick `b525`.
+   and pick `b525`. You will be prompted for you account password at this point. Successful login
+   should open a command prompt.
 
    - At the server prompt (`$`), we enter two commands:
 	 ```
@@ -260,9 +293,9 @@ locally in your session.
 
 
      The first command converts the .ppub public key file from putty into the openssh format (the server runs openssh tools). The second
-	 command lets ssh-copy-id deal with importing the key into `~/.ssh/authorized_keys`. You will have to enter your server password.
+	 command lets ssh-copy-id deal with importing the key into `~/.ssh/authorized_keys`. You will have to enter your server password (for the last time).
 
-	 > *Note:* The order of the command line arguments `-i` and `-f` is sensitive. Pay attention to the order that differs in the two commands.
+	 > *Note:* The order of the command line arguments `-i` and `-f` is sensitive. Pay attention to the order. It differs in the two commands.
 	   Make sure that you are entering the command as provided. The file `biol525D.ppub` has to match the name of the file that you
 	   have uploaded (via pscp or cyberduck)
 

@@ -56,7 +56,8 @@ On your computer, you will need:
    * _Command line option 2_: Other platforms (Mac & GNU/Linux) have
      sftp and scp tools installed out-of-the-box. We will also teach
      you how to transfer files from the command-line using these. This
-     knowledge will come in handy for scripting.
+
+knowledge will come in handy for scripting.
 
 1. A (good) terminal emulator. To interact with command line programs, you will need to type a terminal emulator, and parse results.
 
@@ -112,25 +113,46 @@ Log into WestCloud server using ssh (terminal). You will find your username and 
 
 The information presented by the servers when you connect to them is shown here in [Fingerprints](./fingerprints).
 
-* For Mac, GNU Linux, and MobaXTerm users:
+* For Mac, GNU Linux users:
 
   ```bash
 
-  ssh -v -i <serveruser>@<serverhost>
+  ssh -v <serveruser>@<serverhost>
 
   # if you have followed the key authentication steps, you need only to specify
-  # the host alias from your `~/.ssh/config`, e.g. b525:
+  # the host alias you chose from your `~/.ssh/config`, e.g. b525:
 
+  ssh -v b525
+  ```
+* MobaXTerm users:
+
+  If you have configured a new user session, as specified in the
+  key authentication pages, you can simply find your session
+  on the left pane of Moba (the vertical-text tab "Sessions"), and
+  double click your chosen session.
+
+  If not, you can open a moba local terminal and do:
+
+  ```
+  # from the local terminal
+  ssh -v <serveruser>@<serverhost>
+
+  # or just this if you have configured ~/.ssh/config
   ssh -v b525
   ```
 
 * Putty users:
 
-  - provide the parameters `serveruser` `serverpass` and `serverhost` in the menu.
-  - if you have followed the key authentication steps, you will not have to enter
-    passwords, and will be logged in immediately.
+  If you've followed the key authentication steps, you should have a user session you can open
+  directy from the Pageant right-click menu.
 
-Your screen should look like this:
+  Otherwise, create a new putty session:
+
+  - In the menu, use your provided account info for Host Name (your `serverhost`), Connection->Data->Login username (your `serveruser`).
+  - If you have followed the key authentication steps, you will not have to enter
+    passwords, and will be logged in immediately. Otherwise, provide your password at the prompt (your `serverpass`).
+
+Your screen should give you a prompt on the server, and should print some server text similar to this (ignoring visual terminal differences aside):
 
 ![](terminal.jpeg "Terminal"){:width="100%"}
 
