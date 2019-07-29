@@ -38,7 +38,7 @@ In your terminal, run the following commands:
 
     # create a directory to hold your new key
 	# ~/.ssh is the usual location to put those in.
-    [[ ! -d ~/.ssh ]] || { mkdir ~/.ssh && chmod 700 ~/.ssh; }
+    [[ ! -d ~/.ssh ]] && { mkdir ~/.ssh && chmod 700 ~/.ssh; }
 
     # create a new key
     # substitute your name and email address in the command.
