@@ -7,6 +7,7 @@ topictitle: "Preprocess Seq. Data"
 
 ### Accompanying material
 
+* [Slides](./quality_trimming2019.pdf)
 * Background reading: [Data preprocessing](./background_reading/Data_preprocessing.pdf), by Robert Schmieder.
 * Background reading: Del Fabbro C, Scalabrin S, Morgante M, Giorgi FM (2013) [An Extensive Evaluation of Read Trimming Effects on Illumina NGS Data Analysis](./background_reading/journal.pone.0085024.PDF). PLoS ONE 8(12): e85024. doi:10.1371/journal.pone.0085024
 
