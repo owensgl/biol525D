@@ -10,6 +10,14 @@ We are working on servers provided by Compute Canada, hosted on the
 system. The only task now is to install a few programs we'll need
 later on, and login to your account.
 
+**Accounting**: We have created an account for each student. You may
+find your account information in this
+[table](https://docs.google.com/spreadsheets/d/1v7k2-XtfiwOoQ3iZHnJyqVXsxgekVGXEtnFIvdk7aqU/edit?usp=sharing). Take
+note of your username, and server ip address. In the instructions, if
+you see the placeholders `serveruser` and `serverhost` replace them
+with your own information. You should have received your server password separately.
+
+
 Accompanying material:
 ---------------------
 
@@ -108,7 +116,7 @@ Configuration steps, in sequence:
 Testing it all: _(can be completed early)_{: style="color: darkred"}
 ---------------
 
-Log into WestCloud server using ssh (terminal). You will find your username and ip address in this [table](https://docs.google.com/spreadsheets/d/1v7k2-XtfiwOoQ3iZHnJyqVXsxgekVGXEtnFIvdk7aqU/edit?usp=sharing).
+Log into WestCloud server using ssh (terminal). Recall that you will find your username and ip address in this [table](https://docs.google.com/spreadsheets/d/1v7k2-XtfiwOoQ3iZHnJyqVXsxgekVGXEtnFIvdk7aqU/edit?usp=sharing). We use `serveruser` and `serverhost` as placeholders for this info.
 
 The information presented by the servers when you connect to them is shown here in [Fingerprints](./fingerprints).
 
