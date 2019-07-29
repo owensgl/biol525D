@@ -38,13 +38,13 @@ In your terminal, run the following commands:
 
     # create a directory to hold your new key
 	# ~/.ssh is the usual location to put those in.
-    [[ ! -d ~/.ssh ]] { mkdir ~/.ssh && chmod 700 ~/.ssh; }
+    [[ ! -d ~/.ssh ]] || { mkdir ~/.ssh && chmod 700 ~/.ssh; }
 
     # create a new key
     # substitute your name and email address in the command.
 	# The quotes, i.e. `"`, allow the series of words to be
 	# be ingested a single argument to the -C option.
-	ssh-keygen -t rsa -b 4096 -C "Full Name biol525 <myemail@example.org>"
+	ssh-keygen -t rsa -b 4096 -C "Full Name biol525 <myemail@example.org>" -f ~/.ssh/biol525D
 
 Enter a passphrase at the prompt, and then hit <kbd>enter</kbd>.
 
