@@ -172,7 +172,7 @@ head -100 /home/biol525d/Topic_3/data/PmdT_147_100k_R1.fq
 head -100 /home/biol525d/Topic_3/data/PmdT_147_100k_R1.fq > new.fq
 ```
 
-- to pass them to another unix command, use the "|" character, for example, to count how many characters there are:
+- to pass them to another unix command, use the "\|" character, for example, to count how many characters there are:
 
 ```bash
 head -100 /home/biol525d/Topic_3/data/PmdT_147_100k_R1.fq | wc -c
@@ -291,7 +291,7 @@ ff=`ls | grep fastq$`
 mv $ff ./sub
 ```
 
-This stores the contents of the ls | grep command in a variable calld "ff" which can be used by prefixing it with the "$" sign. This is very useful for moving files around or deleting them.
+This stores the contents of the ls \| grep command in a variable calld "ff" which can be used by prefixing it with the "$" sign. This is very useful for moving files around or deleting them.
 
 - to check through a bunch of files and see how many lines are in each, with output to the screen (press enter for each line):
 
