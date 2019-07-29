@@ -91,7 +91,7 @@ A key feature of command line use is piping the output of one command to the inp
     * `seq 1 10 41 | sed -n 3,5p`
 
 ##### *grep*
-*Search using regular expression*. This command searches for patterns and prints lines that match your pattern.\
+*Search using regular expression (regex)*. This command searches for patterns and prints lines that match your pattern.\
 **Examples**:
 * Print all lines with "1".
     * `seq 10 | grep 1`
@@ -102,9 +102,9 @@ A key feature of command line use is piping the output of one command to the inp
 * Print all lines with "1" or "2"
     * `seq 10 | grep "1\|2"`
 
-**Exercise 1**:
-* Print the even numbers up to 100.
-* Remove all numbers divisible by 10.
+**Exercise 1 -- build a pipeline that**:
+* Print the even numbers up to 100. Hint: `man seq`{: .spoiler}
+* Remove all numbers divisible by 10. Hint: <span class="spoiler">no arithmetic operator is needed</span>
 * Add "!" after every number ending in 2.
 * Print only numbers with "!" or "3".
 * Save the resulting file to exercise_3.txt
@@ -112,12 +112,15 @@ A key feature of command line use is piping the output of one command to the inp
 <details>
 <summary markdown="span">**Answer 1**</summary>
 ```bash
-seq 2 2 100 | grep -v 0 | sed "s/2$/2\!/g" | grep '\!\|3' > exercise_3.txt
+seq 2 2 100 | grep -v 0 | sed 's/2$/2!/g' | grep '!\|3' > exercise_3.txt
    ```
 </details>
 
 ### Running commands in background
-Often you will run commands that take hours or days to finish. If you run them normally your connection needs to be maintained for the whole time which can be impossible. Using _screen_ allows you to keep a screen open while you're logged out and then reconnect to it without loss of data at a later time. 
+
+Often you will run commands that take hours or days to finish. If you run them normally your connection needs to be maintained for the whole time which can be impossible. Using _screen_/_tmux_/_byobu_ allows you to keep a screen open while you're logged out and then reconnect to it without loss of data at a later time.
+
+byobu is a layer of veneer on top of screen/tmux. screen and tmux are equally powerful, but can be unintuitive to use.
 
 **Cancel command** = ctrl-c. This will cancel a script that is currently running.
 Example:
@@ -129,23 +132,45 @@ ctrl-c to cancel
 [Guide to Byobu](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-byobu-for-terminal-management-on-ubuntu-16-04)
 
 Byobu can create multiple levels.
-* **Session**: A running instance of byobu. You can have multiple of these and when you start byobu you select which session you want to run. You can also switch between sessions. Sessions will continue existing and running on your computer until you shut them down. You may want multiple sessions if you connect to with different screen sizes. 
+* **Session**: A running instance of byobu. You can have multiple of these and when you start byobu you select which session you want to run. You can also switch between sessions. Sessions will continue existing and running on your computer until you shut them down. You may want multiple sessions if you connect to with different screen sizes.
 * **Window** : A session can have multiple windows. You can easily toggle between windows using F3 and F4. If you start a command in a window and then detach the session or switch windows, the command will continue running. Generally when you are working, you will have multiple windows open for different tasks (e.g. testing a script, editing that script, looking for files).
 * **Panes** : A window can have multiple panes. Panes split your window into multiple panes. These are functionally windows, but exist together on your screen. Useful if you want to observe multiple things at one (e.g. watch cpu usage while running a script).
 
 #### Commands in Byobu
+
+We also provide the underlying command which performs the same action
+in tmux, in case you experience difficulties with your terminal and
+function keys.
+
 * **byobu** : Opens byobu and attaches a session. If you have multiple sessions you will have to select which session to attach.
-* **F2** : Creates a new window.
-* **F3** : Toggles through your windows.
-* **F8** : Renames the current open window in the list.
-* **F7** : Lets you view scrollback history in the current window.
-* **SHIFT+F2** :  Creates a horizontal pane.
-* **CTRL+F2** : Creates a vertical pane.
+* **F1** : enter a menu to change escape sequence (if F1 is grabbed by another application, you can run `byobu-config`). (<kbd>CTRL</kbd>+<kbd>b</kbd> is typical for tmux. <kbd>CTRL</kbd>+<kbd>a</kbd> is typical for screen)
+* **SHIFT+F1**: Show byobu shortcuts while working.
+* **F2** : Creates a new window. (tmux: <kbd>CTRL</kbd>+<kbd>b</kbd> <kbd>c</kbd>)
+* **F3/F4** : Toggles through your windows. (tmux: <kbd>CTRL</kbd>+<kbd>b</kbd> <kbd>0-9</kbd> (the window number))
+* **F8** : Renames the current open window in the list. (tmux: <kbd>CTRL</kbd>+<kbd>b</kbd> <kbd>,</kbd>)
+* **F7** : Lets you view scrollback history in the current window. (tmux: <kbd>CTRL</kbd>+<kbd>b</kbd> <kbd>]</kbd>)
+* **SHIFT+F2** :  Creates a horizontal pane. (tmux: `tmux split-window -h`)
+* **CTRL+F2** : Creates a vertical pane. (tmux: `tmux split-window -w`)
+* **ALT+Arrows**: Move focus between panes (tmux: <kbd>CTRL</kbd>+<kbd>b</kbd> <kbd>o</kbd>)
+* **ALT+SHIFT+Arrows**: Resize current pane (tmux: <kbd>CTRL</kbd>+<kbd>b</kbd>+<kbd>arrow</kbd>)
+
+> *Troubleshoot:* Function keys broken: Byobu is tailored to linux terminal
+emulators (esp `gnome-terminal`). If you find that the function keys
+don't behave as expected when you're logged in to the server, you
+might have to configure your terminal parameters to pass the correct
+escape codes. This is covered in [Topic 1: finalize tool config](../Topic_1/finalize_tool_config).
+
+> *Troubleshoot:* Strange characters pop-up: The font in your terminal
+emulator needs to support unicode characters. The font `Ubuntu Mono`
+is known to work well. If you find the lower bar distracting, you may
+run the command `byobu-quiet`.  This can be undone with `byobu-quiet
+--undo`.
+
 
 **Exercise 2**:
 * Open a new byobu session.
 * Make a new window.
-* In the new window print numbers 1 to 10000000 
+* In the new window print numbers 1 to 10000000
 * Move back to your old window.
 * Periodically check on the number screen to check when it is done.
 * When counting is done, close the original empty window.
