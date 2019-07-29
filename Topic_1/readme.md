@@ -56,8 +56,7 @@ On your computer, you will need:
    * _Command line option 2_: Other platforms (Mac & GNU/Linux) have
      sftp and scp tools installed out-of-the-box. We will also teach
      you how to transfer files from the command-line using these. This
-
-knowledge will come in handy for scripting.
+     knowledge will come in handy for scripting.
 
 1. A (good) terminal emulator. To interact with command line programs, you will need to type a terminal emulator, and parse results.
 
