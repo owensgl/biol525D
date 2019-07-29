@@ -21,6 +21,53 @@ Here are some good tutorials if you're interested in learning a programming lang
 * [Perl](http://www.perl.com/pub/2000/10/begperl1.html)
 * [R](http://swirlstats.com/)
 
+### Getting help
+
+most programs come with a manual page, explaining all options. You can get help about individual command with the following:
+
+1. for command structure, variables, and shell rules: `man bash`
+1. bash builtins: `help`, and `help <cmd>`. help on for loops: `help for`, help on conditionals `help if`, help on change directory `help cd`, etc.
+1. for help on external programs, like `ls`, `grep`, `sed`, `awk` you have to look at their manual pages: e.g. `man sed`
+1. for viewing the contents of a file on screen, use `less`
+
+Programs like `man` and `less` show an on-screen navigation system:
+ - arrows and <kbd>pgup</kbd>/<kbd>pgdn</kbd> will let you scroll around.
+ - <kbd>&lt;</kbd> and <kbd>&gt;</kbd> seek to the start and the end.
+ - You can search with <kbd>/</kbd>: e.g.  <kbd>/</kbd> + `[dD]og` + <kbd>enter</kbd> will search for "dog" or "Dog". then <kbd>n</kbd> and <kbd>p</kbd> to go the next and previous occurrence.
+ - <kbd>Esc</kbd> can be used to abort an operation. <kbd>q</kbd> *q*uits.
+
+### Editing
+
+We'll have to edit files often in the course. You can edit files
+locally on your computer and copy them over (we show you how to copy
+files to the server in this topic). We also have several editors
+which you can run directly on the server.
+
+> *Note:* If you're using Moba on Windows, you can use the builtin
+  remote-file editor. Be careful that the `Menu`->`Format` is set to UNIX before you save.
+
+ - `nano filename`. a barebones editor with key bindings similar to notepad. good for small edits. **easiest option**
+    - `nano -l filename` shows line numbers.
+	- `nano -z filename` allows suspending the editing with <kbd>CTRL</kbd>+<kbd>z</kbd>
+	- <kbd>CTRL</kbd>+<kbd>o</kbd> to save. <kbd>CTRL</kbd>+<kbd>c</kbd> to cancel, <kbd>CTRL</kbd>+<kbd>x</kbd> to exit.
+ - `vim filename`
+    - tutorial: https://computers.tutsplus.com/tutorials/vim-for-beginners--cms-21118
+    - <kbd>:</kbd><kbd>q</kbd> quits.
+	- `i` enters insert (edit) mode
+	- <kbd>ESC</kbd> exits a mode.
+	- <kbd>:</kbd><kbd>w</kbd> saves.
+	- <kbd>:</kbd><kbd>!</kbd><kbd>q</kbd> rage quits.
+ - `emacs filename`
+    - tutorial: https://www.gnu.org/software/emacs/tour/
+	- <kbd>CTRL</kbd>+<kbd>x</kbd> <kbd>CTRL</kbd>+<kbd>c</kbd> exits
+	- <kbd>CTRL</kbd>+<kbd>g</kbd> cancels
+    - <kbd>CTRL</kbd>+<kbd>x</kbd> <kbd>CTRL</kbd>+<kbd>s</kbd> saves
+
+
+### <a name="copying-files"></a> Copying files between servers (or between your computer and the server)
+
+   We have collected information on copying files into [Copying across machines](./copying_across_machines).
+
 ### Pipes and redirection
 A key feature of command line use is piping the output of one command to the input of another command. This means that large files can be analyzed in multiple scripts without having to write to disk repeatedly.
 ##### *Key terms*
