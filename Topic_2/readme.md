@@ -34,7 +34,8 @@ Programs like `man` and `less` show an on-screen navigation system:
  - arrows and <kbd>pgup</kbd>/<kbd>pgdn</kbd> will let you scroll around.
  - <kbd>&lt;</kbd> and <kbd>&gt;</kbd> seek to the start and the end.
  - You can search with <kbd>/</kbd>: e.g.  <kbd>/</kbd> + `[dD]og` + <kbd>enter</kbd> will search for "dog" or "Dog". then <kbd>n</kbd> and <kbd>p</kbd> to go the next and previous occurrence.
- - <kbd>Esc</kbd> can be used to abort an operation. <kbd>q</kbd> *q*uits.
+ - <kbd>Esc</kbd> can be used to abort a command. <kbd>CTRL</kbd>+<kbd>c</kbd> aborts loading a file.
+ - <kbd>q</kbd> *q*uits.
 
 ### Editing
 
@@ -66,10 +67,14 @@ which you can run directly on the server.
 
 ### <a name="copying-files"></a> Copying files between servers (or between your computer and the server)
 
-   We have collected information on copying files into [Copying across machines](./copying_across_machines).
+   You can use `cp` to copy files from and to the same computer. To
+   copy across computers, you have to rely on networking tools. We
+   have collected information on copying files into [Copying across
+   machines](./copying_across_machines).
 
 ### Pipes and redirection
 A key feature of command line use is piping the output of one command to the input of another command. This means that large files can be analyzed in multiple scripts without having to write to disk repeatedly.
+
 ##### *Key terms*
 * **STDOUT** : Standard output. The regular output of a script. Can be directed to a file with ">" or "1>", and directed to another command with `|`.
 * **STDIN** : Standard input. The input of STDOUT, piped in from another command.
@@ -82,6 +87,8 @@ A key feature of command line use is piping the output of one command to the inp
   * `seq 10 | sed s/1/one/g`
 * Replace lines that only have "1" with "one".
     * `seq 10 | sed s/^1$/one/g`
+* Print lines 3 through 5.
+    * `seq 1 10 41 | sed -n 3,5p`
 
 ##### *grep*
 *Search using regular expression*. This command searches for patterns and prints lines that match your pattern.\
