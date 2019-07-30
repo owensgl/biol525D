@@ -18,7 +18,7 @@ Attending class, participating in discussions and working through tutorials
 As part of most lecture, there will be questions presented for you to work on and discuss in class. 
 After the tutorial, we will select one question per topic and you will be responsible for answering that question. 
 Answers should be less than one paragraph. 
-Daily questions for all topics (2-10) are due on _Monday August 6_.
+Daily questions for all topics (2-10) are due on _Friday August 9_.
 Please group your answers together into one email per week.
 Answers should be sent to gregory.lawrence.owens@gmail.com
 
