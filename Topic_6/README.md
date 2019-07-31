@@ -165,7 +165,7 @@ The script "process_hot_cold_expression.R" will show you some of the basic steps
 
 ## STEPS for bash commands to prepare input files for add_RSEM_data_to_table.pl 
 
-List all files with .genes.results in their name (you may want to delete some if you've made more copies than you should have during testing, or chain multiple "| grep" commands together)
+List all files with .genes.results in their name (you may want to delete some if you've made more copies than you should have during testing, or chain multiple "\| grep" commands together)
 
 ```bash
 ls *genes.results > list_to_add.txt
