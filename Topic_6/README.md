@@ -7,7 +7,7 @@ topictitle: "RNASeq Analysis"
 
 ## Accompanying material
 
-* [Slides](./rnaseq_lecture_2018.pdf)
+* [Slides](./rnaseq_lecture_2019.pdf)
 
 ## PART I: RSEM Processing
 
@@ -29,7 +29,7 @@ First unpack.
 
 tar -xzf RSEM-1.2.31.tar.gz
 
-Then compile the program.
+Then compile the program. 
 
 cd RSEM-1.2.31
 sudo make
@@ -94,13 +94,14 @@ rsem-calculate-expression --bowtie2 --paired-end /home/biol525d/Topic_6/data/Pmd
 
 Examine the output of RSEM, both the output to the screen and the files that it created. You should be able to see the percentage of reads that were aligned correctly, among other summary statistics. Refer to the online manual for a description of the files. The description of the  see /home/biol525d/Topic_6/scripts/RSEM-1.2.31/cnt_file_description.txt
 
+#################
+Recap: 
 
-> Recap:
+Use "ls" to discover what the output is called, and use "less" or "head" to see what the files look like.
 
-> Use "ls" to discover what the output is called, and use "less" or "head" to see what the files look like.
+################
 
-
-Now rerun this command on the other two paired .fq libraries, generating three RSEM alignments.
+Now rerun this command on the other two paired .fq libraries, generating three RSEM alignments. 
 
 Step 5. To plot some quality statistics, run the following command, replacing the <NAME> with the appropriate filename prefix, without the .stat ending (and removing the <> characters):
 
@@ -140,41 +141,31 @@ perl /home/biol525d/Topic_6/scripts/add_RSEM_data_to_table.pl list_to_add.txt ge
 
 You can see that this outputs a table that is readable in R, with one row for each gene and one column for each individual, with the expected counts from the 5th column printed out. If you wish to modify what is printed to the file, it can be done by editing line 81.
 
-**Question 1.**
+### Question 1. What is the expected count of comp996_c0 for each individual?
 
-What is the expected count of comp996_c0 for each individual?
-
-**Question 2.**
-
-What expression measure would you use to compare gene expression between different genes and why? Is it appropriate to compare the raw expression counts? Can you get more appropriate data from RSEM? Discuss this with a group of four and be prepared to share your ideas with the class.
+### Question 2. What expression measure would you use to compare gene expression between different genes and why? Is it appropriate to compare the raw expression counts? Can you get more appropriate data from RSEM? Discuss this with a group of four and be prepared to share your ideas with the class.
 
 
 ## RNAseq analysis exercise PART II: EdgeR analysis
 
 There are two data files:
-[cold_hot_expression.txt](./cold_hot_expression.txt)  (use "save as...")
-[cold_hot_mwh_expression.txt](./cold_hot_mwh_expression.txt) (use "save as...")
+cold_hot_expression.txt
+cold_hot_mwh_expression.txt
 
 They have been created by using RSEM to align libraries to a lodgepole pine reference and represent a subset of the data published in Yeaman et al. (2014; New Phytologist). Individuals were grown in a common garden and then exposed to conditions that were either hot (H), cool (C), or mild and wet with a heat treatment (MWH; see paper for details). The reference dataset has been trimmed so that it is smaller and easier to work with for this workshop.
 
-The script [process_hot_cold_expression.R](./process_hot_cold_expression.R) will show you some of the basic steps for analyzing expression data. For more details, the EdgeR user guide (included in the folder background reading) provides an excellent resource with well worked examples. Use these examples to play around with the data and try to answer the following questions:
+The script "process_hot_cold_expression.R" will show you some of the basic steps for analyzing expression data. For more details, the EdgeR user guide (included in the folder background reading) provides an excellent resource with well worked examples. Use these examples to play around with the data and try to answer the following questions:
 
-**Question 1**
-
-How many genes are differentially expressed by treatment in the simple contrast of C vs H (using dataset "cold_hot_expression.txt")? How does the choice of FDR cutoff or p-value affect this number? 
+### Question 1. How many genes are differentially expressed by treatment in the simple contrast of C vs H (using dataset "cold_hot_expression.txt")? How does the choice of FDR cutoff or p-value affect this number? 
  
-**Question 2**
+### Question 2. How many genes are differentially expressed in the three-way contrast (using "cold_hot_mwh_expression.txt")? Which treatment is driving differential expression here? How do you know?
 
-How many genes are differentially expressed in the three-way contrast (using "cold_hot_mwh_expression.txt")? Which treatment is driving differential expression here? How do you know?
-
-**Question 3**
-
-How much does model fitting with common dispersion vs. tagwise dispersion affect the answers you get from the data? (think in terms of the number of DE genes, the evidence for a single gene, etc.)
+### Question 3. How much does model fitting with common dispersion vs. tagwise dispersion affect the answers you get from the data? (think in terms of the number of DE genes, the evidence for a single gene, etc.)
 
 
 ## STEPS for bash commands to prepare input files for add_RSEM_data_to_table.pl 
 
-List all files with .genes.results in their name (you may want to delete some if you've made more copies than you should have during testing, or chain multiple `| grep` commands together)
+List all files with .genes.results in their name (you may want to delete some if you've made more copies than you should have during testing, or chain multiple "| grep" commands together)
 
 ```bash
 ls *genes.results > list_to_add.txt
