@@ -1,3 +1,4 @@
+fg
 ---
 title: "Topic 4: Sequence Alignment"
 permalink: /Topic_4/
@@ -106,6 +107,8 @@ samtools tview bam/ANN1133.sort.bam  --reference ref/HanXRQr1.0-20151230.1mb.fa
 
 
 We have 10 samples, so we don't want to have to type these commands out 10 times. Write a bash script to produced a sorted bam file for each sample.
+
+A bash script is a plain text file (i.e. not rich text, nor a word doc) which contains bash commands. You can create the file on your computer and copy it over, or you can edit it directly from the server with one of the installed editors (this is covered in [topic 2, Editing](../Topic_2/#editing). The name of the file is up to you, but bash scripts are given the `.sh` extension by convention:
 
 HINTS:
   * Use variables for directory paths "bwa=/mnt/bin/bwa-0.7.17/bwa"

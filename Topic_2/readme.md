@@ -37,15 +37,17 @@ Programs like `man` and `less` show an on-screen navigation system:
  - <kbd>Esc</kbd> can be used to abort a command. <kbd>CTRL</kbd>+<kbd>c</kbd> aborts loading a file.
  - <kbd>q</kbd> *q*uits.
 
+<a name="editing"></a>
 ### Editing
 
 We'll have to edit files often in the course. You can edit files
 locally on your computer and copy them over (we show you how to copy
-files to the server in this topic). We also have several editors
-which you can run directly on the server.
+files to the server in this topic). If you don't have an editor
+on your laptop, we can suggest Sublime Text, or Visual Studio Code (VS Code).
+A simple text editor builtin to your os will do. e.g. Wordpad or gedit. Avoid
+notepad or word.
 
-> *Note:* If you're using Moba on Windows, you can use the builtin
-  remote-file editor. Be careful that the `Menu`->`Format` is set to UNIX before you save.
+We also have several editors which you can run directly on the server. Editing directly on the server is faster because you'll be debugging iteratively.
 
  - `nano filename`. a barebones editor with key bindings similar to notepad. good for small edits. **easiest option**
     - `nano -l filename` shows line numbers.
@@ -64,8 +66,36 @@ which you can run directly on the server.
 	- <kbd>CTRL</kbd>+<kbd>g</kbd> cancels
     - <kbd>CTRL</kbd>+<kbd>x</kbd> <kbd>CTRL</kbd>+<kbd>s</kbd> saves
 
+### Reference: Creating a script
 
-### <a name="copying-files"></a> Copying files between servers (or between your computer and the server)
+   You will be asked to type commands interactively, but in later topics you will be asked to create scripts. Here is an example to create a bash script, which by convention ends with `.sh`.
+
+    # here we use nano, but you could use any other editor of choice
+    nano my_first_script.sh
+
+If the file doesn't exist, you will see an empty file. You can then type content (the command)s in the file. Example:
+
+![](nano_first_script.png "first script"){:width="70%"}
+
+Save the file, and exit. You can then run this script with:
+
+    bash my_first_script.sh
+
+If you add the special line `#!/bin/bash` (aka shebang) at the top of your script, and mark the script executable (`chmod +x my_first_script.sh`), then you will be able to run it more easily:
+
+    ./my_first_script.sh
+
+If you have X11 Forwarding enabled, you can use graphical editors installed on the server:
+
+     # emacs supports both terminal based and window (x11) based
+	 emacs my_first_script.sh
+
+If you see a window come up, then your X forwarding is configured correctly. Otherwise the terminal version will come up. Graphical emacs looks like this (hit `q` to remove the welcome screen):
+
+![](emacs.png "Emacs"){:width="50%"}
+
+
+### <a name="copying-files"></a> Reference: Copying files between servers (or between your computer and the server)
 
    You can use `cp` to copy files from and to the same computer. To
    copy across computers, you have to rely on networking tools. We
