@@ -73,7 +73,7 @@ We also have several editors which you can run directly on the server. Editing d
     # here we use nano, but you could use any other editor of choice
     nano my_first_script.sh
 
-If the file doesn't exist, you will see an empty file. You can then type content (the command)s in the file. Example:
+If the file doesn't exist, you will see an empty file. You can then type content (i.e. a series of bash commands) in the file. Example:
 
 ![](nano_first_script.png "first script"){:width="70%"}
 
