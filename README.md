@@ -40,7 +40,9 @@ push to github to publish your work.
 
 Copyright (C) 2015 S. Evan Staton, Sariel Hubner, Sam Yeaman
 
-Modified work (c) 2016, 2017. Gregory Owens, Kathryn Hodgins
+Modified work (c) 2016, 2017, 2018 Gregory Owens, Kathryn Hodgins
+
+Modified work (c) 2019 Gregory Owens, Kathryn Hodgins, JS Legare
 
 This program is distributed under the MIT (X11) License, which should
 be distributed with the package. If not, it can be found here:
