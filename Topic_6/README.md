@@ -149,6 +149,12 @@ You can see that this outputs a table that is readable in R, with one row for ea
 
 ## RNAseq analysis exercise PART II: EdgeR analysis
 
+#### Required Files
+* [cold_hot_expression.txt](./cold_hot_expression.txt)
+* [cold_hot_mwh_expression.txt](./cold_hot_mwh_expression.txt)
+* [process_hot_cold_expression.R](./process_hot_cold_expression.R)
+
+
 There are two data files:
 cold_hot_expression.txt
 cold_hot_mwh_expression.txt
