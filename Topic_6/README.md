@@ -95,6 +95,7 @@ rsem-calculate-expression --bowtie2 --paired-end /home/biol525d/Topic_6/data/Pmd
 Examine the output of RSEM, both the output to the screen and the files that it created. You should be able to see the percentage of reads that were aligned correctly, among other summary statistics. Refer to the online manual for a description of the files. The description of the  see /home/biol525d/Topic_6/scripts/RSEM-1.2.31/cnt_file_description.txt
 
 #################
+
 Recap: 
 
 Use "ls" to discover what the output is called, and use "less" or "head" to see what the files look like.
