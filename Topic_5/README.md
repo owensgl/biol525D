@@ -186,7 +186,7 @@ This script will produce two files. The first will be called contigs.fa.lengths,
 Be careful not to use all your hard disk space or RAM. Velvet is relatively fast, but a memory hog. When you are finished the tutorial, you may want to remove files produced by Velvet from your drive to make space. 
 
 
-###Recap: 
+### Recap: 
 
 You can check how much space is on your drive by typing: 
 
@@ -230,7 +230,7 @@ To move files or directories:
 mv <old file name> <new file name>
 ```
 
-###Back to the tutorial
+### Back to the tutorial
 
 If you want to modify the k-mer you must run velveth again and replace 21 with a new number. Velvet only allows k-mers up to 31 bp in length. 
 
