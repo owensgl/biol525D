@@ -9,7 +9,7 @@ topictitle: "Assembly"
 
 * Slides 2017: [UBC - De novo Assembly 2017](./Assembly2017.pdf)
 * Slides 2018: [UBC - De novo Assembly 2018](./Assembly2018.pdf)
-* Slides 2019: [UBC - De novo Assembly 2019](./Assembly2018.pdf)
+* Slides 2019: [UBC - De novo Assembly 2019](./Assembly2019.pdf)
 * Background reading: Comparison of the two major classes of assembly algorithms: overlap-layout-consensus and de-bruijn-graph [Paper](./background_reading/Briefings in Functional Genomics-2011-Li-bfgp-elr035.pdf). Briefings in Functional Genetics 2011.
 * Sense from sequence reads: methods for alignment and assembly [Paper](./background_reading/Flicek&Birney2009.pdf). Flicek and Birney. Nature methods supplement 2009.
 * [Velvet Manual 1.1](./background_reading/Manual.pdf). Daniel Zerbino, 2008.
