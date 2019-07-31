@@ -15,7 +15,7 @@ Steps for running RSEM:
 
 see documentation here for more info:
 
-http://deweylab.biostat.wisc.edu/rsem/
+<http://deweylab.biostat.wisc.edu/rsem/>
 
 Typing in "rsem-calculate-expression" or any of the other commands without any arguments will bring up a help screen. In all the RSEM commands below.
 
@@ -27,13 +27,13 @@ Step 2. Install RSEM (/home/biol525d/Topic_6/scripts/RSEM-1.2.31.tar.gz). COMPLE
 
 First unpack.
 
-tar -xzf RSEM-1.2.31.tar.gz
+    tar -xzf RSEM-1.2.31.tar.gz
 
-Then compile the program. 
+Then compile the program.
 
-cd RSEM-1.2.31
-sudo make
-sudo make install
+    cd RSEM-1.2.31
+    sudo make
+    sudo make install
 
 (If the installation fails make sure "make" is installed by running sudo apt install make. Also make sure g++ is installed. This should have been set up on your first day of class.)
 
