@@ -41,6 +41,8 @@ library(tidyverse)
 We calculated cluster assignment for each sample at different values of K. Lets try loading up a single output file.
 
 ``` r
+samplelist <- read_tsv("analysis/samplelist.txt",
+                       col_names = "sample")
 
 read_delim("analysis/full_genome.filtered.numericChr.2.Q",
                   col_names = paste0("Q",seq(1:2)),
