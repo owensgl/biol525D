@@ -94,11 +94,11 @@ The next step is to import our gvcf files into a genomicsDB file. This is a comp
 We need to create a map file to GATK where our gvcf files are and what sample is in each. Because we use a regular naming scheme for our samples, we can create that using a bash script.
 This is what we're looking for:
 
-sample1<tab>gvcf/sample1.g.vcf.gz
+sample1 <tab> gvcf/sample1.g.vcf.gz
 
-sample2<tab>gvcf/sample2.g.vcf.gz
+sample2 <tab> gvcf/sample2.g.vcf.gz
 
-sample3<tab>gvcf/sample3.g.vcf.gz
+sample3 <tab> gvcf/sample3.g.vcf.gz
 
 ```bash
 
