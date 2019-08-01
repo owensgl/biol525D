@@ -18,3 +18,7 @@ Answers should be sent to gregory.lawrence.owens@gmail.com
 3. Try different filtering options for the GBS data  (see http://prinseq.sourceforge.net/manual.html for options) and plot QC graphs. Discuss which options you would choose to implement if this was your data and why.
 
 4. What are two ways that could be used to evaluate which aligner is best?
+
+5. Quantify the assembly metrics for your first assembly that you ran without any options. Pick different sets of parameters to run. Compare the resulting assemblies and discuss which ones seemed to have improved the assembly and why that might be.
+
+6. What expression measure would you use to compare gene expression between different genes and why? Is it appropriate to compare the raw expression counts? Can you get more appropriate data from RSEM?
