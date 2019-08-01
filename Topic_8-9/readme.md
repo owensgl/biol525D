@@ -92,7 +92,7 @@ zcat vcf/full_genome.filtered.vcf.gz |\
 	--double-id \
 	--allow-extra-chr
 
-/mnt/bin/admixture_linux-1.3.0/admixture -cv vcf/full_genome.filtered.numericChr.bed 2
+/mnt/bin/admixture_linux-1.3.0/admixture --cv vcf/full_genome.filtered.numericChr.bed 2
 ```
 This works! With only 10 samples and ~6500 SNPs it finished almost completely. We only ran it for one value of K (2) but we should also test different K values and select the best K value.
 ```bash 
