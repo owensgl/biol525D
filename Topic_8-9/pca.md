@@ -23,7 +23,11 @@ SNPRelate works with a compressed version of a genotype file called a "gds". We 
 
 ```r
 
-snpgdsVCF2GDS("vcf/full, gds_filename,  method="biallelic.only",ignore.chr.prefix="Chr")
+snpgdsVCF2GDS("vcf/full_genome.filtered.vcf.gz",
+              "vcf/full_genome.filtered.gds",
+              method="biallelic.only")
+	      
+#####	      
 Start file conversion from VCF to SNP GDS ...
 Method: exacting biallelic SNPs
 Number of samples: 10
@@ -43,7 +47,7 @@ Clean up the fragments of GDS file:
 
 ```r
 #Load the gds file
-genofile <- snpgdsOpen(gds_filename)
+genofile <- snpgdsOpen("vcf/full_genome.filtered.gds")
 #Prune for linkage
 snpset_pruned <- snpgdsLDpruning(genofile, autosome.only=F)
 SNP pruning based on LD:
