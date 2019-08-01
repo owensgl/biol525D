@@ -141,23 +141,23 @@ MORE HINTS:
 ```bash
   #First set up variable names
   bam=~/bam
-  fastq=~/fastq 
-  bwa=/mnt/bin/bwa-0.7.17/bwa 
+  fastq=~/fastq
+  bwa=/mnt/bin/bwa-0.7.17/bwa
   ref_file=~/ref/HanXRQr1.0-20151230.1mb.fa
-  
-  #Then get a list of sample names, without suffixes    
+
+  #Then get a list of sample names, without suffixes
   ls $fastq | grep R1.fastq.gz | sed s/.R1.fastq.gz//g > $bam/samplelist.txt
-    
-  #Then loop through the samples   
-  while read name  
-  do  
-    $bwa mem \     
+
+  #Then loop through the samples
+  while read name
+  do
+    $bwa mem \
     -R "@RG\tID:$name\tSM:$name\tPL:ILLUMINA" \
-    $ref_file \          
+    $ref_file \
     $fastq/$name.R1.fastq.gz \
     $fastq/$name.R2.fastq.gz \
     -t 1 > $bam/$name.sam;
-           
+
     samtools view -bh $bam/$name.sam |\
     samtools sort > $bam/$name.sort.bam;
     samtools index $bam/$name.sort.bam
@@ -165,7 +165,7 @@ MORE HINTS:
 ```
 </details>
 
-After your final bam files are created, and you've checked that they look good, you should remove intermediate files to save space. You can build file removal into your bash scripts, but it is often helpful to only add that in once the script works. It's hard to troubleshoot a failed script if it deletes everything as it goes. 
+After your final bam files are created, and you've checked that they look good, you should remove intermediate files to save space. You can build file removal into your bash scripts, but it is often helpful to only add that in once the script works. It's hard to troubleshoot a failed script if it deletes everything as it goes.
 ### By topic 7, you should have created cleaned bam files for all samples.
 
 ## Daily assignments
