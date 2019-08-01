@@ -13,6 +13,10 @@ topictitle: "Population genomics"
 2. What effect does missing data have on a PCA?
 3. What is the average Fst between ARG and ANN samples in our dataset? Hint, SNPrelate can calculate Fst.
 
+### NOTE:
+* If you didn't complete creating _full_genome.vcf.gz_ in Topic 7, you can copy it to ~/home/vcf from /mnt/data/vcf
+
+
 Last topic we called variants across the three chromosomes. If you look at the VCF, you'll notice there are a lot of sites only genotyped in a small subset of the samples. This can happen with lower overall read depth (in this case this is whole genome sequencing at ~7X depth), but due to other factors like divergence been sample and reference. We also have indels, and SNPs with more than two alleles. Many programs strictly require biallelic sites so lets first filter the VCF to a smaller set of usable sites.
 We're going to use _bcftools_ a very fast program for processing and filtering VCF files. Here are what we want to filter for:
 * At least 9/10 samples genotyped (which is 18 alleles since they're diploid).
