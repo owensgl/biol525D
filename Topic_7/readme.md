@@ -149,7 +149,7 @@ $gatk --java-options "-Xmx10g" GenotypeGVCFs \
 Now we can actually look at the VCF file
 
 ```bash
-less -S ~/HanXRQChr01.vcf.gz
+less -S vcf/HanXRQChr01.vcf.gz
 ```
 
 Try to find an indel. Do you see any sites with more than 1 alternate alleles? 
