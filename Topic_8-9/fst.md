@@ -14,18 +14,18 @@ library(tidyverse)
 fst <- read_tsv("analysis/full_genome.filtered.fst.txt")
 fst
 # A tibble: 6,373 x 14
-   chr     pos ref   alt      N1    N2 NTotal  FstNum FstDenom    Fst Hexp1 Hexp2
-   <chr> <dbl> <chr> <chr> <dbl> <dbl>  <dbl>   <dbl>    <dbl>  <dbl> <dbl> <dbl>
- 1 HanX…  1134 A     C         5     3      8 0.5        0.5   1       0    0    
- 2 HanX…  1137 T     C         5     3      8 0.0489     0.228 0.214   0.48 0    
- 3 HanX…  1160 G     A         5     3      8 0.00944    0.174 0.0543  0.42 0    
- 4 HanX…  1166 A     T         5     3      8 0.5        0.5   1       0    0    
- 5 HanX…  1335 T     C         5     4      9 0.0929     0.263 0.352   0.5  0    
- 6 HanX…  1404 T     A         5     4      9 0.5        0.5   1       0    0    
- 7 HanX…  1429 G     A         5     4      9 0.0929     0.263 0.352   0.5  0    
- 8 HanX…  1450 G     A         5     3      8 0.5        0.5   1       0    0    
- 9 HanX…  1458 G     A         5     3      8 0.5        0.5   1       0    0    
-10 HanX…  1564 C     T         5     3      8 0.0259     0.137 0.189   0    0.444
+#   chr     pos ref   alt      N1    N2 NTotal  FstNum FstDenom    Fst Hexp1 Hexp2
+#   <chr> <dbl> <chr> <chr> <dbl> <dbl>  <dbl>   <dbl>    <dbl>  <dbl> <dbl> <dbl>
+# 1 HanX…  1134 A     C         5     3      8 0.5        0.5   1       0    0    
+# 2 HanX…  1137 T     C         5     3      8 0.0489     0.228 0.214   0.48 0    
+# 3 HanX…  1160 G     A         5     3      8 0.00944    0.174 0.0543  0.42 0    
+# 4 HanX…  1166 A     T         5     3      8 0.5        0.5   1       0    0    
+# 5 HanX…  1335 T     C         5     4      9 0.0929     0.263 0.352   0.5  0    
+# 6 HanX…  1404 T     A         5     4      9 0.5        0.5   1       0    0    
+# 7 HanX…  1429 G     A         5     4      9 0.0929     0.263 0.352   0.5  0    
+# 8 HanX…  1450 G     A         5     3      8 0.5        0.5   1       0    0    
+# 9 HanX…  1458 G     A         5     3      8 0.5        0.5   1       0    0    
+#10 HanX…  1564 C     T         5     3      8 0.0259     0.137 0.189   0    0.444
 # … with 6,363 more rows, and 2 more variables: f1 <dbl>, f2 <dbl>
 ```
 This includes a bunch of stats for each site, but most importantly we have the numerator and denominator for Fst. When calculating Fst for a window or whole genome, we have to sum both of those instead of just taking the average value of Fst. 
@@ -109,11 +109,11 @@ chr_lengths <- read_tsv("HanXRQr1.0-20151230.1mb.fa.fai",
                        col_names = c("chr","length","bits","spacer1","spacer2"))
 chr_lengths
 # A tibble: 3 x 5
-  chr          length    bits spacer1 spacer2
-  <chr>         <dbl>   <dbl>   <dbl>   <dbl>
-1 HanXRQChr01 1000000      13      60      61
-2 HanXRQChr02 1000000 1016693      60      61
-3 HanXRQChr03 1000000 2033373      60      61
+#  chr          length    bits spacer1 spacer2
+#  <chr>         <dbl>   <dbl>   <dbl>   <dbl>
+#1 HanXRQChr01 1000000      13      60      61
+#2 HanXRQChr02 1000000 1016693      60      61
+#3 HanXRQChr03 1000000 2033373      60      61
 ```
 We now need to create a new dataframe that includes the cumulative position across the genome. Then we can see what it looks like.
 ```r
