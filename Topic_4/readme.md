@@ -1,4 +1,3 @@
-fg
 ---
 title: "Topic 4: Sequence Alignment"
 permalink: /Topic_4/
