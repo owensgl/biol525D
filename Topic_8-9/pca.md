@@ -28,19 +28,19 @@ snpgdsVCF2GDS("vcf/full_genome.filtered.vcf.gz",
               method="biallelic.only")
 	      
 #####	      
-Start file conversion from VCF to SNP GDS ...
-Method: exacting biallelic SNPs
-Number of samples: 10
-Parsing "vcf/full_genome.filtered.vcf.gz" ...
-	import 6750 variants.
-+ genotype   { Bit2 10x6750, 16.5K } *
-Optimize the access efficiency ...
-Clean up the fragments of GDS file:
-    open the file 'vcf/full_genome.filtered.gds' (53.1K)
-    # of fragments: 46
-    save to 'vcf/full_genome.filtered.gds.tmp'
-    rename 'vcf/full_genome.filtered.gds.tmp' (52.8K, reduced: 312B)
-    # of fragments: 20
+#Start file conversion from VCF to SNP GDS ...
+#Method: exacting biallelic SNPs
+#Number of samples: 10
+#Parsing "vcf/full_genome.filtered.vcf.gz" ...
+#	import 6750 variants.
+#+ genotype   { Bit2 10x6750, 16.5K } *
+#Optimize the access efficiency ...
+#Clean up the fragments of GDS file:
+#    open the file 'vcf/full_genome.filtered.gds' (53.1K)
+#    # of fragments: 46
+#    save to 'vcf/full_genome.filtered.gds.tmp'
+#    rename 'vcf/full_genome.filtered.gds.tmp' (52.8K, reduced: 312B)
+#    # of fragments: 20
 ```
 
 
@@ -50,17 +50,17 @@ Clean up the fragments of GDS file:
 genofile <- snpgdsOpen("vcf/full_genome.filtered.gds")
 #Prune for linkage
 snpset_pruned <- snpgdsLDpruning(genofile, autosome.only=F)
-SNP pruning based on LD:
-Excluding 313 SNPs (monomorphic: TRUE, MAF: NaN, missing rate: NaN)
-Working space: 10 samples, 6,437 SNPs
-    using 1 (CPU) core
-    sliding window: 500,000 basepairs, Inf SNPs
-    |LD| threshold: 0.2
-    method: composite
-Chromosome HanXRQChr01: 0.21%, 7/3,398
-Chromosome HanXRQChr02: 1.18%, 10/846
-Chromosome HanXRQChr03: 0.16%, 4/2,506
-21 markers are selected in total.
+#SNP pruning based on LD:
+#Excluding 313 SNPs (monomorphic: TRUE, MAF: NaN, missing rate: NaN)
+#Working space: 10 samples, 6,437 SNPs
+#    using 1 (CPU) core
+#    sliding window: 500,000 basepairs, Inf SNPs
+#    |LD| threshold: 0.2
+#    method: composite
+#Chromosome HanXRQChr01: 0.21%, 7/3,398
+#Chromosome HanXRQChr02: 1.18%, 10/846
+#Chromosome HanXRQChr03: 0.16%, 4/2,506
+#21 markers are selected in total.
 ```
 
 Holy moly, linkage is very high! In this case, its pruned ~6000 SNPs down to ~20 because they were all so closely linked. Most normal datasets will remove much fewer sites and keep much more data. In my experience, Whole Genome Sequence data can be reduced to ~20% of the original size with this procedure. 
@@ -71,16 +71,16 @@ Holy moly, linkage is very high! In this case, its pruned ~6000 SNPs down to ~20
 snpset.id <- unlist(snpset_pruned)
 #Run the PCA
 pca <- snpgdsPCA(genofile, num.thread = 2, eigen.cnt = 16, snp.id = snpset.id, missing.rate = 0.10, maf = 0.05,autosome.only = F)
-Principal Component Analysis (PCA) on genotypes:
-Excluding 1 SNP (monomorphic: TRUE, MAF: 0.05, missing rate: 0.1)
-Working space: 10 samples, 20 SNPs
-    using 2 (CPU) cores
-PCA:    the sum of all selected genotypes (0,1,2) = 269
-CPU capabilities: Double-Precision SSE2
-Wed Jul 24 15:54:33 2019    (internal increment: 48740)
-[==================================================] 100%, completed, 0s  
-Wed Jul 24 15:54:33 2019    Begin (eigenvalues and eigenvectors)
-Wed Jul 24 15:54:33 2019    Done.
+#Principal Component Analysis (PCA) on genotypes:
+#Excluding 1 SNP (monomorphic: TRUE, MAF: 0.05, missing rate: 0.1)
+#Working space: 10 samples, 20 SNPs
+#    using 2 (CPU) cores
+#PCA:    the sum of all selected genotypes (0,1,2) = 269
+#CPU capabilities: Double-Precision SSE2
+#Wed Jul 24 15:54:33 2019    (internal increment: 48740)
+#[==================================================] 100%, completed, 0s  
+#Wed Jul 24 15:54:33 2019    Begin (eigenvalues and eigenvectors)
+#Wed Jul 24 15:54:33 2019    Done.
 ```
 PCA is done and stored in the pca object. Try printing the pca object to see whats in it.
 ```r
@@ -94,7 +94,7 @@ It's got a bunch of different parts. This is useful in case we need to refer bac
 #Here's the percent variance explained for each eigenvector
 pc.percent <- pca$varprop*100
 round(pc.percent, 2)
- [1] 28.07 19.34 15.85  9.87  8.24  8.09  5.96  3.43  1.15  0.00
+# [1] 28.07 19.34 15.85  9.87  8.24  8.09  5.96  3.43  1.15  0.00
 ```
 
 Now for actually plotting the eigenvectors.
