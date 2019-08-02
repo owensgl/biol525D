@@ -26,8 +26,8 @@ SNPRelate works with a compressed version of a genotype file called a "gds". We 
 snpgdsVCF2GDS("vcf/full_genome.filtered.vcf.gz",
               "vcf/full_genome.filtered.gds",
               method="biallelic.only")
-	      
-#####	      
+
+#####
 #Start file conversion from VCF to SNP GDS ...
 #Method: exacting biallelic SNPs
 #Number of samples: 10
