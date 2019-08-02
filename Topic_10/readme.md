@@ -29,17 +29,17 @@ perl vcf2nex.pl < vcf/full_genome.filtered.vcf > vcf/full_genome.filtered.nex
 ```
 
 Next, in the BEAST 2.6.0 directory open the BEAUTi app.
-![](beauti_1.jpeg)
+![](beauti_1.jpeg){:width="100%"}
 * Select *File => Manage Packages*.
-![](beauti_2.jpeg)
+![](beauti_2.jpeg){:width="100%"}
 * Scroll down to SNAPP and click *Install/Upgrade*
 * Close package window
 * Select *File => Template => SNAPP*
 * Select *File => Add Alignment*
 * Navigate to your file full_genome.filtered.nex and select it
-* Select the Species/Population column and edit the names so they're either _ANN_ or _ARG_ instead of a ANN1133, etc. 
-![](beauti_3.jpeg)
-* Select the *MCMC* tab 
+* Select the Species/Population column and edit the names so they're either _ANN_ or _ARG_ instead of a ANN1133, etc.
+  ![](beauti_3.jpeg){:width="100%"}
+* Select the *MCMC* tab
 * Modify *Chain Lengths* to 25000
 * Modify *Store Every* to 100
 * Modify tracelog => File Name to "full_genome.filtered.log"
@@ -48,7 +48,7 @@ Next, in the BEAST 2.6.0 directory open the BEAUTi app.
 * Modify treelog => File Name to "full_genome.filtered.trees"
 * Modify treelog => Log Every to 100
 * Select *File => Save* and name file "full_genome.filtered.snapp"
-![](beauti_4.jpeg)
+  ![](beauti_4.jpeg){:width="100%"}
 
 This whole use of Beauti is setting up the SNAPP run. We're specifying which samples go to which population, since SNAPP is calculating the phylogenetic history of the population, rather than individuals. We're setting the number of MCMC chains to be very small for time limitations. Also we're not modifying the priors, which can be important and should be something you should consider for each particular dataset. 
 
@@ -58,19 +58,19 @@ At the end, we have a file _full_genome.filtered.snapp.xml_ that is ready for ru
 * Select overwrite: overwrite log files
 * Select thread pool size => the maximum value
 * Click Run
-![](beast_1.jpeg)
+  ![](beast_1.jpeg){:width="50%"}
 
 In a terminal window beast should now be running. It's counting up to 25000, which will take a few minutes depending on your laptop speed.
-![](beast_2.jpeg)
+![](beast_2.jpeg){:width="100%"}
 
 Once its done, we should look at the traces. As BEAST runs, it is trying different possible tree shapes and parameters, trying to find the combination that has the highest posterior probability. We can look at those using *Tracer*
 
-* Open Tracer v1.7.1 
+* Open Tracer v1.7.1
 * Select *File => Import Trace File*
 * Navigate to your biol525d directory and find the full_genome.filtered.snapp.log file
-![](tracer_1.jpeg)
+![](tracer_1.jpeg){:width="100%"}
 * Click on the *Trace* tab on the right
-![](tracer_2.jpeg)
+![](tracer_2.jpeg){:width="100%"}
 
 Looking at that, we can clearly see that the MCMC chain has been climbing and may still be climbing. This means that we didn't run our MCMC long enough. If we did, it would look like a relatively flat squiggly line not trending up or down. Take a look at theta2, which seems to be relatively well estimated. A numerical representation of this is the ESS number you can see on the left. As a rule of thumb, ESS numbers should be >200.
 
@@ -78,25 +78,25 @@ So those scores aren't great, but lets move onto actually visualizing the trees.
 
 * Open DensiTree (in the BEAST directory)
 * Select *File => Load* and navigate to _full_genome.filtered.trees_
-![](densitree_1.jpeg)
+![](densitree_1.jpeg){:width="100%"}
 
 This isn't particularly informative since we only have two species, but you can see there is a lot of variation in node height. With more than 2 taxa you'd be able to see variation in tree topology.
 
 Lastly, to make a more classic phylogeny, we need to take our many different trees produced by BEAST and summarize them down into a single tree with confidence estimates.
 
 * Open TreeAnnotator (in the BEAST directory)
-* Change Burnin percentage to 20 
+* Change Burnin percentage to 20
 * Change Node heights to Median heights
 * Change Input Tree File to full_genome.filtered.trees
 * Change Output File to full_genome_filtered.ano.tre
 * Click Run
-![](treeanotator_1.jpeg)
+![](treeannotator_1.jpeg){:width="100%"}
 
 It will run and output a new .tre file. We then open that file in FigTree
-![](figtree_1.jpeg)
+![](figtree_1.jpeg){:width="100%"}
 
 * Click Node Bars and then select Display: height_95%\_HPD
-![](figtree_2.jpeg)
+![](figtree_2.jpeg){:width="100%"}
 
 This is showing the confidence interval for that node height. If we had more taxa you could also show node confidence using the branch labels feature.
 
@@ -165,7 +165,7 @@ ggtree(tree) +
   geom_tiplab() +
   xlim(0, 0.3)
 ```
-![](ggtree_1.jpeg)
+![](ggtree_1.jpeg){:width="100%"}
 
 This tree is unrooted, so it has chosen the alphabetically earliest sample as the root. To emphasize that its unrooted, you could also plot it like this:
 ```r
@@ -173,7 +173,7 @@ ggtree(tree, layout="equal_angle") +
   geom_tiplab() +
   xlim(-0.3, 0.2)
 ```
-![](ggtree_2.jpeg)
+![](ggtree_2.jpeg){:width="100%"}
 
 As we expect, there are two clear groups. If you don't have a clear outgroup sample (like in this case), one way of rooting the phylogeny is using a midpoint root. This takes the longest branch in the tree and declares it the root. In this phylogeny, the longest branch separates the two groups.
 
@@ -183,7 +183,7 @@ ggtree(rooted.tree) +
   geom_tiplab() +
   xlim(0, 0.2)
 ```
-![](ggtree_3.jpeg)
+![](ggtree_3.jpeg){:width="100%"}
 
 One of the really cool features of ggtree is the %<+% operator. This allows you to take dataframes with sample specific information and join that with the tree file. Once its joined you can easily highlight samples or add extra information. Unfortunately, details on this method can only be found on the wayback machine [here](https://web.archive.org/web/20181227140306/https://bioconductor.org/packages/release/bioc/vignettes/ggtree/inst/doc/treeAnnotation.html#the-operator).
 
@@ -196,24 +196,24 @@ tree_info %>%
 tree_info
 # A tibble: 10 x 2
    taxa    species
-   <chr>   <chr>  
- 1 ANN1133 ANN    
- 2 ANN1134 ANN    
- 3 ANN1337 ANN    
- 4 ANN1373 ANN    
- 5 ARG0010 ARG    
- 6 ARG0015 ARG    
- 7 ARG0016 ARG    
- 8 ARG0018 ARG    
- 9 ARG0028 ARG    
-10 ANN1338 ANN    
+   <chr>   <chr>
+ 1 ANN1133 ANN
+ 2 ANN1134 ANN
+ 3 ANN1337 ANN
+ 4 ANN1373 ANN
+ 5 ARG0010 ARG
+ 6 ARG0015 ARG
+ 7 ARG0016 ARG
+ 8 ARG0018 ARG
+ 9 ARG0028 ARG
+10 ANN1338 ANN
 
 #Then we use %<+% to add that to the tree.
 ggtree(rooted.tree) %<+% tree_info +
   geom_tiplab(aes(color=species)) +
   xlim(0, 0.2)
 ```
-![](ggtree_4.jpeg)
+![](ggtree_4.jpeg){:width="100%"}
 
 
 
