@@ -81,7 +81,7 @@ Save the file, and exit. You can then run this script with:
 
     bash my_first_script.sh
 
-If you add the special line `#!/bin/bash` (aka shebang) at the top of your script, and mark the script executable (`chmod +x my_first_script.sh`), then you will be able to run it more easily:
+If you add the special line `#!/bin/bash` (aka "hashbang") at the top of your script, and mark the script executable (`chmod +x my_first_script.sh`), then you will be able to run it more easily:
 
     ./my_first_script.sh
 
