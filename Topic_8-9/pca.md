@@ -104,8 +104,8 @@ Now for actually plotting the eigenvectors.
 
 #Make a dataframe of your PCA results
 tab <- data.frame(sample = pca$sample.id,
-                  EV1 = pca$eigenvect[,1],    # the first eigenvector
-                  EV2 = pca$eigenvect[,2],    # the second eigenvector
+                  PC1 = pca$eigenvect[,1],    # the first eigenvector
+                  PC2 = pca$eigenvect[,2],    # the second eigenvector
                   stringsAsFactors = FALSE)
 
 
