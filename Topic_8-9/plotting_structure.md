@@ -29,7 +29,7 @@ Enter directory name "biol525d" and put it somewhere you can get to. In my case,
 After it has been created, move your "analysis" and "vcf" directory into your biol525d project directory so you have easy access to those files.
 
 
-You're now in your Rstudio Project and the next step is to install the tidyverse package, which includes a suite of tools for manipulating data and plotting. The examples today will be focused on tidyverse solutions to problems. One key feature of the tidyverse world is the use of "%>%" to pipe data between commands. This functions similar to "|" in the commandline and helps put together strings of commands that are work together and are easy to understand. 
+You're now in your Rstudio Project and the next step is to install the tidyverse package, which includes a suite of tools for manipulating data and plotting. The examples today will be focused on tidyverse solutions to problems. One key feature of the tidyverse world is the use of "%>%" to pipe data between commands. This functions similar to "\|" in the commandline and helps put together strings of commands that are work together and are easy to understand. 
 
 
 
