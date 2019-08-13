@@ -1,0 +1,81 @@
+#Base installations
+sudo apt-get install unzip
+sudo apt-get install build-essential
+sudo apt-get install libncurses-dev
+sudo apt-get install zlib1g-dev
+sudo apt-get install libbz2-dev
+sudo apt-get install liblzma-dev
+sudo apt-get install libssl-dev
+sudo apt-get install pkg-config
+sudo apt-get install python
+sudo apt install openjdk-8-jdk
+
+#Get programs
+wget https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9.tar.bz2
+wget https://github.com/samtools/bcftools/releases/download/1.9/bcftools-1.9.tar.bz2
+wget https://github.com/samtools/htslib/releases/download/1.9/htslib-1.9.tar.bz2
+wget https://downloads.sourceforge.net/project/bio-bwa/bwa-0.7.17.tar.bz2
+wget https://github.com/broadinstitute/gatk/releases/download/4.1.2.0/gatk-4.1.2.0.zip
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+wget https://github.com/broadinstitute/picard/releases/download/2.20.4/picard.jar
+wget https://github.com/vcftools/vcftools/releases/download/v0.1.16/vcftools-0.1.16.tar.gz
+wget http://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20190617.zip
+wget http://software.genetics.ucla.edu/admixture/binaries/admixture_linux-1.3.0.tar.gz
+wget https://github.com/Cibiv/IQ-TREE/releases/download/v1.6.11/iqtree-1.6.11-Linux.tar.gz
+
+#Unzip packages
+tar -xjf htslib-1.9.tar.bz2
+tar -xjf samtools-1.9.tar.bz2
+tar -xjf bcftools-1.9.tar.bz2
+tar -xjf bwa-0.7.17.tar.bz2
+tar -xzf vcftools-0.1.16.tar.gz
+unzip gatk-4.1.2.0.zip
+unzip plink_linux_x86_64_20190617.zip
+tar -xzf admixture_linux-1.3.0.tar.gz
+tar -xzf iqtree-1.6.11-Linux.tar.gz
+
+#Install programs
+cd samtools-1.9
+./configure
+make
+sudo make install
+
+cd ../htslib-1.9/
+./configure
+make
+sudo make install
+
+cd ../bcftools-1.9/
+./configure
+make
+sudo make install
+
+cd ../bwa-0.7.17
+make
+
+cd ../vcftools-0.1.16
+./configure
+make
+sudo make install
+
+##################
+cp over /home/biol525d/ to other servers
+#change permissions to prevent writing to this folder by the students
+
+#Topic 3
+cd /home/biol525d/Topic_3
+tar -xf prinseq-lite-0.20.4.tar.gz
+
+#Topic 5
+cd /home/biol525d/Topic_5
+sudo apt-get install velvet
+
+#Topic 6
+cd /home/biol525d/Topic_6
+sudo apt-get install bowtie2
+tar -xzf RSEM-1.2.31.tar.gz
+cd RSEM-1.2.31
+sudo make
+sudo make install
+sudo apt-get install r-base-core
+
