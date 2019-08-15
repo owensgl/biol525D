@@ -31,7 +31,7 @@ Students must produce a single shell script that does the following steps:
 * Runs a principal component analysis.
 * Outputs a pdf figure of the principal component analysis. 
 
-Assume all programs and libraries are locally installed in the "/home/ubuntu/bin" directory. You can have additional scripts that are called by the shell script (i.e. an R script to run the PCA). 
+Assume all programs and libraries are locally installed in the "/home/ubuntu/bin" directory. You can have additional scripts that are called by the shell script (i.e. an R script to run the PCA). The script should be able to run completely independently and not have any steps that require manual labor beyond the initial script call. 
 
 ### Grading
 Scripts will be graded on the following criteria:
